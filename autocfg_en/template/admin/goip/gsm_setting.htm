@@ -1,0 +1,620 @@
+
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+        <tr>
+         <td colspan="2" class="title2" height="25" >Call Divert</td>
+        </tr>
+
+        <tr>
+         <td colspan="2">
+
+         <div id="fxo_route_setting" class="visable">
+          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+            <tr>
+             <td align="center" valign="top">
+          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+            <tr>
+             <td colspan="2">
+
+             <div id="lines_setting" class="visable">
+              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                <tr>
+                 <td width="120" height="25" class="title1">
+<span>Forward to PSTN</span>                 </td>
+                 <td width="160" class="text">
+                  <input type="radio" name="line1_fw_to_pstn" value="on" id="line1_fw_to_pstn_enable" onclick="toggle('line1_fw_to_pstn_div', 1)" <?php print($values['L1_DISABLE_OUT']!='1'?'checked':'') ?>><span>Enable</span>
+                  <input type="radio" name="line1_fw_to_pstn" value="off" id="line1_fw_to_pstn_disable" disabledbyelement="" onclick="toggle('line1_fw_to_pstn_div', 0)" <?php print($values['L1_DISABLE_OUT']=='1'?'checked':'') ?>><span>Disable</span>                 </td>
+                </tr>
+
+                <tr>
+                 <td colspan="2">
+
+                <div id="line1_fw_to_pstn_div" class="<?php print($values['L1_DISABLE_OUT']=='1'?'invisible':'visable') ?>">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                    <tr>
+                     <td width="120" height="25" class="title1">Forward Number(VoIP To PSTN)</td>
+                     <td width="160" class="text">
+                      <input type="text" name="line1_fw_num_to_pstn" id="line1_fw_num_to_pstn" value="<?php print($values['L1_FW_NUM_TO_PSTN']) ?>" class="edit">
+                     </td>
+                    </tr>
+
+                    <tr>
+                     <td width="120" height="25" class="title1">Dial Plan(VoIP to PSTN)</td>
+                     <td width="160" class="text">
+                      <input type="text" name="line1_p_dial_plan" id="line1_p_dial_plan" value="<?php print($values['L1_P_DIGIT_MAP']) ?>" class="edit">
+                     </td>
+                    </tr>
+
+                    <tr>
+
+                     <td width="120" height="25" class="title1">Forward to PSTN Auth Mode</td>
+                     <td width="160" class="text">
+  <select name="line1_fw2pstn_auth_mode" id="line1_fw2pstn_auth_mode_select" class="select" onchange="toggle_selected('line1_fw2pstn_auth_mode', 'hide')">
+     <option value="NOAUTH" <?php print($values['L1_FW2PSTN_AUTH_MODE']=='NOAUTH'?'selected':'') ?>>No Auth</option>
+     <option value="PASSWD" <?php print($values['L1_FW2PSTN_AUTH_MODE']=='PASSWD'?'selected':'') ?>>Password</option>
+     <option value="TRUSTLIST" <?php print($values['L1_FW2PSTN_AUTH_MODE']=='TRUSTLIST'?'selected':'') ?>>Trust List</option>
+     <option value="PASSWD_TRUSTLIST" <?php print($values['L1_FW2PSTN_AUTH_MODE']=='PASSWD_TRUSTLIST'?'selected':'') ?>>Password or Trust List</option>
+  </select>
+                     </td>
+
+                    </tr>
+
+                    <tr>
+                     <td colspan="2">
+
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                        <tr>
+                         <td colspan="2">
+                           <div class="invisible"><br><span class="stitle">Forward to PSTN Auth Mode - Password</span></div>
+
+                        <div id="line1_fw2pstn_auth_mode_PASSWD_div" class="<?php print($values['L1_FW2PSTN_AUTH_MODE']=='PASSWD'?'visable':'invisible') ?>">
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+                             <td width="120" height="25" class="title1">Forward Password(VoIP To PSTN)</td>
+                             <td width="160" class="text">
+                              <input type="password" name="line1_fw_to_pstn_passwd" id="line1_fw_to_pstn_passwd" value="<?php print($values['L1_FW_TO_PSTN_PASSWD']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                          </table>
+                        </div>
+                           <div class="invisible"><br><span class="stitle">Forward to PSTN Auth Mode - Password or Trust List</span></div>
+
+                        <div id="line1_fw2pstn_auth_mode_PASSWD_TRUSTLIST_div" class="<?php print($values['L1_FW2PSTN_AUTH_MODE']=='PASSWD_TRUSTLIST'?'visable':'invisible') ?>">
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+                             <td width="120" height="25" class="title1">Forward Password(VoIP To PSTN)</td>
+                             <td width="160" class="text">
+                              <input type="password" name="l1_fw_to_pstn_passwd" id="l1_fw_to_pstn_passwd" value="<?php print($values['L1_FW_TO_PSTN_PASSWD']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                          </table>
+                        </div>
+                           <div class="invisible"><br></div>
+                         </td>
+                        </tr>
+
+                      </table>
+                     </td>
+                    </tr>
+
+                    <tr>
+                     <td width="120" height="25" class="title1">SIM Card Expiry</td>
+                     <td width="160" class="text">
+                      <input type="text" name="line1_sim_exp" id="line1_sim_exp" value="<?php print($values['L1_SIM_EXP']) ?>" class="edit">
+                     </td>
+                    </tr>
+
+                    <tr>
+                     <td width="120" height="25" class="title1">SIM Card Billing Time(s)</td>
+                     <td width="160" class="text">
+                      <input type="text" name="line1_sim_exp_unit" id="line1_sim_exp_unit" value="<?php print($values['L1_SIM_EXP_UNIT']) ?>" class="edit">
+                     </td>
+                    </tr>
+
+                    <tr>
+                     <td width="120" height="25" class="title1">SIM Card State Report Number</td>
+                     <td width="160" class="text">
+                      <input type="text" name="line1_sim_strp_num" id="line1_sim_strp_num" value="<?php print($values['L1_SIM_STRP_NUM']) ?>" class="edit">
+                     </td>
+                    </tr>
+
+                    <tr>
+                     <td width="120" height="25" class="title1">SIM Card State Report Time</td>
+                     <td width="160" class="text">
+                      <input type="text" name="line1_sim_strp_time" id="line1_sim_strp_time" value="<?php print($values['L1_SIM_STRP_TIME']) ?>" class="edit">
+                     </td>
+                    </tr>
+
+                    <tr>
+                     <td width="120" height="25" class="title1">SIM Card ID</td>
+                     <td width="160" class="text">
+                      <input type="text" name="line1_sim_id" id="line1_sim_id" value="<?php print($values['L1_SIM_ID']) ?>" class="edit">
+                     </td>
+                    </tr>
+
+                    <tr>
+                     <td width="120" height="25"  class="title1">
+                     </td>
+                     <td width="160" class="text">                      <div style="cursor:hand; cursor:pointer" onclick="toggle_target(this, 'line1_voip_trust_list_target')">VoIP Trust List<span class="showstate" >&gt;&gt;</span></div>
+                     </td>
+                    </tr>
+                    <tr>
+                     <td colspan="2">
+                       <div id="line1_voip_trust_list_target" class="invisible">
+			<?php require_once template($type.'/line1_voip_trust_list'); ?>
+                       </div>
+                     </td>
+                    </tr>
+
+                  </table>
+                </div>
+                 </td>
+                </tr>
+
+                <tr>
+                 <td width="120" height="25" class="title1">
+<span>Forward to VoIP</span>                 </td>
+                 <td width="160" class="text">
+                  <input type="radio" name="line1_fw_to_voip" value="on" id="line1_fw_to_voip_enable" onclick="toggle('line1_fw_to_voip_div', 1)" <?php print($values['L1_DISABLE_IN']!='1'?'checked':'') ?>><span>Enable</span>
+                  <input type="radio" name="line1_fw_to_voip" value="off" id="line1_fw_to_voip_disable" disabledbyelement="" onclick="toggle('line1_fw_to_voip_div', 0)" <?php print($values['L1_DISABLE_IN']=='1'?'checked':'') ?>><span>Disable</span>                 </td>
+                </tr>
+
+                <tr>
+                 <td colspan="2">
+
+                <div id="line1_fw_to_voip_div" class="<?php print($values['L1_DISABLE_IN']=='1'?'invisible':'visable') ?>">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                    <tr>
+                     <td width="120" height="25" class="title1">Forward Number(PSTN To VoIP)</td>
+                     <td width="160" class="text">
+                      <input type="text" name="line1_fw_num_to_voip" id="line1_fw_num_to_voip" value="<?php print($values['L1_FW_NUM_TO_VOIP']) ?>" class="edit">
+                     </td>
+                    </tr>
+
+                    <tr>
+                     <td width="120" height="25" class="title1">Dial Plan(PSTN to VoIP)</td>
+                     <td width="160" class="text">
+                      <input type="text" name="line1_v_dial_plan" id="line1_v_dial_plan" value="<?php print($values['L1_V_DIGIT_MAP']) ?>" class="edit">
+                     </td>
+                    </tr>
+
+                    <tr>
+
+                     <td width="120" height="25" class="title1">Forward to VoIP Auth Mode</td>
+                     <td width="160" class="text">
+  <select name="line1_fw2voip_auth_mode" id="line1_fw2voip_auth_mode_select" class="select" onchange="toggle_selected('line1_fw2voip_auth_mode', 'hide')">
+     <option value="NOAUTH" <?php print($values['L1_FW2VOIP_AUTH_MODE']=='NOAUTH'?'selected':'') ?>>No Auth</option>
+     <option value="PASSWD" <?php print($values['L1_FW2VOIP_AUTH_MODE']=='PASSWD'?'selected':'') ?>>Password</option>
+     <option value="TRUSTLIST" <?php print($values['L1_FW2VOIP_AUTH_MODE']=='TRUSTLIST'?'selected':'') ?>>Trust List</option>
+     <option value="PASSWD_TRUSTLIST" <?php print($values['L1_FW2VOIP_AUTH_MODE']=='PASSWD_TRUSTLIST'?'selected':'') ?>>Password or Trust List</option>
+  </select>
+                     </td>
+
+                    </tr>
+
+                    <tr>
+                     <td colspan="2">
+
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                        <tr>
+                         <td colspan="2">
+                           <div class="invisible"><br><span class="stitle">Forward to VoIP Auth Mode - Password</span></div>
+
+                        <div id="line1_fw2voip_auth_mode_PASSWD_div" class="<?php print($values['L1_FW2VOIP_AUTH_MODE']=='PASSWD'?'visable':'invisible') ?>">
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+                             <td width="120" height="25" class="title1">Forward Password(PSTN To VoIP)</td>
+                             <td width="160" class="text">
+                              <input type="password" name="line1_fw_to_voip_passwd" id="line1_fw_to_voip_passwd" value="<?php print($values['L1_FW_TO_VOIP_PASSWD']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                          </table>
+                        </div>
+                           <div class="invisible"><br><span class="stitle">Forward to VoIP Auth Mode - Password or Trust List</span></div>
+
+                        <div id="line1_fw2voip_auth_mode_PASSWD_TRUSTLIST_div" class="<?php print($values['L1_FW2VOIP_AUTH_MODE']=='PASSWD_TRUSTLIST'?'visable':'invisible') ?>">
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+                             <td width="120" height="25" class="title1">Forward Password(PSTN To VoIP)</td>
+                             <td width="160" class="text">
+                              <input type="password" name="l1_fw_to_voip_passwd" id="l1_fw_to_voip_passwd" value="<?php print($values['L1_FW_TO_VOIP_PASSWD']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                          </table>
+                        </div>
+                           <div class="invisible"><br></div>
+                         </td>
+                        </tr>
+
+                      </table>
+                     </td>
+                    </tr>
+
+                    <tr>
+                     <td width="120" height="25"  class="title1">
+                     </td>
+                     <td width="160" class="text">                      <div style="cursor:hand; cursor:pointer" onclick="toggle_target(this, 'line1_pstn_trust_list_target')">PSTN Trust List<span class="showstate" >&gt;&gt;</span></div>
+                     </td>
+                    </tr>
+                    <tr>
+                     <td colspan="2">
+                       <div id="line1_pstn_trust_list_target" class="invisible">
+			<?php require_once template($type.'/line1_pstn_trust_list'); ?>
+                       </div>
+                     </td>
+                    </tr>
+
+                  </table>
+                </div>
+                 </td>
+                </tr>
+
+                <tr>
+                 <td width="120" height="25" class="title1">
+<span>GSM Call Waiting</span>                 </td>
+                 <td width="160" class="text">
+                  <input type="radio" name="line1_gsm_cw_enable" value="on" id="line1_gsm_cw_enable_enable" disabledbyelement="" onclick="toggle('line1_gsm_cw_enable_div', 1)" <?php print($values['GSM_CW_ENABLE']=='1'?'checked':'') ?>><span>Enable</span>
+                  <input type="radio" name="line1_gsm_cw_enable" value="off" id="line1_gsm_cw_enable_disable" disabledbyelement="" onclick="toggle('line1_gsm_cw_enable_div', 0)" <?php print($values['GSM_CW_ENABLE']!='1'?'checked':'') ?>><span>Disable</span>                 </td>
+                </tr>
+
+                <tr>
+                 <td width="120" height="25"  class="title1">
+                 </td>
+                 <td width="160" class="text">                  <div style="cursor:hand; cursor:pointer" onclick="toggle_target(this, 'line0_gsm_cf_list_target')">GSM Call Forward List<span class="showstate" >&gt;&gt;</span></div>
+                 </td>
+                </tr>
+                <tr>
+                 <td colspan="2">
+                   <div id="line0_gsm_cf_list_target" class="invisible">
+			<?php require_once template($type.'/line0_gsm_cf_list'); ?>
+                   </div>
+                 </td>
+                </tr>
+
+              </table>
+             </div>
+
+             </td>
+            </tr>
+
+            <tr>
+
+             <td width="120" height="25" class="title1">SMS Mode</td>
+             <td width="160" class="text">
+  <select name="sms_mode" id="sms_mode_select" class="select" onchange="toggle_selected('sms_mode', 'hide')">
+     <option value="DISABLE" <?php print($values['SMS_MODE']=='DISABLE'?'selected':'') ?>>Disable</option>
+     <option value="DIAL" <?php print($values['SMS_MODE']=='DIAL'?'selected':'') ?>>Dial</option>
+     <option value="RELAY" <?php print($values['SMS_MODE']=='RELAY'?'selected':'') ?>>Relay</option>
+  </select>
+             </td>
+
+            </tr>
+
+            <tr>
+             <td colspan="2">
+
+              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                <tr>
+                 <td colspan="2">
+                   <div class="invisible"><br><span class="stitle">SMS Mode - Dial</span></div>
+
+                <div id="sms_mode_DIAL_div" class="<?php print($values['SMS_MODE']=='DIAL'?'visable':'invisible') ?>">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                    <tr>
+
+                     <td width="120" height="25" class="title1">SMS Dial</td>
+                     <td width="160" class="text">
+  <select name="sms_dial" id="sms_dial_select" class="select" onchange="toggle_selected('sms_dial', 'hide')">
+     <option value="1" <?php print($values['SMS_DIAL_ENABLE']=='1'?'selected':'') ?>>Mode 1</option>
+     <option value="2" <?php print($values['SMS_DIAL_ENABLE']=='2'?'selected':'') ?>>Mode 2</option>
+     <option value="3" <?php print($values['SMS_DIAL_ENABLE']=='3'?'selected':'') ?>>Mode 3</option>
+  </select>
+                     </td>
+
+                    </tr>
+
+                    <tr>
+                     <td colspan="2">
+
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                      </table>
+                     </td>
+                    </tr>
+
+                    <tr>
+                     <td width="120" height="25" class="title1">SMS Dial Prefix</td>
+                     <td width="160" class="text">
+                      <input type="text" name="sms_dial_prefix" id="sms_dial_prefix" value="<?php print($values['SMS_PREFIX']) ?>" class="edit">
+                     </td>
+                    </tr>
+
+                  </table>
+                </div>
+                   <div class="invisible"><br><span class="stitle">SMS Mode - Relay</span></div>
+
+                <div id="sms_mode_RELAY_div" class="<?php print($values['SMS_MODE']=='RELAY'?'visable':'invisible') ?>">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                    <tr>
+                     <td width="120" height="25" class="title1">SMS Forward Number</td>
+                     <td width="160" class="text">
+                      <input type="text" name="sms_fw_num" id="sms_fw_num" value="<?php print($values['SMS_FW_NUM']) ?>" class="edit">
+                     </td>
+                    </tr>
+
+                  </table>
+                </div>
+                   <div class="invisible"><br></div>
+                 </td>
+                </tr>
+
+              </table>
+
+             </td>
+            </tr>
+          </table>
+             </td>
+             <td align="center" valign="top">
+	  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+<?php if($values['ENDPOINT_TYPE']=='SIP'): ?>
+
+            <tr>
+
+             <td width="120" height="25" class="title1">CID Forward Mode</td>
+             <td width="160" class="text">
+  <select name="cid_fw_mode" id="cid_fw_mode_select" class="select" onchange="toggle_selected('cid_fw_mode', 'hide')">
+     <option value="DISABLE" <?php print($values['SIP_CID_FW_MODE']=='DISABLE'?'selected':'') ?>>Disable</option>
+     <option value="0" <?php print($values['SIP_CID_FW_MODE']=='0'?'selected':'') ?>>Use Remote Party ID</option>
+     <option value="1" <?php print($values['SIP_CID_FW_MODE']=='1'?'selected':'') ?>>Use CID as SIP Caller ID</option>
+  </select>
+             </td>
+
+            </tr>
+
+            <tr>
+             <td colspan="2">
+
+              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                <tr>
+                 <td colspan="2">
+
+                <div id="cid_fw_mode_1_div" class="<?php print($values['SIP_CID_FW_MODE']=='1'?'visable':'invisible') ?>">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                    <tr>
+                     <td width="120" height="25" class="title1">&nbsp;&nbsp;CID Prefix</td>
+                     <td width="160" class="text">
+                      <input type="text" name="cid_fw_prefix" id="cid_fw_prefix" value="<?php print($values['CID_FW_PREFIX']) ?>" class="edit">
+                     </td>
+                    </tr>
+
+                  </table>
+                </div>
+                 </td>
+                </tr>
+
+              </table>
+
+             </td>
+            </tr>
+<?php endif; ?>
+<?php if($values['ENDPOINT_TYPE']=='H323'): ?>
+
+            <tr>
+             <td width="120" height="25" class="title1">
+<span>CID Forward</span>             </td>
+             <td width="160" class="text">
+              <input type="radio" name="h323_cid_fw" value="on" id="h323_cid_fw_enable" disabledbyelement="" onclick="toggle('h323_cid_fw_div', 1)" <?php print($values['H323_CID_FW']=='1'?'checked':'') ?>><span>Enable</span>
+              <input type="radio" name="h323_cid_fw" value="off" id="h323_cid_fw_disable" disabledbyelement="" onclick="toggle('h323_cid_fw_div', 0)" <?php print($values['H323_CID_FW']!='1'?'checked':'') ?>><span>Disable</span>             </td>
+            </tr>
+<?php endif; ?>
+
+            <tr>
+             <td width="120" height="25" class="title1">
+<span>SMS Sender</span>             </td>
+             <td width="160" class="text">
+              <input type="radio" name="sms_sender" value="on" id="sms_sender_enable" disabledbyelement="" onclick="toggle('sms_sender_div', 1)" <?php print($values['SMS_SENDER']=='1'?'checked':'') ?>><span>Enable</span>
+              <input type="radio" name="sms_sender" value="off" id="sms_sender_disable" disabledbyelement="" onclick="toggle('sms_sender_div', 0)" <?php print($values['SMS_SENDER']!='1'?'checked':'') ?>><span>Disable</span>             </td>
+            </tr>
+
+            <tr>
+             <td colspan="2">
+
+            <div id="sms_sender_div" class="<?php print($values['SMS_SENDER']=='1'?'visible':'invisible') ?>">
+              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                <tr>
+                 <td width="120" height="25" class="title1">&nbsp;&nbsp;SMS Server IP</td>
+                 <td width="160" class="text">
+                  <input type="text" name="sms_server" id="sms_server" value="<?php print($values['SMS_SERVER']) ?>" class="edit">
+                 </td>
+                </tr>
+
+                <tr>
+                 <td width="120" height="25" class="title1">&nbsp;&nbsp;SMS Server Port</td>
+                 <td width="160" class="text">
+                  <input type="text" name="sms_port" id="sms_port" value="<?php print($values['SMS_PORT']) ?>" class="edit">
+                 </td>
+                </tr>
+
+                <tr>
+                 <td width="120" height="25" class="title1">&nbsp;&nbsp;SMS Client ID</td>
+                 <td width="160" class="text">
+                  <input type="text" name="sms_cli_id" id="sms_cli_id" value="<?php print($values['SMS_CLI_ID']) ?>" class="edit">
+                 </td>
+                </tr>
+
+                <tr>
+                 <td width="120" height="25" class="title1">&nbsp;&nbsp;Password</td>
+                 <td width="160" class="text">
+                  <input type="password" name="sms_cli_passwd" id="sms_cli_passwd" value="<?php print($values['SMS_CLI_PASSWD']) ?>" class="edit">
+                 </td>
+                </tr>
+
+              </table>
+            </div>
+
+             </td>
+            </tr>
+
+
+          <tr>
+
+             <td width="120" height="25" class="title1">GSM Group Mode</td>
+             <td width="160" class="text">
+  <select name="gsm_group_mode" id="gsm_group_mode_select" class="select" onchange="toggle_selected('gsm_group_mode', 'hide')">
+     <option value="DISABLE" <?php print($values['GROUP_MODE']=='DISABLE'?'selected':'') ?>>Disable</option>
+     <option value="SVR" <?php print($values['GROUP_MODE']=='SVR'?'selected':'') ?>>As Server</option>
+     <option value="CLI" <?php print($values['GROUP_MODE']=='CLI'?'selected':'') ?>>As Client</option>
+  </select>
+             </td>
+
+            </tr>
+
+            <tr>
+             <td colspan="2">
+
+              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                <tr>
+                 <td colspan="2">
+                   <div class="invisible"><br><span class="stitle">GSM Group Mode - As Server</span></div>
+
+                <div id="gsm_group_mode_SVR_div" class="<?php print($values['GROUP_MODE']=='SVR'?'visable':'invisible') ?>">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                    <tr>
+
+                     <td width="120" height="25" class="title1">&nbsp;&nbsp;GSM Forward Mode</td>
+                     <td width="160" class="text">
+  <select name="gsm_fw_mode" id="gsm_fw_mode_select" class="select" onchange="toggle_selected('gsm_fw_mode', 'hide')">
+     <option value="0" <?php print($values['GSM_FW_MODE']=='0'?'selected':'') ?>>Unconditional Forward</option>
+     <option value="1" <?php print($values['GSM_FW_MODE']=='1'?'selected':'') ?>>Busy Forward</option>
+  </select>
+                     </td>
+
+                    </tr>
+
+                    <tr>
+                     <td colspan="2">
+
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                      </table>
+                     </td>
+                    </tr>
+
+                  </table>
+                </div>
+                   <div class="invisible"><br><span class="stitle">GSM Group Mode - As Client</span></div>
+
+                <div id="gsm_group_mode_CLI_div" class="<?php print($values['GROUP_MODE']=='CLI'?'visable':'invisible') ?>">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                    <tr>
+                     <td width="120" height="25" class="title1">&nbsp;&nbsp;Server Address</td>
+                     <td width="160" class="text">
+                      <input type="text" name="group_svr_addr" id="group_svr_addr" value="<?php print($values['GROUP_SVR']) ?>" class="edit">
+                     </td>
+                    </tr>
+
+                  </table>
+                </div>
+                   <div class="invisible"><br></div>
+                 </td>
+                </tr>
+
+              </table>
+
+             </td>
+            </tr>
+                    <tr>
+                     <td width="120" height="25" class="title1">&nbsp;&nbsp;SIM Card Number</td>
+                     <td width="160" class="text">
+                      <input type="text" name="gsm_num" id="gsm_num" value="<?php print($values['GSM_NUMBER']) ?>" class="edit">
+                     </td>
+                    </tr>
+
+
+            <tr>
+             <td width="120" height="25" class="title1">
+<span>GSM CallerID Anonymous</span>             </td>
+             <td width="160" class="text">
+              <input type="radio" name="gsm_caller_anonymous" value="on" id="gsm_caller_anonymous_enable" disabledbyelement="" onclick="toggle('gsm_caller_anonymous_div', 1)" <?php print($values['CALLER_ANONYMOUS']=='1'?'checked':'')?> ><span>Enable</span>
+              <input type="radio" name="gsm_caller_anonymous" value="off" id="gsm_caller_anonymous_disable" disabledbyelement="" onclick="toggle('gsm_caller_anonymous_div', 0)" <?php print($values['CALLER_ANONYMOUS']!='1'?'checked':'')?>><span>Disable</span>             </td>
+            </tr>
+
+
+
+<tr>
+             <td width="120" height="25" class="title1">
+<span>Remote SIM</span>             </td>
+             <td width="160" class="text">
+              <input type="radio" name="rmsim_enable" value="on" id="rmsim_enable_enable" disabledbyelement="" onclick="toggle('rmsim_enable_div', 1)" <?php print($values['RMSIM_ENABLE']=='1'?'checked':'') ?>><span>Enable</span>
+              <input type="radio" name="rmsim_enable" value="off" id="rmsim_enable_disable" disabledbyelement="" onclick="toggle('rmsim_enable_div', 0)" <?php print($values['RMSIM_ENABLE']!='1'?'checked':'') ?>><span>Disable</span>             </td>
+            </tr>
+
+            <tr>
+             <td colspan="2">
+
+            <div id="rmsim_enable_div" class="<?php print($values['RMSIM_ENABLE']=='1'?'visible':'invisible') ?>">
+              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                <tr>
+                 <td width="120" height="25" class="title1">&nbsp;&nbsp;&nbsp;Server</td>
+                 <td width="160" class="text">
+                  <input type="text" name="smb_svr" id="smb_svr" value="<?php print($values['SMB_SVR']) ?>" class="edit">
+                 </td>
+                </tr>
+
+                <tr>
+                 <td width="120" height="25" class="title1">&nbsp;&nbsp;&nbsp;ID</td>
+                 <td width="160" class="text">
+                  <input type="text" name="smb_id" id="smb_id" value="<?php print($values['SMB_ID']) ?>" class="edit">
+                 </td>
+                </tr>
+
+                <tr>
+                 <td width="120" height="25" class="title1">&nbsp;&nbsp;&nbsp;Password</td>
+                 <td width="160" class="text">
+                  <input type="text" name="smb_key" id="smb_key" value="<?php print($values['SMB_KEY']) ?>" class="edit">
+                 </td>
+                </tr>
+
+              </table>
+            </div>
+		</td>
+		</tr>
+
+
+          </table>
+             </td>
+            </tr>
+
+
+
+          </table>
+         </div>
+         </td>
+        </tr>
+
+      </table>

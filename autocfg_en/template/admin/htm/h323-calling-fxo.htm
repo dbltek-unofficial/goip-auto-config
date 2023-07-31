@@ -1,0 +1,1682 @@
+
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+        <tr>
+         <td colspan="2">
+
+         <div id="fxo_calling" class="visable">
+          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+<?php if($values['FXOPORT'] == 1): ?>
+            <tr>
+             <td colspan="2">
+
+             <div id="fxo_h323_single_line" class="visable">
+              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                <tr>
+                 <td width="120" height="25" class="title1">Phone Number</td>
+                 <td width="160" class="text">
+                  <input type="text" name="fxo_h323_phone_number" id="fxo_h323_phone_number" value="<?php print($values['H323_FXO_PHONE_NUM']) ?>" class="edit">
+                 </td>
+                </tr>
+
+                <tr>
+                 <td width="120" height="25" class="title1">GateWay Prefix</td>
+                 <td width="160" class="text">
+                  <input type="text" name="h323_gw_prefix" id="h323_gw_prefix" value="<?php print($values['H323_FXO_GW_PREFIX']) ?>" class="edit">
+                 </td>
+                </tr>
+
+                <tr>
+                 <td width="120" height="25" class="title1">Display Name</td>
+                 <td width="160" class="text">
+                  <input type="text" name="fxo_display_name" id="fxo_display_name" value="<?php print($values['H323_FXO_DISPLAY_NAME']) ?>" class="edit">
+                 </td>
+                </tr>
+
+                <tr>
+                 <td width="120" height="25" class="title1">H.323 ID</td>
+                 <td width="160" class="text">
+                  <input type="text" name="fxo_h323_id" id="fxo_h323_id" value="<?php print($values['H323_FXO_ID']) ?>" class="edit">
+                 </td>
+                </tr>
+
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                <tr>
+                 <td width="120" height="25" class="title1">Gatekeeper Address</td>
+                 <td width="160" class="text">
+                  <input type="text" name="fxo_gk_addr" id="fxo_gk_addr" value="<?php print($values['H323_FXO_GK_ADDR']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                 </td>
+                </tr>
+
+<?php endif; ?>
+                <tr>
+                 <td width="120" height="25" class="title1">
+                 </td>
+                 <td width="160" class="text">
+                  <input type="checkbox" name="fxo_vos_enable" id="fxo_vos_enable" onclick="toggle_checkbox('fxo_vos_enable', 'hide')" <?php print($values['H323_FXO_VOS_ENABLE']=='1'?'checked':'') ?>><span>Enable VOS/AVS Signaling Encryption</span>
+                 </td>
+                </tr>
+
+                <tr>
+                 <td colspan="2">
+
+                <div id="fxo_vos_enable_div" class="<?php print($values['H323_FXO_VOS_ENABLE']=='1'?'visable':'invisible') ?>">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                    <tr>
+
+                     <td width="120" height="25" class="title1">Encryption Mode</td>
+                     <td width="160" class="text">
+  <select name="fxo_vos_mod" id="fxo_vos_mod_select" class="select" onchange="toggle_selected('fxo_vos_mod', 'hide')">
+     <option value="1" <?php print($values['H323_FXO_VOS_MODE']=='1'?'selected':'') ?>>VOS Signaling Encryption</option>
+     <option value="2" <?php print($values['H323_FXO_VOS_MODE']=='2'?'selected':'') ?>>VOS Signaling And Media Encryption</option>
+     <option value="3" <?php print($values['H323_FXO_VOS_MODE']=='3'?'selected':'') ?>>AVS Signaling Encryption</option>
+     <option value="4" <?php print($values['H323_FXO_VOS_MODE']=='4'?'selected':'') ?>>AVS Signaling And Media Encryption</option>
+  </select>
+                     </td>
+		
+                    </tr>
+
+                    <tr>
+                     <td colspan="2">
+
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                      </table>
+                     </td>
+                    </tr>
+
+                  </table>
+                </div>
+                 </td>
+                </tr>
+
+                <tr>
+                 <td width="120" height="25" class="title1">
+                 </td>
+                 <td width="160" class="text">
+                  <input type="checkbox" name="fxo_h235_auth" id="fxo_h235_auth" onclick="toggle_checkbox('fxo_h235_auth', 'hide')" <?php print($values['H235_FXO_AUTH']=='1'?'checked':'') ?>><span>H.235 Auth</span>
+                 </td>
+                </tr>
+
+                <tr>
+                 <td colspan="2">
+
+                <div id="fxo_h235_auth_div" class="<?php print($values['H235_FXO_AUTH']=='1'?'visable':'invisible') ?>">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                    <tr>
+                     <td width="120" height="25" class="title1">H.235 ID</td>
+                     <td width="160" class="text">
+                      <input type="text" name="fxo_h235_id" id="fxo_h235_id" value="<?php print($values['H235_FXO_ID']) ?>" class="edit">
+                     </td>
+                    </tr>
+
+                    <tr>
+                     <td width="120" height="25" class="title1">Password</td>
+                     <td width="160" class="text">
+                      <input type="password" name="fxo_h235_passwd" id="fxo_h235_passwd" value="<?php print($values['H235_FXO_PASSWD']) ?>" class="edit">
+                     </td>
+                    </tr>
+
+                  </table>
+                </div>
+                 </td>
+                </tr>
+
+              </table>
+             </div>
+             </td>
+            </tr>
+
+<?php endif; ?>
+<?php if($values['FXOPORT'] > 1): ?>
+            <tr>
+
+             <td width="120" height="25" class="title1">Config Mode</td>
+             <td width="160" class="text">
+  <select name="fxo_h323_config_mode" id="fxo_h323_config_mode_select" class="select" onchange="toggle_selected('fxo_h323_config_mode', 'hide')">
+     <option value="SINGLE_MODE" <?php print($values['H323_FXO_CONFIG_MODE']=='SINGLE_MODE'?'selected':'') ?>>Single Config</option>
+<?php if($values['FXOPORT'] > 1): ?>
+     <option value="LINE_MODE" <?php print($values['H323_FXO_CONFIG_MODE']=='LINE_MODE'?'selected':'') ?>>Config by Line</option>
+<?php endif; ?>
+     <option value="GROUP_MODE" <?php print($values['H323_FXO_CONFIG_MODE']=='GROUP_MODE'?'selected':'') ?>>Config by Group</option>
+  </select>
+             </td>
+		
+            </tr>
+
+            <tr>
+             <td colspan="2">
+
+              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                <tr>
+                 <td colspan="2">
+                   <div class="invisible"><br><span class="stitle">Config Mode - Single Config</span></div>
+
+                <div id="fxo_h323_config_mode_SINGLE_MODE_div" class="<?php print($values['H323_FXO_CONFIG_MODE']=='SINGLE_MODE'?'visable':'invisible') ?>">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                    <tr>
+                     <td width="120" height="25" class="title1">Phone Number</td>
+                     <td width="160" class="text">
+                      <input type="text" name="fxo_h323_phone_number" id="fxo_h323_phone_number" value="<?php print($values['H323_FXO_PHONE_NUM']) ?>" class="edit">
+                     </td>
+                    </tr>
+
+                    <tr>
+                     <td width="120" height="25" class="title1">GateWay Prefix</td>
+                     <td width="160" class="text">
+                      <input type="text" name="h323_gw_prefix" id="h323_gw_prefix" value="<?php print($values['H323_FXO_GW_PREFIX']) ?>" class="edit">
+                     </td>
+                    </tr>
+
+                    <tr>
+                     <td width="120" height="25" class="title1">Display Name</td>
+                     <td width="160" class="text">
+                      <input type="text" name="fxo_display_name" id="fxo_display_name" value="<?php print($values['H323_FXO_DISPLAY_NAME']) ?>" class="edit">
+                     </td>
+                    </tr>
+
+                    <tr>
+                     <td width="120" height="25" class="title1">H.323 ID</td>
+                     <td width="160" class="text">
+                      <input type="text" name="fxo_h323_id" id="fxo_h323_id" value="<?php print($values['H323_FXO_ID']) ?>" class="edit">
+                     </td>
+                    </tr>
+
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                    <tr>
+                     <td width="120" height="25" class="title1">Gatekeeper Address</td>
+                     <td width="160" class="text">
+                      <input type="text" name="fxo_gk_addr" id="fxo_gk_addr" value="<?php print($values['H323_FXO_GK_ADDR']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                     </td>
+                    </tr>
+
+<?php endif; ?>
+                    <tr>
+                     <td width="120" height="25" class="title1">
+                     </td>
+                     <td width="160" class="text">
+                      <input type="checkbox" name="fxo_vos_enable" id="fxo_vos_enable" onclick="toggle_checkbox('fxo_vos_enable', 'hide')" <?php print($values['H323_FXO_VOS_ENABLE']=='1'?'checked':'') ?>><span>Enable VOS/AVS Signaling Encryption</span>
+                     </td>
+                    </tr>
+
+                    <tr>
+                     <td colspan="2">
+
+                    <div id="fxo_vos_enable_div" class="<?php print($values['H323_FXO_VOS_ENABLE']=='1'?'visable':'invisible') ?>">
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                        <tr>
+
+                         <td width="120" height="25" class="title1">Encryption Mode</td>
+                         <td width="160" class="text">
+  <select name="fxo_vos_mod" id="fxo_vos_mod_select" class="select" onchange="toggle_selected('fxo_vos_mod', 'hide')">
+     <option value="1" <?php print($values['H323_FXO_VOS_MODE']=='1'?'selected':'') ?>>VOS Signaling Encryption</option>
+     <option value="2" <?php print($values['H323_FXO_VOS_MODE']=='2'?'selected':'') ?>>VOS Signaling And Media Encryption</option>
+     <option value="3" <?php print($values['H323_FXO_VOS_MODE']=='3'?'selected':'') ?>>AVS Signaling Encryption</option>
+     <option value="4" <?php print($values['H323_FXO_VOS_MODE']=='4'?'selected':'') ?>>AVS Signaling And Media Encryption</option>
+  </select>
+                         </td>
+		
+                        </tr>
+
+                        <tr>
+                         <td colspan="2">
+
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                          </table>
+                         </td>
+                        </tr>
+
+                      </table>
+                    </div>
+                     </td>
+                    </tr>
+
+                    <tr>
+                     <td width="120" height="25" class="title1">
+                     </td>
+                     <td width="160" class="text">
+                      <input type="checkbox" name="fxo_h235_auth" id="fxo_h235_auth" onclick="toggle_checkbox('fxo_h235_auth', 'hide')" <?php print($values['H235_AUTH']=='1'?'checked':'') ?>><span>H.235 Auth</span>
+                     </td>
+                    </tr>
+
+                    <tr>
+                     <td colspan="2">
+
+                    <div id="fxo_h235_auth_div" class="<?php print($values['H235_AUTH']=='1'?'visable':'invisible') ?>">
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                        <tr>
+                         <td width="120" height="25" class="title1">H.235 ID</td>
+                         <td width="160" class="text">
+                          <input type="text" name="fxo_h235_id" id="fxo_h235_id" value="<?php print($values['H235_FXO_ID']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">Password</td>
+                         <td width="160" class="text">
+                          <input type="password" name="fxo_h235_passwd" id="fxo_h235_passwd" value="<?php print($values['H235_FXO_PASSWD']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+                      </table>
+                    </div>
+                     </td>
+                    </tr>
+
+                  </table>
+                </div>
+
+<?php if($values['FXOPORT'] > 1): ?>                   <div class="invisible"><br><span class="stitle">Config Mode - Config by Line</span></div>
+
+                <div id="fxo_h323_config_mode_LINE_MODE_div" class="<?php print($values['H323_FXO_CONFIG_MODE']=='LINE_MODE'?'visable':'invisible') ?>">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                    <tr>
+                     <td class="text" width="280">
+                      <input type=radio name="fxo_h323_line_mode_tab" value="fxo_h323_l1_conf" onclick="toggle2('fxo_h323_line_mode_tab', 4, 0)" checked>Line 1&nbsp;
+<?php if($values['FXOPORT'] >= 2): ?>
+                      <input type=radio name="fxo_h323_line_mode_tab" value="fxo_h323_l2_conf" onclick="toggle2('fxo_h323_line_mode_tab', 4, 1)">Line 2&nbsp;
+<?php endif; ?>
+<?php if($values['FXOPORT'] >= 3): ?>
+                      <input type=radio name="fxo_h323_line_mode_tab" value="fxo_h323_l3_conf" onclick="toggle2('fxo_h323_line_mode_tab', 4, 2)">Line 3&nbsp;
+<?php endif; ?>
+<?php if($values['FXOPORT'] >= 4): ?>
+                      <input type=radio name="fxo_h323_line_mode_tab" value="fxo_h323_l4_conf" onclick="toggle2('fxo_h323_line_mode_tab', 4, 3)">Line 4&nbsp;
+<?php endif; ?>
+
+                     </td>
+                    </tr>
+                    <tr>
+                     <td>
+                      <div id="fxo_h323_line_mode_tab_0_div" class="visable">
+
+                     <div id="fxo_h323_l1_conf" class="visable">
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                        <tr>
+                         <td width="120" height="25" class="title1">Phone Number</td>
+                         <td width="160" class="text">
+                          <input type="text" name="fxo_l1_h323_phone_num" id="fxo_l1_h323_phone_num" value="<?php print($values['H323_FXO_LINE1_NUMBER']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">H.323 ID</td>
+                         <td width="160" class="text">
+                          <input type="text" name="fxo_l1_h323_id" id="fxo_l1_h323_id" value="<?php print($values['H323_FXO_LINE1_H323_ID']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">GateWay Prefix</td>
+                         <td width="160" class="text">
+                          <input type="text" name="fxo_l1_h323_gw_prefix" id="fxo_l1_h323_gw_prefix" value="<?php print($values['H323_FXO_LINE1_GW_PREFIX']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                        <tr>
+                         <td width="120" height="25" class="title1">Gatekeeper Address</td>
+                         <td width="160" class="text">
+                          <input type="text" name="fxo_l1_gk_addr" id="fxo_l1_gk_addr" value="<?php print($values['H323_FXO_LINE1_GKADDR']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                         </td>
+                        </tr>
+
+<?php endif; ?>
+                        <tr>
+                         <td width="120" height="25" class="title1">
+                         </td>
+                         <td width="160" class="text">
+                          <input type="checkbox" name="fxo_l1_vos_enable" id="fxo_l1_vos_enable" onclick="toggle_checkbox('fxo_l1_vos_enable', 'hide')" <?php print($values['H323_FXO_LINE1_VOS_ENABLE']=='1'?'checked':'') ?>><span>Enable VOS/AVS Signaling Encryption</span>
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td colspan="2">
+
+                        <div id="fxo_l1_vos_enable_div" class="<?php print($values['H323_FXO_LINE1_VOS_ENABLE']=='1'?'visable':'invisible') ?>">
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+
+                             <td width="120" height="25" class="title1">Encryption Mode</td>
+                             <td width="160" class="text">
+  <select name="fxo_l1_vos_mod" id="fxo_l1_vos_mod_select" class="select" onchange="toggle_selected('fxo_l1_vos_mod', 'hide')">
+     <option value="1" <?php print($values['H323_FXO_LINE1_VOS_MODE']=='1'?'selected':'') ?>>VOS Signaling Encryption</option>
+     <option value="2" <?php print($values['H323_FXO_LINE1_VOS_MODE']=='2'?'selected':'') ?>>VOS Signaling And Media Encryption</option>
+     <option value="3" <?php print($values['H323_FXO_LINE1_VOS_MODE']=='3'?'selected':'') ?>>AVS Signaling Encryption</option>
+     <option value="4" <?php print($values['H323_FXO_LINE1_VOS_MODE']=='4'?'selected':'') ?>>AVS Signaling And Media Encryption</option>
+  </select>
+                             </td>
+		
+                            </tr>
+
+                            <tr>
+                             <td colspan="2">
+
+                              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                              </table>
+                             </td>
+                            </tr>
+
+                          </table>
+                        </div>
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">
+                         </td>
+                         <td width="160" class="text">
+                          <input type="checkbox" name="fxo_l1_h235_auth" id="fxo_l1_h235_auth" onclick="toggle_checkbox('fxo_l1_h235_auth', 'hide')" <?php print($values['H323_FXO_LINE1_AUTH']=='1'?'checked':'') ?>><span>H.235 Auth</span>
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td colspan="2">
+
+                        <div id="fxo_l1_h235_auth_div" class="<?php print($values['H323_FXO_LINE1_AUTH']=='1'?'visable':'invisible') ?>">
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+                             <td width="120" height="25" class="title1">H.235 ID</td>
+                             <td width="160" class="text">
+                              <input type="text" name="fxo_l1_h235_id" id="fxo_l1_h235_id" value="<?php print($values['H323_FXO_LINE1_H235_ID']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">Password</td>
+                             <td width="160" class="text">
+                              <input type="password" name="fxo_l1_h235_passwd" id="fxo_l1_h235_passwd" value="<?php print($values['H323_FXO_LINE1_H235_PASSWD']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                          </table>
+                        </div>
+                         </td>
+                        </tr>
+
+                      </table>
+                     </div>
+                      </div>
+                      <div id="fxo_h323_line_mode_tab_1_div" class="invisible">
+
+                     <div id="fxo_h323_l2_conf" class="visable">
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                        <tr>
+                         <td width="120" height="25" class="title1">Phone Number</td>
+                         <td width="160" class="text">
+                          <input type="text" name="fxo_l2_h323_phone_num" id="fxo_l2_h323_phone_num" value="<?php print($values['H323_FXO_LINE2_NUMBER']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">H.323 ID</td>
+                         <td width="160" class="text">
+                          <input type="text" name="fxo_l2_h323_id" id="fxo_l2_h323_id" value="<?php print($values['H323_FXO_LINE2_H323_ID']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">GateWay Prefix</td>
+                         <td width="160" class="text">
+                          <input type="text" name="fxo_l2_h323_gw_prefix" id="fxo_l2_h323_gw_prefix" value="<?php print($values['H323_FXO_LINE2_GW_PREFIX']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                        <tr>
+                         <td width="120" height="25" class="title1">Gatekeeper Address</td>
+                         <td width="160" class="text">
+                          <input type="text" name="fxo_l2_gk_addr" id="fxo_l2_gk_addr" value="<?php print($values['H323_FXO_LINE2_GKADDR']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                         </td>
+                        </tr>
+
+<?php endif; ?>
+                        <tr>
+                         <td width="120" height="25" class="title1">
+                         </td>
+                         <td width="160" class="text">
+                          <input type="checkbox" name="fxo_l2_vos_enable" id="fxo_l2_vos_enable" onclick="toggle_checkbox('fxo_l2_vos_enable', 'hide')" <?php print($values['H323_FXO_LINE2_VOS_ENABLE']=='1'?'checked':'') ?>><span>Enable VOS/AVS Signaling Encryption</span>
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td colspan="2">
+
+                        <div id="fxo_l2_vos_enable_div" class="<?php print($values['H323_FXO_LINE2_VOS_ENABLE']=='1'?'visable':'invisible') ?>">
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+
+                             <td width="120" height="25" class="title1">Encryption Mode</td>
+                             <td width="160" class="text">
+  <select name="fxo_l2_vos_mod" id="fxo_l2_vos_mod_select" class="select" onchange="toggle_selected('fxo_l2_vos_mod', 'hide')">
+     <option value="1" <?php print($values['H323_FXO_LINE2_VOS_MODE']=='1'?'selected':'') ?>>VOS Signaling Encryption</option>
+     <option value="2" <?php print($values['H323_FXO_LINE2_VOS_MODE']=='2'?'selected':'') ?>>VOS Signaling And Media Encryption</option>
+     <option value="3" <?php print($values['H323_FXO_LINE2_VOS_MODE']=='3'?'selected':'') ?>>AVS Signaling Encryption</option>
+     <option value="4" <?php print($values['H323_FXO_LINE2_VOS_MODE']=='4'?'selected':'') ?>>AVS Signaling And Media Encryption</option>
+  </select>
+                             </td>
+		
+                            </tr>
+
+                            <tr>
+                             <td colspan="2">
+
+                              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                              </table>
+                             </td>
+                            </tr>
+
+                          </table>
+                        </div>
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">
+                         </td>
+                         <td width="160" class="text">
+                          <input type="checkbox" name="fxo_l2_h235_auth" id="fxo_l2_h235_auth" onclick="toggle_checkbox('fxo_l2_h235_auth', 'hide')" <?php print($values['H323_FXO_LINE2_AUTH']=='1'?'checked':'') ?>><span>H.235 Auth</span>
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td colspan="2">
+
+                        <div id="fxo_l2_h235_auth_div" class="<?php print($values['H323_FXO_LINE2_AUTH']=='1'?'visable':'invisible') ?>">
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+                             <td width="120" height="25" class="title1">H.235 ID</td>
+                             <td width="160" class="text">
+                              <input type="text" name="fxo_l2_h235_id" id="fxo_l2_h235_id" value="<?php print($values['H323_FXO_LINE2_H235_ID']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">Password</td>
+                             <td width="160" class="text">
+                              <input type="password" name="fxo_l2_h235_passwd" id="fxo_l2_h235_passwd" value="<?php print($values['H323_FXO_LINE2_H235_PASSWD']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                          </table>
+                        </div>
+                         </td>
+                        </tr>
+
+                      </table>
+                     </div>
+                      </div>
+                      <div id="fxo_h323_line_mode_tab_2_div" class="invisible">
+
+                     <div id="fxo_h323_l3_conf" class="visable">
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                        <tr>
+                         <td width="120" height="25" class="title1">Phone Number</td>
+                         <td width="160" class="text">
+                          <input type="text" name="fxo_l3_h323_phone_num" id="fxo_l3_h323_phone_num" value="<?php print($values['H323_FXO_LINE3_NUMBER']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">H.323 ID</td>
+                         <td width="160" class="text">
+                          <input type="text" name="fxo_l3_h323_id" id="fxo_l3_h323_id" value="<?php print($values['H323_FXO_LINE3_H323_ID']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">GateWay Prefix</td>
+                         <td width="160" class="text">
+                          <input type="text" name="fxo_l3_h323_gw_prefix" id="fxo_l3_h323_gw_prefix" value="<?php print($values['H323_FXO_LINE3_GW_PREFIX']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                        <tr>
+                         <td width="120" height="25" class="title1">Gatekeeper Address</td>
+                         <td width="160" class="text">
+                          <input type="text" name="fxo_l3_gk_addr" id="fxo_l3_gk_addr" value="<?php print($values['H323_FXO_LINE3_GKADDR']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                         </td>
+                        </tr>
+
+<?php endif; ?>
+                        <tr>
+                         <td width="120" height="25" class="title1">
+                         </td>
+                         <td width="160" class="text">
+                          <input type="checkbox" name="fxo_l3_vos_enable" id="fxo_l3_vos_enable" onclick="toggle_checkbox('fxo_l3_vos_enable', 'hide')" <?php print($values['H323_FXO_LINE3_VOS_ENABLE']=='1'?'checked':'') ?>><span>Enable VOS/AVS Signaling Encryption</span>
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td colspan="2">
+
+                        <div id="fxo_l3_vos_enable_div" class="<?php print($values['H323_FXO_LINE3_VOS_ENABLE']=='1'?'visable':'invisible') ?>">
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+
+                             <td width="120" height="25" class="title1">Encryption Mode</td>
+                             <td width="160" class="text">
+  <select name="fxo_l3_vos_mod" id="fxo_l3_vos_mod_select" class="select" onchange="toggle_selected('fxo_l3_vos_mod', 'hide')">
+     <option value="1" <?php print($values['H323_FXO_LINE3_VOS_MODE']=='1'?'selected':'') ?>>VOS Signaling Encryption</option>
+     <option value="2" <?php print($values['H323_FXO_LINE3_VOS_MODE']=='2'?'selected':'') ?>>VOS Signaling And Media Encryption</option>
+     <option value="3" <?php print($values['H323_FXO_LINE3_VOS_MODE']=='3'?'selected':'') ?>>AVS Signaling Encryption</option>
+     <option value="4" <?php print($values['H323_FXO_LINE3_VOS_MODE']=='4'?'selected':'') ?>>AVS Signaling And Media Encryption</option>
+  </select>
+                             </td>
+		
+                            </tr>
+
+                            <tr>
+                             <td colspan="2">
+
+                              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                              </table>
+                             </td>
+                            </tr>
+
+                          </table>
+                        </div>
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">
+                         </td>
+                         <td width="160" class="text">
+                          <input type="checkbox" name="fxo_l3_h235_auth" id="fxo_l3_h235_auth" onclick="toggle_checkbox('fxo_l3_h235_auth', 'hide')" <?php print($values['H323_FXO_LINE3_AUTH']=='1'?'checked':'') ?>><span>H.235 Auth</span>
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td colspan="2">
+
+                        <div id="fxo_l3_h235_auth_div" class="<?php print($values['H323_FXO_LINE3_AUTH']=='1'?'visable':'invisible') ?>">
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+                             <td width="120" height="25" class="title1">H.235 ID</td>
+                             <td width="160" class="text">
+                              <input type="text" name="fxo_l3_h235_id" id="fxo_l3_h235_id" value="<?php print($values['H323_FXO_LINE3_H235_ID']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">Password</td>
+                             <td width="160" class="text">
+                              <input type="password" name="fxo_l3_h235_passwd" id="fxo_l3_h235_passwd" value="<?php print($values['H323_FXO_LINE3_H235_PASSWD']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                          </table>
+                        </div>
+                         </td>
+                        </tr>
+
+                      </table>
+                     </div>
+                      </div>
+                      <div id="fxo_h323_line_mode_tab_3_div" class="invisible">
+
+                     <div id="fxo_h323_l4_conf" class="visable">
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                        <tr>
+                         <td width="120" height="25" class="title1">Phone Number</td>
+                         <td width="160" class="text">
+                          <input type="text" name="fxo_l4_h323_phone_num" id="fxo_l4_h323_phone_num" value="<?php print($values['H323_FXO_LINE4_NUMBER']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">H.323 ID</td>
+                         <td width="160" class="text">
+                          <input type="text" name="fxo_l4_h323_id" id="fxo_l4_h323_id" value="<?php print($values['H323_FXO_LINE4_H323_ID']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">GateWay Prefix</td>
+                         <td width="160" class="text">
+                          <input type="text" name="fxo_l4_h323_gw_prefix" id="fxo_l4_h323_gw_prefix" value="<?php print($values['H323_FXO_LINE4_GW_PREFIX']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                        <tr>
+                         <td width="120" height="25" class="title1">Gatekeeper Address</td>
+                         <td width="160" class="text">
+                          <input type="text" name="fxo_l4_gk_addr" id="fxo_l4_gk_addr" value="<?php print($values['H323_FXO_LINE4_GKADDR']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                         </td>
+                        </tr>
+
+<?php endif; ?>
+                        <tr>
+                         <td width="120" height="25" class="title1">
+                         </td>
+                         <td width="160" class="text">
+                          <input type="checkbox" name="fxo_l4_vos_enable" id="fxo_l4_vos_enable" onclick="toggle_checkbox('fxo_l4_vos_enable', 'hide')" <?php print($values['H323_FXO_LINE4_VOS_ENABLE']=='1'?'checked':'') ?>><span>Enable VOS/AVS Signaling Encryption</span>
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td colspan="2">
+
+                        <div id="fxo_l4_vos_enable_div" class="<?php print($values['H323_FXO_LINE4_VOS_ENABLE']=='1'?'visable':'invisible') ?>">
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+
+                             <td width="120" height="25" class="title1">Encryption Mode</td>
+                             <td width="160" class="text">
+  <select name="fxo_l4_vos_mod" id="fxo_l4_vos_mod_select" class="select" onchange="toggle_selected('fxo_l4_vos_mod', 'hide')">
+     <option value="1" <?php print($values['H323_FXO_LINE4_VOS_MODE']=='1'?'selected':'') ?>>VOS Signaling Encryption</option>
+     <option value="2" <?php print($values['H323_FXO_LINE4_VOS_MODE']=='2'?'selected':'') ?>>VOS Signaling And Media Encryption</option>
+     <option value="3" <?php print($values['H323_FXO_LINE4_VOS_MODE']=='3'?'selected':'') ?>>AVS Signaling Encryption</option>
+     <option value="4" <?php print($values['H323_FXO_LINE4_VOS_MODE']=='4'?'selected':'') ?>>AVS Signaling And Media Encryption</option>
+  </select>
+                             </td>
+		
+                            </tr>
+
+                            <tr>
+                             <td colspan="2">
+
+                              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                              </table>
+                             </td>
+                            </tr>
+
+                          </table>
+                        </div>
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">
+                         </td>
+                         <td width="160" class="text">
+                          <input type="checkbox" name="fxo_l4_h235_auth" id="fxo_l4_h235_auth" onclick="toggle_checkbox('fxo_l4_h235_auth', 'hide')" <?php print($values['H323_FXO_LINE4_AUTH']=='1'?'checked':'') ?>><span>H.235 Auth</span>
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td colspan="2">
+
+                        <div id="fxo_l4_h235_auth_div" class="<?php print($values['H323_FXO_LINE4_AUTH']=='1'?'visable':'invisible') ?>">
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+                             <td width="120" height="25" class="title1">H.235 ID</td>
+                             <td width="160" class="text">
+                              <input type="text" name="fxo_l4_h235_id" id="fxo_l4_h235_id" value="<?php print($values['H323_FXO_LINE4_H235_ID']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">Password</td>
+                             <td width="160" class="text">
+                              <input type="password" name="fxo_l4_h235_passwd" id="fxo_l4_h235_passwd" value="<?php print($values['H323_FXO_LINE4_H235_PASSWD']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                          </table>
+                        </div>
+                         </td>
+                        </tr>
+
+                      </table>
+                     </div>
+                      </div>
+
+                     </td>
+                    </tr>
+
+                  </table>
+                </div>
+
+<?php endif; ?>
+
+                <div id="fxo_h323_config_mode_GROUP_MODE_div" class="<?php print($values['H323_FXO_CONFIG_MODE']=='GROUP_MODE'?'visable':'invisible') ?>">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                    <tr>
+                     <td class="text" width="280">
+                      <input type=radio name="fxo_h323_group_mode_tab" value="fxo_h323_group1_conf" onclick="toggle2('fxo_h323_group_mode_tab', 4, 0)" checked>Group 1&nbsp;
+                      <input type=radio name="fxo_h323_group_mode_tab" value="fxo_h323_group2_conf" onclick="toggle2('fxo_h323_group_mode_tab', 4, 1)">Group 2&nbsp;
+<?php if($values['FXOPORT'] >= 3): ?>
+                      <input type=radio name="fxo_h323_group_mode_tab" value="fxo_h323_group3_conf" onclick="toggle2('fxo_h323_group_mode_tab', 4, 2)">Group 3&nbsp;
+<?php endif; ?>
+<?php if($values['FXOPORT'] >= 4): ?>
+                      <input type=radio name="fxo_h323_group_mode_tab" value="fxo_h323_group4_conf" onclick="toggle2('fxo_h323_group_mode_tab', 4, 3)">Group 4&nbsp;
+<?php endif; ?>
+
+                     </td>
+                    </tr>
+                    <tr>
+                     <td>
+                      <div id="fxo_h323_group_mode_tab_0_div" class="visable">
+
+                     <div id="fxo_h323_group1_conf" class="visable">
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                        <tr>
+                         <td width="120" height="25" class="title1">Phone Number</td>
+                         <td width="160" class="text">
+                          <input type="text" name="fxo_group1_h323_phone_num" id="fxo_group1_h323_phone_num" value="<?php print($values['H323_FXO_GROUP1_NUMBER']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">H.323 ID</td>
+                         <td width="160" class="text">
+                          <input type="text" name="fxo_group1_h323_id" id="fxo_group1_h323_id" value="<?php print($values['H323_FXO_GROUP1_H323_ID']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">GateWay Prefix</td>
+                         <td width="160" class="text">
+                          <input type="text" name="fxo_group1_h323_gw_prefix" id="fxo_group1_h323_gw_prefix" value="<?php print($values['H323_FXO_GROUP1_GW_PREFIX']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                        <tr>
+                         <td width="120" height="25" class="title1">Gatekeeper Address</td>
+                         <td width="160" class="text">
+                          <input type="text" name="fxo_group1_gk_addr" id="fxo_group1_gk_addr" value="<?php print($values['H323_FXO_GROUP1_GKADDR']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                         </td>
+                        </tr>
+
+<?php endif; ?>
+                        <tr>
+                         <td width="120" height="25" class="title1">
+                         </td>
+                         <td width="160" class="text">
+                          <input type="checkbox" name="fxo_group1_vos_enable" id="fxo_group1_vos_enable" onclick="toggle_checkbox('fxo_group1_vos_enable', 'hide')" <?php print($values['H323_FXO_G1_VOS_ENABLE']=='1'?'checked':'') ?>><span>Enable VOS/AVS Signaling Encryption</span>
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td colspan="2">
+
+                        <div id="fxo_group1_vos_enable_div" class="<?php print($values['H323_FXO_G1_VOS_ENABLE']=='1'?'visable':'invisible') ?>">
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+
+                             <td width="120" height="25" class="title1">Encryption Mode</td>
+                             <td width="160" class="text">
+  <select name="fxo_group1_vos_mod" id="fxo_group1_vos_mod_select" class="select" onchange="toggle_selected('fxo_group1_vos_mod', 'hide')">
+     <option value="1" <?php print($values['H323_FXO_G1_VOS_MODE']=='1'?'selected':'') ?>>VOS Signaling Encryption</option>
+     <option value="2" <?php print($values['H323_FXO_G1_VOS_MODE']=='2'?'selected':'') ?>>VOS Signaling And Media Encryption</option>
+     <option value="3" <?php print($values['H323_FXO_G1_VOS_MODE']=='3'?'selected':'') ?>>AVS Signaling Encryption</option>
+     <option value="4" <?php print($values['H323_FXO_G1_VOS_MODE']=='4'?'selected':'') ?>>AVS Signaling And Media Encryption</option>
+  </select>
+                             </td>
+		
+                            </tr>
+
+                            <tr>
+                             <td colspan="2">
+
+                              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                              </table>
+                             </td>
+                            </tr>
+
+                          </table>
+                        </div>
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">
+                         </td>
+                         <td width="160" class="text">
+                          <input type="checkbox" name="fxo_group1_h235_auth" id="fxo_group1_h235_auth" onclick="toggle_checkbox('fxo_group1_h235_auth', 'hide')" <?php print($values['H323_FXO_GROUP1_AUTH']=='1'?'checked':'') ?>><span>H.235 Auth</span>
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td colspan="2">
+
+                        <div id="fxo_group1_h235_auth_div" class="<?php print($values['H323_FXO_GROUP1_AUTH']=='1'?'visable':'invisible') ?>">
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+                             <td width="120" height="25" class="title1">H.235 ID</td>
+                             <td width="160" class="text">
+                              <input type="text" name="fxo_group1_h235_id" id="fxo_group1_h235_id" value="<?php print($values['H323_FXO_GROUP1_H235_ID']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">Password</td>
+                             <td width="160" class="text">
+                              <input type="password" name="fxo_group1_h235_passwd" id="fxo_group1_h235_passwd" value="<?php print($values['H323_FXO_GROUP1_H235_PASSWD']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                          </table>
+                        </div>
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td colspan="2" class="title1" height="25" >Activated Lines in Group 1</td>
+                        </tr>
+
+                        <tr>
+                         <td colspan="2">
+
+                         <div id="fxo_h323_group1_lines" class="visable">
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+                             <td width="120" height="25" class="title1">
+                             </td>
+                             <td width="160" class="text">
+                              <input type="checkbox" name="fxo_h323_line1_in_group1" id="fxo_h323_line1_in_group1" onclick="toggle_checkbox('fxo_h323_line1_in_group1', 'hide')" <?php print($values['H323_FXO_L1_IN_G1']=='1'?'checked':'') ?>><span>L1</span>
+                             </td>
+                            </tr>
+
+<?php if($values['FXOPORT'] >= 2): ?>
+                            <tr>
+                             <td width="120" height="25" class="title1">
+                             </td>
+                             <td width="160" class="text">
+                              <input type="checkbox" name="fxo_h323_line2_in_group1" id="fxo_h323_line2_in_group1" onclick="toggle_checkbox('fxo_h323_line2_in_group1', 'hide')" <?php print($values['H323_FXO_L2_IN_G1']=='1'?'checked':'') ?>><span>L2</span>
+                             </td>
+                            </tr>
+
+<?php endif; ?>
+<?php if($values['FXOPORT'] >= 3): ?>
+                            <tr>
+                             <td width="120" height="25" class="title1">
+                             </td>
+                             <td width="160" class="text">
+                              <input type="checkbox" name="fxo_h323_line3_in_group1" id="fxo_h323_line3_in_group1" onclick="toggle_checkbox('fxo_h323_line3_in_group1', 'hide')" <?php print($values['H323_FXO_L3_IN_G1']=='1'?'checked':'') ?>><span>L3</span>
+                             </td>
+                            </tr>
+
+<?php endif; ?>
+<?php if($values['FXOPORT'] >= 4): ?>
+                            <tr>
+                             <td width="120" height="25" class="title1">
+                             </td>
+                             <td width="160" class="text">
+                              <input type="checkbox" name="fxo_h323_line4_in_group1" id="fxo_h323_line4_in_group1" onclick="toggle_checkbox('fxo_h323_line4_in_group1', 'hide')" <?php print($values['H323_FXO_L4_IN_G1']=='1'?'checked':'') ?>><span>L4</span>
+                             </td>
+                            </tr>
+
+<?php endif; ?>
+                          </table>
+                         </div>
+                         </td>
+                        </tr>
+
+                      </table>
+                     </div>
+                      </div>
+                      <div id="fxo_h323_group_mode_tab_1_div" class="invisible">
+
+                     <div id="fxo_h323_group2_conf" class="visable">
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                        <tr>
+                         <td width="120" height="25" class="title1">Phone Number</td>
+                         <td width="160" class="text">
+                          <input type="text" name="fxo_group2_h323_phone_num" id="fxo_group2_h323_phone_num" value="<?php print($values['H323_FXO_GROUP2_NUMBER']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">H.323 ID</td>
+                         <td width="160" class="text">
+                          <input type="text" name="fxo_group2_h323_id" id="fxo_group2_h323_id" value="<?php print($values['H323_FXO_GROUP2_H323_ID']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">GateWay Prefix</td>
+                         <td width="160" class="text">
+                          <input type="text" name="fxo_group2_h323_gw_prefix" id="fxo_group2_h323_gw_prefix" value="<?php print($values['H323_FXO_GROUP2_GW_PREFIX']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                        <tr>
+                         <td width="120" height="25" class="title1">Gatekeeper Address</td>
+                         <td width="160" class="text">
+                          <input type="text" name="fxo_group2_gk_addr" id="fxo_group2_gk_addr" value="<?php print($values['H323_FXO_GROUP2_GKADDR']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                         </td>
+                        </tr>
+
+<?php endif; ?>
+                        <tr>
+                         <td width="120" height="25" class="title1">
+                         </td>
+                         <td width="160" class="text">
+                          <input type="checkbox" name="fxo_group2_vos_enable" id="fxo_group2_vos_enable" onclick="toggle_checkbox('fxo_group2_vos_enable', 'hide')" <?php print($values['H323_FXO_G2_VOS_ENABLE']=='1'?'checked':'') ?>><span>Enable VOS/AVS Signaling Encryption</span>
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td colspan="2">
+
+                        <div id="fxo_group2_vos_enable_div" class="<?php print($values['H323_FXO_G2_VOS_ENABLE']=='1'?'visable':'invisible') ?>">
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+
+                             <td width="120" height="25" class="title1">Encryption Mode</td>
+                             <td width="160" class="text">
+  <select name="fxo_group2_vos_mod" id="fxo_group2_vos_mod_select" class="select" onchange="toggle_selected('fxo_group2_vos_mod', 'hide')">
+     <option value="1" <?php print($values['H323_FXO_G2_VOS_MODE']=='1'?'selected':'') ?>>VOS Signaling Encryption</option>
+     <option value="2" <?php print($values['H323_FXO_G2_VOS_MODE']=='2'?'selected':'') ?>>VOS Signaling And Media Encryption</option>
+     <option value="3" <?php print($values['H323_FXO_G2_VOS_MODE']=='3'?'selected':'') ?>>AVS Signaling Encryption</option>
+     <option value="4" <?php print($values['H323_FXO_G2_VOS_MODE']=='4'?'selected':'') ?>>AVS Signaling And Media Encryption</option>
+  </select>
+                             </td>
+		
+                            </tr>
+
+                            <tr>
+                             <td colspan="2">
+
+                              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                              </table>
+                             </td>
+                            </tr>
+
+                          </table>
+                        </div>
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">
+                         </td>
+                         <td width="160" class="text">
+                          <input type="checkbox" name="fxo_group2_h235_auth" id="fxo_group2_h235_auth" onclick="toggle_checkbox('fxo_group2_h235_auth', 'hide')" <?php print($values['H323_FXO_GROUP2_AUTH']=='1'?'checked':'') ?>><span>H.235 Auth</span>
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td colspan="2">
+
+                        <div id="fxo_group2_h235_auth_div" class="<?php print($values['H323_FXO_GROUP2_AUTH']=='1'?'visable':'invisible') ?>">
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+                             <td width="120" height="25" class="title1">H.235 ID</td>
+                             <td width="160" class="text">
+                              <input type="text" name="fxo_group2_h235_id" id="fxo_group2_h235_id" value="<?php print($values['H323_FXO_GROUP2_H235_ID']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">Password</td>
+                             <td width="160" class="text">
+                              <input type="password" name="fxo_group2_h235_passwd" id="fxo_group2_h235_passwd" value="<?php print($values['H323_FXO_GROUP2_H235_PASSWD']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                          </table>
+                        </div>
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td colspan="2" class="title1" height="25" >Activated Lines in Group 2</td>
+                        </tr>
+
+                        <tr>
+                         <td colspan="2">
+
+                         <div id="fxo_h323_group2_lines" class="visable">
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+                             <td width="120" height="25" class="title1">
+                             </td>
+                             <td width="160" class="text">
+                              <input type="checkbox" name="fxo_h323_line1_in_group2" id="fxo_h323_line1_in_group2" onclick="toggle_checkbox('fxo_h323_line1_in_group2', 'hide')" <?php print($values['H323_FXO_L1_IN_G2']=='1'?'checked':'') ?>><span>L1</span>
+                             </td>
+                            </tr>
+
+<?php if($values['FXOPORT'] >= 2): ?>
+                            <tr>
+                             <td width="120" height="25" class="title1">
+                             </td>
+                             <td width="160" class="text">
+                              <input type="checkbox" name="fxo_h323_line2_in_group2" id="fxo_h323_line2_in_group2" onclick="toggle_checkbox('fxo_h323_line2_in_group2', 'hide')" <?php print($values['H323_FXO_L2_IN_G2']=='1'?'checked':'') ?>><span>L2</span>
+                             </td>
+                            </tr>
+
+<?php endif; ?>
+<?php if($values['FXOPORT'] >= 3): ?>
+                            <tr>
+                             <td width="120" height="25" class="title1">
+                             </td>
+                             <td width="160" class="text">
+                              <input type="checkbox" name="fxo_h323_line3_in_group2" id="fxo_h323_line3_in_group2" onclick="toggle_checkbox('fxo_h323_line3_in_group2', 'hide')" <?php print($values['H323_FXO_L3_IN_G2']=='1'?'checked':'') ?>><span>L3</span>
+                             </td>
+                            </tr>
+
+<?php endif; ?>
+<?php if($values['FXOPORT'] >= 4): ?>
+                            <tr>
+                             <td width="120" height="25" class="title1">
+                             </td>
+                             <td width="160" class="text">
+                              <input type="checkbox" name="fxo_h323_line4_in_group2" id="fxo_h323_line4_in_group2" onclick="toggle_checkbox('fxo_h323_line4_in_group2', 'hide')" <?php print($values['H323_FXO_L4_IN_G2']=='1'?'checked':'') ?>><span>L4</span>
+                             </td>
+                            </tr>
+
+<?php endif; ?>
+                          </table>
+                         </div>
+                         </td>
+                        </tr>
+
+                      </table>
+                     </div>
+                      </div>
+                      <div id="fxo_h323_group_mode_tab_2_div" class="invisible">
+
+                     <div id="fxo_h323_group3_conf" class="visable">
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                        <tr>
+                         <td width="120" height="25" class="title1">Phone Number</td>
+                         <td width="160" class="text">
+                          <input type="text" name="fxo_group3_h323_phone_num" id="fxo_group3_h323_phone_num" value="<?php print($values['H323_FXO_GROUP3_NUMBER']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">H.323 ID</td>
+                         <td width="160" class="text">
+                          <input type="text" name="fxo_group3_h323_id" id="fxo_group3_h323_id" value="<?php print($values['H323_FXO_GROUP3_H323_ID']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">GateWay Prefix</td>
+                         <td width="160" class="text">
+                          <input type="text" name="fxo_group3_h323_gw_prefix" id="fxo_group3_h323_gw_prefix" value="<?php print($values['H323_FXO_GROUP3_GW_PREFIX']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                        <tr>
+                         <td width="120" height="25" class="title1">Gatekeeper Address</td>
+                         <td width="160" class="text">
+                          <input type="text" name="fxo_group3_gk_addr" id="fxo_group3_gk_addr" value="<?php print($values['H323_FXO_GROUP3_GKADDR']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                         </td>
+                        </tr>
+
+<?php endif; ?>
+                        <tr>
+                         <td width="120" height="25" class="title1">
+                         </td>
+                         <td width="160" class="text">
+                          <input type="checkbox" name="fxo_group3_vos_enable" id="fxo_group3_vos_enable" onclick="toggle_checkbox('fxo_group3_vos_enable', 'hide')" <?php print($values['H323_FXO_G3_VOS_ENABLE']=='1'?'checked':'') ?>><span>Enable VOS/AVS Signaling Encryption</span>
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td colspan="2">
+
+                        <div id="fxo_group3_vos_enable_div" class="<?php print($values['H323_FXO_G3_VOS_ENABLE']=='1'?'visable':'invisible') ?>">
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+
+                             <td width="120" height="25" class="title1">Encryption Mode</td>
+                             <td width="160" class="text">
+  <select name="fxo_group3_vos_mod" id="fxo_group3_vos_mod_select" class="select" onchange="toggle_selected('fxo_group3_vos_mod', 'hide')">
+     <option value="1" <?php print($values['H323_FXO_G3_VOS_MODE']=='1'?'selected':'') ?>>VOS Signaling Encryption</option>
+     <option value="2" <?php print($values['H323_FXO_G3_VOS_MODE']=='2'?'selected':'') ?>>VOS Signaling And Media Encryption</option>
+     <option value="3" <?php print($values['H323_FXO_G3_VOS_MODE']=='3'?'selected':'') ?>>AVS Signaling Encryption</option>
+     <option value="4" <?php print($values['H323_FXO_G3_VOS_MODE']=='4'?'selected':'') ?>>AVS Signaling And Media Encryption</option>
+  </select>
+                             </td>
+		
+                            </tr>
+
+                            <tr>
+                             <td colspan="2">
+
+                              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                              </table>
+                             </td>
+                            </tr>
+
+                          </table>
+                        </div>
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">
+                         </td>
+                         <td width="160" class="text">
+                          <input type="checkbox" name="fxo_group3_h235_auth" id="fxo_group3_h235_auth" onclick="toggle_checkbox('fxo_group3_h235_auth', 'hide')" <?php print($values['H323_FXO_GROUP3_AUTH']=='1'?'checked':'') ?>><span>H.235 Auth</span>
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td colspan="2">
+
+                        <div id="fxo_group3_h235_auth_div" class="<?php print($values['H323_FXO_GROUP3_AUTH']=='1'?'visable':'invisible') ?>">
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+                             <td width="120" height="25" class="title1">H.235 ID</td>
+                             <td width="160" class="text">
+                              <input type="text" name="fxo_group3_h235_id" id="fxo_group3_h235_id" value="<?php print($values['H323_FXO_GROUP3_H235_ID']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">Password</td>
+                             <td width="160" class="text">
+                              <input type="password" name="fxo_group3_h235_passwd" id="fxo_group3_h235_passwd" value="<?php print($values['H323_FXO_GROUP3_H235_PASSWD']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                          </table>
+                        </div>
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td colspan="2" class="title1" height="25" >Activated Lines in Group 3</td>
+                        </tr>
+
+                        <tr>
+                         <td colspan="2">
+
+                         <div id="fxo_h323_group3_lines" class="visable">
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+                             <td width="120" height="25" class="title1">
+                             </td>
+                             <td width="160" class="text">
+                              <input type="checkbox" name="fxo_h323_line1_in_group3" id="fxo_h323_line1_in_group3" onclick="toggle_checkbox('fxo_h323_line1_in_group3', 'hide')" <?php print($values['H323_FXO_L1_IN_G3']=='1'?'checked':'') ?>><span>L1</span>
+                             </td>
+                            </tr>
+
+<?php if($values['FXOPORT'] >= 2): ?>
+                            <tr>
+                             <td width="120" height="25" class="title1">
+                             </td>
+                             <td width="160" class="text">
+                              <input type="checkbox" name="fxo_h323_line2_in_group3" id="fxo_h323_line2_in_group3" onclick="toggle_checkbox('fxo_h323_line2_in_group3', 'hide')" <?php print($values['H323_FXO_L2_IN_G3']=='1'?'checked':'') ?>><span>L2</span>
+                             </td>
+                            </tr>
+
+<?php endif; ?>
+<?php if($values['FXOPORT'] >= 3): ?>
+                            <tr>
+                             <td width="120" height="25" class="title1">
+                             </td>
+                             <td width="160" class="text">
+                              <input type="checkbox" name="fxo_h323_line3_in_group3" id="fxo_h323_line3_in_group3" onclick="toggle_checkbox('fxo_h323_line3_in_group3', 'hide')" <?php print($values['H323_FXO_L3_IN_G3']=='1'?'checked':'') ?>><span>L3</span>
+                             </td>
+                            </tr>
+
+<?php endif; ?>
+<?php if($values['FXOPORT'] >= 4): ?>
+                            <tr>
+                             <td width="120" height="25" class="title1">
+                             </td>
+                             <td width="160" class="text">
+                              <input type="checkbox" name="fxo_h323_line4_in_group3" id="fxo_h323_line4_in_group3" onclick="toggle_checkbox('fxo_h323_line4_in_group3', 'hide')" <?php print($values['H323_FXO_L4_IN_G3']=='1'?'checked':'') ?>><span>L4</span>
+                             </td>
+                            </tr>
+
+<?php endif; ?>
+                          </table>
+                         </div>
+                         </td>
+                        </tr>
+
+                      </table>
+                     </div>
+                      </div>
+                      <div id="fxo_h323_group_mode_tab_3_div" class="invisible">
+
+                     <div id="fxo_h323_group4_conf" class="visable">
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                        <tr>
+                         <td width="120" height="25" class="title1">Phone Number</td>
+                         <td width="160" class="text">
+                          <input type="text" name="fxo_group4_h323_phone_num" id="fxo_group4_h323_phone_num" value="<?php print($values['H323_FXO_GROUP4_NUMBER']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">H.323 ID</td>
+                         <td width="160" class="text">
+                          <input type="text" name="fxo_group4_h323_id" id="fxo_group4_h323_id" value="<?php print($values['H323_FXO_GROUP4_H323_ID']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">GateWay Prefix</td>
+                         <td width="160" class="text">
+                          <input type="text" name="fxo_group4_h323_gw_prefix" id="fxo_group4_h323_gw_prefix" value="<?php print($values['H323_FXO_GROUP4_GW_PREFIX']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                        <tr>
+                         <td width="120" height="25" class="title1">Gatekeeper Address</td>
+                         <td width="160" class="text">
+                          <input type="text" name="fxo_group4_gk_addr" id="fxo_group4_gk_addr" value="<?php print($values['H323_FXO_GROUP4_GKADDR']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                         </td>
+                        </tr>
+
+<?php endif; ?>
+                        <tr>
+                         <td width="120" height="25" class="title1">
+                         </td>
+                         <td width="160" class="text">
+                          <input type="checkbox" name="fxo_group4_vos_enable" id="fxo_group4_vos_enable" onclick="toggle_checkbox('fxo_group4_vos_enable', 'hide')" <?php print($values['H323_FXO_G4_VOS_ENABLE']=='1'?'checked':'') ?>><span>Enable VOS/AVS Signaling Encryption</span>
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td colspan="2">
+
+                        <div id="fxo_group4_vos_enable_div" class="<?php print($values['H323_FXO_G4_VOS_ENABLE']=='1'?'visable':'invisible') ?>">
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+
+                             <td width="120" height="25" class="title1">Encryption Mode</td>
+                             <td width="160" class="text">
+  <select name="fxo_group4_vos_mod" id="fxo_group4_vos_mod_select" class="select" onchange="toggle_selected('fxo_group4_vos_mod', 'hide')">
+     <option value="1" <?php print($values['H323_FXO_G4_VOS_MODE']=='1'?'selected':'') ?>>VOS Signaling Encryption</option>
+     <option value="2" <?php print($values['H323_FXO_G4_VOS_MODE']=='2'?'selected':'') ?>>VOS Signaling And Media Encryption</option>
+     <option value="3" <?php print($values['H323_FXO_G4_VOS_MODE']=='3'?'selected':'') ?>>AVS Signaling Encryption</option>
+     <option value="4" <?php print($values['H323_FXO_G4_VOS_MODE']=='4'?'selected':'') ?>>AVS Signaling And Media Encryption</option>
+  </select>
+                             </td>
+		
+                            </tr>
+
+                            <tr>
+                             <td colspan="2">
+
+                              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                              </table>
+                             </td>
+                            </tr>
+
+                          </table>
+                        </div>
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">
+                         </td>
+                         <td width="160" class="text">
+                          <input type="checkbox" name="fxo_group4_h235_auth" id="fxo_group4_h235_auth" onclick="toggle_checkbox('fxo_group4_h235_auth', 'hide')" <?php print($values['H323_FXO_GROUP4_AUTH']=='1'?'checked':'') ?>><span>H.235 Auth</span>
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td colspan="2">
+
+                        <div id="fxo_group4_h235_auth_div" class="<?php print($values['H323_FXO_GROUP4_AUTH']=='1'?'visable':'invisible') ?>">
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+                             <td width="120" height="25" class="title1">H.235 ID</td>
+                             <td width="160" class="text">
+                              <input type="text" name="fxo_group4_h235_id" id="fxo_group4_h235_id" value="<?php print($values['H323_FXO_GROUP4_H235_ID']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">Password</td>
+                             <td width="160" class="text">
+                              <input type="password" name="fxo_group4_h235_passwd" id="fxo_group4_h235_passwd" value="<?php print($values['H323_FXO_GROUP4_H235_PASSWD']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                          </table>
+                        </div>
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td colspan="2" class="title1" height="25" >Activated Lines in Group 4</td>
+                        </tr>
+
+                        <tr>
+                         <td colspan="2">
+
+                         <div id="fxo_h323_group4_lines" class="visable">
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+                             <td width="120" height="25" class="title1">
+                             </td>
+                             <td width="160" class="text">
+                              <input type="checkbox" name="fxo_h323_line1_in_group4" id="fxo_h323_line1_in_group4" onclick="toggle_checkbox('fxo_h323_line1_in_group4', 'hide')" <?php print($values['H323_FXO_L1_IN_G4']=='1'?'checked':'') ?>><span>L1</span>
+                             </td>
+                            </tr>
+
+<?php if($values['FXOPORT'] >= 2): ?>
+                            <tr>
+                             <td width="120" height="25" class="title1">
+                             </td>
+                             <td width="160" class="text">
+                              <input type="checkbox" name="fxo_h323_line2_in_group4" id="fxo_h323_line2_in_group4" onclick="toggle_checkbox('fxo_h323_line2_in_group4', 'hide')" <?php print($values['H323_FXO_L2_IN_G4']=='1'?'checked':'') ?>><span>L2</span>
+                             </td>
+                            </tr>
+
+<?php endif; ?>
+<?php if($values['FXOPORT'] >= 3): ?>
+                            <tr>
+                             <td width="120" height="25" class="title1">
+                             </td>
+                             <td width="160" class="text">
+                              <input type="checkbox" name="fxo_h323_line3_in_group4" id="fxo_h323_line3_in_group4" onclick="toggle_checkbox('fxo_h323_line3_in_group4', 'hide')" <?php print($values['H323_FXO_L3_IN_G4']=='1'?'checked':'') ?>><span>L3</span>
+                             </td>
+                            </tr>
+
+<?php endif; ?>
+<?php if($values['FXOPORT'] >= 4): ?>
+                            <tr>
+                             <td width="120" height="25" class="title1">
+                             </td>
+                             <td width="160" class="text">
+                              <input type="checkbox" name="fxo_h323_line4_in_group4" id="fxo_h323_line4_in_group4" onclick="toggle_checkbox('fxo_h323_line4_in_group4', 'hide')" <?php print($values['H323_FXO_L4_IN_G4']=='1'?'checked':'') ?>><span>L4</span>
+                             </td>
+                            </tr>
+
+<?php endif; ?>
+                          </table>
+                         </div>
+                         </td>
+                        </tr>
+
+                      </table>
+                     </div>
+                      </div>
+
+                     </td>
+                    </tr>
+
+                  </table>
+                </div>
+                   <div class="invisible"><br></div>
+                 </td>
+                </tr>
+
+              </table>
+             </td>
+            </tr>
+
+<?php endif; ?>
+          </table>
+         </div>
+         </td>
+        </tr>
+
+      </table>
+
+
+
+  $insertsql.=",H323_FXO_PHONE_NUM";
+  $insertsql2.="','".$values['H323_FXO_PHONE_NUM'];
+  $insertsql.=",H323_FXO_GW_PREFIX";
+  $insertsql2.="','".$values['H323_FXO_GW_PREFIX'];
+  $insertsql.=",H323_FXO_DISPLAY_NAME";
+  $insertsql2.="','".$values['H323_FXO_DISPLAY_NAME'];
+  $insertsql.=",H323_FXO_ID";
+  $insertsql2.="','".$values['H323_FXO_ID'];
+  $insertsql.=",H323_FXO_GK_ADDR";
+  $insertsql2.="','".$values['H323_FXO_GK_ADDR'];
+  $insertsql.=",H323_FXO_VOS_ENABLE";
+  $insertsql2.="','".$values['H323_FXO_VOS_ENABLE'];
+  $insertsql.=",H323_FXO_VOS_MODE";
+  $insertsql2.="','".$values['H323_FXO_VOS_MODE'];
+  $insertsql.=",H235_FXO_AUTH";
+  $insertsql2.="','".$values['H235_FXO_AUTH'];
+  $insertsql.=",H235_FXO_ID";
+  $insertsql2.="','".$values['H235_FXO_ID'];
+  $insertsql.=",H235_FXO_PASSWD";
+  $insertsql2.="','".$values['H235_FXO_PASSWD'];
+  $insertsql.=",H323_FXO_CONFIG_MODE";
+  $insertsql2.="','".$values['H323_FXO_CONFIG_MODE'];
+  $insertsql.=",H323_FXO_PHONE_NUM";
+  $insertsql2.="','".$values['H323_FXO_PHONE_NUM'];
+  $insertsql.=",H323_FXO_GW_PREFIX";
+  $insertsql2.="','".$values['H323_FXO_GW_PREFIX'];
+  $insertsql.=",H323_FXO_DISPLAY_NAME";
+  $insertsql2.="','".$values['H323_FXO_DISPLAY_NAME'];
+  $insertsql.=",H323_FXO_ID";
+  $insertsql2.="','".$values['H323_FXO_ID'];
+  $insertsql.=",H323_FXO_GK_ADDR";
+  $insertsql2.="','".$values['H323_FXO_GK_ADDR'];
+  $insertsql.=",H323_FXO_VOS_ENABLE";
+  $insertsql2.="','".$values['H323_FXO_VOS_ENABLE'];
+  $insertsql.=",H323_FXO_VOS_MODE";
+  $insertsql2.="','".$values['H323_FXO_VOS_MODE'];
+  $insertsql.=",H235_AUTH";
+  $insertsql2.="','".$values['H235_AUTH'];
+  $insertsql.=",H235_FXO_ID";
+  $insertsql2.="','".$values['H235_FXO_ID'];
+  $insertsql.=",H235_FXO_PASSWD";
+  $insertsql2.="','".$values['H235_FXO_PASSWD'];
+  $insertsql.=",H323_FXO_LINE1_NUMBER";
+  $insertsql2.="','".$values['H323_FXO_LINE1_NUMBER'];
+  $insertsql.=",H323_FXO_LINE1_H323_ID";
+  $insertsql2.="','".$values['H323_FXO_LINE1_H323_ID'];
+  $insertsql.=",H323_FXO_LINE1_GW_PREFIX";
+  $insertsql2.="','".$values['H323_FXO_LINE1_GW_PREFIX'];
+  $insertsql.=",H323_FXO_LINE1_GKADDR";
+  $insertsql2.="','".$values['H323_FXO_LINE1_GKADDR'];
+  $insertsql.=",H323_FXO_LINE1_VOS_ENABLE";
+  $insertsql2.="','".$values['H323_FXO_LINE1_VOS_ENABLE'];
+  $insertsql.=",H323_FXO_LINE1_VOS_MODE";
+  $insertsql2.="','".$values['H323_FXO_LINE1_VOS_MODE'];
+  $insertsql.=",H323_FXO_LINE1_AUTH";
+  $insertsql2.="','".$values['H323_FXO_LINE1_AUTH'];
+  $insertsql.=",H323_FXO_LINE1_H235_ID";
+  $insertsql2.="','".$values['H323_FXO_LINE1_H235_ID'];
+  $insertsql.=",H323_FXO_LINE1_H235_PASSWD";
+  $insertsql2.="','".$values['H323_FXO_LINE1_H235_PASSWD'];
+  $insertsql.=",H323_FXO_LINE2_NUMBER";
+  $insertsql2.="','".$values['H323_FXO_LINE2_NUMBER'];
+  $insertsql.=",H323_FXO_LINE2_H323_ID";
+  $insertsql2.="','".$values['H323_FXO_LINE2_H323_ID'];
+  $insertsql.=",H323_FXO_LINE2_GW_PREFIX";
+  $insertsql2.="','".$values['H323_FXO_LINE2_GW_PREFIX'];
+  $insertsql.=",H323_FXO_LINE2_GKADDR";
+  $insertsql2.="','".$values['H323_FXO_LINE2_GKADDR'];
+  $insertsql.=",H323_FXO_LINE2_VOS_ENABLE";
+  $insertsql2.="','".$values['H323_FXO_LINE2_VOS_ENABLE'];
+  $insertsql.=",H323_FXO_LINE2_VOS_MODE";
+  $insertsql2.="','".$values['H323_FXO_LINE2_VOS_MODE'];
+  $insertsql.=",H323_FXO_LINE2_AUTH";
+  $insertsql2.="','".$values['H323_FXO_LINE2_AUTH'];
+  $insertsql.=",H323_FXO_LINE2_H235_ID";
+  $insertsql2.="','".$values['H323_FXO_LINE2_H235_ID'];
+  $insertsql.=",H323_FXO_LINE2_H235_PASSWD";
+  $insertsql2.="','".$values['H323_FXO_LINE2_H235_PASSWD'];
+  $insertsql.=",H323_FXO_LINE3_NUMBER";
+  $insertsql2.="','".$values['H323_FXO_LINE3_NUMBER'];
+  $insertsql.=",H323_FXO_LINE3_H323_ID";
+  $insertsql2.="','".$values['H323_FXO_LINE3_H323_ID'];
+  $insertsql.=",H323_FXO_LINE3_GW_PREFIX";
+  $insertsql2.="','".$values['H323_FXO_LINE3_GW_PREFIX'];
+  $insertsql.=",H323_FXO_LINE3_GKADDR";
+  $insertsql2.="','".$values['H323_FXO_LINE3_GKADDR'];
+  $insertsql.=",H323_FXO_LINE3_VOS_ENABLE";
+  $insertsql2.="','".$values['H323_FXO_LINE3_VOS_ENABLE'];
+  $insertsql.=",H323_FXO_LINE3_VOS_MODE";
+  $insertsql2.="','".$values['H323_FXO_LINE3_VOS_MODE'];
+  $insertsql.=",H323_FXO_LINE3_AUTH";
+  $insertsql2.="','".$values['H323_FXO_LINE3_AUTH'];
+  $insertsql.=",H323_FXO_LINE3_H235_ID";
+  $insertsql2.="','".$values['H323_FXO_LINE3_H235_ID'];
+  $insertsql.=",H323_FXO_LINE3_H235_PASSWD";
+  $insertsql2.="','".$values['H323_FXO_LINE3_H235_PASSWD'];
+  $insertsql.=",H323_FXO_LINE4_NUMBER";
+  $insertsql2.="','".$values['H323_FXO_LINE4_NUMBER'];
+  $insertsql.=",H323_FXO_LINE4_H323_ID";
+  $insertsql2.="','".$values['H323_FXO_LINE4_H323_ID'];
+  $insertsql.=",H323_FXO_LINE4_GW_PREFIX";
+  $insertsql2.="','".$values['H323_FXO_LINE4_GW_PREFIX'];
+  $insertsql.=",H323_FXO_LINE4_GKADDR";
+  $insertsql2.="','".$values['H323_FXO_LINE4_GKADDR'];
+  $insertsql.=",H323_FXO_LINE4_VOS_ENABLE";
+  $insertsql2.="','".$values['H323_FXO_LINE4_VOS_ENABLE'];
+  $insertsql.=",H323_FXO_LINE4_VOS_MODE";
+  $insertsql2.="','".$values['H323_FXO_LINE4_VOS_MODE'];
+  $insertsql.=",H323_FXO_LINE4_AUTH";
+  $insertsql2.="','".$values['H323_FXO_LINE4_AUTH'];
+  $insertsql.=",H323_FXO_LINE4_H235_ID";
+  $insertsql2.="','".$values['H323_FXO_LINE4_H235_ID'];
+  $insertsql.=",H323_FXO_LINE4_H235_PASSWD";
+  $insertsql2.="','".$values['H323_FXO_LINE4_H235_PASSWD'];
+  $insertsql.=",H323_FXO_GROUP1_NUMBER";
+  $insertsql2.="','".$values['H323_FXO_GROUP1_NUMBER'];
+  $insertsql.=",H323_FXO_GROUP1_H323_ID";
+  $insertsql2.="','".$values['H323_FXO_GROUP1_H323_ID'];
+  $insertsql.=",H323_FXO_GROUP1_GW_PREFIX";
+  $insertsql2.="','".$values['H323_FXO_GROUP1_GW_PREFIX'];
+  $insertsql.=",H323_FXO_GROUP1_GKADDR";
+  $insertsql2.="','".$values['H323_FXO_GROUP1_GKADDR'];
+  $insertsql.=",H323_FXO_G1_VOS_ENABLE";
+  $insertsql2.="','".$values['H323_FXO_G1_VOS_ENABLE'];
+  $insertsql.=",H323_FXO_G1_VOS_MODE";
+  $insertsql2.="','".$values['H323_FXO_G1_VOS_MODE'];
+  $insertsql.=",H323_FXO_GROUP1_AUTH";
+  $insertsql2.="','".$values['H323_FXO_GROUP1_AUTH'];
+  $insertsql.=",H323_FXO_GROUP1_H235_ID";
+  $insertsql2.="','".$values['H323_FXO_GROUP1_H235_ID'];
+  $insertsql.=",H323_FXO_GROUP1_H235_PASSWD";
+  $insertsql2.="','".$values['H323_FXO_GROUP1_H235_PASSWD'];
+  $insertsql.=",H323_FXO_L1_IN_G1";
+  $insertsql2.="','".$values['H323_FXO_L1_IN_G1'];
+  $insertsql.=",H323_FXO_L2_IN_G1";
+  $insertsql2.="','".$values['H323_FXO_L2_IN_G1'];
+  $insertsql.=",H323_FXO_L3_IN_G1";
+  $insertsql2.="','".$values['H323_FXO_L3_IN_G1'];
+  $insertsql.=",H323_FXO_L4_IN_G1";
+  $insertsql2.="','".$values['H323_FXO_L4_IN_G1'];
+  $insertsql.=",H323_FXO_GROUP2_NUMBER";
+  $insertsql2.="','".$values['H323_FXO_GROUP2_NUMBER'];
+  $insertsql.=",H323_FXO_GROUP2_H323_ID";
+  $insertsql2.="','".$values['H323_FXO_GROUP2_H323_ID'];
+  $insertsql.=",H323_FXO_GROUP2_GW_PREFIX";
+  $insertsql2.="','".$values['H323_FXO_GROUP2_GW_PREFIX'];
+  $insertsql.=",H323_FXO_GROUP2_GKADDR";
+  $insertsql2.="','".$values['H323_FXO_GROUP2_GKADDR'];
+  $insertsql.=",H323_FXO_G2_VOS_ENABLE";
+  $insertsql2.="','".$values['H323_FXO_G2_VOS_ENABLE'];
+  $insertsql.=",H323_FXO_G2_VOS_MODE";
+  $insertsql2.="','".$values['H323_FXO_G2_VOS_MODE'];
+  $insertsql.=",H323_FXO_GROUP2_AUTH";
+  $insertsql2.="','".$values['H323_FXO_GROUP2_AUTH'];
+  $insertsql.=",H323_FXO_GROUP2_H235_ID";
+  $insertsql2.="','".$values['H323_FXO_GROUP2_H235_ID'];
+  $insertsql.=",H323_FXO_GROUP2_H235_PASSWD";
+  $insertsql2.="','".$values['H323_FXO_GROUP2_H235_PASSWD'];
+  $insertsql.=",H323_FXO_L1_IN_G2";
+  $insertsql2.="','".$values['H323_FXO_L1_IN_G2'];
+  $insertsql.=",H323_FXO_L2_IN_G2";
+  $insertsql2.="','".$values['H323_FXO_L2_IN_G2'];
+  $insertsql.=",H323_FXO_L3_IN_G2";
+  $insertsql2.="','".$values['H323_FXO_L3_IN_G2'];
+  $insertsql.=",H323_FXO_L4_IN_G2";
+  $insertsql2.="','".$values['H323_FXO_L4_IN_G2'];
+  $insertsql.=",H323_FXO_GROUP3_NUMBER";
+  $insertsql2.="','".$values['H323_FXO_GROUP3_NUMBER'];
+  $insertsql.=",H323_FXO_GROUP3_H323_ID";
+  $insertsql2.="','".$values['H323_FXO_GROUP3_H323_ID'];
+  $insertsql.=",H323_FXO_GROUP3_GW_PREFIX";
+  $insertsql2.="','".$values['H323_FXO_GROUP3_GW_PREFIX'];
+  $insertsql.=",H323_FXO_GROUP3_GKADDR";
+  $insertsql2.="','".$values['H323_FXO_GROUP3_GKADDR'];
+  $insertsql.=",H323_FXO_G3_VOS_ENABLE";
+  $insertsql2.="','".$values['H323_FXO_G3_VOS_ENABLE'];
+  $insertsql.=",H323_FXO_G3_VOS_MODE";
+  $insertsql2.="','".$values['H323_FXO_G3_VOS_MODE'];
+  $insertsql.=",H323_FXO_GROUP3_AUTH";
+  $insertsql2.="','".$values['H323_FXO_GROUP3_AUTH'];
+  $insertsql.=",H323_FXO_GROUP3_H235_ID";
+  $insertsql2.="','".$values['H323_FXO_GROUP3_H235_ID'];
+  $insertsql.=",H323_FXO_GROUP3_H235_PASSWD";
+  $insertsql2.="','".$values['H323_FXO_GROUP3_H235_PASSWD'];
+  $insertsql.=",H323_FXO_L1_IN_G3";
+  $insertsql2.="','".$values['H323_FXO_L1_IN_G3'];
+  $insertsql.=",H323_FXO_L2_IN_G3";
+  $insertsql2.="','".$values['H323_FXO_L2_IN_G3'];
+  $insertsql.=",H323_FXO_L3_IN_G3";
+  $insertsql2.="','".$values['H323_FXO_L3_IN_G3'];
+  $insertsql.=",H323_FXO_L4_IN_G3";
+  $insertsql2.="','".$values['H323_FXO_L4_IN_G3'];
+  $insertsql.=",H323_FXO_GROUP4_NUMBER";
+  $insertsql2.="','".$values['H323_FXO_GROUP4_NUMBER'];
+  $insertsql.=",H323_FXO_GROUP4_H323_ID";
+  $insertsql2.="','".$values['H323_FXO_GROUP4_H323_ID'];
+  $insertsql.=",H323_FXO_GROUP4_GW_PREFIX";
+  $insertsql2.="','".$values['H323_FXO_GROUP4_GW_PREFIX'];
+  $insertsql.=",H323_FXO_GROUP4_GKADDR";
+  $insertsql2.="','".$values['H323_FXO_GROUP4_GKADDR'];
+  $insertsql.=",H323_FXO_G4_VOS_ENABLE";
+  $insertsql2.="','".$values['H323_FXO_G4_VOS_ENABLE'];
+  $insertsql.=",H323_FXO_G4_VOS_MODE";
+  $insertsql2.="','".$values['H323_FXO_G4_VOS_MODE'];
+  $insertsql.=",H323_FXO_GROUP4_AUTH";
+  $insertsql2.="','".$values['H323_FXO_GROUP4_AUTH'];
+  $insertsql.=",H323_FXO_GROUP4_H235_ID";
+  $insertsql2.="','".$values['H323_FXO_GROUP4_H235_ID'];
+  $insertsql.=",H323_FXO_GROUP4_H235_PASSWD";
+  $insertsql2.="','".$values['H323_FXO_GROUP4_H235_PASSWD'];
+  $insertsql.=",H323_FXO_L1_IN_G4";
+  $insertsql2.="','".$values['H323_FXO_L1_IN_G4'];
+  $insertsql.=",H323_FXO_L2_IN_G4";
+  $insertsql2.="','".$values['H323_FXO_L2_IN_G4'];
+  $insertsql.=",H323_FXO_L3_IN_G4";
+  $insertsql2.="','".$values['H323_FXO_L3_IN_G4'];
+  $insertsql.=",H323_FXO_L4_IN_G4";
+  $insertsql2.="','".$values['H323_FXO_L4_IN_G4'];

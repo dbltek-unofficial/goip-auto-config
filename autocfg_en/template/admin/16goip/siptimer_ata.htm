@@ -1,0 +1,51 @@
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+        <tr>
+         <td colspan="2">
+
+         <div id="sip_timers" class="visable">
+          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+            <tr>
+             <td width="120" height="25" class="title1">No Answer Expiry(32-180s)</td>
+             <td width="160" class="text">
+              <input type="text" name="unanswer_exp" id="unanswer_exp" value="<?php print($values['UNANSWER_EXP']) ?>" class="edit" onblur="onblur_check_integer(this, 32, 180)" onfocus="onfocus_check_integer(this, 32, 180)">
+             </td>
+            </tr>
+
+            <tr>
+             <td width="120" height="25" class="title1">NICT Expiry(2-180s)</td>
+             <td width="160" class="text">
+              <input type="text" name="non_invite_exp" id="non_invite_exp" value="<?php print($values['NON_INVITE_TS_EXP']) ?>" class="edit" onblur="onblur_check_integer(this, 2, 180)" onfocus="onfocus_check_integer(this, 2, 180)">
+             </td>
+            </tr>
+
+            <tr>
+             <td width="120" height="25" class="title1">ICT Expiry(5-360s)</td>
+             <td width="160" class="text">
+              <input type="text" name="invite_exp" id="invite_exp" value="<?php print($values['INVITE_TS_EXP']) ?>" class="edit" onblur="onblur_check_integer(this, 5, 360)" onfocus="onfocus_check_integer(this, 5, 360)">
+             </td>
+            </tr>
+
+            <tr>
+             <td width="120" height="25" class="title1">Retransmit T1(200-2000ms)</td>
+             <td width="160" class="text">
+              <input type="text" name="retrans_t1" id="retrans_t1" value="<?php print($values['RETRANSMIT_T1']) ?>" class="edit" onblur="onblur_check_integer(this, 200, 2000)" onfocus="onfocus_check_integer(this, 200, 2000)">
+             </td>
+            </tr>
+
+            <tr>
+             <td width="120" height="25" class="title1">Retransmit T2(2000-8000ms)</td>
+             <td width="160" class="text">
+              <input type="text" name="retrans_t2" id="retrans_t2" value="<?php print($values['RETRANSMIT_T2']) ?>" class="edit" onblur="onblur_check_integer(this, 2000, 8000)" onfocus="onfocus_check_integer(this, 2000, 8000)">
+             </td>
+            </tr>
+
+          </table>
+         </div>
+         </td>
+        </tr>
+
+      </table>
+
+

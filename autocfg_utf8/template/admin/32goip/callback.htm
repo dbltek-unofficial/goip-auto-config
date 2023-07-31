@@ -1,0 +1,199 @@
+
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+        <tr>
+         <td colspan="2">
+
+         <div id="line1_sim_settings" class="visable">
+          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+            <tr>
+
+             <td width="120" height="25" class="title1">SMS回拨模式</td>
+             <td width="160" class="text">
+  <select name="sms_mode" id="sms_mode_select" class="select" onchange="toggle_selected('sms_mode', 'hide')">
+     <option value="DISABLE" <?php print($values['SMS_MODE']=='DISABLE'?'selected':'') ?>>禁用</option>
+     <option value="DIAL" <?php print($values['SMS_MODE']=='DIAL'?'selected':'') ?>>拨号</option>
+     <option value="RELAY" <?php print($values['SMS_MODE']=='RELAY'?'selected':'') ?>>中转</option>
+  </select>
+             </td>
+                
+            </tr>
+            <tr>
+             <td colspan="2">
+
+              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                <tr>
+                 <td colspan="2">
+                   <div class="invisible"><br><span class="stitle">SMS拨号</span></div>
+
+                <div id="sms_mode_DIAL_div" class="<?php print($values['SMS_MODE']=='DIAL'?'visable':'invisible') ?>">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                    <tr>
+
+                     <td width="120" height="25" class="title1">SMS拨号</td>
+                     <td width="160" class="text">
+  <select name="sms_dial" id="sms_dial_select" class="select" onchange="toggle_selected('sms_dial', 'hide')">
+     <option value="1" <?php print($values['SMS_DIAL_ENABLE']=='1'?'selected':'') ?>>模式1</option>
+     <option value="2" <?php print($values['SMS_DIAL_ENABLE']=='2'?'selected':'') ?>>模式2</option>
+     <option value="3" <?php print($values['SMS_DIAL_ENABLE']=='3'?'selected':'') ?>>模式3</option>
+  </select>
+                     </td>
+                
+                    </tr>
+
+                    <tr>
+                     <td colspan="2">
+
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                      </table>
+                     </td>
+                    </tr>
+
+                    <tr>
+                     <td width="120" height="25" class="title1">SMS拨号前缀</td>
+                     <td width="160" class="text">
+                      <input type="text" name="sms_dial_prefix" id="sms_dial_prefix" value="<?php print($values['SMS_PREFIX']) ?>" class="edit">
+                     </td>
+                    </tr>
+
+                  </table>
+                </div>
+                   <div class="invisible"><br><span class="stitle">SMS Mode - Relay</span></div>
+
+                <div id="sms_mode_RELAY_div" class="<?php print($values['SMS_MODE']=='RELAY'?'visable':'invisible') ?>">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                    <tr>
+                     <td width="120" height="25" class="title1">SMS中转VoIP号码</td>
+                     <td width="160" class="text">
+                      <input type="text" name="sms_fw_num" id="sms_fw_num" value="<?php print($values['SMS_FW_NUM']) ?>" class="edit">
+                     </td>
+                    </tr>
+
+                    <tr>
+                     <td width="120" height="25" class="title1">SMS中转GSM号码</td>
+                     <td width="160" class="text">
+                      <input type="text" name="sms_fw_gsm_num" id="sms_fw_gsm_num" value="<?php print($values['SMS_FW_GSM_NUM']) ?>" class="edit">
+                     </td>
+                    </tr>
+
+                  </table>
+                </div>
+                   <div class="invisible"><br></div>
+                 </td>
+                </tr>
+
+              </table>
+
+             </td>
+            </tr>
+
+<?php if($values['ENDPOINT_TYPE']=='SIP'): ?>
+            <tr>
+
+             <td width="120" height="25" class="title1">CID穿透模式</td>
+             <td width="160" class="text">
+  <select name="cid_fw_mode" id="cid_fw_mode_select" class="select" onchange="toggle_selected('cid_fw_mode', 'hide')">
+     <option value="3" <?php print($values['SIP_CID_FW_MODE']=='3'?'selected':'') ?>>禁用</option>
+     <option value="0" <?php print($values['SIP_CID_FW_MODE']=='0'?'selected':'') ?>>使用Remote Party ID</option>
+     <option value="1" <?php print($values['SIP_CID_FW_MODE']=='1'?'selected':'') ?>>使用CID作为SIP主叫号码</option>
+  </select>
+             </td>
+                
+            </tr>
+
+            <tr>
+             <td colspan="2">
+
+              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                <tr>
+                 <td colspan="2">
+
+                <div id="cid_fw_mode_1_div" class="<?php print($values['SIP_CID_FW_MODE']=='1'?'visable':'invisible') ?>">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                    <tr>
+                     <td width="120" height="25" class="title1">&nbsp;&nbsp;CID前缀</td>
+                     <td width="160" class="text">
+                      <input type="text" name="cid_fw_prefix" id="cid_fw_prefix" value="<?php print($values['CID_FW_PREFIX']) ?>" class="edit">
+                     </td>
+                    </tr>
+
+                  </table>
+                </div>
+                 </td>
+                </tr>
+
+              </table>
+
+             </td>
+            </tr>
+<?php endif; ?>
+<?php if($values['ENDPOINT_TYPE']=='H323'): ?>
+
+            <tr>
+             <td width="120" height="25" class="title1">
+<span>CID Forward</span>             </td>
+             <td width="160" class="text">
+              <input type="radio" name="h323_cid_fw" value="on" id="h323_cid_fw_enable" disabledbyelement="" onclick="toggle('h323_cid_fw_div', 1)" <?php print($values['H323_CID_FW']=='1'?'checked':'') ?>><span>Enable</span>
+              <input type="radio" name="h323_cid_fw" value="off" id="h323_cid_fw_disable" disabledbyelement="" onclick="toggle('h323_cid_fw_div', 0)" <?php print($values['H323_CID_FW']!='1'?'checked':'') ?>><span>Disable</span>             </td>
+            </tr>
+<?php endif; ?>
+
+<tr>
+             <td width="120" height="25" class="title1">
+<span>远程SIM</span>             </td>
+             <td width="160" class="text">
+              <input type="radio" name="rmsim_enable" value="on" id="rmsim_enable_enable" disabledbyelement="" onclick="toggle('rmsim_enable_div', 1)" <?php print($values['RMSIM_ENABLE']=='1'?'checked':'') ?>><span>启用</span>
+              <input type="radio" name="rmsim_enable" value="off" id="rmsim_enable_disable" disabledbyelement="" onclick="toggle('rmsim_enable_div', 0)" <?php print($values['RMSIM_ENABLE']!='1'?'checked':'') ?>><span>禁用</span>             </td>
+            </tr>
+
+            <tr>
+             <td colspan="2">
+
+            <div id="rmsim_enable_div" class="<?php print($values['RMSIM_ENABLE']=='1'?'visible':'invisible') ?>">
+              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                <tr>
+                 <td width="120" height="25" class="title1">&nbsp;&nbsp;&nbsp;服务器地址</td>
+                 <td width="160" class="text">
+                  <input type="text" name="smb_svr" id="smb_svr" value="<?php print($values['SMB_SVR']) ?>" class="edit">
+                 </td>
+                </tr>
+
+                <tr>
+                 <td width="120" height="25" class="title1">&nbsp;&nbsp;&nbsp;用户名</td>
+                 <td width="160" class="text">
+                  <input type="text" name="smb_id" id="smb_id" value="<?php print($values['SMB_ID']) ?>" class="edit">
+                 </td>
+                </tr>
+
+                <tr>
+                 <td width="120" height="25" class="title1">&nbsp;&nbsp;&nbsp;密码</td>
+                 <td width="160" class="text">
+                  <input type="text" name="smb_key" id="smb_key" value="<?php print($values['SMB_KEY']) ?>" class="edit">
+                 </td>
+                </tr>
+
+              </table>
+            </div>
+		</td>
+		</tr>
+
+
+          </table>
+             </td>
+            </tr>
+
+
+          </table>
+         </div>
+         </td>
+        </tr>
+
+      </table>

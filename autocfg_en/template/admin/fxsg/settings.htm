@@ -1,0 +1,272 @@
+
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+        <tr>
+         <td colspan="2" class="title2" height="25" >呼叫设置</td>
+        </tr>
+
+        <tr>
+         <td colspan="2">
+
+         <div id="call_settings" class="visable">
+          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+            <tr>
+             <td align="center" valign="top">
+          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+            <tr>
+             <td colspan="2">
+
+             <div id="basic_calling" class="visable">
+              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                <tr>
+
+                 <td width="120" height="25" class="title1">终端类型</td>
+                 <td width="160" class="text">
+  <select name="endpoint_type" id="endpoint_type_select" class="select" onchange="toggle_selected('endpoint_type', 'hide'); toggle2('advance_endpoint_settings', 2, this.selectedIndex)">
+     <option value="H323" <?php print($values['ENDPOINT_TYPE']=='H323'?'selected':'') ?>>H.323终端</option>
+     <option value="SIP" <?php print($values['ENDPOINT_TYPE']=='SIP'?'selected':'') ?>>SIP终端</option>
+  </select>
+                 </td>
+
+                </tr>
+
+                <tr>
+                 <td colspan="2">
+
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                    <tr>
+                     <td colspan="2">
+                       <div class="invisible"><br><span class="stitle">终端类型 - H.323终端</span></div>
+
+                    <div id="endpoint_type_H323_div" class="<?php print($values['ENDPOINT_TYPE']=='H323'?'visable':'invisible') ?>">
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                        <tr>
+                         <td width="120" height="25"  class="title1">
+                         </td>
+                         <td width="160" class="text">                          <div style="cursor:hand; cursor:pointer" onclick="toggle_target(this, 'h323-calling-fxs_target')">FXS配置<span class="showstate" >&gt;&gt;</span></div>
+                         </td>
+                        </tr>
+                        <tr>
+                         <td colspan="2">
+                           <div id="h323-calling-fxs_target" class="invisible">
+	<?php require_once template($type.'/h323-calling-fxs'); ?>
+                           </div>
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25"  class="title1">
+                         </td>
+                         <td width="160" class="text">                          <div style="cursor:hand; cursor:pointer" onclick="toggle_target(this, 'h323-calling-fxo_target')">FXO配置<span class="showstate" >&gt;&gt;</span></div>
+                         </td>
+                        </tr>
+                        <tr>
+                         <td colspan="2">
+                           <div id="h323-calling-fxo_target" class="invisible">
+	<?php require_once template($type.'/h323-calling-fxo'); ?>
+                           </div>
+                         </td>
+                        </tr>
+
+                      </table>
+                    </div>
+                       <div class="invisible"><br><span class="stitle">终端类型 - SIP终端</span></div>
+
+                    <div id="endpoint_type_SIP_div" class="<?php print($values['ENDPOINT_TYPE']=='SIP'?'visable':'invisible') ?>">
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                        <tr>
+                         <td width="120" height="25"  class="title1">
+                         </td>
+                         <td width="160" class="text">                          <div style="cursor:hand; cursor:pointer" onclick="toggle_target(this, 'calling-fxs_target')">FXS配置<span class="showstate" >&gt;&gt;</span></div>
+                         </td>
+                        </tr>
+                        <tr>
+                         <td colspan="2">
+                           <div id="calling-fxs_target" class="invisible">
+   <?php require_once template($type.'/calling-fxs'); ?>
+                           </div>
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25"  class="title1">
+                         </td>
+                         <td width="160" class="text">                          <div style="cursor:hand; cursor:pointer" onclick="toggle_target(this, 'calling-fxo_target')">FXO配置<span class="showstate" >&gt;&gt;</span></div>
+                         </td>
+                        </tr>
+                        <tr>
+                         <td colspan="2">
+                           <div id="calling-fxo_target" class="invisible">
+	<?php require_once template($type.'/calling-fxo'); ?>
+                           </div>
+                         </td>
+                        </tr>
+
+                      </table>
+                    </div>
+                       <div class="invisible"><br></div>
+                     </td>
+                    </tr>
+
+                  </table>
+                 </td>
+                </tr>
+
+
+                                <tr>                                                                              
+             <td class="title1" height="25" width="120">                                                          
+<span>自动配置</span>             </td>                                                                           
+             <td class="text" width="160">                                                                        
+              <input name="auto_config" value="on" id="auto_config_enable" disabledbyelement="" onClick="toggle('auto_config_div', 1
+)" type="radio" <?php echo $values['AUTOCFG']=='1'?'checked':''?>><span>启用</span>
+              <input name="auto_config" value="off" id="auto_config_disable" disabledbyelement="" onClick="toggle('auto_config_div',
+ 0)" <?php echo $values['AUTOCFG']=='0'?'checked':''?> type="radio"><span>禁用</span>             </td>
+            </tr>                                                                                                 
+                                                                                                                  
+            <tr>                                                                                                  
+             <td colspan="2">                                                                                     
+                                                                                                                  
+            <div id="auto_config_div" class="<?php print($values['AUTOCFG']=='1'?'visable':'invisible') ?>">      
+              <table border="0" cellpadding="0" cellspacing="0" width="100%">                                     
+                                                                                                                  
+                <tbody><tr>                                                                                       
+                 <td class="title1" height="25" width="120">&nbsp;&nbsp;自动配置服务器</td>                       
+                 <td class="text" width="160">                                                                    
+                  <input name="auto_config_server" id="auto_config_server" value="<?php print($values['AUTOCFG_SERVER'])?>" class="e
+dit" type="text">
+                 </td>                                                                                            
+                </tr>                                                                                             
+                                                                                                                  
+                <tr>                                                                                              
+                 <td class="title1" height="25" width="120">&nbsp;&nbsp;自动配置更新间隔</td>                     
+                 <td class="text" width="160">                                                                    
+                  <input name="auto_config_refresh" id="auto_config_refresh" value="<?php print($values['AUTOCFG_REFRESH']) ?>" clas
+s="edit" type="text">
+                 </td>                                                                                            
+                </tr>                                                                                             
+                                                                                                                  
+              </tbody></table>                                                                                    
+            </div>  
+                        </td></tr>  
+
+
+
+                                        <?php require_once template('remote2'); ?>                                
+
+
+
+
+            <tr>
+             <td width="120" height="25" class="title1">
+<span>短信发送客户端</span>             </td>
+             <td width="160" class="text">
+              <input type="radio" name="sms_sender" value="on" id="sms_sender_enable" disabledbyelement="" onclick="toggle('sms_sender_div', 1)" <?php print($values['SMS_SENDER']=='1'?'checked':'') ?>><span>启用</span>
+              <input type="radio" name="sms_sender" value="off" id="sms_sender_disable" disabledbyelement="" onclick="toggle('sms_sender_div', 0)" <?php print($values['SMS_SENDER']!='1'?'checked':'') ?>><span>禁用</span>             </td>
+            </tr>
+
+            <tr>
+             <td colspan="2">
+
+            <div id="sms_sender_div" class="<?php print($values['SMS_SENDER']=='1'?'visible':'invisible') ?>">
+              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                <tr>
+                 <td width="120" height="25" class="title1">&nbsp;&nbsp;短信服务器地址</td>
+                 <td width="160" class="text">
+                  <input type="text" name="sms_server" id="sms_server" value="<?php print($values['SMS_SERVER']) ?>" class="edit">
+                 </td>
+                </tr>
+
+                <tr>
+                 <td width="120" height="25" class="title1">&nbsp;&nbsp;短信服务器端口</td>
+                 <td width="160" class="text">
+                  <input type="text" name="sms_port" id="sms_port" value="<?php print($values['SMS_PORT']) ?>" class="edit">
+                 </td>
+                </tr>
+
+                <tr>
+                 <td width="120" height="25" class="title1">&nbsp;&nbsp;认证ID</td>
+                 <td width="160" class="text">
+                  <input type="text" name="sms_cli_id" id="sms_cli_id" value="<?php print($values['SMS_CLI_ID']) ?>" class="edit">
+                 </td>
+                </tr>
+
+                <tr>
+                 <td width="120" height="25" class="title1">&nbsp;&nbsp;认证密码</td>
+                 <td width="160" class="text">
+                  <input type="password" name="sms_cli_passwd" id="sms_cli_passwd" value="<?php print($values['SMS_CLI_PASSWD']) ?>" class="edit">
+                 </td>
+                </tr>
+
+                <tr>
+                 <td width="120" height="25" class="title1">&nbsp;&nbsp;接收短信特征码</td>
+                 <td width="160" class="text">
+                  <input type="text" name="sms_message_ignature" id="sms_message_ignature" value="<?php print($values['SMS_MSG_IGNATURE']) ?>" class="edit">
+                 </td>
+                </tr>
+
+              </table>
+            </div>
+
+             </td>
+            </tr>
+
+
+
+
+
+              </table>
+             </div>
+
+             </td>
+            </tr>
+          </table>
+             </td>
+             <td align="center" valign="top">
+          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+            <tr>
+             <td width="120" height="25"  class="title1">
+             </td>
+             <td width="160" class="text">              <div style="cursor:hand; cursor:pointer" onclick="toggle_target(this, 'advance_calling_target')">高级<span class="showstate" >&gt;&gt;</span></div>
+             </td>
+            </tr>
+            <tr>
+             <td colspan="2">
+               <div id="advance_calling_target" class="invisible">
+	<?php require_once template($type.'/ad_call'); ?>
+               </div>
+             </td>
+            </tr>
+
+            <tr>
+             <td width="120" height="25"  class="title1">
+             </td>
+             <td width="160" class="text">              <div style="cursor:hand; cursor:pointer" onclick="toggle_target(this, 'media_target')">媒体<span class="showstate" >&gt;&gt;</span></div>
+             </td>
+            </tr>
+            <tr>
+             <td colspan="2">
+               <div id="media_target" class="invisible">
+	<?php require_once template('media'); ?>
+               </div>
+             </td>
+            </tr>
+          </table>
+             </td>
+            </tr>
+
+          </table>
+         </div>
+         </td>
+        </tr>
+
+      </table>
+<?php require_once template($type.'/fxo_setting'); ?>
+<?php require_once template($type.'/fxs_setting'); ?>

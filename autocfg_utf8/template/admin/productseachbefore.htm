@@ -1,0 +1,678 @@
+<!--
+<?php
+print <<<EOT
+-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>终端管理</title>
+<script src="dynamic.bin" lang="javascript"></script>
+<script language="javascript">
+var marked_row = new Array;
+function clickme(txt)
+	{
+		alert(txt);
+	}
+function showdiv(divname, num, total)
+	{
+	//	alert(divname+num);
+		//var showdiv;
+		if(num==0){
+			for(var i=1;i<=total;i++)
+				if(document.getElementById(divname+i).style.display=="bolck"){
+			}
+		}
+		else {
+			for(var i=1;i<=total;i++)
+				document.getElementById(divname+i).style.display="none";
+			document.getElementById(divname+num).style.display="block";
+		}
+	}
+function Checkshow(divname, num)
+	{
+	//	alert(divname);
+		if(document.modifyform.chchanged.checked)
+			showdiv(divname, num, 2);
+		else showdiv(divname, 2, 2)
+	}
+function Selectshow(divname, selctname, total)
+	{		
+		if(selobj=document.getElementById(selctname)){
+			var selectedItem=selobj.selectedIndex;
+			//alert(selectedItem);
+			showdiv(divname, selectedItem+1, total);
+		}
+				
+	}
+function unselectall(ck)
+	{
+	    if(document.modifyform.chkAll.checked){
+		document.modifyform.chkAll.checked = document.modifyform.chkAll.checked&0;
+	    }
+	    if(ck.checked){
+		ck.checked = ck.checked&0;
+	    } 		
+	}
+
+function CheckPage(form, cknum, count)
+	{
+		//alert('dddd');
+		var trck;
+		var ck=form.elements['chkAll'+cknum];
+		for(var i=cknum*count-count;i<(cknum-1)*count+count;i++){
+			
+		 form.elements['chanpinid'+i].checked = ck.checked;
+		 
+		 trck=form.elements['chanpinid'+i]; //document.getElementsById('trid'+i);
+		 
+		 do {trck=trck.parentNode;} while (trck.tagName!="TR")
+		 //alert(i);
+		 if(ck.checked)
+		 	trck.className = 'even marked';
+		 else
+		 	trck.className = 'even';
+
+		}
+		
+	}
+function CheckAll(form, count, ppage)
+	{
+		var trck;
+		var ck=form.elements['chkAll'];
+		for(var i=0;i<count;i++){
+		 trck=form.elements['chanpinid'+i];
+		 trck.checked = ck.checked;
+		  
+		 do {trck=trck.parentNode} while (trck.tagName!="TR")
+		 if(ck.checked)
+		 	trck.className = 'even marked';
+		 else
+		 	trck.className = 'even';
+		
+		}
+		
+		
+		
+		for(i=1;i<=count/ppage+1;i++)
+		 form.elements['chkAll'+i].checked = ck.checked;
+	}
+	
+function mouseover(obj) {
+                obj.className += ' hover';
+				//alert(obj.className);
+            	
+			}
+
+function mouseout(obj) {
+            	obj.className = obj.className.replace( ' hover', '' );
+				//alert(obj.className);
+			}
+
+function trclick(obj, num) {
+		//alert("ddddd");
+        var checkbox = obj.getElementsByTagName( 'input' )[0];
+        //if ( checkbox && checkbox.type == 'checkbox' ) 
+        checkbox.checked ^= 1;
+		if(checkbox.checked)
+			obj.className = 'even marked';
+		else obj.className = 'even';
+		var ckpage=document.modifyform.elements['chkAll'+num];
+		unselectall(ckpage);	
+		
+
+		}
+
+
+</script>
+<style type="text/css">
+.invisible{display:none;}
+</style>
+<meta name="Author" content="Gaby_chen">
+<link href="Style.css" rel="stylesheet" type="text/css">
+</head>
+<body leftmargin="2" topmargin="0" marginwIdth="0" marginheight="0">
+<table wIdth="100%" border="0" align="center" cellpadding="2" cellspacing="1" class="border">
+  <tr class="topbg"> 
+    <td height="22" colspan="2" align="center"><strong>{$classnamename}</strong></td>
+  </tr>
+  <tr class="tdbg"> 
+    <td wIdth="70" height="30"><strong>管理导航:</strong></td>
+     <td height="30"><!--<a href="{$URL}?job=product&action=addupload&classid={$classid}">终端导入</a> |--><a href="{$URL}?job=product&action=add&classid={$classid}" target=main>添加终端</a>&nbsp;|&nbsp;<a href="?job=product&action=addmore&classid={$classid}" target=main>批量添加终端</a>&nbsp;|&nbsp;<a href="{$URL}?job=productmanage&classid={$classid}" target=main>终端管理</a>&nbsp;|&nbsp;<a href="{$URL}?job=productseachbefore&action=before&classid={$classid}" target=main>终端搜索批量修改</a>&nbsp;
+	<!-- |&nbsp;<a href="{$URL}?job=productseachbefore&action=modifymore&classid={$classid}" target=main>终端批量修改</a> --></td>
+  </tr>
+</table>
+
+<!--
+EOT;
+if($statu=="before") {
+print <<<EOT
+-->
+<br>
+<table width="100%" height="25"  border="0" cellpadding="0" cellspacing="0">
+  <tr class="topbg">
+    <td width="8%">&nbsp;</td>
+    <td width="92%" height="25"><strong>当前位置：{$classname}型号-->终端搜索-->选择搜索字段</strong></td>
+  </tr>
+</table>
+
+	<table wIdth=100% border=0 cellpadding=2 cellspacing=1 align=center>
+
+		<tr class="title">
+			<td height="22" align="center" colspan=2><b><strong>搜索字段</strong></b></td>
+		</tr>
+		<tr class="tdbg">
+			<td width="18%" align=right><b>型号名称:</b></td>
+			<td width="82%">{$classname}</td>
+		</tr>
+
+		<tr class="tdbg">
+			<td colspan="3"></td>
+			<!-- <td align=right><b>字段选择:</b></td> 
+			-->
+<table width="100%"  border="0" cellspacing="0" cellpadding="5">
+<!--
+  <tr>
+    <td><input name="id1" type="checkbox" id="id1" value="id1" disabled checked><input name="id" type="checkbox" id="id" value="id" style="display:none " checked>
+      Id号</td>
+    <td><input name="updatetime1" type="checkbox" id="updatetime1" value="updatetime1" checked disabled> <input name="updatetime" type="checkbox" id="updatetime" value="updatetime" checked style="display:none "> 
+      更新时间</td>
+    <td></td>
+	<td></td>
+  </tr>
+-->
+  <tr class="tdbg">
+  <form name="myform" method="post" action="{$URL}?job=productseachbefore&action=next&classid=$classid&show=number" onsubmit="return check()">
+<td class="title1">机身号码: </td>		
+  <td valign="middle" class="text">		<input name="number" tpye=text id="number"  maxlength="80" class="edit"> <input type=submit name=btnadd value="搜索" onclick="return check();"></td>
+  </form>
+  <form name="myform" method="post" action="{$URL}?job=productseachbefore&action=next&classid=$classid&show=user" onsubmit="return check()">
+		<td class="title1">显示名:</td>
+		<td class="text"><input name="user" tpye="text" id="user"  maxlength="80" class="edit"> <input type=submit name=btnadd value="搜索" onclick="return check();"></td>
+</form>	</tr>
+  
+<!--
+  	<td valign="middle" height="25">
+		<form name="myform" method="post" action="{$URL}?job=productseachbefore&action=next&classid=$classid&show=number" onsubmit="return check()">机身号码:</tds> 
+		<td valign="middle" height="25px;">
+		<input name="number" tpye="text" id="number"  maxlength="80" class="edit3"><input type=submit name=btnadd value="搜索" onclick="return check();"></form>
+		</td>
+-->
+
+<tr class="tdbg">
+  	
+		<form name="myform" method="post" action="{$URL}?job=productseachbefore&action=next&classid=$classid&show=sipserver" onsubmit="return check()">
+		<td class="title1">注册服务器: </td>		
+  <td valign="middle" class="text"><input name="sipserver" tpye=text id="number"  maxlength="80" class="edit"> <input type=submit name=btnadd value="搜索" onclick="return check();">
+	</td></form>
+	
+		<form name="myform" method="post" action="{$URL}?job=productseachbefore&action=next&classid=$classid&show=sipid" onsubmit="return check()">
+		<td class="title1">认证ID: </td>		
+  <td valign="middle" class="text"><input name="sipid" tpye=text id="number"  maxlength="80" class="edit"> <input type=submit name=btnadd value="搜索" onclick="return check();"> 			
+	</td></form>  	
+  </tr>
+
+<tr class="tdbg">
+<form name="myform" method="post" action="{$URL}?job=productseachbefore&action=next&classid=$classid&show=relayserver" onsubmit="return check()">
+		<td class="title1">
+		中继地址: </td>		
+  <td valign="middle" class="text"><input  name="relayserver" tpye=text id="number"  maxlength="80" class="edit"> <input type=submit name=btnadd value="搜索" onclick="return check();"> 	
+	</td></form>  	
+<td></td><td></td> 
+  </tr>
+
+</table>
+	</table>
+<!--
+EOT;
+}
+if($action=="next") {
+print <<<EOT
+-->
+	<table wIdth=100% border=0 cellpadding=2 cellspacing=1 align=center>
+		<tr class="title">
+			<td height="33" align="center" colspan=2><b><strong>搜索结果：($show="$showvalue")</strong></b></td>
+		</tr>
+	</table>
+<form action="{$URL}?job=productmodifymore&action=modifymore&classid={$classid}" method=post name=modifyform onSubmit="return confirm('确认修改?')">
+
+<!--
+EOT;
+$j=0;$k=0;
+foreach($rsdb as $rs) {
+if($j%$perpage==0){
+$cknum=$j/$perpage+1;
+if($cknum==1)
+{
+print <<<EOT
+-->
+	<div id="CK_div$cknum"> 
+	<table wIdth="100%"  border="0" cellspacing="2" cellpadding="2">
+	<tr class=title>
+		<td wIdth="35" align=center height="25"><b>选择</b></td>
+		<td align="center"><b>SN</b></td>
+		<td align="center"><b>USER</b></td>
+		<td align="center"><b>CLASS_NAME</b></td>
+		<td align="center"><b>ENDPOINT</b></td>
+		<td align="center"><b>CONFIG_MODE</b></td>
+		<td align="center"><b>SIP_SERVER</b></td>
+		<td align="center"><b>SIP_ID</b></td>
+		<td align="center"><b>H323_GK</b></td>
+		<td align="center"><b>H323_ID</b></td>
+		<td align="center"><b>RELAY_SERVER</b></td>
+		<td align="center"><strong>UPDATE_TIME</strong></td>
+		<td align=center><b>OPERATION</b></td>
+	</tr>
+<!--
+EOT;
+} else { //if($cknum!=1)
+$oldcknum=$cknum-1;
+$conet=showtiaopage($totlepage, $oldcknum);
+print <<<EOT
+
+-->
+	</table>
+<table wIdth="100%"  border="0" cellspacing="0" cellpadding="0">
+
+
+					<tr  class="tdbg">
+						<td height="30" ><input name="chkAll$oldcknum" type="checkbox" Id="chkAll$oldcknum" onclick="CheckPage(this.form, $oldcknum, $perpage)" value="checkbox"> 
+					  选择当前页面</td>
+					</tr>
+					<tr class="tdbg"><td align=center>共 $count 编 
+<!--
+EOT;
+if($cknum==2){
+print <<<EOT
+-->
+						<span >首页</span> | 
+						<span >上一页</span> |
+<!--
+EOT;
+}
+else { //if($cknum!=2)
+print <<<EOT
+-->
+						<span class="spanpage" onclick= "showdiv('CK_div', 1, $totlepage)">首页</span> | 
+						<span class="spanpage" onclick= "showdiv('CK_div', $oldcknum-1, $totlepage)">上一页</span> |
+<!--
+EOT;
+} //if($cknum!=2)
+print <<<EOT
+--> 
+						<span class="spanpage" onclick= "showdiv('CK_div', $cknum, $totlepage)">下一页</span> | 
+						<span class="spanpage" onclick= "showdiv('CK_div', $totlepage, $totlepage)">尾页</span> 
+						页次：$oldcknum/{$totlepage}页 {$perpage}编/页  转到：{$conet}</td></tr>
+</table>
+	</div>
+	
+	<div id="CK_div$cknum" class="invisible"> 
+	<table wIdth="100%"  border="0" cellspacing="2" cellpadding="2">
+	<tr class=title>
+		<td wIdth="35" align=center height="25"><b>选择</b></td>
+		<td align="center"><b>SN</b></td>
+		<td align="center"><b>USER</b></td>
+		<td align="center"><b>CLASS_NAME</b></td>
+		<td align="center"><b>ENDPOINT_TYPE</b></td>
+		<td align="center"><b>CONFIG_MODE</b></td>
+		<td align="center"><b>SIP_SERVER</b></td>
+		<td align="center"><b>SIP_ID</b></td>
+		<td align="center"><b>H323_GK</b></td>
+		<td align="center"><b>H323_ID</b></td>
+		<td align="center"><b>RELAY_SERVER</b></td>
+		<td  align="center"><strong>UPDATE_TIME</strong></td>
+		<td  align=center><b>OPERATION</b></td>
+	</tr>
+<!--
+EOT;
+}//if($cknum!=0)
+} //if($j%$perpage==0){
+print <<<EOT
+-->
+
+	<tr class="even" onmouseover="mouseover(this)" onmouseout="mouseout(this)" onmousedown="trclick(this, $cknum)" >
+		<td align=center wIdth="35" ><input name="chanpinid{$j}" type='checkbox' onClick="return false;" Id="chanpinid{$j}" value={$rs['chanpinid']}></td>
+		<input type="hIdden" name="classid{$j}" value={$rs['classid']}>
+		<td nowrap=true align="center">{$rs["SN"]}</td>
+		<td nowrap=true align="center">{$rs["USER"]}</td>
+		<td nowrap=true align="center">{$rs["classname"]}</td>
+		<td nowrap=true align="center">{$rs["ENDPOINT_TYPE"]}</td>
+		<td nowrap=true align="center">{$rs["CONFIG_MODE"]}</td>
+		<td nowrap=true align="center" title="{$rs['sipservertitle']}">{$rs["sipserver"]}</td>
+		<td nowrap=true align="center" title="{$rs['sipidtitle']}">{$rs["sipid"]}</td>
+		<td nowrap=true align="center" title="{$rs['h323gktitle']}">{$rs["h323gk"]}</td>
+		<td nowrap=true align="center" title="{$rs['h323idtitle']}">{$rs["h323id"]}</td>
+		<td nowrap=true align="center" title="{$rs['relayservertitle']}">{$rs["relayserver"]}</td>
+		<td nowrap=true align="center" >{$rs[updatetime]}</td>
+		<td nowrap=true align=center ><a href="{$URL}?job=product&action=modify&chanpinid={$rs['chanpinid']}&classid={$rs['classid']}">修改</a> | 
+						<a href="{$URL}?job=product&chanpinid={$rs['chanpinid']}&classid={$rs['classid']}&action=del" onClick="return confirm('确认删除?')">删除</a></td>
+    </tr>
+
+<!--
+EOT;
+$j++;
+}  //foreach($rsdb as $rs)
+print <<<EOT
+--> 
+
+</table>
+<table wIdth="100%"  border="0" cellspacing="0" cellpadding="0">
+
+
+					<tr  class="tdbg">
+						<td height="30" ><input name="chkAll$cknum" type="checkbox" Id="chkAll$cknum" onclick="CheckPage(this.form, $cknum, $perpage)" value="checkbox"> 
+					  选择当前页面</td>
+					</tr>
+					<tr class="tdbg"><td align=center>共 $count 编
+						<span class="spanpage" onclick= "showdiv('CK_div', 1, $totlepage)">首页</span> | 
+						<span class="spanpage" onclick= "showdiv('CK_div', $totlepage-1, $totlepage)">上一页</span> | 
+						<span >下一页</span> | 
+						<span >尾页</span> 
+						页次：{$totlepage}/{$totlepage}页 {$perpage}编/页  
+						转到：
+<!--
+EOT;
+$conet=showtiaopage($totlepage, $totlepage);
+print <<<EOT
+-->
+{$conet} 
+</td></tr>
+</table>
+	</div>
+<table wIdth="100%"  border="0" cellspacing="0" cellpadding="0">
+
+
+					<tr  class="tdbg">
+						<td height="30" ><input name="chkAll" type="checkbox" Id="chkAll" onclick="CheckAll(this.form, $j, $perpage)" value="checkbox"> 
+					  选择所有页面</td>
+					</tr>
+					<tr  class="tdbg">
+						<td  align=center>{$fenye}</td>
+					</tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+	    <tr>
+         <td colspan="2" class="title2" height="25" >批量修改设置</td>
+        </tr>
+<tr>
+<!--
+EOT;
+if(!empty($classid)){
+print <<<EOT
+--> 
+<table wIdth="100%"  border="0" cellspacing="0" cellpadding="10">
+					<tr class="tdbg">
+						<td class="title1"><input type="checkbox" name="chchanged" id="chchanged" onclick="Checkshow('chchanged', 1)"><span>终端转化</span></td><td><td><td></tr>
+						
+					
+</table>
+<div id="chchanged1" class="invisible">
+<table wIdth="100%"  border="0" cellspacing="0" cellpadding="10">
+					<tr class="tdbg">
+						<td class="title1">选择转化摸板<select name="mubanid" >  
+<!--
+EOT;
+foreach($rsmuban as $rs) {
+if($rs['id']==$mubanid) {
+print <<<EOT
+-->
+	<option value="{$rs['id']}" selected>{$rs['muban']}</option>
+
+<!--
+EOT;
+}
+else {
+print <<<EOT
+-->
+	<option value="{$rs['id']}" >{$rs['muban']}</option>
+<!--
+EOT;
+}
+}//foreach($rsmuban as $rs) {
+print <<<EOT
+-->
+</select></td><td></td>
+					</tr>
+</table>
+</div>
+<!--
+EOT;
+}
+print <<<EOT
+--> 
+<div id="chchanged2">
+<table wIdth="100%"  border="0" cellspacing="0" cellpadding="10">
+<!--
+EOT;
+if(($show=="h323gk" || $show=="h323id") && $type!="simbank"){
+print <<<EOT
+-->
+					<tr class="tdbg">
+						<td class="title1">H323 GK:</td>
+						<td class="text"><input name="h323gk" tpye="text" id="number"  class="edit" maxlength="80" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+						</td><td><td>
+					</tr>
+<!--
+EOT;
+}
+if(($show=="sipserver" || $show=="sipid") && $type!="simbank"){
+print <<<EOT
+-->
+					<tr class="tdbg">
+						<td class="title1">SIP 注册服务器:</td><td class="text"><input name="sipserver"  class="edit" tpye=text id="number"  maxlength="80" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)"></td>
+						<td class="title1">SIP 代理服务器:</td><td class="text"><input name="sipproxy" class="edit" tpye=text id="sipproxy"  maxlength="80" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)"></td>
+					</tr>
+<!--
+EOT;
+}
+if($show=="relayserver" && $type!="simbank"){
+print <<<EOT
+-->
+					<tr class="tdbg">
+						<td class="title1">中继服务器:</td><td class="text"><input class="edit"  name="relayserver" tpye=text id="number"  maxlength="80" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)"></td>
+						<td class="title1">中继端口:</td><td class="text"><input  name="relayport" class="edit" tpye=text id="relayport"  maxlength="80"></td>
+						<input type="hIdden" name="rserver" value="$showvalue">
+					</tr>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+					<tr class="tdbg">
+						<td class="title1">自动配置服务器</td><td class="text"><input class="edit"  name="auto_cfg_server" tpye=text id="relayport"  maxlength="80" > </td>
+						<td class="title1">远程控制服务器:</td><td class="text"><input class="edit" name="remote_control_server" tpye=text id="relayport"  maxlength="80" onBlur="onblur_validate(this, hostport)" onFocus="onfocus_validate(this, hostport)"></td>
+					</tr>
+					
+					
+
+
+
+<!--
+EOT;
+
+if($type=="fxs" || $type=="htm" || $type=="vp102" || $type=="vp202"){
+print <<<EOT
+-->					<tr class="tdbg">
+					<td class="title1">拨号规则:</td><td class="text"><input  name="dial_plan" class="edit" tpye=text id="relayport"  maxlength="80"></td><td></td><td></td>
+<!--
+EOT;
+}
+elseif($type == "simbank" || $type == "all"){}
+else{
+print <<<EOT
+-->					<tr class="tdbg">
+						<td class="title1">拨号规则(VoIP 到 PSTN):</td><td class="text"><input  name="dial_plan_p" class="edit" tpye=text id="relayport"  maxlength="80"></td>
+						<td class="title1">拨号规则(PSTN 到 VoIP):</td><td class="text"><input  name="dial_plan_v" class="edit" tpye=text id="relayport"  maxlength="80">
+						</td>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+					</tr>
+					
+<!--
+EOT;
+if($type=="goip" || $type=="4goip" || $type=="8goip" || $type=="16goip"){
+print <<<EOT
+-->	
+						<tr class="tdbg">
+						<td class="title1">
+                          <input type="checkbox" name="sms_sender" id="sms_sender" value="on" onclick="toggle_checkbox('sms_sender', 'hide')" ><span>短信发送客户端</span>
+                         </td>
+						
+                         <td class="title1" colspan="3" style="text-align:left; padding:0px">
+
+                        <div id="sms_sender_div" class="invisible">
+                          <table border="0" cellpadding="0" cellspacing="0" width="78%" style="text-align:center">
+
+                            <tr>
+                             <td class="title1" style="text-align:left; width:150px; padding-left:10px">&nbsp;&nbsp;短信服务器:&nbsp;&nbsp;&nbsp;
+                             
+                              <input type="text" name="sms_server" id="sms_server"  class="edit" maxlength="80">
+                             </td>
+                           
+
+                            
+                             <td class="title1" style="text-align:left; width:150px; padding-left:20px">&nbsp;&nbsp;服务器端口:&nbsp;&nbsp;&nbsp;
+                              <input type="text" name="sms_port" id="sms_port" class="edit">
+                             </td>
+                            </tr>
+
+                          </table>
+                        </div>
+						</td>
+
+					</tr>
+					
+					<tr class="tdbg">
+						<td class="title1">
+                          <input type="checkbox" name="rmsim_enable" id="rmsim_enable" value="on" onclick="toggle_checkbox('rmsim_enable', 'hide')" ><span>远程SIM</span>
+                         </td>
+						 <td class="title1" colspan="3" style="text-align:left; padding:0">
+						 
+						 <div id="rmsim_enable_div" class="invisible">
+              <table border="0" cellpadding="0" cellspacing="0" width="78%">
+
+                <tr>
+                 <td class="title1" style="text-align:left; width:150px; padding-left:10px">&nbsp;&nbsp;&nbsp;远程服务器:&nbsp;&nbsp;&nbsp;
+                 
+                  <input type="text" name="smb_svr" id="smb_svr" class="edit">
+                 </td>
+				 
+				 <td class="title1" style="text-align:left; width:150px"></td>
+                 <td class="text" style="text-align:left; width:150px">
+                 </td>
+                </tr>             
+
+              </table>
+            </div>
+<!--
+EOT;
+}
+if($type=="simbank"){
+print <<<EOT
+-->
+<tr class="tdbg">
+
+             <td class="title1">SIM Bank 模式</td>
+             <td width="160" class="text" style="text-align:left">
+  <select name="smb_mode" id="smb_mode_select" class="select" onchange="toggle_selected('smb_mode', 'hide')">
+     <option value="cli" >客户端</option>
+	 <option value="sche_local">SIM数据中转模式</option>
+     <option value="svr" >服务器端</option>
+  </select>
+             </td>  
+         
+			 <td colspan="3">           
+                <div id="smb_mode_cli_div" class="">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                    <tr>
+                     <td class="title1" style="width:300px">服务器地址:</td>
+					 <td class="text" style="padding-left:24px">
+                      <input type="text" name="smb_server" id="smb_server"  class="edit">
+                     </td>
+                    </tr>  
+                  </table>
+                </div>
+				
+				<div id="smb_mode_sche_local_div" class="invisible">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                    <tr>
+                     <td class="title1" style="width:300px">服务器地址:</td>
+                     <td class="text" style="padding-left:24px">
+                      <input type="text" name="smb_server2" id="smb_server" class="edit">
+                     </td>
+                    </tr>
+
+                  </table>
+                </div>
+				
+			 
+                <div id="smb_mode_svr_div" class="invisible">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                    <tr>
+                     <td class="title1" style="width:300px">本地端口</td>
+                     <td class="text" style="padding-left:24px">
+                      <input type="text" name="sche_local_port" id="sche_local_port" class="edit">
+                     </td>
+                    </tr>
+					</table>
+					</div>
+				</td>
+			</tr>
+
+<!--
+EOT;
+}
+print <<<EOT
+
+-->
+</table>
+</div>
+</tr></table>
+<h1 align="center" class="tdbg">
+  <td width="100%" height="10"  align=center><input  style="height:30" name="submit" type='submit' value='对所选设备进行修改'></td>
+</h1>
+<input type="hIdden" name="boxs" value="{$j}">
+
+
+
+</form>
+
+  </tr>
+  
+</table>
+
+		  </td>
+		</tr>
+
+  </table>
+</form>
+<script language="JavaScript" type="text/JavaScript">
+function check()
+{
+  if (document.myform.keyword.value=="")
+  {
+    alert("Please input keyword!");
+	document.myform.keyword.focus();
+	return false;
+  }
+}
+</script>
+
+<!--
+EOT;
+}
+print <<<EOT
+
+-->
+
+</body> 
+</html> 
+<!--
+EOT;
+?>
+-->

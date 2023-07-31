@@ -1,0 +1,1014 @@
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+        <tr>
+         <td colspan="2">
+
+         <div id="fxs_calling" class="visable">
+          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+<?php if($values['FXSPORT'] == '1'): ?> 
+            <tr>
+             <td colspan="2" class="title1" height="25" >单服务器模式</td>
+            </tr>
+
+            <tr>
+             <td colspan="2">
+
+             <div id="sip_fxs_single_mode" class="visable">
+              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                <tr>
+                 <td width="120" height="25" class="title1">电话号码</td>
+                 <td width="160" class="text">
+                  <input type="text" name="sip_fxs_phone_number" id="sip_fxs_phone_number" value="<?php print($values['SIP_CONTACT0_DIAL_DIGITS']) ?>" class="edit">
+                 </td>
+                </tr>
+
+                <tr>
+                 <td width="120" height="25" class="title1">显示名字</td>
+                 <td width="160" class="text">
+                  <input type="text" name="sip_fxs_display_name" id="sip_fxs_display_name" value="<?php print($values['SIP_CONTACT0_DISPLAY_NAME']) ?>" class="edit">
+                 </td>
+                </tr>
+
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                <tr>
+                 <td width="120" height="25" class="title1">代理服务器</td>
+                 <td width="160" class="text">
+                  <input type="text" name="sip_fxs_proxy" id="sip_fxs_proxy" value="<?php print($values['SIP_CONTACT0_PROXY']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                 </td>
+                </tr>
+
+<?php endif; ?>
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                <tr>
+                 <td width="120" height="25" class="title1">注册服务器</td>
+                 <td width="160" class="text">
+                  <input type="text" name="sip_fxs_registrar" id="sip_fxs_registrar" value="<?php print($values['SIP_CONTACT0_SERVER']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                 </td>
+                </tr>
+
+<?php endif; ?>
+                <tr>
+                 <td width="120" height="25" class="title1">注册超时</td>
+                 <td width="160" class="text">
+                  <input type="text" name="sip_fxs_register_expired" id="sip_fxs_register_expired" value="<?php print($values['SIP_CONTACT0_REGISTER_EXPIRED']) ?>" class="edit" onblur="onblur_check_integer(this, 60, 36400)" onfocus="onfocus_check_integer(this, 60, 36400)">
+                 </td>
+                </tr>
+
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                <tr>
+                 <td width="120" height="25" class="title1">Outbound Proxy</td>
+                 <td width="160" class="text">
+                  <input type="text" name="sip_fxs_outbound_proxy" id="sip_fxs_outbound_proxy" value="<?php print($values['SIP_CONTACT0_OUTBOUND_PROXY']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                 </td>
+                </tr>
+
+<?php endif; ?>
+                <tr>
+                 <td width="120" height="25" class="title1">归属域</td>
+                 <td width="160" class="text">
+                  <input type="text" name="sip_fxs_home_domain" id="sip_fxs_home_domain" value="<?php print($values['SIP_CONTACT0_HOME_DOMAIN']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                 </td>
+                </tr>
+
+                <tr>
+                 <td width="120" height="25" class="title1">认证ID</td>
+                 <td width="160" class="text">
+                  <input type="text" name="sip_fxs_auth_id" id="sip_fxs_auth_id" value="<?php print($values['SIP_CONTACT0_LOGIN']) ?>" class="edit">
+                 </td>
+                </tr>
+
+                <tr>
+                 <td width="120" height="25" class="title1">认证密码</td>
+                 <td width="160" class="text">
+                  <input type="password" name="sip_fxs_auth_passwd" id="sip_fxs_auth_passwd" value="<?php print($values['SIP_CONTACT0_PASSWD']) ?>" class="edit">
+                 </td>
+                </tr>
+
+                <tr>
+
+                 <td width="120" height="25" class="title1">呼叫转移类型</td>
+                 <td width="160" class="text">
+  <select name="sip_fxs_fwd_type" id="sip_fxs_fwd_type_select" class="select" onchange="toggle_selected('sip_fxs_fwd_type', 'hide')">
+     <option value="0" <?php print($values['SIP_CONTACT0_FORWARD_TYPE']=='0'?'selected':'') ?>>不转移</option>
+     <option value="1" <?php print($values['SIP_CONTACT0_FORWARD_TYPE']=='1'?'selected':'') ?>>无条件转移</option>
+     <option value="2" <?php print($values['SIP_CONTACT0_FORWARD_TYPE']=='2'?'selected':'') ?>>遇忙转移</option>
+     <option value="3" <?php print($values['SIP_CONTACT0_FORWARD_TYPE']=='3'?'selected':'') ?>>无应答转移</option>
+     <option value="4" <?php print($values['SIP_CONTACT0_FORWARD_TYPE']=='4'?'selected':'') ?>>遇忙或无应答转移</option>
+  </select>
+                 </td>
+		
+                </tr>
+
+                <tr>
+                 <td colspan="2">
+
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                  </table>
+                 </td>
+                </tr>
+
+                <tr>
+                 <td width="120" height="25" class="title1">呼叫转移号码</td>
+                 <td width="160" class="text">
+                  <input type="text" name="sip_fxs_fwd_num" id="sip_fxs_fwd_num" value="<?php print($values['SIP_CONTACT0_FORWARD_NUMBER']) ?>" class="edit">
+                 </td>
+                </tr>
+
+                <tr>
+                 <td width="120" height="25" class="title1">
+                 </td>
+                 <td width="160" class="text">
+                  <input type="checkbox" name="sip_fxs_backup_server" id="sip_fxs_backup_server" onclick="toggle_checkbox('sip_fxs_backup_server', 'hide')" <?php print($values['SIP_FXS_USE_BSVR']=='1'?'checked':'') ?>><span>备份服务器</span>
+                 </td>
+                </tr>
+
+                <tr>
+                 <td colspan="2">
+
+                <div id="sip_fxs_backup_server_div" class="<?php print($values['SIP_FXS_USE_BSVR']=='1'?'visable':'invisible') ?>">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                    <tr>
+                     <td width="120" height="25" class="title1">&nbsp;&nbsp;备份代理服务器</td>
+                     <td width="160" class="text">
+                      <input type="text" name="sip_fxs_backup_proxy" id="sip_fxs_backup_proxy" value="<?php print($values['SIP_CONTACT1_PROXY']) ?>" class="edit">
+                     </td>
+                    </tr>
+
+                    <tr>
+                     <td width="120" height="25" class="title1">&nbsp;&nbsp;备份注册服务器</td>
+                     <td width="160" class="text">
+                      <input type="text" name="sip_fxs_backup_registrar" id="sip_fxs_backup_registrar" value="<?php print($values['SIP_CONTACT1_SERVER']) ?>" class="edit">
+                     </td>
+                    </tr>
+
+                    <tr>
+                     <td width="120" height="25" class="title1">&nbsp;&nbsp;备份归属域</td>
+                     <td width="160" class="text">
+                      <input type="text" name="sip_fxs_backup_home_domain" id="sip_fxs_backup_home_domain" value="<?php print($values['SIP_CONTACT1_HOME_DOMAIN']) ?>" class="edit">
+                     </td>
+                    </tr>
+
+                  </table>
+                </div>
+                 </td>
+                </tr>
+
+              </table>
+             </div>
+             </td>
+            </tr>
+
+<?php endif; ?>
+<?php if($values['FXSPORT'] > 1): ?>
+            <tr>
+
+             <td width="120" height="25" class="title1">配置模式</td>
+             <td width="160" class="text">
+  <select name="sip_fxs_config_mode" id="sip_fxs_config_mode_select" class="select" onchange="toggle_selected('sip_fxs_config_mode', 'hide')">
+<?php if($values['FXSPORT'] > 1): ?>
+     <option value="SINGLE_MODE" <?php print($values['SIP_FXS_CONFIG_MODE']=='SINGLE_MODE'?'selected':'') ?>>单服务器模式</option>
+<?php endif; ?>
+<?php if($values['FXSPORT'] > 1): ?>
+     <option value="LINE_MODE" <?php print($values['SIP_FXS_CONFIG_MODE']=='LINE_MODE'?'selected':'') ?>>按线路配置</option>
+<?php endif; ?>
+  </select>
+             </td>
+		
+            </tr>
+
+            <tr>
+             <td colspan="2">
+
+              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+<?php if($values['FXSPORT'] > 1): ?>
+                <tr>
+                 <td colspan="2">
+                   <div class="invisible"><br><span class="stitle">配置模式 - 单服务器模式</span></div>
+
+                <div id="sip_fxs_config_mode_SINGLE_MODE_div" class="<?php print($values['SIP_FXS_CONFIG_MODE']=='SINGLE_MODE'?'visable':'invisible') ?>">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                    <tr>
+                     <td width="120" height="25" class="title1">电话号码</td>
+                     <td width="160" class="text">
+                      <input type="text" name="sip_fxs_phone_number" id="sip_fxs_phone_number" value="<?php print($values['SIP_CONTACT0_DIAL_DIGITS']) ?>" class="edit">
+                     </td>
+                    </tr>
+
+                    <tr>
+                     <td width="120" height="25" class="title1">显示名字</td>
+                     <td width="160" class="text">
+                      <input type="text" name="sip_fxs_display_name" id="sip_fxs_display_name" value="<?php print($values['SIP_CONTACT0_DISPLAY_NAME']) ?>" class="edit">
+                     </td>
+                    </tr>
+
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                    <tr>
+                     <td width="120" height="25" class="title1">代理服务器</td>
+                     <td width="160" class="text">
+                      <input type="text" name="sip_fxs_proxy" id="sip_fxs_proxy" value="<?php print($values['SIP_CONTACT0_PROXY']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                     </td>
+                    </tr>
+
+<?php endif; ?>
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                    <tr>
+                     <td width="120" height="25" class="title1">注册服务器</td>
+                     <td width="160" class="text">
+                      <input type="text" name="sip_fxs_registrar" id="sip_fxs_registrar" value="<?php print($values['SIP_CONTACT0_SERVER']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                     </td>
+                    </tr>
+
+<?php endif; ?>
+                    <tr>
+                     <td width="120" height="25" class="title1">注册超时</td>
+                     <td width="160" class="text">
+                      <input type="text" name="sip_fxs_register_expired" id="sip_fxs_register_expired" value="<?php print($values['SIP_CONTACT0_REGISTER_EXPIRED']) ?>" class="edit" onblur="onblur_check_integer(this, 60, 36400)" onfocus="onfocus_check_integer(this, 60, 36400)">
+                     </td>
+                    </tr>
+
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                    <tr>
+                     <td width="120" height="25" class="title1">Outbound Proxy</td>
+                     <td width="160" class="text">
+                      <input type="text" name="sip_fxs_outbound_proxy" id="sip_fxs_outbound_proxy" value="<?php print($values['SIP_CONTACT0_OUTBOUND_PROXY']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                     </td>
+                    </tr>
+
+<?php endif; ?>
+                    <tr>
+                     <td width="120" height="25" class="title1">归属域</td>
+                     <td width="160" class="text">
+                      <input type="text" name="sip_fxs_home_domain" id="sip_fxs_home_domain" value="<?php print($values['SIP_CONTACT0_HOME_DOMAIN']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                     </td>
+                    </tr>
+
+                    <tr>
+                     <td width="120" height="25" class="title1">认证ID</td>
+                     <td width="160" class="text">
+                      <input type="text" name="sip_fxs_auth_id" id="sip_fxs_auth_id" value="<?php print($values['SIP_CONTACT0_LOGIN']) ?>" class="edit">
+                     </td>
+                    </tr>
+
+                    <tr>
+                     <td width="120" height="25" class="title1">认证密码</td>
+                     <td width="160" class="text">
+                      <input type="password" name="sip_fxs_auth_passwd" id="sip_fxs_auth_passwd" value="<?php print($values['SIP_CONTACT0_PASSWD']) ?>" class="edit">
+                     </td>
+                    </tr>
+
+                    <tr>
+
+                     <td width="120" height="25" class="title1">呼叫转移类型</td>
+                     <td width="160" class="text">
+  <select name="sip_fxs_fwd_type" id="sip_fxs_fwd_type_select" class="select" onchange="toggle_selected('sip_fxs_fwd_type', 'hide')">
+     <option value="0" <?php print($values['SIP_CONTACT0_FORWARD_TYPE']=='0'?'selected':'') ?>>不转移</option>
+     <option value="1" <?php print($values['SIP_CONTACT0_FORWARD_TYPE']=='1'?'selected':'') ?>>无条件转移</option>
+     <option value="2" <?php print($values['SIP_CONTACT0_FORWARD_TYPE']=='2'?'selected':'') ?>>遇忙转移</option>
+     <option value="3" <?php print($values['SIP_CONTACT0_FORWARD_TYPE']=='3'?'selected':'') ?>>无应答转移</option>
+     <option value="4" <?php print($values['SIP_CONTACT0_FORWARD_TYPE']=='4'?'selected':'') ?>>遇忙或无应答转移</option>
+  </select>
+                     </td>
+		
+                    </tr>
+
+                    <tr>
+                     <td colspan="2">
+
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                      </table>
+                     </td>
+                    </tr>
+
+                    <tr>
+                     <td width="120" height="25" class="title1">呼叫转移号码</td>
+                     <td width="160" class="text">
+                      <input type="text" name="sip_fxs_fwd_num" id="sip_fxs_fwd_num" value="<?php print($values['SIP_CONTACT0_FORWARD_NUMBER']) ?>" class="edit">
+                     </td>
+                    </tr>
+
+                    <tr>
+                     <td width="120" height="25" class="title1">
+                     </td>
+                     <td width="160" class="text">
+                      <input type="checkbox" name="sip_fxs_backup_server" id="sip_fxs_backup_server" onclick="toggle_checkbox('sip_fxs_backup_server', 'hide')" <?php print($values['SIP_FXS_USE_BSVR']=='1'?'checked':'') ?>><span>备份服务器</span>
+                     </td>
+                    </tr>
+
+                    <tr>
+                     <td colspan="2">
+
+                    <div id="sip_fxs_backup_server_div" class="<?php print($values['SIP_FXS_USE_BSVR']=='1'?'visable':'invisible') ?>">
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                        <tr>
+                         <td width="120" height="25" class="title1">&nbsp;&nbsp;备份代理服务器</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_fxs_backup_proxy" id="sip_fxs_backup_proxy" value="<?php print($values['SIP_CONTACT1_PROXY']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">&nbsp;&nbsp;备份注册服务器</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_fxs_backup_registrar" id="sip_fxs_backup_registrar" value="<?php print($values['SIP_CONTACT1_SERVER']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">&nbsp;&nbsp;备份归属域</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_fxs_backup_home_domain" id="sip_fxs_backup_home_domain" value="<?php print($values['SIP_CONTACT1_HOME_DOMAIN']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+                      </table>
+                    </div>
+                     </td>
+                    </tr>
+
+                  </table>
+                </div>
+
+<?php endif; ?>
+<?php if($values['FXSPORT'] > 1): ?>                   <div class="invisible"><br><span class="stitle">配置模式 - 按线路配置</span></div>
+
+                <div id="sip_fxs_config_mode_LINE_MODE_div" class="<?php print($values['SIP_FXS_CONFIG_MODE']=='LINE_MODE'?'visable':'invisible') ?>">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                    <tr>
+                     <td class="text" width="280">
+                      <input type=radio name="sip_fxs_line_mode_tab" value="sip_fxs_line1_conf" onclick="toggle2('sip_fxs_line_mode_tab', 4, 0)" checked>线路1&nbsp;
+<?php if($values['FXSPORT'] >= 2): ?>
+                      <input type=radio name="sip_fxs_line_mode_tab" value="sip_fxs_line2_conf" onclick="toggle2('sip_fxs_line_mode_tab', 4, 1)">线路2&nbsp;
+<?php endif; ?>
+<?php if($values['FXSPORT'] >= 3): ?>
+                      <input type=radio name="sip_fxs_line_mode_tab" value="sip_fxs_line3_conf" onclick="toggle2('sip_fxs_line_mode_tab', 4, 2)">线路3&nbsp;
+<?php endif; ?>
+<?php if($values['FXSPORT'] >= 4): ?>
+                      <input type=radio name="sip_fxs_line_mode_tab" value="sip_fxs_line4_conf" onclick="toggle2('sip_fxs_line_mode_tab', 4, 3)">线路4&nbsp;
+<?php endif; ?>
+
+                     </td>
+                    </tr>
+                    <tr>
+                     <td>
+                      <div id="sip_fxs_line_mode_tab_0_div" class="visable">
+
+                     <div id="sip_fxs_line1_conf" class="visable">
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                        <tr>
+                         <td width="120" height="25" class="title1">电话号码</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_fxs_line1_number" id="sip_fxs_line1_number" value="<?php print($values['SIP_CONTACT2_DIAL_DIGITS']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">显示名字</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_fxs_line1_display_name" id="sip_fxs_line1_display_name" value="<?php print($values['SIP_CONTACT2_DISPLAY_NAME']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                        <tr>
+                         <td width="120" height="25" class="title1">代理服务器</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_fxs_line1_proxy" id="sip_fxs_line1_proxy" value="<?php print($values['SIP_CONTACT2_PROXY']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                         </td>
+                        </tr>
+
+<?php endif; ?>
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                        <tr>
+                         <td width="120" height="25" class="title1">注册服务器</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_fxs_line1_registrar" id="sip_fxs_line1_registrar" value="<?php print($values['SIP_CONTACT2_SERVER']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                         </td>
+                        </tr>
+
+<?php endif; ?>
+                        <tr>
+                         <td width="120" height="25" class="title1">注册超时</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_fxs_line1_register_expired" id="sip_fxs_line1_register_expired" value="<?php print($values['SIP_CONTACT2_REGISTER_EXPIRED']) ?>" class="edit" onblur="onblur_check_integer(this, 60, 36400)" onfocus="onfocus_check_integer(this, 60, 36400)">
+                         </td>
+                        </tr>
+
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                        <tr>
+                         <td width="120" height="25" class="title1">Outbound Proxy</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_fxs_line1_outbound_proxy" id="sip_fxs_line1_outbound_proxy" value="<?php print($values['SIP_CONTACT2_OUTBOUND_PROXY']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                         </td>
+                        </tr>
+
+<?php endif; ?>
+                        <tr>
+                         <td width="120" height="25" class="title1">归属域</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_fxs_line1_home_domain" id="sip_fxs_line1_home_domain" value="<?php print($values['SIP_CONTACT2_HOME_DOMAIN']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">认证ID</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_fxs_line1_auth_id" id="sip_fxs_line1_auth_id" value="<?php print($values['SIP_CONTACT2_LOGIN']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">认证密码</td>
+                         <td width="160" class="text">
+                          <input type="password" name="sip_fxs_line1_auth_passwd" id="sip_fxs_line1_auth_passwd" value="<?php print($values['SIP_CONTACT2_PASSWD']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+                        <tr>
+
+                         <td width="120" height="25" class="title1">呼叫转移类型</td>
+                         <td width="160" class="text">
+  <select name="sip_fxs_line1_fwd_type" id="sip_fxs_line1_fwd_type_select" class="select" onchange="toggle_selected('sip_fxs_line1_fwd_type', 'hide')">
+     <option value="0" <?php print($values['SIP_CONTACT2_FORWARD_TYPE']=='0'?'selected':'') ?>>不转移</option>
+     <option value="1" <?php print($values['SIP_CONTACT2_FORWARD_TYPE']=='1'?'selected':'') ?>>无条件转移</option>
+     <option value="2" <?php print($values['SIP_CONTACT2_FORWARD_TYPE']=='2'?'selected':'') ?>>遇忙转移</option>
+     <option value="3" <?php print($values['SIP_CONTACT2_FORWARD_TYPE']=='3'?'selected':'') ?>>无应答转移</option>
+     <option value="4" <?php print($values['SIP_CONTACT2_FORWARD_TYPE']=='4'?'selected':'') ?>>遇忙或无应答转移</option>
+  </select>
+                         </td>
+		
+                        </tr>
+
+                        <tr>
+                         <td colspan="2">
+
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                          </table>
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">呼叫转移号码</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_fxs_line1_fwd_num" id="sip_fxs_line1_fwd_num" value="<?php print($values['SIP_CONTACT2_FORWARD_NUMBER']) ?>" class="edit">
+                         </td>
+                        </tr>
+                    <tr>
+                     <td width="120" height="25" class="title1">拨号规则</td>
+                     <td width="160" class="text">
+                      <input type="text" name="fxs1_dial_plan" id="fxs1_dial_plan" value="<?php print($values['S1_DIGIT_MAP']) ?>" class="edit">
+                     </td>
+                    </tr>
+					
+                        <tr>
+                         <td width="120" height="25" class="title1">
+                         </td>
+                         <td width="160" class="text">
+                          <input type="checkbox" name="sip_fxs_line1_backup_server" id="sip_fxs_line1_backup_server" onclick="toggle_checkbox('sip_fxs_line1_backup_server', 'hide')" <?php print($values['SIP_FXS0_USE_BSVR']=='1'?'checked':'') ?>><span>备份服务器</span>
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td colspan="2">
+
+                        <div id="sip_fxs_line1_backup_server_div" class="<?php print($values['SIP_FXS0_USE_BSVR']=='1'?'visable':'invisible') ?>">
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                            <tr>
+                             <td width="120" height="25" class="title1">&nbsp;&nbsp;备份代理服务器</td>
+                             <td width="160" class="text">
+                              <input type="text" name="sip_fxs_line1_backup_proxy" id="sip_fxs_line1_backup_proxy" value="<?php print($values['SIP_CONTACT3_PROXY']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                             </td>
+                            </tr>
+
+<?php endif; ?>
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                            <tr>
+                             <td width="120" height="25" class="title1">&nbsp;&nbsp;备份注册服务器</td>
+                             <td width="160" class="text">
+                              <input type="text" name="sip_fxs_line1_backup_registrar" id="sip_fxs_line1_backup_registrar" value="<?php print($values['SIP_CONTACT3_SERVER']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                             </td>
+                            </tr>
+
+<?php endif; ?>
+                            <tr>
+                             <td width="120" height="25" class="title1">&nbsp;&nbsp;备份归属域</td>
+                             <td width="160" class="text">
+                              <input type="text" name="sip_fxs_line1_backup_home_domain" id="sip_fxs_line1_backup_home_domain" value="<?php print($values['SIP_CONTACT3_HOME_DOMAIN']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                             </td>
+                            </tr>
+
+                          </table>
+                        </div>
+                         </td>
+                        </tr>
+
+                      </table>
+                     </div>
+                      </div>
+                      <div id="sip_fxs_line_mode_tab_1_div" class="invisible">
+
+                     <div id="sip_fxs_line2_conf" class="visable">
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                        <tr>
+                         <td width="120" height="25" class="title1">电话号码</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_fxs_line2_number" id="sip_fxs_line2_number" value="<?php print($values['SIP_CONTACT4_DIAL_DIGITS']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">显示名字</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_fxs_line2_display_name" id="sip_fxs_line2_display_name" value="<?php print($values['SIP_CONTACT4_DISPLAY_NAME']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                        <tr>
+                         <td width="120" height="25" class="title1">代理服务器</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_fxs_line2_proxy" id="sip_fxs_line2_proxy" value="<?php print($values['SIP_CONTACT4_PROXY']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                         </td>
+                        </tr>
+
+<?php endif; ?>
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                        <tr>
+                         <td width="120" height="25" class="title1">注册服务器</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_fxs_line2_registrar" id="sip_fxs_line2_registrar" value="<?php print($values['SIP_CONTACT4_SERVER']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                         </td>
+                        </tr>
+
+<?php endif; ?>
+                        <tr>
+                         <td width="120" height="25" class="title1">注册超时</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_fxs_line2_register_expired" id="sip_fxs_line2_register_expired" value="<?php print($values['SIP_CONTACT4_REGISTER_EXPIRED']) ?>" class="edit" onblur="onblur_check_integer(this, 60, 36400)" onfocus="onfocus_check_integer(this, 60, 36400)">
+                         </td>
+                        </tr>
+
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                        <tr>
+                         <td width="120" height="25" class="title1">Outbound Proxy</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_fxs_line2_outbound_proxy" id="sip_fxs_line2_outbound_proxy" value="<?php print($values['SIP_CONTACT4_OUTBOUND_PROXY']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                         </td>
+                        </tr>
+
+<?php endif; ?>
+                        <tr>
+                         <td width="120" height="25" class="title1">归属域</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_fxs_line2_home_domain" id="sip_fxs_line2_home_domain" value="<?php print($values['SIP_CONTACT4_HOME_DOMAIN']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">认证ID</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_fxs_line2_auth_id" id="sip_fxs_line2_auth_id" value="<?php print($values['SIP_CONTACT4_LOGIN']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">认证密码</td>
+                         <td width="160" class="text">
+                          <input type="password" name="sip_fxs_line2_auth_passwd" id="sip_fxs_line2_auth_passwd" value="<?php print($values['SIP_CONTACT4_PASSWD']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+                        <tr>
+
+                         <td width="120" height="25" class="title1">呼叫转移类型</td>
+                         <td width="160" class="text">
+  <select name="sip_fxs_line2_fwd_type" id="sip_fxs_line2_fwd_type_select" class="select" onchange="toggle_selected('sip_fxs_line2_fwd_type', 'hide')">
+     <option value="0" <?php print($values['SIP_CONTACT4_FORWARD_TYPE']=='0'?'selected':'') ?>>不转移</option>
+     <option value="1" <?php print($values['SIP_CONTACT4_FORWARD_TYPE']=='1'?'selected':'') ?>>无条件转移</option>
+     <option value="2" <?php print($values['SIP_CONTACT4_FORWARD_TYPE']=='2'?'selected':'') ?>>遇忙转移</option>
+     <option value="3" <?php print($values['SIP_CONTACT4_FORWARD_TYPE']=='3'?'selected':'') ?>>无应答转移</option>
+     <option value="4" <?php print($values['SIP_CONTACT4_FORWARD_TYPE']=='4'?'selected':'') ?>>遇忙或无应答转移</option>
+  </select>
+                         </td>
+		
+                        </tr>
+
+                        <tr>
+                         <td colspan="2">
+
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                          </table>
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">呼叫转移号码</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_fxs_line2_fwd_num" id="sip_fxs_line2_fwd_num" value="<?php print($values['SIP_CONTACT4_FORWARD_NUMBER']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+                    <tr>
+                     <td width="120" height="25" class="title1">拨号规则</td>
+                     <td width="160" class="text">
+                      <input type="text" name="fxs2_dial_plan" id="fxs2_dial_plan" value="<?php print($values['S2_DIGIT_MAP']) ?>" class="edit">
+                     </td>
+                    </tr>
+					
+                        <tr>
+                         <td width="120" height="25" class="title1">
+                         </td>
+                         <td width="160" class="text">
+                          <input type="checkbox" name="sip_fxs_line2_backup_server" id="sip_fxs_line2_backup_server" onclick="toggle_checkbox('sip_fxs_line2_backup_server', 'hide')" <?php print($values['SIP_FXS1_USE_BSVR']=='1'?'checked':'') ?>><span>备份服务器</span>
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td colspan="2">
+
+                        <div id="sip_fxs_line2_backup_server_div" class="<?php print($values['SIP_FXS1_USE_BSVR']=='1'?'visable':'invisible') ?>">
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                            <tr>
+                             <td width="120" height="25" class="title1">&nbsp;&nbsp;备份代理服务器</td>
+                             <td width="160" class="text">
+                              <input type="text" name="sip_fxs_line2_backup_proxy" id="sip_fxs_line2_backup_proxy" value="<?php print($values['SIP_CONTACT5_PROXY']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                             </td>
+                            </tr>
+
+<?php endif; ?>
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                            <tr>
+                             <td width="120" height="25" class="title1">&nbsp;&nbsp;备份注册服务器</td>
+                             <td width="160" class="text">
+                              <input type="text" name="sip_fxs_line2_backup_registrar" id="sip_fxs_line2_backup_registrar" value="<?php print($values['SIP_CONTACT5_SERVER']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                             </td>
+                            </tr>
+
+<?php endif; ?>
+                            <tr>
+                             <td width="120" height="25" class="title1">&nbsp;&nbsp;备份归属域</td>
+                             <td width="160" class="text">
+                              <input type="text" name="sip_fxs_line2_backup_home_domain" id="sip_fxs_line2_backup_home_domain" value="<?php print($values['SIP_CONTACT5_HOME_DOMAIN']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                             </td>
+                            </tr>
+
+                          </table>
+                        </div>
+                         </td>
+                        </tr>
+
+                      </table>
+                     </div>
+                      </div>
+                      <div id="sip_fxs_line_mode_tab_2_div" class="invisible">
+
+                     <div id="sip_fxs_line3_conf" class="visable">
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                        <tr>
+                         <td width="120" height="25" class="title1">电话号码</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_fxs_line3_number" id="sip_fxs_line3_number" value="<?php print($values['SIP_CONTACT6_DIAL_DIGITS']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">显示名字</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_fxs_line3_display_name" id="sip_fxs_line3_display_name" value="<?php print($values['SIP_CONTACT6_DISPLAY_NAME']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                        <tr>
+                         <td width="120" height="25" class="title1">代理服务器</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_fxs_line3_proxy" id="sip_fxs_line3_proxy" value="<?php print($values['SIP_CONTACT6_PROXY']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                         </td>
+                        </tr>
+
+<?php endif; ?>
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                        <tr>
+                         <td width="120" height="25" class="title1">注册服务器</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_fxs_line3_registrar" id="sip_fxs_line3_registrar" value="<?php print($values['SIP_CONTACT6_SERVER']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                         </td>
+                        </tr>
+
+<?php endif; ?>
+                        <tr>
+                         <td width="120" height="25" class="title1">注册超时</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_fxs_line3_register_expired" id="sip_fxs_line3_register_expired" value="<?php print($values['SIP_CONTACT6_REGISTER_EXPIRED']) ?>" class="edit" onblur="onblur_check_integer(this, 60, 36400)" onfocus="onfocus_check_integer(this, 60, 36400)">
+                         </td>
+                        </tr>
+
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                        <tr>
+                         <td width="120" height="25" class="title1">Outbound Proxy</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_fxs_line3_outbound_proxy" id="sip_fxs_line3_outbound_proxy" value="<?php print($values['SIP_CONTACT6_OUTBOUND_PROXY']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                         </td>
+                        </tr>
+
+<?php endif; ?>
+                        <tr>
+                         <td width="120" height="25" class="title1">归属域</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_fxs_line3_home_domain" id="sip_fxs_line3_home_domain" value="<?php print($values['SIP_CONTACT6_HOME_DOMAIN']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">认证ID</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_fxs_line3_auth_id" id="sip_fxs_line3_auth_id" value="<?php print($values['SIP_CONTACT6_LOGIN']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">认证密码</td>
+                         <td width="160" class="text">
+                          <input type="password" name="sip_fxs_line3_auth_passwd" id="sip_fxs_line3_auth_passwd" value="<?php print($values['SIP_CONTACT6_PASSWD']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+                        <tr>
+
+                         <td width="120" height="25" class="title1">呼叫转移类型</td>
+                         <td width="160" class="text">
+  <select name="sip_fxs_line3_fwd_type" id="sip_fxs_line3_fwd_type_select" class="select" onchange="toggle_selected('sip_fxs_line3_fwd_type', 'hide')">
+     <option value="0" <?php print($values['SIP_CONTACT6_FORWARD_TYPE']=='0'?'selected':'') ?>>不转移</option>
+     <option value="1" <?php print($values['SIP_CONTACT6_FORWARD_TYPE']=='1'?'selected':'') ?>>无条件转移</option>
+     <option value="2" <?php print($values['SIP_CONTACT6_FORWARD_TYPE']=='2'?'selected':'') ?>>遇忙转移</option>
+     <option value="3" <?php print($values['SIP_CONTACT6_FORWARD_TYPE']=='3'?'selected':'') ?>>无应答转移</option>
+     <option value="4" <?php print($values['SIP_CONTACT6_FORWARD_TYPE']=='4'?'selected':'') ?>>遇忙或无应答转移</option>
+  </select>
+                         </td>
+		
+                        </tr>
+
+                        <tr>
+                         <td colspan="2">
+
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                          </table>
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">呼叫转移号码</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_fxs_line3_fwd_num" id="sip_fxs_line3_fwd_num" value="<?php print($values['SIP_CONTACT6_FORWARD_NUMBER']) ?>" class="edit">
+                         </td>
+                        </tr>
+                    <tr>
+                     <td width="120" height="25" class="title1">拨号规则</td>
+                     <td width="160" class="text">
+                      <input type="text" name="fxs3_dial_plan" id="fxs3_dial_plan" value="<?php print($values['S3_DIGIT_MAP']) ?>" class="edit">
+                     </td>
+                    </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">
+                         </td>
+                         <td width="160" class="text">
+                          <input type="checkbox" name="sip_fxs_line3_backup_server" id="sip_fxs_line3_backup_server" onclick="toggle_checkbox('sip_fxs_line3_backup_server', 'hide')" <?php print($values['SIP_FXS2_USE_BSVR']=='1'?'checked':'') ?>><span>备份服务器</span>
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td colspan="2">
+
+                        <div id="sip_fxs_line3_backup_server_div" class="<?php print($values['SIP_FXS2_USE_BSVR']=='1'?'visable':'invisible') ?>">
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                            <tr>
+                             <td width="120" height="25" class="title1">&nbsp;&nbsp;备份代理服务器</td>
+                             <td width="160" class="text">
+                              <input type="text" name="sip_fxs_line3_backup_proxy" id="sip_fxs_line3_backup_proxy" value="<?php print($values['SIP_CONTACT7_PROXY']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                             </td>
+                            </tr>
+
+<?php endif; ?>
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                            <tr>
+                             <td width="120" height="25" class="title1">&nbsp;&nbsp;备份注册服务器</td>
+                             <td width="160" class="text">
+                              <input type="text" name="sip_fxs_line3_backup_registrar" id="sip_fxs_line3_backup_registrar" value="<?php print($values['SIP_CONTACT7_SERVER']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                             </td>
+                            </tr>
+
+<?php endif; ?>
+                            <tr>
+                             <td width="120" height="25" class="title1">&nbsp;&nbsp;备份归属域</td>
+                             <td width="160" class="text">
+                              <input type="text" name="sip_fxs_line3_backup_home_domain" id="sip_fxs_line3_backup_home_domain" value="<?php print($values['SIP_CONTACT7_HOME_DOMAIN']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                             </td>
+                            </tr>
+
+                          </table>
+                        </div>
+                         </td>
+                        </tr>
+
+                      </table>
+                     </div>
+                      </div>
+                      <div id="sip_fxs_line_mode_tab_3_div" class="invisible">
+
+                     <div id="sip_fxs_line4_conf" class="visable">
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                        <tr>
+                         <td width="120" height="25" class="title1">电话号码</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_fxs_line4_number" id="sip_fxs_line4_number" value="<?php print($values['SIP_CONTACT8_DIAL_DIGITS']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">显示名字</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_fxs_line4_display_name" id="sip_fxs_line4_display_name" value="<?php print($values['SIP_CONTACT8_DISPLAY_NAME']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                        <tr>
+                         <td width="120" height="25" class="title1">代理服务器</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_fxs_line4_proxy" id="sip_fxs_line4_proxy" value="<?php print($values['SIP_CONTACT8_PROXY']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                         </td>
+                        </tr>
+
+<?php endif; ?>
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                        <tr>
+                         <td width="120" height="25" class="title1">注册服务器</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_fxs_line4_registrar" id="sip_fxs_line4_registrar" value="<?php print($values['SIP_CONTACT8_SERVER']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                         </td>
+                        </tr>
+
+<?php endif; ?>
+                        <tr>
+                         <td width="120" height="25" class="title1">注册超时</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_fxs_line4_register_expired" id="sip_fxs_line4_register_expired" value="<?php print($values['SIP_CONTACT8_REGISTER_EXPIRED']) ?>" class="edit" onblur="onblur_check_integer(this, 60, 36400)" onfocus="onfocus_check_integer(this, 60, 36400)">
+                         </td>
+                        </tr>
+
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                        <tr>
+                         <td width="120" height="25" class="title1">Outbound Proxy</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_fxs_line4_outbound_proxy" id="sip_fxs_line4_outbound_proxy" value="<?php print($values['SIP_CONTACT8_OUTBOUND_PROXY']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                         </td>
+                        </tr>
+
+<?php endif; ?>
+                        <tr>
+                         <td width="120" height="25" class="title1">归属域</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_fxs_line4_home_domain" id="sip_fxs_line4_home_domain" value="<?php print($values['SIP_CONTACT8_HOME_DOMAIN']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">认证ID</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_fxs_line4_auth_id" id="sip_fxs_line4_auth_id" value="<?php print($values['SIP_CONTACT8_LOGIN']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">认证密码</td>
+                         <td width="160" class="text">
+                          <input type="password" name="sip_fxs_line4_auth_passwd" id="sip_fxs_line4_auth_passwd" value="<?php print($values['SIP_CONTACT8_PASSWD']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+                        <tr>
+
+                         <td width="120" height="25" class="title1">呼叫转移类型</td>
+                         <td width="160" class="text">
+  <select name="sip_fxs_line4_fwd_type" id="sip_fxs_line4_fwd_type_select" class="select" onchange="toggle_selected('sip_fxs_line4_fwd_type', 'hide')">
+     <option value="0" <?php print($values['SIP_CONTACT8_FORWARD_TYPE']=='0'?'selected':'') ?>>不转移</option>
+     <option value="1" <?php print($values['SIP_CONTACT8_FORWARD_TYPE']=='1'?'selected':'') ?>>无条件转移</option>
+     <option value="2" <?php print($values['SIP_CONTACT8_FORWARD_TYPE']=='2'?'selected':'') ?>>遇忙转移</option>
+     <option value="3" <?php print($values['SIP_CONTACT8_FORWARD_TYPE']=='3'?'selected':'') ?>>无应答转移</option>
+     <option value="4" <?php print($values['SIP_CONTACT8_FORWARD_TYPE']=='4'?'selected':'') ?>>遇忙或无应答转移</option>
+  </select>
+                         </td>
+		
+                        </tr>
+
+                        <tr>
+                         <td colspan="2">
+
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                          </table>
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">呼叫转移号码</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_fxs_line4_fwd_num" id="sip_fxs_line4_fwd_num" value="<?php print($values['SIP_CONTACT8_FORWARD_NUMBER']) ?>" class="edit">
+                         </td>
+                        </tr>
+                    <tr>
+                     <td width="120" height="25" class="title1">拨号规则</td>
+                     <td width="160" class="text">
+                      <input type="text" name="fxs4_dial_plan" id="fxs4_dial_plan" value="<?php print($values['S4_DIGIT_MAP']) ?>" class="edit">
+                     </td>
+                    </tr>
+                        <tr>
+                         <td width="120" height="25" class="title1">
+                         </td>
+                         <td width="160" class="text">
+                          <input type="checkbox" name="sip_fxs_line4_backup_server" id="sip_fxs_line4_backup_server" onclick="toggle_checkbox('sip_fxs_line4_backup_server', 'hide')" <?php print($values['SIP_FXS3_USE_BSVR']=='1'?'checked':'') ?>><span>备份服务器</span>
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td colspan="2">
+
+                        <div id="sip_fxs_line4_backup_server_div" class="<?php print($values['SIP_FXS3_USE_BSVR']=='1'?'visable':'invisible') ?>">
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                            <tr>
+                             <td width="120" height="25" class="title1">&nbsp;&nbsp;备份代理服务器</td>
+                             <td width="160" class="text">
+                              <input type="text" name="sip_fxs_line4_backup_proxy" id="sip_fxs_line4_backup_proxy" value="<?php print($values['SIP_CONTACT9_PROXY']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                             </td>
+                            </tr>
+
+<?php endif; ?>
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                            <tr>
+                             <td width="120" height="25" class="title1">&nbsp;&nbsp;备份注册服务器</td>
+                             <td width="160" class="text">
+                              <input type="text" name="sip_fxs_line4_backup_registrar" id="sip_fxs_line4_backup_registrar" value="<?php print($values['SIP_CONTACT9_SERVER']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                             </td>
+                            </tr>
+
+<?php endif; ?>
+                            <tr>
+                             <td width="120" height="25" class="title1">&nbsp;&nbsp;备份归属域</td>
+                             <td width="160" class="text">
+                              <input type="text" name="sip_fxs_line4_backup_home_domain" id="sip_fxs_line4_backup_home_domain" value="<?php print($values['SIP_CONTACT9_HOME_DOMAIN']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                             </td>
+                            </tr>
+
+                          </table>
+                        </div>
+                         </td>
+                        </tr>
+
+                      </table>
+                     </div>
+                      </div>
+
+                     </td>
+                    </tr>
+
+                  </table>
+                </div>
+                   <div class="invisible"><br></div>
+                 </td>
+                </tr>
+
+<?php endif; ?>
+              </table>
+             </td>
+            </tr>
+
+<?php endif; ?>
+          </table>
+         </div>
+         </td>
+        </tr>
+
+      </table>

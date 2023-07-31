@@ -1,0 +1,244 @@
+<!--
+<?php
+print <<<EOT
+-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Products Management</title>
+<meta name="Author" content="Gaby_chen">
+<link href="Style.css" rel="stylesheet" type="text/css">
+</head>
+<script language="javascript" src="1.js"></script>
+<body leftmargin="2" topmargin="0" marginwIdth="0" marginheight="0">
+<table wIdth="100%" border="0" align="center" cellpadding="2" cellspacing="1" class="border">
+  <tr class="topbg"> 
+    <td height="22" colspan="2" align="center"><strong>终端管理</strong></td>
+  </tr>
+  <tr class="tdbg"> 
+    <td wIdth="70" height="30"><strong>管理导航:</strong></td>
+    <td height="30"><a href="{$URL}?job=product&action=addupload">终端导入</a> | <a href="{$URL}?job=product&action=add&classid={$classid}" target=main>添加终端</a>&nbsp;|&nbsp;<a href="{$URL}?job=productmanage&classid={$classid}" target=main>终端管理</a>&nbsp;|&nbsp;<a href="{$URL}?job=productseachbefore&action=before&classid={$classid}" target=main>终端搜索</a>&nbsp;|&nbsp;<a href="{$URL}?job=productseachbefore&action=modifymore&classid={$classid}" target=main>终端批量修改</a></td>
+  </tr>
+</table>
+<!--
+EOT;
+if($statu=="addupload") {
+print <<<EOT
+-->
+<form name="myform" method="post" action="{$URL}?job=Product_AM&action=SaveAdd" onsubmit="return check()">
+	<table wIdth=98% border=0 cellpadding=2 cellspacing=1 align=center>
+		<tr class="title">
+			<td height="22" align="center" colspan=2><b>Add<strong> Product</strong></b></td>
+		</tr>
+		
+
+		<tr class="tdbg">
+			<td align=right><b>型号名称:</b>(<font color=red>*</font>)</td>
+			<td>
+			<select name="ClassId">
+{$ClassList}
+</select>
+
+			</td>
+		</tr>
+		<tr class="tdbg">
+			<td align=right><b>Product Name:</b>(<font color=red>*</font>)</td>
+			<td >
+				<input name="Title" type=text Id="Title" size="40" maxlength="255">
+			</td>
+		</tr>
+		<tr class="tdbg"> 
+		  <td colspan=2 align=center><input type=submit name=btnadd value="Add" onclick="return checkword();">
+&nbsp;&nbsp;
+<input type="Reset" name="Submit" value="Reset"></td>
+		</tr>
+	</table>
+</form>
+<script language="JavaScript" type="text/JavaScript">
+function check()
+{
+  if (document.form1.ClassName.value=="")
+  {
+    alert("column title shouldn’t be empty!");
+	document.form1.ClassName.focus();
+	return false;
+  }
+}
+</script>
+<!--
+EOT;
+if($statu=="add") {
+print <<<EOT
+-->
+<form name="myform" method="post" action="{$URL}?job=Product_AM&action=SaveAdd" onsubmit="return check()">
+	<table wIdth=98% border=0 cellpadding=2 cellspacing=1 align=center>
+		<tr class="title">
+			<td height="22" align="center" colspan=2><b>Add<strong> Product</strong></b></td>
+		</tr>
+		
+
+		<tr class="tdbg">
+			<td align=right><b>affiliated column:</b>(<font color=red>*</font>)</td>
+			<td>
+			<select name="ClassId">
+{$ClassList}
+</select>
+
+			</td>
+		</tr>
+		<tr class="tdbg">
+			<td align=right><b>Product Name:</b>(<font color=red>*</font>)</td>
+			<td >
+				<input name="Title" type=text Id="Title" size="40" maxlength="255">
+			</td>
+		</tr>
+		<tr class="tdbg"> 
+		  <td colspan=2 align=center><input type=submit name=btnadd value="Add" onclick="return checkword();">
+&nbsp;&nbsp;
+<input type="Reset" name="Submit" value="Reset"></td>
+		</tr>
+	</table>
+</form>
+<script language="JavaScript" type="text/JavaScript">
+function check()
+{
+  if (document.form1.ClassName.value=="")
+  {
+    alert("column title shouldn’t be empty!");
+	document.form1.ClassName.focus();
+	return false;
+  }
+}
+</script>
+<!--
+EOT;
+}
+if($statu=="modify") {
+print <<<EOT
+-->
+<form name="myform" method="post" action="{$URL}?job=Product_AM&action=SaveModify" onsubmit="return check()">
+  <table wIdth="100%" border="0" align="center" cellpadding="2" cellspacing="1" class="border">
+    <tr class="title"> 
+      <td height="22" colspan="2" align="center"><strong>Modify Product</strong></td>
+    </tr>
+		<tr class="tdbg">
+			<td align=right><b>affiliated column:</b>(<font color=red>*</font>)</td>
+			<td>
+			<select name="ClassId">
+			{$ClassList}
+		</select>
+
+			</td>
+		</tr>
+		<tr class="tdbg">
+			<td align=right><b>Product Name:</b>(<font color=red>*</font>)</td>
+			<td >
+				<input name="Title" type=text Id="Title" value="{$rsProduct['Title']}" size="40" maxlength="50">
+			</td>
+		</tr>
+		<tr class="tdbg">
+			<td align=right><b> Features :</b></td>
+			<td >
+				<textarea name="Features" cols="40" rows="6" id="Features">{$rsProduct['Features']}</textarea>
+			</td>
+		</tr>
+		<tr class="tdbg">
+			<td align=right><b> Related product :</b></td>
+			<td >
+				<textarea name="Related" cols="40" rows="6" id="Related">{$rsProduct['Related']}</textarea>
+			</td>
+		</tr>
+		
+		<tr class="tdbg">
+			<td align=right><b> Photo 1 :</b></td>
+			<td >
+			 <input name="UrlLink" type=text Id="UrlLink" value="{$rsProduct['UrlLink']}" size="40" maxlength="255">
+			 <iframe style='top:2px' Id='UploadFiles' src=UpLoad.php frameborder=0 scrolling=no wIdth=350 height=21></iframe>
+			</td>
+		</tr>
+				<tr class="tdbg">
+			<td align=right><b> Photo 2 :</b></td>
+			<td >
+			 <input name="UrlLink1" type=text Id="UrlLink1" value="{$rsProduct['UrlLink1']}" size="40" maxlength="255">
+			 <iframe style='top:2px' Id='UploadFiles' src=UpLoad1.php frameborder=0 scrolling=no wIdth=350 height=21></iframe>
+			</td>
+		</tr>
+				<tr class="tdbg">
+			<td align=right><b> Photo 3 :</b></td>
+			<td >
+			 <input name="UrlLink2" type=text Id="UrlLink2" value="{$rsProduct['UrlLink2']}" size="40" maxlength="255">
+			 <iframe style='top:2px' Id='UploadFiles' src=UpLoad2.php frameborder=0 scrolling=no wIdth=350 height=21></iframe>
+			</td>
+		</tr>
+				<tr class="tdbg">
+			<td align=right><b> PDF :</b></td>
+			<td >
+			 <input name="PDF" type=text Id="PDF" value="{$rsProduct['PDF']}" size="40" maxlength="255">
+			 <iframe style='top:2px' Id='UploadFiles' src=UpLoad.php frameborder=0 scrolling=no wIdth=300 height=21></iframe><strong>Password :
+             <input name="pd" type="checkbox" Id="pd" value="1" {$pd}>
+             </strong>
+			</td>
+		</tr>
+		<tr class="tdbg">
+			<td align=right><b> Description :</b>(<font color=red>*</font>)</td>
+			<td >
+			<textarea name="Description" style="display:none">{$rsProduct['Description']}</textarea> 
+        <iframe ID="eWebEditor1" src="../eWebEditor-u8/ewebeditor.php?id=Description&style=standard" frameborder="0" scrolling="no" width="500" HEIGHT="400"></iframe>
+		  </td>
+		</tr>
+		
+		<tr class="tdbg">
+			<td align=right><b>UpdateTime:</b>(<font color=red>*</font>)</td>
+			<td >
+				<input name="UpdateTime" type=text Id="UpdateTime" value="{$rsProduct['UpdateTime']}"  size="40" maxlength="255">
+			</td>
+		</tr>
+		<tr class="tdbg">
+			<td align=right><b>OrderId:</b>(<font color=red>*</font>)</td>
+			<td >
+				<input name="OrderId" type=text Id="OrderId" value="{$rsProduct['OrderId']}" size="40" maxlength="255">
+			</td>
+		</tr>
+				<tr class="tdbg">
+			<td align=right><b>Hot:</b></td>
+			<td ><input name="Elite" type="checkbox" Id="Elite" value="1" {$Elite}>
+			</td>
+		</tr>
+				<tr class="tdbg">
+			<td align=right><b>New:</b></td>
+			<td >
+              <input name="New" type="checkbox" Id="New" value="1" {$New}>
+</td>
+		</tr>
+		
+    <tr class="tdbg"> 
+      <td height="40" colspan="2" align="center"><input name="Id" type="hIdden" Id="Id" value="{$Id}"> 
+        <input name="Submit" type="submit" value="Modify"style="cursor:hand;"> 
+        &nbsp; <input name="Cancel" type="Reset" Id="Cancel" value="Cancel" onClick="window.location.href='{$URL}?job=Product_List'" style="cursor:hand;"> 
+      </td>
+    </tr>
+  </table>
+</form>
+<script language="JavaScript" type="text/JavaScript">
+function check()
+{
+  if (document.form1.ClassName.value=="")
+  {
+    alert("column title shouldn’t be empty!");
+	document.form1.ClassName.focus();
+	return false;
+  }
+}
+</script> 
+<!--
+EOT;
+}
+print <<<EOT
+-->
+</body> 
+</html> 
+<!--
+EOT;
+?>
+-->

@@ -1,0 +1,1415 @@
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+        <tr>
+         <td colspan="2" class="title2" height="25" >Call Settings</td>
+        </tr>
+
+        <tr>
+         <td colspan="2">
+
+         <div id="call_settings" class="visable">
+          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+            <tr>
+             <td align="center" valign="top">
+          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+            <tr>
+             <td colspan="2">
+
+             <div id="basic_calling" class="visable">
+              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                <tr>
+
+                 <td width="120" height="25" class="title1">SIP Work Mode</td>
+                 <td width="160" class="text">
+  <select name="sip_work_mode" id="sip_work_mode_select" class="select" onchange="toggle_selected('sip_work_mode', 'hide')">
+     <option value="BSVR" <?php print($values['SIP_WORK_MODE']=='BSVR'?'selected':'') ?>>Single Server Mode</option>
+     <option value="MSVR" <?php print($values['SIP_WORK_MODE']=='MSVR'?'selected':'') ?>>Multiple Server Mode</option>
+  </select>
+                 </td>
+		
+                </tr>
+
+                <tr>
+                 <td colspan="2">
+
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                    <tr>
+                     <td colspan="2">
+                       <div class="invisible"><br><span class="stitle">SIP Work Mode - Single Server Mode</span></div>
+
+                    <div id="sip_work_mode_BSVR_div" class="<?php print($values['SIP_WORK_MODE']=='BSVR'?'visable':'invisible') ?>">
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                        <tr>
+                         <td colspan="2">
+
+                         <div id="sip_contact" class="visable">
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                            <tr>
+                             <td class="text" width="280">
+                              <input type=radio name="sip_contact_tab" value="sip_contact1" onclick="toggle2('sip_contact_tab', 4, 0)" checked>Contact1&nbsp;
+                              <input type=radio name="sip_contact_tab" value="sip_contact2" onclick="toggle2('sip_contact_tab', 4, 1)">Contact2&nbsp;
+                              <input type=radio name="sip_contact_tab" value="sip_contact3" onclick="toggle2('sip_contact_tab', 4, 2)">Contact3&nbsp;
+                              <input type=radio name="sip_contact_tab" value="sip_contact4" onclick="toggle2('sip_contact_tab', 4, 3)">Contact4&nbsp;
+
+                             </td>
+                            </tr>
+                            <tr>
+                             <td>
+                              <div id="sip_contact_tab_0_div" class="visable">
+
+                             <div id="sip_contact1" class="visable">
+                              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                                <tr>
+                                 <td width="120" height="25" class="title1">&nbsp;&nbsp;&nbsp;Phone Number 1</td>
+                                 <td width="160" class="text">
+                                  <input type="text" name="sip_contact1_number" id="sip_contact1_number" value="<?php print($values['SIP_CONTACT0_DIAL_DIGITS']) ?>" class="edit">
+                                 </td>
+                                </tr>
+
+                                <tr>
+                                 <td width="120" height="25" class="title1">&nbsp;&nbsp;&nbsp;Authentication ID 1</td>
+                                 <td width="160" class="text">
+                                  <input type="text" name="sip_contact1_auth_id" id="sip_contact1_auth_id" value="<?php print($values['SIP_CONTACT0_LOGIN']) ?>" class="edit">
+                                 </td>
+                                </tr>
+
+                                <tr>
+                                 <td width="120" height="25" class="title1">&nbsp;&nbsp;&nbsp;Password 1</td>
+                                 <td width="160" class="text">
+                                  <input type="password" name="sip_contact1_auth_passwd" id="sip_contact1_auth_passwd" value="<?php print($values['SIP_CONTACT0_PASSWD']) ?>" class="edit">
+                                 </td>
+                                </tr>
+
+                                <tr>
+                                 <td width="120" height="25" class="title1">&nbsp;&nbsp;&nbsp;Display Name 1</td>
+                                 <td width="160" class="text">
+                                  <input type="text" name="sip_contact1_display_name" id="sip_contact1_display_name" value="<?php print($values['SIP_CONTACT0_DISPLAY_NAME']) ?>" class="edit">
+                                 </td>
+                                </tr>
+
+                                <tr>
+
+                                 <td width="120" height="25" class="title1">&nbsp;&nbsp;&nbsp;Ring Type 1</td>
+                                 <td width="160" class="text">
+  <select name="contact1_ring_type" id="contact1_ring_type_select" class="select" onchange="toggle_selected('contact1_ring_type', 'hide')">
+     <option value="0" <?php print($values['C1_RING_TYPE']=='0'?'selected':'') ?>>Type 1</option>
+     <option value="1" <?php print($values['C1_RING_TYPE']=='1'?'selected':'') ?>>Type 2</option>
+     <option value="2" <?php print($values['C1_RING_TYPE']=='2'?'selected':'') ?>>Type 3</option>
+     <option value="3" <?php print($values['C1_RING_TYPE']=='3'?'selected':'') ?>>Type 4</option>
+  </select>
+                                 </td>
+		
+                                </tr>
+
+                                <tr>
+                                 <td colspan="2">
+
+                                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                                  </table>
+                                 </td>
+                                </tr>
+
+                              </table>
+                             </div>
+                              </div>
+                              <div id="sip_contact_tab_1_div" class="invisible">
+
+                             <div id="sip_contact2" class="visable">
+                              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                                <tr>
+                                 <td width="120" height="25" class="title1">&nbsp;&nbsp;&nbsp;Phone Number 2</td>
+                                 <td width="160" class="text">
+                                  <input type="text" name="sip_contact2_number" id="sip_contact2_number" value="<?php print($values['SIP_CONTACT0_DIAL_DIGITS_2']) ?>" class="edit">
+                                 </td>
+                                </tr>
+
+                                <tr>
+                                 <td width="120" height="25" class="title1">&nbsp;&nbsp;&nbsp;Authentication ID 2</td>
+                                 <td width="160" class="text">
+                                  <input type="text" name="sip_contact2_auth_id" id="sip_contact2_auth_id" value="<?php print($values['SIP_CONTACT0_LOGIN_2']) ?>" class="edit">
+                                 </td>
+                                </tr>
+
+                                <tr>
+                                 <td width="120" height="25" class="title1">&nbsp;&nbsp;&nbsp;Password 2</td>
+                                 <td width="160" class="text">
+                                  <input type="password" name="sip_contact2_auth_passwd" id="sip_contact2_auth_passwd" value="<?php print($values['SIP_CONTACT0_PASSWD_2']) ?>" class="edit">
+                                 </td>
+                                </tr>
+
+                                <tr>
+                                 <td width="120" height="25" class="title1">&nbsp;&nbsp;&nbsp;Display Name 2</td>
+                                 <td width="160" class="text">
+                                  <input type="text" name="sip_contact2_display_name" id="sip_contact2_display_name" value="<?php print($values['SIP_CONTACT0_DISPLAY_NAME_2']) ?>" class="edit">
+                                 </td>
+                                </tr>
+
+                                <tr>
+
+                                 <td width="120" height="25" class="title1">&nbsp;&nbsp;&nbsp;Ring Type 2</td>
+                                 <td width="160" class="text">
+  <select name="contact2_ring_type" id="contact2_ring_type_select" class="select" onchange="toggle_selected('contact2_ring_type', 'hide')">
+     <option value="0" <?php print($values['C2_RING_TYPE']=='0'?'selected':'') ?>>Type 1</option>
+     <option value="1" <?php print($values['C2_RING_TYPE']=='1'?'selected':'') ?>>Type 2</option>
+     <option value="2" <?php print($values['C2_RING_TYPE']=='2'?'selected':'') ?>>Type 3</option>
+     <option value="3" <?php print($values['C2_RING_TYPE']=='3'?'selected':'') ?>>Type 4</option>
+  </select>
+                                 </td>
+		
+                                </tr>
+
+                                <tr>
+                                 <td colspan="2">
+
+                                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                                  </table>
+                                 </td>
+                                </tr>
+
+                              </table>
+                             </div>
+                              </div>
+                              <div id="sip_contact_tab_2_div" class="invisible">
+
+                             <div id="sip_contact3" class="visable">
+                              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                                <tr>
+                                 <td width="120" height="25" class="title1">&nbsp;&nbsp;&nbsp;Phone Number 3</td>
+                                 <td width="160" class="text">
+                                  <input type="text" name="sip_contact3_number" id="sip_contact3_number" value="<?php print($values['SIP_CONTACT0_DIAL_DIGITS_3']) ?>" class="edit">
+                                 </td>
+                                </tr>
+
+                                <tr>
+                                 <td width="120" height="25" class="title1">&nbsp;&nbsp;&nbsp;Authentication ID 3</td>
+                                 <td width="160" class="text">
+                                  <input type="text" name="sip_contact3_auth_id" id="sip_contact3_auth_id" value="<?php print($values['SIP_CONTACT0_LOGIN_3']) ?>" class="edit">
+                                 </td>
+                                </tr>
+
+                                <tr>
+                                 <td width="120" height="25" class="title1">&nbsp;&nbsp;&nbsp;Password 3</td>
+                                 <td width="160" class="text">
+                                  <input type="password" name="sip_contact3_auth_passwd" id="sip_contact3_auth_passwd" value="<?php print($values['SIP_CONTACT0_PASSWD_3']) ?>" class="edit">
+                                 </td>
+                                </tr>
+
+                                <tr>
+                                 <td width="120" height="25" class="title1">&nbsp;&nbsp;&nbsp;Display Name 3</td>
+                                 <td width="160" class="text">
+                                  <input type="text" name="sip_contact3_display_name" id="sip_contact3_display_name" value="<?php print($values['SIP_CONTACT0_DISPLAY_NAME_3']) ?>" class="edit">
+                                 </td>
+                                </tr>
+
+                                <tr>
+
+                                 <td width="120" height="25" class="title1">&nbsp;&nbsp;&nbsp;Ring Type 3</td>
+                                 <td width="160" class="text">
+  <select name="contact3_ring_type" id="contact3_ring_type_select" class="select" onchange="toggle_selected('contact3_ring_type', 'hide')">
+     <option value="0" <?php print($values['C3_RING_TYPE']=='0'?'selected':'') ?>>Type 1</option>
+     <option value="1" <?php print($values['C3_RING_TYPE']=='1'?'selected':'') ?>>Type 2</option>
+     <option value="2" <?php print($values['C3_RING_TYPE']=='2'?'selected':'') ?>>Type 3</option>
+     <option value="3" <?php print($values['C3_RING_TYPE']=='3'?'selected':'') ?>>Type 4</option>
+  </select>
+                                 </td>
+		
+                                </tr>
+
+                                <tr>
+                                 <td colspan="2">
+
+                                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                                  </table>
+                                 </td>
+                                </tr>
+
+                              </table>
+                             </div>
+                              </div>
+                              <div id="sip_contact_tab_3_div" class="invisible">
+
+                             <div id="sip_contact4" class="visable">
+                              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                                <tr>
+                                 <td width="120" height="25" class="title1">&nbsp;&nbsp;&nbsp;Phone Number 4</td>
+                                 <td width="160" class="text">
+                                  <input type="text" name="sip_contact4_number" id="sip_contact4_number" value="<?php print($values['SIP_CONTACT0_DIAL_DIGITS_4']) ?>" class="edit">
+                                 </td>
+                                </tr>
+
+                                <tr>
+                                 <td width="120" height="25" class="title1">&nbsp;&nbsp;&nbsp;Authentication ID 4</td>
+                                 <td width="160" class="text">
+                                  <input type="text" name="sip_contact4_auth_id" id="sip_contact4_auth_id" value="<?php print($values['SIP_CONTACT0_LOGIN_4']) ?>" class="edit">
+                                 </td>
+                                </tr>
+
+                                <tr>
+                                 <td width="120" height="25" class="title1">&nbsp;&nbsp;&nbsp;Password 4</td>
+                                 <td width="160" class="text">
+                                  <input type="password" name="sip_contact4_auth_passwd" id="sip_contact4_auth_passwd" value="<?php print($values['SIP_CONTACT0_PASSWD_4']) ?>" class="edit">
+                                 </td>
+                                </tr>
+
+                                <tr>
+                                 <td width="120" height="25" class="title1">&nbsp;&nbsp;&nbsp;Display Name 4</td>
+                                 <td width="160" class="text">
+                                  <input type="text" name="sip_contact4_display_name" id="sip_contact4_display_name" value="<?php print($values['SIP_CONTACT0_DISPLAY_NAME_4']) ?>" class="edit">
+                                 </td>
+                                </tr>
+
+                                <tr>
+
+                                 <td width="120" height="25" class="title1">&nbsp;&nbsp;&nbsp;Ring Type 4</td>
+                                 <td width="160" class="text">
+  <select name="contact4_ring_type" id="contact4_ring_type_select" class="select" onchange="toggle_selected('contact4_ring_type', 'hide')">
+     <option value="0" <?php print($values['C4_RING_TYPE']=='0'?'selected':'') ?>>Type 1</option>
+     <option value="1" <?php print($values['C4_RING_TYPE']=='1'?'selected':'') ?>>Type 2</option>
+     <option value="2" <?php print($values['C4_RING_TYPE']=='2'?'selected':'') ?>>Type 3</option>
+     <option value="3" <?php print($values['C4_RING_TYPE']=='3'?'selected':'') ?>>Type 4</option>
+  </select>
+                                 </td>
+		
+                                </tr>
+
+                                <tr>
+                                 <td colspan="2">
+
+                                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                                  </table>
+                                 </td>
+                                </tr>
+
+                              </table>
+                             </div>
+                              </div>
+
+                             </td>
+                            </tr>
+
+                          </table>
+                         </div>
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">SIP Proxy</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_proxy" id="sip_proxy" value="<?php print($values['SIP_CONTACT0_PROXY']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">SIP Registrar Server</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_registrar" id="sip_registrar" value="<?php print($values['SIP_CONTACT0_SERVER']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">Register Expiry(s)</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_register_expired" id="sip_register_expired" value="<?php print($values['SIP_CONTACT0_EXPIRED']) ?>" class="edit" onblur="onblur_check_integer(this, 60, 36400)" onfocus="onfocus_check_integer(this, 60, 36400)">
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">Outbound Proxy</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_outbound_proxy" id="sip_outbound_proxy" value="<?php print($values['SIP_CONTACT0_OUTBOUND_PROXY']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">Home Domain</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_home_domain" id="sip_home_domain" value="<?php print($values['SIP_CONTACT0_HOME_DOMAIN']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">
+<span>Call Wait</span>                         </td>
+                         <td width="160" class="text">
+                          <input type="radio" name="sip_call_wait" value="on" id="sip_call_wait_enable" disabledbyelement="" onclick="toggle('sip_call_wait_div', 1)" <?php print($values['SIP_CONTACT0_CALL_WAIT']=='1'?'checked':'') ?>><span>Enable</span>
+                          <input type="radio" name="sip_call_wait" value="off" id="sip_call_wait_disable" disabledbyelement="" onclick="toggle('sip_call_wait_div', 0)" <?php print($values['SIP_CONTACT0_CALL_WAIT']!='1'?'checked':'') ?>><span>Disable</span>                         </td>
+                        </tr>
+
+                        <tr>
+
+                         <td width="120" height="25" class="title1">Call Forward Type</td>
+                         <td width="160" class="text">
+  <select name="sip_fwd_type" id="sip_fwd_type_select" class="select" onchange="toggle_selected('sip_fwd_type', 'hide')">
+     <option value="0" <?php print($values['SIP_CONTACT0_FORWARD_TYPE']=='0'?'selected':'') ?>>Not Forward</option>
+     <option value="1" <?php print($values['SIP_CONTACT0_FORWARD_TYPE']=='1'?'selected':'') ?>>Unconditional Forward</option>
+     <option value="2" <?php print($values['SIP_CONTACT0_FORWARD_TYPE']=='2'?'selected':'') ?>>Busy Forward</option>
+     <option value="3" <?php print($values['SIP_CONTACT0_FORWARD_TYPE']=='3'?'selected':'') ?>>No Answer Forward</option>
+     <option value="4" <?php print($values['SIP_CONTACT0_FORWARD_TYPE']=='4'?'selected':'') ?>>Busy or No Answer Forward</option>
+  </select>
+                         </td>
+		
+                        </tr>
+
+                        <tr>
+                         <td colspan="2">
+
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                          </table>
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">Call Forward Number</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_fwd_num" id="sip_fwd_num" value="<?php print($values['SIP_CONTACT0_FORWARD_NUMBER']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">Voice Mail Number</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_vm_num" id="sip_vm_num" value="<?php print($values['SIP_CONTACT0_VM_NUM']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">Hot Line Number</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_hot_line_num" id="sip_hot_line_num" value="<?php print($values['P0_HOT_LINE_NUM']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">Dial Plan</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_dial_plan" id="sip_dial_plan" value="<?php print($values['P0_DIAL_PLAN']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">
+<span>Backup Server</span>                         </td>
+                         <td width="160" class="text">
+                          <input type="radio" name="sip_backup_server" value="on" id="sip_backup_server_enable" disabledbyelement="" onclick="toggle('sip_backup_server_div', 1)" <?php print($values['USE_BACKUP_SIP_SVR']=='1'?'checked':'') ?>><span>Enable</span>
+                          <input type="radio" name="sip_backup_server" value="off" id="sip_backup_server_disable" disabledbyelement="" onclick="toggle('sip_backup_server_div', 0)" <?php print($values['USE_BACKUP_SIP_SVR']!='1'?'checked':'') ?>><span>Disable</span>                         </td>
+                        </tr>
+
+                        <tr>
+                         <td colspan="2">
+
+                        <div id="sip_backup_server_div" class="<?php print($values['USE_BACKUP_SIP_SVR']=='1'?'visable':'invisible') ?>">
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+                             <td width="120" height="25" class="title1">&nbsp;&nbsp;Backup SIP Proxy</td>
+                             <td width="160" class="text">
+                              <input type="text" name="sip_backup_proxy" id="sip_backup_proxy" value="<?php print($values['SIP_CONTACT1_PROXY']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">&nbsp;&nbsp;Backup SIP Registrar Server</td>
+                             <td width="160" class="text">
+                              <input type="text" name="sip_backup_registrar" id="sip_backup_registrar" value="<?php print($values['SIP_CONTACT1_SERVER']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">&nbsp;&nbsp;Backup OutBound Proxy</td>
+                             <td width="160" class="text">
+                              <input type="text" name="sip_backup_outbound_proxy" id="sip_backup_outbound_proxy" value="<?php print($values['SIP_CONTACT1_OUTBOUND_PROXY']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">&nbsp;&nbsp;Backup Home Domain</td>
+                             <td width="160" class="text">
+                              <input type="text" name="sip_backup_home_domain" id="sip_backup_home_domain" value="<?php print($values['SIP_CONTACT1_HOME_DOMAIN']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                             </td>
+                            </tr>
+
+                          </table>
+                        </div>
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25"  class="title1">
+                         </td>
+                         <td width="160" class="text">                          <div style="cursor:hand; cursor:pointer" onclick="toggle_target(this, 'codec_preference_p0_target')">Audio Codec Preference<span class="showstate" >&gt;&gt;</span></div>
+                         </td>
+                        </tr>
+                        <tr>
+                         <td colspan="2">
+                           <div id="codec_preference_p0_target" class="invisible">
+						   		<?php require_once template($type.'/codec_preference_p0'); ?>
+                           </div>
+                         </td>
+                        </tr>
+
+                      </table>
+                    </div>
+                       <div class="invisible"><br><span class="stitle">SIP Work Mode - Multiple Server Mode</span></div>
+
+                    <div id="sip_work_mode_MSVR_div" class="<?php print($values['SIP_WORK_MODE']=='MSVR'?'visable':'invisible') ?>">
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                        <tr>
+                         <td class="text" width="300">
+                          <input type=radio name="sip_multi_mode_tab" value="sip_profile1_conf" onclick="toggle2('sip_multi_mode_tab', 4, 0)" checked>Profile 1&nbsp;
+                          <input type=radio name="sip_multi_mode_tab" value="sip_profile2_conf" onclick="toggle2('sip_multi_mode_tab', 4, 1)">Profile 2&nbsp;
+                          <input type=radio name="sip_multi_mode_tab" value="sip_profile3_conf" onclick="toggle2('sip_multi_mode_tab', 4, 2)">Profile 3&nbsp;
+                          <input type=radio name="sip_multi_mode_tab" value="sip_profile4_conf" onclick="toggle2('sip_multi_mode_tab', 4, 3)">Profile 4&nbsp;
+
+                         </td>
+                        </tr>
+                        <tr>
+                         <td>
+                          <div id="sip_multi_mode_tab_0_div" class="visable">
+
+                         <div id="sip_profile1_conf" class="visable">
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+                             <td width="120" height="25" class="title1">Phone Number</td>
+                             <td width="160" class="text">
+                              <input type="text" name="sip_profile1_number" id="sip_profile1_number" value="<?php print($values['SIP_CONTACT2_DIAL_DIGITS']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">Display Name</td>
+                             <td width="160" class="text">
+                              <input type="text" name="sip_profile1_display_name" id="sip_profile1_display_name" value="<?php print($values['SIP_CONTACT2_DISPLAY_NAME']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">SIP Proxy</td>
+                             <td width="160" class="text">
+                              <input type="text" name="sip_profile1_proxy" id="sip_profile1_proxy" value="<?php print($values['SIP_CONTACT2_PROXY']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">SIP Registrar Server</td>
+                             <td width="160" class="text">
+                              <input type="text" name="sip_profile1_registrar" id="sip_profile1_registrar" value="<?php print($values['SIP_CONTACT2_SERVER']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">Register Expiry(s)</td>
+                             <td width="160" class="text">
+                              <input type="text" name="sip_profile1_register_expired" id="sip_profile1_register_expired" value="<?php print($values['SIP_CONTACT2_EXPIRED']) ?>" class="edit" onblur="onblur_check_integer(this, 60, 36400)" onfocus="onfocus_check_integer(this, 60, 36400)">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">Outbound Proxy</td>
+                             <td width="160" class="text">
+                              <input type="text" name="sip_profile1_outbound_proxy" id="sip_profile1_outbound_proxy" value="<?php print($values['SIP_CONTACT2_OUTBOUND_PROXY']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">Home Domain</td>
+                             <td width="160" class="text">
+                              <input type="text" name="sip_profile1_home_domain" id="sip_profile1_home_domain" value="<?php print($values['SIP_CONTACT2_HOME_DOMAIN']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">Authentication ID</td>
+                             <td width="160" class="text">
+                              <input type="text" name="sip_profile1_auth_id" id="sip_profile1_auth_id" value="<?php print($values['SIP_CONTACT2_LOGIN']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">Password</td>
+                             <td width="160" class="text">
+                              <input type="password" name="sip_profile1_auth_passwd" id="sip_profile1_auth_passwd" value="<?php print($values['SIP_CONTACT2_PASSWD']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">
+<span>Call Wait While In Use</span>                             </td>
+                             <td width="160" class="text">
+                              <input type="radio" name="sip_profile1_call_wait" value="on" id="sip_profile1_call_wait_enable" disabledbyelement="" onclick="toggle('sip_profile1_call_wait_div', 1)" <?php print($values['SIP_CONTACT2_CALL_WAIT']=='1'?'checked':'') ?>><span>Enable</span>
+                              <input type="radio" name="sip_profile1_call_wait" value="off" id="sip_profile1_call_wait_disable" disabledbyelement="" onclick="toggle('sip_profile1_call_wait_div', 0)" <?php print($values['SIP_CONTACT2_CALL_WAIT']!='1'?'checked':'') ?>><span>Disable</span>                             </td>
+                            </tr>
+
+                            <tr>
+
+                             <td width="120" height="25" class="title1">Call Forward Type</td>
+                             <td width="160" class="text">
+  <select name="sip_profile1_fwd_type" id="sip_profile1_fwd_type_select" class="select" onchange="toggle_selected('sip_profile1_fwd_type', 'hide')">
+     <option value="0" <?php print($values['SIP_CONTACT2_FORWARD_TYPE']=='0'?'selected':'') ?>>Not Forward</option>
+     <option value="1" <?php print($values['SIP_CONTACT2_FORWARD_TYPE']=='1'?'selected':'') ?>>Unconditional Forward</option>
+     <option value="2" <?php print($values['SIP_CONTACT2_FORWARD_TYPE']=='2'?'selected':'') ?>>Busy Forward</option>
+     <option value="3" <?php print($values['SIP_CONTACT2_FORWARD_TYPE']=='3'?'selected':'') ?>>No Answer Forward</option>
+     <option value="4" <?php print($values['SIP_CONTACT2_FORWARD_TYPE']=='4'?'selected':'') ?>>Busy or No Answer Forward</option>
+  </select>
+                             </td>
+		
+                            </tr>
+
+                            <tr>
+                             <td colspan="2">
+
+                              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                              </table>
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">Call Forward Number</td>
+                             <td width="160" class="text">
+                              <input type="text" name="sip_profile1_fwd_num" id="sip_profile1_fwd_num" value="<?php print($values['SIP_CONTACT2_FORWARD_NUMBER']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">Voice Mail Number</td>
+                             <td width="160" class="text">
+                              <input type="text" name="sip_profile1_vm_num" id="sip_profile1_vm_num" value="<?php print($values['SIP_CONTACT2_VM_NUM']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">Hot Line Number</td>
+                             <td width="160" class="text">
+                              <input type="text" name="sip_profile1_hot_line_num" id="sip_profile1_hot_line_num" value="<?php print($values['P1_HOT_LINE_NUM']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">Dial Plan</td>
+                             <td width="160" class="text">
+                              <input type="text" name="sip_profile1_dial_plan" id="sip_profile1_dial_plan" value="<?php print($values['P1_DIAL_PLAN']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                            <tr>
+
+                             <td width="120" height="25" class="title1">Ring Type</td>
+                             <td width="160" class="text">
+  <select name="profile1_ring_type" id="profile1_ring_type_select" class="select" onchange="toggle_selected('profile1_ring_type', 'hide')">
+     <option value="0" <?php print($values['P1_RING_TYPE']=='0'?'selected':'') ?>>Type 1</option>
+     <option value="1" <?php print($values['P1_RING_TYPE']=='1'?'selected':'') ?>>Type 2</option>
+     <option value="2" <?php print($values['P1_RING_TYPE']=='2'?'selected':'') ?>>Type 3</option>
+     <option value="3" <?php print($values['P1_RING_TYPE']=='3'?'selected':'') ?>>Type 4</option>
+  </select>
+                             </td>
+		
+                            </tr>
+
+                            <tr>
+                             <td colspan="2">
+
+                              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                              </table>
+                             </td>
+                            </tr>
+
+<?php if($values['AUTO_ANSWER'] !='0'): ?>
+                            <tr>
+
+                             <td width="120" height="25" class="title1">Auto Answer Mode</td>
+                             <td width="160" class="text">
+  <select name="l1_auto_answer_mode" id="l1_auto_answer_mode_select" class="select" onchange="toggle_selected('l1_auto_answer_mode', 'hide')">
+     <option value="DISABLE" <?php print($values['L1_AUTO_ANSWER']=='DISABLE'?'selected':'') ?>>Disable</option>
+     <option value="ALL" <?php print($values['L1_AUTO_ANSWER']=='ALL'?'selected':'') ?>>All</option>
+     <option value="LIST" <?php print($values['L1_AUTO_ANSWER']=='LIST'?'selected':'') ?>>By List</option>
+  </select>
+                             </td>
+		
+                            </tr>
+
+                            <tr>
+                             <td colspan="2">
+
+                              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                                <tr>
+                                 <td colspan="2">
+
+                                <div id="l1_auto_answer_mode_LIST_div" class="<?php print($values['L1_AUTO_ANSWER']=='LIST'?'visable':'invisible') ?>">
+                                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                                    <tr>
+                                     <td width="120" height="25"  class="title1">
+                                     </td>
+                                     <td width="160" class="text">                                      <div style="cursor:hand; cursor:pointer" onclick="toggle_target(this, 'line1_auto_answer_target')">Auto Answer List<span class="showstate" >&gt;&gt;</span></div>
+                                     </td>
+                                    </tr>
+                                    <tr>
+                                     <td colspan="2">
+                                       <div id="line1_auto_answer_target" class="invisible">
+									   <?php require_once template($type.'/line1_auto_answer'); ?>
+                                       </div>
+                                     </td>
+                                    </tr>
+
+                                  </table>
+                                </div>
+                                 </td>
+                                </tr>
+
+                              </table>
+                             </td>
+                            </tr>
+
+<?php endif; ?>
+                            <tr>
+                             <td width="120" height="25"  class="title1">
+                             </td>
+                             <td width="160" class="text">                              <div style="cursor:hand; cursor:pointer" onclick="toggle_target(this, 'codec_preference_p2_target')">Audio Codec Preference<span class="showstate" >&gt;&gt;</span></div>
+                             </td>
+                            </tr>
+                            <tr>
+                             <td colspan="2">
+                               <div id="codec_preference_p2_target" class="invisible">
+							   		<?php require_once template($type.'/codec_preference_p2'); ?>
+                               </div>
+                             </td>
+                            </tr>
+
+                          </table>
+                         </div>
+                          </div>
+                          <div id="sip_multi_mode_tab_1_div" class="invisible">
+
+                         <div id="sip_profile2_conf" class="visable">
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+                             <td width="120" height="25" class="title1">Phone Number</td>
+                             <td width="160" class="text">
+                              <input type="text" name="sip_profile2_number" id="sip_profile2_number" value="<?php print($values['SIP_CONTACT3_DIAL_DIGITS']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">Display Name</td>
+                             <td width="160" class="text">
+                              <input type="text" name="sip_profile2_display_name" id="sip_profile2_display_name" value="<?php print($values['SIP_CONTACT3_DISPLAY_NAME']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">SIP Proxy</td>
+                             <td width="160" class="text">
+                              <input type="text" name="sip_profile2_proxy" id="sip_profile2_proxy" value="<?php print($values['SIP_CONTACT3_PROXY']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">SIP Registrar Server</td>
+                             <td width="160" class="text">
+                              <input type="text" name="sip_profile2_registrar" id="sip_profile2_registrar" value="<?php print($values['SIP_CONTACT3_SERVER']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">Register Expiry(s)</td>
+                             <td width="160" class="text">
+                              <input type="text" name="sip_profile2_register_expired" id="sip_profile2_register_expired" value="<?php print($values['SIP_CONTACT3_EXPIRED']) ?>" class="edit" onblur="onblur_check_integer(this, 60, 36400)" onfocus="onfocus_check_integer(this, 60, 36400)">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">Outbound Proxy</td>
+                             <td width="160" class="text">
+                              <input type="text" name="sip_profile2_outbound_proxy" id="sip_profile2_outbound_proxy" value="<?php print($values['SIP_CONTACT3_OUTBOUND_PROXY']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">Home Domain</td>
+                             <td width="160" class="text">
+                              <input type="text" name="sip_profile2_home_domain" id="sip_profile2_home_domain" value="<?php print($values['SIP_CONTACT3_HOME_DOMAIN']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">Authentication ID</td>
+                             <td width="160" class="text">
+                              <input type="text" name="sip_profile2_auth_id" id="sip_profile2_auth_id" value="<?php print($values['SIP_CONTACT3_LOGIN']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">Password</td>
+                             <td width="160" class="text">
+                              <input type="password" name="sip_profile2_auth_passwd" id="sip_profile2_auth_passwd" value="<?php print($values['SIP_CONTACT3_PASSWD']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">
+<span>Call Wait While In Use</span>                             </td>
+                             <td width="160" class="text">
+                              <input type="radio" name="sip_profile2_call_wait" value="on" id="sip_profile2_call_wait_enable" disabledbyelement="" onclick="toggle('sip_profile2_call_wait_div', 1)" <?php print($values['SIP_CONTACT3_CALL_WAIT']=='1'?'checked':'') ?>><span>Enable</span>
+                              <input type="radio" name="sip_profile2_call_wait" value="off" id="sip_profile2_call_wait_disable" disabledbyelement="" onclick="toggle('sip_profile2_call_wait_div', 0)" <?php print($values['SIP_CONTACT3_CALL_WAIT']!='1'?'checked':'') ?>><span>Disable</span>                             </td>
+                            </tr>
+
+                            <tr>
+
+                             <td width="120" height="25" class="title1">Call Forward Type</td>
+                             <td width="160" class="text">
+  <select name="sip_profile2_fwd_type" id="sip_profile2_fwd_type_select" class="select" onchange="toggle_selected('sip_profile2_fwd_type', 'hide')">
+     <option value="0" <?php print($values['SIP_CONTACT3_FORWARD_TYPE']=='0'?'selected':'') ?>>Not Forward</option>
+     <option value="1" <?php print($values['SIP_CONTACT3_FORWARD_TYPE']=='1'?'selected':'') ?>>Unconditional Forward</option>
+     <option value="2" <?php print($values['SIP_CONTACT3_FORWARD_TYPE']=='2'?'selected':'') ?>>Busy Forward</option>
+     <option value="3" <?php print($values['SIP_CONTACT3_FORWARD_TYPE']=='3'?'selected':'') ?>>No Answer Forward</option>
+     <option value="4" <?php print($values['SIP_CONTACT3_FORWARD_TYPE']=='4'?'selected':'') ?>>Busy or No Answer Forward</option>
+  </select>
+                             </td>
+		
+                            </tr>
+
+                            <tr>
+                             <td colspan="2">
+
+                              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                              </table>
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">Call Forward Number</td>
+                             <td width="160" class="text">
+                              <input type="text" name="sip_profile2_fwd_num" id="sip_profile2_fwd_num" value="<?php print($values['SIP_CONTACT3_FORWARD_NUMBER']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">Voice Mail Number</td>
+                             <td width="160" class="text">
+                              <input type="text" name="sip_profile2_vm_num" id="sip_profile2_vm_num" value="<?php print($values['SIP_CONTACT3_VM_NUM']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">Hot Line Number</td>
+                             <td width="160" class="text">
+                              <input type="text" name="sip_profile2_hot_line_num" id="sip_profile2_hot_line_num" value="<?php print($values['P2_HOT_LINE_NUM']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">Dial Plan</td>
+                             <td width="160" class="text">
+                              <input type="text" name="sip_profile2_dial_plan" id="sip_profile2_dial_plan" value="<?php print($values['P2_DIAL_PLAN']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                            <tr>
+
+                             <td width="120" height="25" class="title1">Ring Type</td>
+                             <td width="160" class="text">
+  <select name="profile2_ring_type" id="profile2_ring_type_select" class="select" onchange="toggle_selected('profile2_ring_type', 'hide')">
+     <option value="0" <?php print($values['P2_RING_TYPE']=='0'?'selected':'') ?>>Type 1</option>
+     <option value="1" <?php print($values['P2_RING_TYPE']=='1'?'selected':'') ?>>Type 2</option>
+     <option value="2" <?php print($values['P2_RING_TYPE']=='2'?'selected':'') ?>>Type 3</option>
+     <option value="3" <?php print($values['P2_RING_TYPE']=='3'?'selected':'') ?>>Type 4</option>
+  </select>
+                             </td>
+		
+                            </tr>
+
+                            <tr>
+                             <td colspan="2">
+
+                              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                              </table>
+                             </td>
+                            </tr>
+
+<?php if($values['AUTO_ANSWER'] !='0'): ?>
+                            <tr>
+
+                             <td width="120" height="25" class="title1">Auto Answer Mode</td>
+                             <td width="160" class="text">
+  <select name="l2_auto_answer_mode" id="l2_auto_answer_mode_select" class="select" onchange="toggle_selected('l2_auto_answer_mode', 'hide')">
+     <option value="DISABLE" <?php print($values['L2_AUTO_ANSWER']=='DISABLE'?'selected':'') ?>>Disable</option>
+     <option value="ALL" <?php print($values['L2_AUTO_ANSWER']=='ALL'?'selected':'') ?>>All</option>
+     <option value="LIST" <?php print($values['L2_AUTO_ANSWER']=='LIST'?'selected':'') ?>>By List</option>
+  </select>
+                             </td>
+		
+                            </tr>
+
+                            <tr>
+                             <td colspan="2">
+
+                              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                                <tr>
+                                 <td colspan="2">
+
+                                <div id="l2_auto_answer_mode_LIST_div" class="<?php print($values['L2_AUTO_ANSWER']=='LIST'?'visable':'invisible') ?>">
+                                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                                    <tr>
+                                     <td width="120" height="25"  class="title1">
+                                     </td>
+                                     <td width="160" class="text">                                      <div style="cursor:hand; cursor:pointer" onclick="toggle_target(this, 'line2_auto_answer_target')">Auto Answer List<span class="showstate" >&gt;&gt;</span></div>
+                                     </td>
+                                    </tr>
+                                    <tr>
+                                     <td colspan="2">
+                                       <div id="line2_auto_answer_target" class="invisible">
+									   <?php require_once template($type.'/line2_auto_answer'); ?>
+                                       </div>
+                                     </td>
+                                    </tr>
+
+                                  </table>
+                                </div>
+                                 </td>
+                                </tr>
+
+                              </table>
+                             </td>
+                            </tr>
+
+<?php endif; ?>
+                            <tr>
+                             <td width="120" height="25"  class="title1">
+                             </td>
+                             <td width="160" class="text">                              <div style="cursor:hand; cursor:pointer" onclick="toggle_target(this, 'codec_preference_p3_target')">Audio Codec Preference<span class="showstate" >&gt;&gt;</span></div>
+                             </td>
+                            </tr>
+                            <tr>
+                             <td colspan="2">
+                               <div id="codec_preference_p3_target" class="invisible">
+							   		<?php require_once template($type.'/codec_preference_p3'); ?>
+                               </div>
+                             </td>
+                            </tr>
+
+                          </table>
+                         </div>
+                          </div>
+                          <div id="sip_multi_mode_tab_2_div" class="invisible">
+
+                         <div id="sip_profile3_conf" class="visable">
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+                             <td width="120" height="25" class="title1">Phone Number</td>
+                             <td width="160" class="text">
+                              <input type="text" name="sip_profile3_number" id="sip_profile3_number" value="<?php print($values['SIP_CONTACT4_DIAL_DIGITS']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">Display Name</td>
+                             <td width="160" class="text">
+                              <input type="text" name="sip_profile3_display_name" id="sip_profile3_display_name" value="<?php print($values['SIP_CONTACT4_DISPLAY_NAME']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">SIP Proxy</td>
+                             <td width="160" class="text">
+                              <input type="text" name="sip_profile3_proxy" id="sip_profile3_proxy" value="<?php print($values['SIP_CONTACT4_PROXY']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">SIP Registrar Server</td>
+                             <td width="160" class="text">
+                              <input type="text" name="sip_profile3_registrar" id="sip_profile3_registrar" value="<?php print($values['SIP_CONTACT4_SERVER']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">Register Expiry(s)</td>
+                             <td width="160" class="text">
+                              <input type="text" name="sip_profile3_register_expired" id="sip_profile3_register_expired" value="<?php print($values['SIP_CONTACT4_EXPIRED']) ?>" class="edit" onblur="onblur_check_integer(this, 60, 36400)" onfocus="onfocus_check_integer(this, 60, 36400)">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">Outbound Proxy</td>
+                             <td width="160" class="text">
+                              <input type="text" name="sip_profile3_outbound_proxy" id="sip_profile3_outbound_proxy" value="<?php print($values['SIP_CONTACT4_OUTBOUND_PROXY']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">Home Domain</td>
+                             <td width="160" class="text">
+                              <input type="text" name="sip_profile3_home_domain" id="sip_profile3_home_domain" value="<?php print($values['SIP_CONTACT4_HOME_DOMAIN']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">Authentication ID</td>
+                             <td width="160" class="text">
+                              <input type="text" name="sip_profile3_auth_id" id="sip_profile3_auth_id" value="<?php print($values['SIP_CONTACT4_LOGIN']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">Password</td>
+                             <td width="160" class="text">
+                              <input type="password" name="sip_profile3_auth_passwd" id="sip_profile3_auth_passwd" value="<?php print($values['SIP_CONTACT4_PASSWD']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">
+<span>Call Wait While In Use</span>                             </td>
+                             <td width="160" class="text">
+                              <input type="radio" name="sip_profile3_call_wait" value="on" id="sip_profile3_call_wait_enable" disabledbyelement="" onclick="toggle('sip_profile3_call_wait_div', 1)" <?php print($values['SIP_CONTACT4_CALL_WAIT']=='1'?'checked':'') ?>><span>Enable</span>
+                              <input type="radio" name="sip_profile3_call_wait" value="off" id="sip_profile3_call_wait_disable" disabledbyelement="" onclick="toggle('sip_profile3_call_wait_div', 0)" <?php print($values['SIP_CONTACT4_CALL_WAIT']!='1'?'checked':'') ?>><span>Disable</span>                             </td>
+                            </tr>
+
+                            <tr>
+
+                             <td width="120" height="25" class="title1">Call Forward Type</td>
+                             <td width="160" class="text">
+  <select name="sip_profile3_fwd_type" id="sip_profile3_fwd_type_select" class="select" onchange="toggle_selected('sip_profile3_fwd_type', 'hide')">
+     <option value="0" <?php print($values['SIP_CONTACT4_FORWARD_TYPE']=='0'?'selected':'') ?>>Not Forward</option>
+     <option value="1" <?php print($values['SIP_CONTACT4_FORWARD_TYPE']=='1'?'selected':'') ?>>Unconditional Forward</option>
+     <option value="2" <?php print($values['SIP_CONTACT4_FORWARD_TYPE']=='2'?'selected':'') ?>>Busy Forward</option>
+     <option value="3" <?php print($values['SIP_CONTACT4_FORWARD_TYPE']=='3'?'selected':'') ?>>No Answer Forward</option>
+     <option value="4" <?php print($values['SIP_CONTACT4_FORWARD_TYPE']=='4'?'selected':'') ?>>Busy or No Answer Forward</option>
+  </select>
+                             </td>
+		
+                            </tr>
+
+                            <tr>
+                             <td colspan="2">
+
+                              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                              </table>
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">Call Forward Number</td>
+                             <td width="160" class="text">
+                              <input type="text" name="sip_profile3_fwd_num" id="sip_profile3_fwd_num" value="<?php print($values['SIP_CONTACT4_FORWARD_NUMBER']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">Voice Mail Number</td>
+                             <td width="160" class="text">
+                              <input type="text" name="sip_profile3_vm_num" id="sip_profile3_vm_num" value="<?php print($values['SIP_CONTACT4_VM_NUM']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">Hot Line Number</td>
+                             <td width="160" class="text">
+                              <input type="text" name="sip_profile3_hot_line_num" id="sip_profile3_hot_line_num" value="<?php print($values['P3_HOT_LINE_NUM']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">Dial Plan</td>
+                             <td width="160" class="text">
+                              <input type="text" name="sip_profile3_dial_plan" id="sip_profile3_dial_plan" value="<?php print($values['P3_DIAL_PLAN']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                            <tr>
+
+                             <td width="120" height="25" class="title1">Ring Type</td>
+                             <td width="160" class="text">
+  <select name="profile3_ring_type" id="profile3_ring_type_select" class="select" onchange="toggle_selected('profile3_ring_type', 'hide')">
+     <option value="0" <?php print($values['P3_RING_TYPE']=='0'?'selected':'') ?>>Type 1</option>
+     <option value="1" <?php print($values['P3_RING_TYPE']=='1'?'selected':'') ?>>Type 2</option>
+     <option value="2" <?php print($values['P3_RING_TYPE']=='2'?'selected':'') ?>>Type 3</option>
+     <option value="3" <?php print($values['P3_RING_TYPE']=='3'?'selected':'') ?>>Type 4</option>
+  </select>
+                             </td>
+		
+                            </tr>
+
+                            <tr>
+                             <td colspan="2">
+
+                              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                              </table>
+                             </td>
+                            </tr>
+
+<?php if($values['AUTO_ANSWER'] !='0'): ?>
+                            <tr>
+
+                             <td width="120" height="25" class="title1">Auto Answer Mode</td>
+                             <td width="160" class="text">
+  <select name="l3_auto_answer_mode" id="l3_auto_answer_mode_select" class="select" onchange="toggle_selected('l3_auto_answer_mode', 'hide')">
+     <option value="DISABLE" <?php print($values['L3_AUTO_ANSWER']=='DISABLE'?'selected':'') ?>>Disable</option>
+     <option value="ALL" <?php print($values['L3_AUTO_ANSWER']=='ALL'?'selected':'') ?>>All</option>
+     <option value="LIST" <?php print($values['L3_AUTO_ANSWER']=='LIST'?'selected':'') ?>>By List</option>
+  </select>
+                             </td>
+		
+                            </tr>
+
+                            <tr>
+                             <td colspan="2">
+
+                              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                                <tr>
+                                 <td colspan="2">
+
+                                <div id="l3_auto_answer_mode_LIST_div" class="<?php print($values['L3_AUTO_ANSWER']=='LIST'?'visable':'invisible') ?>">
+                                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                                    <tr>
+                                     <td width="120" height="25"  class="title1">
+                                     </td>
+                                     <td width="160" class="text">                                      <div style="cursor:hand; cursor:pointer" onclick="toggle_target(this, 'line3_auto_answer_target')">Auto Answer List<span class="showstate" >&gt;&gt;</span></div>
+                                     </td>
+                                    </tr>
+                                    <tr>
+                                     <td colspan="2">
+                                       <div id="line3_auto_answer_target" class="invisible">
+									   <?php require_once template($type.'/line3_auto_answer'); ?>
+                                       </div>
+                                     </td>
+                                    </tr>
+
+                                  </table>
+                                </div>
+                                 </td>
+                                </tr>
+
+                              </table>
+                             </td>
+                            </tr>
+
+<?php endif; ?>
+                            <tr>
+                             <td width="120" height="25"  class="title1">
+                             </td>
+                             <td width="160" class="text">                              <div style="cursor:hand; cursor:pointer" onclick="toggle_target(this, 'codec_preference_p4_target')">Audio Codec Preference<span class="showstate" >&gt;&gt;</span></div>
+                             </td>
+                            </tr>
+                            <tr>
+                             <td colspan="2">
+                               <div id="codec_preference_p4_target" class="invisible">
+							   	<?php require_once template($type.'/codec_preference_p4'); ?>
+                               </div>
+                             </td>
+                            </tr>
+
+                          </table>
+                         </div>
+                          </div>
+                          <div id="sip_multi_mode_tab_3_div" class="invisible">
+
+                         <div id="sip_profile4_conf" class="visable">
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+                             <td width="120" height="25" class="title1">Phone Number</td>
+                             <td width="160" class="text">
+                              <input type="text" name="sip_profile4_number" id="sip_profile4_number" value="<?php print($values['SIP_CONTACT5_DIAL_DIGITS']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">Display Name</td>
+                             <td width="160" class="text">
+                              <input type="text" name="sip_profile4_display_name" id="sip_profile4_display_name" value="<?php print($values['SIP_CONTACT5_DISPLAY_NAME']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">SIP Proxy</td>
+                             <td width="160" class="text">
+                              <input type="text" name="sip_profile4_proxy" id="sip_profile4_proxy" value="<?php print($values['SIP_CONTACT5_PROXY']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">SIP Registrar Server</td>
+                             <td width="160" class="text">
+                              <input type="text" name="sip_profile4_registrar" id="sip_profile4_registrar" value="<?php print($values['SIP_CONTACT5_SERVER']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">Register Expiry(s)</td>
+                             <td width="160" class="text">
+                              <input type="text" name="sip_profile4_register_expired" id="sip_profile4_register_expired" value="<?php print($values['SIP_CONTACT5_EXPIRED']) ?>" class="edit" onblur="onblur_check_integer(this, 60, 36400)" onfocus="onfocus_check_integer(this, 60, 36400)">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">Outbound Proxy</td>
+                             <td width="160" class="text">
+                              <input type="text" name="sip_profile4_outbound_proxy" id="sip_profile4_outbound_proxy" value="<?php print($values['SIP_CONTACT5_OUTBOUND_PROXY']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">Home Domain</td>
+                             <td width="160" class="text">
+                              <input type="text" name="sip_profile4_home_domain" id="sip_profile4_home_domain" value="<?php print($values['SIP_CONTACT5_HOME_DOMAIN']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">Authentication ID</td>
+                             <td width="160" class="text">
+                              <input type="text" name="sip_profile4_auth_id" id="sip_profile4_auth_id" value="<?php print($values['SIP_CONTACT5_LOGIN']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">Password</td>
+                             <td width="160" class="text">
+                              <input type="password" name="sip_profile4_auth_passwd" id="sip_profile4_auth_passwd" value="<?php print($values['SIP_CONTACT5_PASSWD']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">
+<span>Call Wait While In Use</span>                             </td>
+                             <td width="160" class="text">
+                              <input type="radio" name="sip_profile4_call_wait" value="on" id="sip_profile4_call_wait_enable" disabledbyelement="" onclick="toggle('sip_profile4_call_wait_div', 1)" <?php print($values['SIP_CONTACT5_CALL_WAIT']=='1'?'checked':'') ?>><span>Enable</span>
+                              <input type="radio" name="sip_profile4_call_wait" value="off" id="sip_profile4_call_wait_disable" disabledbyelement="" onclick="toggle('sip_profile4_call_wait_div', 0)" <?php print($values['SIP_CONTACT5_CALL_WAIT']!='1'?'checked':'') ?>><span>Disable</span>                             </td>
+                            </tr>
+
+                            <tr>
+
+                             <td width="120" height="25" class="title1">Call Forward Type</td>
+                             <td width="160" class="text">
+  <select name="sip_profile4_fwd_type" id="sip_profile4_fwd_type_select" class="select" onchange="toggle_selected('sip_profile4_fwd_type', 'hide')">
+     <option value="0" <?php print($values['SIP_CONTACT5_FORWARD_TYPE']=='0'?'selected':'') ?>>Not Forward</option>
+     <option value="1" <?php print($values['SIP_CONTACT5_FORWARD_TYPE']=='1'?'selected':'') ?>>Unconditional Forward</option>
+     <option value="2" <?php print($values['SIP_CONTACT5_FORWARD_TYPE']=='2'?'selected':'') ?>>Busy Forward</option>
+     <option value="3" <?php print($values['SIP_CONTACT5_FORWARD_TYPE']=='3'?'selected':'') ?>>No Answer Forward</option>
+     <option value="4" <?php print($values['SIP_CONTACT5_FORWARD_TYPE']=='4'?'selected':'') ?>>Busy or No Answer Forward</option>
+  </select>
+                             </td>
+		
+                            </tr>
+
+                            <tr>
+                             <td colspan="2">
+
+                              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                              </table>
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">Call Forward Number</td>
+                             <td width="160" class="text">
+                              <input type="text" name="sip_profile4_fwd_num" id="sip_profile4_fwd_num" value="<?php print($values['SIP_CONTACT5_FORWARD_NUMBER']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">Voice Mail Number</td>
+                             <td width="160" class="text">
+                              <input type="text" name="sip_profile4_vm_num" id="sip_profile4_vm_num" value="<?php print($values['SIP_CONTACT5_VM_NUM']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">Hot Line Number</td>
+                             <td width="160" class="text">
+                              <input type="text" name="sip_profile4_hot_line_num" id="sip_profile4_hot_line_num" value="<?php print($values['P4_HOT_LINE_NUM']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">Dial Plan</td>
+                             <td width="160" class="text">
+                              <input type="text" name="sip_profile4_dial_plan" id="sip_profile4_dial_plan" value="<?php print($values['P4_DIAL_PLAN']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                            <tr>
+
+                             <td width="120" height="25" class="title1">Ring Type</td>
+                             <td width="160" class="text">
+  <select name="profile4_ring_type" id="profile4_ring_type_select" class="select" onchange="toggle_selected('profile4_ring_type', 'hide')">
+     <option value="0" <?php print($values['P4_RING_TYPE']=='0'?'selected':'') ?>>Type 1</option>
+     <option value="1" <?php print($values['P4_RING_TYPE']=='1'?'selected':'') ?>>Type 2</option>
+     <option value="2" <?php print($values['P4_RING_TYPE']=='2'?'selected':'') ?>>Type 3</option>
+     <option value="3" <?php print($values['P4_RING_TYPE']=='3'?'selected':'') ?>>Type 4</option>
+  </select>
+                             </td>
+		
+                            </tr>
+
+                            <tr>
+                             <td colspan="2">
+
+                              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                              </table>
+                             </td>
+                            </tr>
+
+<?php if($values['AUTO_ANSWER'] !='0'): ?>
+                            <tr>
+
+                             <td width="120" height="25" class="title1">Auto Answer Mode</td>
+                             <td width="160" class="text">
+  <select name="l4_auto_answer_mode" id="l4_auto_answer_mode_select" class="select" onchange="toggle_selected('l4_auto_answer_mode', 'hide')">
+     <option value="DISABLE" <?php print($values['L4_AUTO_ANSWER']=='DISABLE'?'selected':'') ?>>Disable</option>
+     <option value="ALL" <?php print($values['L4_AUTO_ANSWER']=='ALL'?'selected':'') ?>>All</option>
+     <option value="LIST" <?php print($values['L4_AUTO_ANSWER']=='LIST'?'selected':'') ?>>By List</option>
+  </select>
+                             </td>
+		
+                            </tr>
+
+                            <tr>
+                             <td colspan="2">
+
+                              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                                <tr>
+                                 <td colspan="2">
+
+                                <div id="l4_auto_answer_mode_LIST_div" class="<?php print($values['L4_AUTO_ANSWER']=='LIST'?'visable':'invisible') ?>">
+                                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                                    <tr>
+                                     <td width="120" height="25"  class="title1">
+                                     </td>
+                                     <td width="160" class="text">                                      <div style="cursor:hand; cursor:pointer" onclick="toggle_target(this, 'line4_auto_answer_target')">Auto Answer List<span class="showstate" >&gt;&gt;</span></div>
+                                     </td>
+                                    </tr>
+                                    <tr>
+                                     <td colspan="2">
+                                       <div id="line4_auto_answer_target" class="invisible">
+									   	<?php require_once template($type.'/line4_auto_answer'); ?>
+                                       </div>
+                                     </td>
+                                    </tr>
+
+                                  </table>
+                                </div>
+                                 </td>
+                                </tr>
+
+                              </table>
+                             </td>
+                            </tr>
+
+<?php endif; ?>
+                            <tr>
+                             <td width="120" height="25"  class="title1">
+                             </td>
+                             <td width="160" class="text">                              <div style="cursor:hand; cursor:pointer" onclick="toggle_target(this, 'codec_preference_p5_target')">Audio Codec Preference<span class="showstate" >&gt;&gt;</span></div>
+                             </td>
+                            </tr>
+                            <tr>
+                             <td colspan="2">
+                               <div id="codec_preference_p5_target" class="invisible">
+							   		<?php require_once template($type.'/codec_preference_p5'); ?>
+                               </div>
+                             </td>
+                            </tr>
+
+                          </table>
+                         </div>
+                          </div>
+
+                         </td>
+                        </tr>
+
+                      </table>
+                    </div>
+                       <div class="invisible"><br></div>
+                     </td>
+                    </tr>
+
+                  </table>
+				  					
+			<?php require_once template('autocfg'); ?>	
+
+			   		<?php require_once template('remote2'); ?>
+                 </td>
+                </tr>
+
+              </table>
+             </div>
+
+             </td>
+            </tr>
+          </table>
+             </td>
+             <td align="center" valign="top">
+          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+            <tr>
+             <td width="120" height="25"  class="title1">
+             </td>
+             <td width="160" class="text">              <div style="cursor:hand; cursor:pointer" onclick="toggle_target(this, 'advance_calling_target')">Advanced Settings<span class="showstate" >&gt;&gt;</span></div>
+             </td>
+            </tr>
+            <tr>
+             <td colspan="2">
+               <div id="advance_calling_target" class="invisible">
+			<?php require_once template($type.'/ad_call2'); ?>
+               </div>
+             </td>
+            </tr>
+
+            <tr>
+             <td width="120" height="25"  class="title1">
+             </td>
+             <td width="160" class="text">              <div style="cursor:hand; cursor:pointer" onclick="toggle_target(this, 'media_target')">Media Settings<span class="showstate" >&gt;&gt;</span></div>
+             </td>
+            </tr>
+            <tr>
+             <td colspan="2">
+               <div id="media_target" class="invisible">
+			<?php require_once template($type.'/media'); ?>
+               </div>
+             </td>
+            </tr>
+          </table>
+             </td>
+            </tr>
+
+          </table>
+         </div>
+         </td>
+        </tr>
+
+      </table>
+
+

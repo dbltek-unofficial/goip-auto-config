@@ -1,0 +1,63 @@
+<!--
+<?php
+print <<<EOT
+-->
+<html>
+<meta name="Author" content="Gaby_chen">
+<head>
+<title>Modify administrator</title>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link href="Style.css" rel="stylesheet" type="text/css">
+<script language=javascript>
+function check()
+{
+  if(document.form1.Password.value=="")
+    {
+      alert("Password can not be empty!");
+	  document.form1.Password.focus();
+      return false;
+    }
+    
+  if((document.form1.Password.value)!=(document.form1.PwdConfirm.value))
+    {
+      alert("Password not match!");
+	  document.form1.PwdConfirm.select();
+	  document.form1.PwdConfirm.focus();	  
+      return false;
+    }
+}
+</script>
+</head>
+<body>
+<form method="post" action="job.php?action=ModifyMyPwd" name="form1" onsubmit="javascript:return check();">
+  <br>
+  <br>
+  <table wIdth="300" border="0" align="center" cellpadding="2" cellspacing="1" class="border" >
+    <tr class="title"> 
+      <td height="22" colspan="2"> <div align="center"><strong>Change admin's passorwd</strong></div></td>
+    </tr>
+    <tr> 
+      <td wIdth="100" align="right" class="tdbg"><strong>User Name:</strong></td>
+      <td class="tdbg">{$UserName}</td>
+    </tr>
+    <tr> 
+      <td wIdth="100" align="right" class="tdbg"><strong>New Password:</strong></td>
+      <td class="tdbg"><input type="password" name="Password"> </td>
+    </tr>
+    <tr> 
+      <td wIdth="100" align="right" class="tdbg"><strong>validate:</strong></td>
+      <td class="tdbg"><input type="password" name="PwdConfirm"> </td>
+    </tr>
+    <tr> 
+      <td height="40" colspan="2" align="center" class="tdbg"><input name="Action" type="hIdden" Id="Action" value="Modify"> 
+        <input  type="submit" name="Submit" value="Apply" style="cursor:hand;"> 
+        &nbsp; <input name="Cancel" type="button" Id="Cancel" value="Cencel" onClick="window.location.href='{$URL}?job=main'" style="cursor:hand;"></td>
+    </tr>
+  </table>
+  </form>
+</body>
+</html>
+<!--
+EOT;
+?>
+-->

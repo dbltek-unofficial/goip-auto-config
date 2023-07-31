@@ -1,0 +1,377 @@
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+        <tr>
+         <td colspan="2">
+
+         <div id="advance_call_settings" class="visable">
+          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+            <tr>
+             <td width="120" height="25" class="title1">信令端口</td>
+             <td width="160" class="text">
+              <input type="text" name="sip_local_port" id="sip_local_port" value="<?php print($values['SIP_LOCAL_PORT']) ?>" class="edit">
+             </td>
+            </tr>
+
+            <tr>
+             <td width="120" height="25" class="title1">
+<span>消息提示</span>             </td>
+             <td width="160" class="text">
+              <input type="radio" name="sip_mwi" value="on" id="sip_mwi_enable" disabledbyelement="" onclick="toggle('sip_mwi_div', 1)" <?php print($values['SIP_MWI']=='1'?'checked':'') ?>><span>启用</span>
+              <input type="radio" name="sip_mwi" value="off" id="sip_mwi_disable" disabledbyelement="" onclick="toggle('sip_mwi_div', 0)" <?php print($values['SIP_MWI']!='1'?'checked':'') ?>><span>禁用</span>             </td>
+            </tr>
+
+            <tr>
+             <td width="120" height="25" class="title1">
+<span>NAT保持</span>             </td>
+             <td width="160" class="text">
+              <input type="radio" name="sip_no_alive" value="on" id="sip_no_alive_enable" onclick="toggle('sip_no_alive_div', 1)" <?php print($values['SIP_NO_ALIVE']!='1'?'checked':'') ?>><span>启用</span>
+              <input type="radio" name="sip_no_alive" value="off" id="sip_no_alive_disable" disabledbyelement="" onclick="toggle('sip_no_alive_div', 0)" <?php print($values['SIP_NO_ALIVE']=='1'?'checked':'') ?>><span>禁用</span>             </td>
+            </tr>
+
+            <tr>
+             <td width="120" height="25" class="title1">
+<span>P2P</span>             </td>
+             <td width="160" class="text">
+              <input type="radio" name="sip_p2p_enable" value="on" id="sip_p2p_enable_enable" disabledbyelement="" onclick="toggle('sip_p2p_enable_div', 1)" <?php print($values['SIP_P2P_ENABLE']=='1'?'checked':'') ?>><span>启用</span>
+              <input type="radio" name="sip_p2p_enable" value="off" id="sip_p2p_enable_disable" disabledbyelement="" onclick="toggle('sip_p2p_enable_div', 0)" <?php print($values['SIP_P2P_ENABLE']!='1'?'checked':'') ?>><span>禁用</span>             </td>
+            </tr>
+
+            <tr>
+             <td width="120" height="25"  class="title1">
+             </td>
+             <td width="160" class="text">              <div style="cursor:hand; cursor:pointer" onclick="toggle_target(this, 'sip_timer_target')">超时设置<span class="showstate" >&gt;&gt;</span></div>
+             </td>
+            </tr>
+            <tr>
+             <td colspan="2">
+               <div id="sip_timer_target" class="invisible">
+			   		<?php require_once template($type.'/siptimer_phone'); ?>
+               </div>
+             </td>
+            </tr>
+
+            <tr>
+
+             <td width="120" height="25" class="title1">DTMF信号</td>
+             <td width="160" class="text">
+  <select name="sip_dtmf_type" id="sip_dtmf_type_select" class="select" onchange="toggle_selected('sip_dtmf_type', 'hide')">
+     <option value="1" <?php print($values['INBAND_DTMF']=='1'?'selected':'') ?>>带内传送</option>
+     <option value="0" <?php print($values['INBAND_DTMF']=='0'?'selected':'') ?>>带外传送</option>
+  </select>
+             </td>
+		
+            </tr>
+
+            <tr>
+             <td colspan="2">
+
+              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                <tr>
+                 <td colspan="2">
+
+                <div id="sip_dtmf_type_0_div" class="<?php print($values['INBAND_DTMF']=='0'?'visable':'invisible') ?>">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                    <tr>
+
+                     <td width="120" height="25" class="title1">带外传送协议</td>
+                     <td width="160" class="text">
+  <select name="sip_outband_dtmf_type" id="sip_outband_dtmf_type_select" class="select" onchange="toggle_selected('sip_outband_dtmf_type', 'hide')">
+     <option value="1" <?php print($values['SIP_OUTBAND_DTMF_TYPE']=='1'?'selected':'') ?>>RFC 2833</option>
+     <option value="2" <?php print($values['SIP_OUTBAND_DTMF_TYPE']=='2'?'selected':'') ?>>SIP INFO</option>
+  </select>
+                     </td>
+		
+                    </tr>
+
+                    <tr>
+                     <td colspan="2">
+
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                        <tr>
+                         <td colspan="2">
+
+                        <div id="sip_outband_dtmf_type_1_div" class="<?php print($values['SIP_OUTBAND_DTMF_TYPE']=='1'?'visable':'invisible') ?>">
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+                             <td width="120" height="25" class="title1">&nbsp;&nbsp;RTP载荷类型</td>
+                             <td width="160" class="text">
+                              <input type="text" name="dtmf_payload" id="dtmf_payload" value="<?php print($values['DTMF_PAYLOAD_TYPE']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                          </table>
+                        </div>
+                         </td>
+                        </tr>
+
+                      </table>
+                     </td>
+                    </tr>
+
+                  </table>
+                </div>
+                 </td>
+                </tr>
+
+              </table>
+             </td>
+            </tr>
+
+            <tr>
+
+             <td width="120" height="25" class="title1">信令QoS</td>
+             <td width="160" class="text">
+  <select name="sip_qos" id="sip_qos_select" class="select" onchange="toggle_selected('sip_qos', 'hide')">
+     <option value="NONE" <?php print($values['SIP_QOS']=='NONE'?'selected':'') ?>>无</option>
+     <option value="IPTOS" <?php print($values['SIP_QOS']=='IPTOS'?'selected':'') ?>>IP TOS</option>
+     <option value="DIFFSERV" <?php print($values['SIP_QOS']=='DIFFSERV'?'selected':'') ?>>DiffServ</option>
+  </select>
+             </td>
+		
+            </tr>
+
+            <tr>
+             <td colspan="2">
+
+              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                <tr>
+                 <td colspan="2">
+                   <div class="invisible"><br><span class="stitle">信令QoS - IP TOS</span></div>
+
+                <div id="sip_qos_IPTOS_div" class="<?php print($values['SIP_QOS']=='IPTOS'?'visable':'invisible') ?>">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                    <tr>
+
+                     <td width="120" height="25" class="title1">&nbsp;&nbsp;服务类型</td>
+                     <td width="160" class="text">
+  <select name="sip_tos" id="sip_tos_select" class="select" onchange="toggle_selected('sip_tos', 'hide')">
+     <option value="0x00" <?php print($values['SIP_TOS']=='0x00'?'selected':'') ?>>普通 - 0 </option>
+     <option value="0x20" <?php print($values['SIP_TOS']=='0x20'?'selected':'') ?>>优先 - 1</option>
+     <option value="0x40" <?php print($values['SIP_TOS']=='0x40'?'selected':'') ?>>立即 - 2</option>
+     <option value="0x60" <?php print($values['SIP_TOS']=='0x60'?'selected':'') ?>>迅速 - 3</option>
+     <option value="0x80" <?php print($values['SIP_TOS']=='0x80'?'selected':'') ?>>强制迅速 - 4</option>
+     <option value="0xa0" <?php print($values['SIP_TOS']=='0xa0'?'selected':'') ?>>危急 - 5</option>
+  </select>
+                     </td>
+		
+                    </tr>
+
+                    <tr>
+                     <td colspan="2">
+
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                      </table>
+                     </td>
+                    </tr>
+
+                  </table>
+                </div>
+                   <div class="invisible"><br><span class="stitle">信令QoS - DiffServ</span></div>
+
+                <div id="sip_qos_DIFFSERV_div" class="<?php print($values['SIP_QOS']=='DIFFSERV'?'visable':'invisible') ?>">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                    <tr>
+
+                     <td width="120" height="25" class="title1">&nbsp;&nbsp;DiffServ类型</td>
+                     <td width="160" class="text">
+  <select name="sip_diffserv_class" id="sip_diffserv_class_select" class="select" onchange="toggle_selected('sip_diffserv_class', 'hide')">
+     <option value="0" <?php print($values['SIP_DIFFSERV']=='0'?'selected':'') ?>>BE - 0x00</option>
+     <option value="40" <?php print($values['SIP_DIFFSERV']=='40'?'selected':'') ?>>AF11 - 0x28</option>
+     <option value="48" <?php print($values['SIP_DIFFSERV']=='48'?'selected':'') ?>>AF12 - 0x30</option>
+     <option value="56" <?php print($values['SIP_DIFFSERV']=='56'?'selected':'') ?>>AF13 - 0x38</option>
+     <option value="72" <?php print($values['SIP_DIFFSERV']=='72'?'selected':'') ?>>AF21 - 0x48</option>
+     <option value="80" <?php print($values['SIP_DIFFSERV']=='80'?'selected':'') ?>>AF22 - 0x50</option>
+     <option value="88" <?php print($values['SIP_DIFFSERV']=='88'?'selected':'') ?>>AF23 - 0x58</option>
+     <option value="104" <?php print($values['SIP_DIFFSERV']=='104'?'selected':'') ?>>AF31 - 0x68</option>
+     <option value="112" <?php print($values['SIP_DIFFSERV']=='112'?'selected':'') ?>>AF32 - 0x70</option>
+     <option value="120" <?php print($values['SIP_DIFFSERV']=='120'?'selected':'') ?>>AF33 - 0x78</option>
+     <option value="136" <?php print($values['SIP_DIFFSERV']=='136'?'selected':'') ?>>AF41 - 0x88</option>
+     <option value="144" <?php print($values['SIP_DIFFSERV']=='144'?'selected':'') ?>>AF42 - 0x90</option>
+     <option value="152" <?php print($values['SIP_DIFFSERV']=='152'?'selected':'') ?>>AF43 - 0x98</option>
+     <option value="184" <?php print($values['SIP_DIFFSERV']=='184'?'selected':'') ?>>EF - 0xB8</option>
+  </select>
+                     </td>
+		
+                    </tr>
+
+                    <tr>
+                     <td colspan="2">
+
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                      </table>
+                     </td>
+                    </tr>
+
+                  </table>
+                </div>
+                   <div class="invisible"><br></div>
+                 </td>
+                </tr>
+
+              </table>
+             </td>
+            </tr>
+
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+            <tr>
+
+             <td width="120" height="25" class="title1">信令NAT穿越</td>
+             <td width="160" class="text">
+  <select name="sip_nat_traversal" id="sip_nat_traversal_select" class="select" onchange="toggle_selected('sip_nat_traversal', 'hide')">
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+     <option value="NONE" <?php print($values['SIP_NAT_TRAVERSAL']=='NONE'?'selected':'') ?>>无</option>
+<?php endif; ?>
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+     <option value="STUN" <?php print($values['SIP_NAT_TRAVERSAL']=='STUN'?'selected':'') ?>>STUN(RFC 3489)</option>
+<?php endif; ?>
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+     <option value="RELAY" <?php print($values['SIP_NAT_TRAVERSAL']=='RELAY'?'selected':'') ?>>中继代理</option>
+<?php endif; ?>
+  </select>
+             </td>
+		
+            </tr>
+
+            <tr>
+             <td colspan="2">
+
+              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+<?php endif; ?>
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                <tr>
+                 <td colspan="2">
+                   <div class="invisible"><br><span class="stitle">信令NAT穿越 - STUN(RFC 3489)</span></div>
+
+                <div id="sip_nat_traversal_STUN_div" class="<?php print($values['SIP_NAT_TRAVERSAL']=='STUN'?'visable':'invisible') ?>">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                    <tr>
+                     <td width="120" height="25" class="title1">STUN服务器地址</td>
+                     <td width="160" class="text">
+                      <input type="text" name="sip_stun_server" id="sip_stun_server" value="<?php print($values['SIP_STUN_SERVER']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                     </td>
+                    </tr>
+
+<?php endif; ?>
+                  </table>
+                </div>
+
+<?php endif; ?>
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+
+                <div id="sip_nat_traversal_RELAY_div" class="<?php print($values['SIP_NAT_TRAVERSAL']=='RELAY'?'visable':'invisible') ?>">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                    <tr>
+                     <td width="120" height="25" class="title1">&nbsp;&nbsp;地址</td>
+                     <td width="160" class="text">
+                      <input type="text" name="sip_relay_server" id="sip_relay_server" value="<?php print($values['SIP_RELAY_SERVER']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                     </td>
+                    </tr>
+
+<?php endif; ?>
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                    <tr>
+                     <td width="120" height="25" class="title1">&nbsp;&nbsp;端口</td>
+                     <td width="160" class="text">
+                      <input type="text" name="sip_relay_port" id="sip_relay_port" value="<?php print($values['SIP_RELAY_PORT']) ?>" class="edit">
+                     </td>
+                    </tr>
+
+<?php endif; ?>
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                    <tr>
+                     <td width="120" height="25" class="title1">&nbsp;&nbsp;用户名</td>
+                     <td width="160" class="text">
+                      <input type="text" name="sip_relay_user" id="sip_relay_user" value="<?php print($values['SIP_RELAY_USER']) ?>" class="edit">
+                     </td>
+                    </tr>
+
+<?php endif; ?>
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                    <tr>
+                     <td width="120" height="25" class="title1">&nbsp;&nbsp;密码</td>
+                     <td width="160" class="text">
+                      <input type="password" name="sip_relay_passwd" id="sip_relay_passwd" value="<?php print($values['SIP_RELAY_PASSWD']) ?>" class="edit">
+                     </td>
+                    </tr>
+
+<?php endif; ?>
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                    <tr>
+                     <td width="120" height="25" class="title1">
+                     </td>
+                     <td width="160" class="text">
+                      <input type="checkbox" name="sip_relay_encrypt" id="sip_relay_encrypt" onclick="toggle_checkbox('sip_relay_encrypt', 'hide')" <?php print($values['SIP_RELAY_ENCRYPT']=='1'?'checked':'') ?>><span>加密</span>
+                     </td>
+                    </tr>
+
+<?php endif; ?>
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                    <tr>
+                     <td width="120" height="25" class="title1">备份中继代理1</td>
+                     <td width="160" class="text">
+                      <input type="text" name="sip_relay_server1" id="sip_relay_server1" value="<?php print($values['SIP_RELAY_SERVER1']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                     </td>
+                    </tr>
+
+<?php endif; ?>
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                    <tr>
+                     <td width="120" height="25" class="title1">备份中继代理2</td>
+                     <td width="160" class="text">
+                      <input type="text" name="sip_relay_server2" id="sip_relay_server2" value="<?php print($values['SIP_RELAY_SERVER2']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                     </td>
+                    </tr>
+
+<?php endif; ?>
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                    <tr>
+                     <td width="120" height="25" class="title1">备份中继代理3</td>
+                     <td width="160" class="text">
+                      <input type="text" name="sip_relay_server3" id="sip_relay_server3" value="<?php print($values['SIP_RELAY_SERVER3']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                     </td>
+                    </tr>
+
+<?php endif; ?>
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                    <tr>
+                     <td width="120" height="25" class="title1">备份中继代理4</td>
+                     <td width="160" class="text">
+                      <input type="text" name="sip_relay_server4" id="sip_relay_server4" value="<?php print($values['SIP_RELAY_SERVER4']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                     </td>
+                    </tr>
+
+<?php endif; ?>
+                  </table>
+                </div>
+                   <div class="invisible"><br></div>
+                 </td>
+                </tr>
+
+<?php endif; ?>
+              </table>
+             </td>
+            </tr>
+
+<?php endif; ?>
+          </table>
+         </div>
+         </td>
+        </tr>
+
+      </table>

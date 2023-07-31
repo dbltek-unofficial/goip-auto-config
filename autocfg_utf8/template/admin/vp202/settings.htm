@@ -1,0 +1,721 @@
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+        <tr>
+         <td colspan="2" class="title2" height="25" >呼叫设置</td>
+        </tr>
+
+        <tr>
+         <td colspan="2">
+
+         <div id="call_settings" class="visable">
+          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+            <tr>
+             <td align="center" valign="top">
+          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+            <tr>
+             <td colspan="2">
+
+             <div id="basic_calling" class="visable">
+              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+<?php if($values['TELLINE'] !='2'): ?>
+                <tr>
+                 <td width="120" height="25" class="title1">电话号码</td>
+                 <td width="160" class="text">
+                  <input type="text" name="sip_phone_number" id="sip_phone_number" value="<?php print($values['SIP_LOCAL_PHONE_NUM']) ?>" class="edit">
+                 </td>
+                </tr>
+
+<?php endif; ?>
+<?php if($values['TELLINE'] !='2'): ?>
+                <tr>
+                 <td width="120" height="25" class="title1">显示名</td>
+                 <td width="160" class="text">
+                  <input type="text" name="sip_display_name" id="sip_display_name" value="<?php print($values['SIP_DISPLAY_NAME']) ?>" class="edit">
+                 </td>
+                </tr>
+
+<?php endif; ?>
+<?php if($values['TELLINE'] !='2'): ?>
+                <tr>
+                 <td width="120" height="25" class="title1">代理服务器</td>
+                 <td width="160" class="text">
+                  <input type="text" name="sip_proxy" id="sip_proxy" value="<?php print($values['SIP_PROXY']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                 </td>
+                </tr>
+
+<?php endif; ?>
+<?php if($values['TELLINE'] !='2'): ?>
+                <tr>
+                 <td width="120" height="25" class="title1">注册服务器</td>
+                 <td width="160" class="text">
+                  <input type="text" name="sip_registrar" id="sip_registrar" value="<?php print($values['SIP_REGISTRAR']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                 </td>
+                </tr>
+
+<?php endif; ?>
+<?php if($values['TELLINE'] !='2'): ?>
+                <tr>
+                 <td width="120" height="25" class="title1">Outbound Proxy</td>
+                 <td width="160" class="text">
+                  <input type="text" name="sip_outbound_proxy" id="sip_outbound_proxy" value="<?php print($values['SIP_OUTBOUND_PROXY']) ?>" class="edit">
+                 </td>
+                </tr>
+
+<?php endif; ?>
+<?php if($values['TELLINE'] !='2'): ?>
+                <tr>
+                 <td width="120" height="25" class="title1">归属域</td>
+                 <td width="160" class="text">
+                  <input type="text" name="sip_home_domain" id="sip_home_domain" value="<?php print($values['SIP_CONTACT0_HOME_DOMAIN']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                 </td>
+                </tr>
+
+<?php endif; ?>
+<?php if($values['TELLINE'] !='2'): ?>
+                <tr>
+                 <td width="120" height="25" class="title1">
+                 </td>
+                 <td width="160" class="text">
+                  <input type="checkbox" name="sip_auth" id="sip_auth" onclick="toggle_checkbox('sip_auth', 'hide')" <?php print($values['SIP_PHONE_AUTH_ENABLE']=='1'?'checked':'') ?>><span>启用认证</span>
+                 </td>
+                </tr>
+
+                <tr>
+                 <td colspan="2">
+
+                <div id="sip_auth_div" class="<?php print($values['SIP_PHONE_AUTH_ENABLE']=='1'?'visable':'invisible') ?>">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                    <tr>
+                     <td width="120" height="25" class="title1">认证Id</td>
+                     <td width="160" class="text">
+                      <input type="text" name="sip_auth_id" id="sip_auth_id" value="<?php print($values['SIP_PHONE_AUTH_ID']) ?>" class="edit">
+                     </td>
+                    </tr>
+
+                    <tr>
+                     <td width="120" height="25" class="title1">密码</td>
+                     <td width="160" class="text">
+                      <input type="password" name="sip_auth_passwd" id="sip_auth_passwd" value="<?php print($values['SIP_PHONE_AUTH_PASSWD']) ?>" class="edit">
+                     </td>
+                    </tr>
+
+                  </table>
+                </div>
+                 </td>
+                </tr>
+
+<?php endif; ?>
+<?php if($values['TELLINE'] !='2'): ?>
+                <tr>
+                 <td width="120" height="25" class="title1">
+<span>后备服务器</span>                 </td>
+                 <td width="160" class="text">
+                  <input type="radio" name="sip_backup_server" value="on" id="sip_backup_server_enable" disabledbyelement="" onclick="toggle('sip_backup_server_div', 1)" <?php print($values['USE_BACKUP_SIP_SVR']=='1'?'checked':'') ?>><span>启用</span>
+                  <input type="radio" name="sip_backup_server" value="off" id="sip_backup_server_disable" disabledbyelement="" onclick="toggle('sip_backup_server_div', 0)" <?php print($values['USE_BACKUP_SIP_SVR']!='1'?'checked':'') ?>><span>禁用</span>                 </td>
+                </tr>
+
+                <tr>
+                 <td colspan="2">
+
+                <div id="sip_backup_server_div" class="<?php print($values['USE_BACKUP_SIP_SVR']=='1'?'visable':'invisible') ?>">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                    <tr>
+                     <td width="120" height="25" class="title1">&nbsp;&nbsp;后备代理服务器</td>
+                     <td width="160" class="text">
+                      <input type="text" name="sip_backup_proxy" id="sip_backup_proxy" value="<?php print($values['SIP_BACKUP_PROXY']) ?>" class="edit">
+                     </td>
+                    </tr>
+
+                    <tr>
+                     <td width="120" height="25" class="title1">&nbsp;&nbsp;后备注册服务器</td>
+                     <td width="160" class="text">
+                      <input type="text" name="sip_backup_registrar" id="sip_backup_registrar" value="<?php print($values['SIP_BACKUP_REGISTRAR']) ?>" class="edit">
+                     </td>
+                    </tr>
+
+                    <tr>
+                     <td width="120" height="25" class="title1">&nbsp;&nbsp;后备Outbound Proxy</td>
+                     <td width="160" class="text">
+                      <input type="text" name="sip_backup_outbound_proxy" id="sip_backup_outbound_proxy" value="<?php print($values['SIP_BACKUP_OUTBOUND_PROXY']) ?>" class="edit">
+                     </td>
+                    </tr>
+
+                    <tr>
+                     <td width="120" height="25" class="title1">&nbsp;&nbsp;后备归属域</td>
+                     <td width="160" class="text">
+                      <input type="text" name="sip_backup_home_domain" id="sip_backup_home_domain" value="<?php print($values['SIP_BACKUP_HOME_DOMAIN']) ?>" class="edit">
+                     </td>
+                    </tr>
+
+                  </table>
+                </div>
+                 </td>
+                </tr>
+
+<?php endif; ?>
+<?php if($values['TELLINE'] !='2'): ?>
+                <tr>
+
+                 <td width="120" height="25" class="title1">呼叫转移类型</td>
+                 <td width="160" class="text">
+  <select name="sip_fwd_type" id="sip_fwd_type_select" class="select" onchange="toggle_selected('sip_fwd_type', 'hide')">
+     <option value="0" <?php print($values['SIP_CONTACT0_FORWARD_TYPE']=='0'?'selected':'') ?>>不转移</option>
+     <option value="1" <?php print($values['SIP_CONTACT0_FORWARD_TYPE']=='1'?'selected':'') ?>>无条件转移</option>
+     <option value="2" <?php print($values['SIP_CONTACT0_FORWARD_TYPE']=='2'?'selected':'') ?>>遇忙转移</option>
+     <option value="3" <?php print($values['SIP_CONTACT0_FORWARD_TYPE']=='3'?'selected':'') ?>>无应答转移</option>
+     <option value="4" <?php print($values['SIP_CONTACT0_FORWARD_TYPE']=='4'?'selected':'') ?>>遇忙或无应答转移</option>
+  </select>
+                 </td>
+                
+                </tr>
+
+                <tr>
+                 <td colspan="2">
+
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                  </table>
+                 </td>
+                </tr>
+
+<?php endif; ?>
+<?php if($values['TELLINE'] !='2'): ?>
+                <tr>
+                 <td width="120" height="25" class="title1">呼叫转移号码</td>
+                 <td width="160" class="text">
+                  <input type="text" name="sip_fwd_num" id="sip_fwd_num" value="<?php print($values['SIP_FORWARD_NUM']) ?>" class="edit">
+                 </td>
+                </tr>
+
+<?php endif; ?>
+<?php if($values['TELLINE'] !='2'): ?>
+                <tr>
+                 <td width="120" height="25" class="title1">语音信箱号码</td>
+                 <td width="160" class="text">
+                  <input type="text" name="voice_mail" id="voice_mail" value="<?php print($values['SIP_VOICE_MAIL']) ?>" class="edit">
+                 </td>
+                </tr>
+
+<?php endif; ?>
+<?php if($values['TELLINE']=='2'): ?>
+                <tr>
+                 <td colspan="2">
+
+                 <div id="sip_contact" class="visable">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                    <tr>
+                     <td class="text" width="280">
+<?php if($values['TELLINE']=='2'): ?>
+                      <input type=radio name="sip_contact_tab" value="sip_line1_conf" onclick="toggle2('sip_contact_tab', 2, 0)" checked>线路 1&nbsp;
+<?php endif; ?>
+<?php if($values['TELLINE']=='2'): ?>
+                      <input type=radio name="sip_contact_tab" value="sip_line2_conf" onclick="toggle2('sip_contact_tab', 2, 1)">线路 2&nbsp;
+<?php endif; ?>
+
+                     </td>
+                    </tr>
+                    <tr>
+                     <td>
+                      <div id="sip_contact_tab_0_div" class="visable">
+
+                     <div id="sip_line1_conf" class="visable">
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                        <tr>
+                         <td width="120" height="25" class="title1">电话号码</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_profile1_number" id="sip_profile1_number" value="<?php print($values['SIP_CONTACT2_DIAL_DIGITS']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">显示名字</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_profile1_display_name" id="sip_profile1_display_name" value="<?php print($values['SIP_CONTACT2_DISPLAY_NAME']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">代理服务器</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_profile1_proxy" id="sip_profile1_proxy" value="<?php print($values['SIP_CONTACT2_PROXY']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">注册服务器</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_profile1_registrar" id="sip_profile1_registrar" value="<?php print($values['SIP_CONTACT2_SERVER']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">注册超时(0-36400秒)</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_profile1_register_expired" id="sip_profile1_register_expired" value="<?php print($values['SIP_CONTACT2_EXPIRED']) ?>" class="edit" onblur="onblur_check_integer(this, 0, 36400)" onfocus="onfocus_check_integer(this, 0, 36400)">
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">Outbound Proxy</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_profile1_outbound_proxy" id="sip_profile1_outbound_proxy" value="<?php print($values['SIP_CONTACT2_OUTBOUND_PROXY']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">归属域</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_profile1_home_domain" id="sip_profile1_home_domain" value="<?php print($values['SIP_CONTACT2_HOME_DOMAIN']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">认证ID</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_profile1_auth_id" id="sip_profile1_auth_id" value="<?php print($values['SIP_CONTACT2_LOGIN']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">密码</td>
+                         <td width="160" class="text">
+                          <input type="password" name="sip_profile1_auth_passwd" id="sip_profile1_auth_passwd" value="<?php print($values['SIP_CONTACT2_PASSWD']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">
+<span>呼叫等待</span>                         </td>
+                         <td width="160" class="text">
+                          <input type="radio" name="sip_profile1_call_wait" value="on" id="sip_profile1_call_wait_enable" disabledbyelement="" onclick="toggle('sip_profile1_call_wait_div', 1)" <?php print($values['SIP_CONTACT2_CALL_WAIT']=='1'?'checked':'') ?>><span>启用</span>
+                          <input type="radio" name="sip_profile1_call_wait" value="off" id="sip_profile1_call_wait_disable" disabledbyelement="" onclick="toggle('sip_profile1_call_wait_div', 0)" <?php print($values['SIP_CONTACT2_CALL_WAIT']!='1'?'checked':'') ?>><span>禁用</span>                         </td>
+                        </tr>
+
+                        <tr>
+
+                         <td width="120" height="25" class="title1">呼叫转移类型</td>
+                         <td width="160" class="text">
+  <select name="sip_profile1_fwd_type" id="sip_profile1_fwd_type_select" class="select" onchange="toggle_selected('sip_profile1_fwd_type', 'hide')">
+     <option value="0" <?php print($values['SIP_CONTACT2_FORWARD_TYPE']=='0'?'selected':'') ?>>不转移</option>
+     <option value="1" <?php print($values['SIP_CONTACT2_FORWARD_TYPE']=='1'?'selected':'') ?>>无条件转移</option>
+     <option value="2" <?php print($values['SIP_CONTACT2_FORWARD_TYPE']=='2'?'selected':'') ?>>遇忙转移</option>
+     <option value="3" <?php print($values['SIP_CONTACT2_FORWARD_TYPE']=='3'?'selected':'') ?>>无应答转移</option>
+     <option value="4" <?php print($values['SIP_CONTACT2_FORWARD_TYPE']=='4'?'selected':'') ?>>遇忙或无应答转移</option>
+  </select>
+                         </td>
+                
+                        </tr>
+
+                        <tr>
+                         <td colspan="2">
+
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                          </table>
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">呼叫转移号码</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_profile1_fwd_num" id="sip_profile1_fwd_num" value="<?php print($values['SIP_CONTACT2_FORWARD_NUMBER']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">语音邮箱号码</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_profile1_vm_num" id="sip_profile1_vm_num" value="<?php print($values['SIP_CONTACT2_VM_NUM']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">热线号码</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_profile1_hot_line_num" id="sip_profile1_hot_line_num" value="<?php print($values['P1_HOT_LINE_NUM']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">拨号规则</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_profile1_dial_plan" id="sip_profile1_dial_plan" value="<?php print($values['P1_DIAL_PLAN']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+                        <tr>
+
+                         <td width="120" height="25" class="title1">振铃类型</td>
+                         <td width="160" class="text">
+  <select name="profile1_ring_type" id="profile1_ring_type_select" class="select" onchange="toggle_selected('profile1_ring_type', 'hide')">
+     <option value="0" <?php print($values['P1_RING_TYPE']=='0'?'selected':'') ?>>类型 1</option>
+     <option value="1" <?php print($values['P1_RING_TYPE']=='1'?'selected':'') ?>>类型 2</option>
+     <option value="2" <?php print($values['P1_RING_TYPE']=='2'?'selected':'') ?>>类型 3</option>
+     <option value="3" <?php print($values['P1_RING_TYPE']=='3'?'selected':'') ?>>类型 4</option>
+  </select>
+                         </td>
+                
+                        </tr>
+
+                        <tr>
+                         <td colspan="2">
+
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                          </table>
+                         </td>
+                        </tr>
+
+<?php if($values['AUTO_ANSWER'] !='0'): ?>
+                        <tr>
+
+                         <td width="120" height="25" class="title1">自动应答模式</td>
+                         <td width="160" class="text">
+  <select name="l1_auto_answer_mode" id="l1_auto_answer_mode_select" class="select" onchange="toggle_selected('l1_auto_answer_mode', 'hide')">
+     <option value="DISABLE" <?php print($values['L1_AUTO_ANSWER']=='DISABLE'?'selected':'') ?>>禁止</option>
+     <option value="ALL" <?php print($values['L1_AUTO_ANSWER']=='ALL'?'selected':'') ?>>所有来电</option>
+     <option value="LIST" <?php print($values['L1_AUTO_ANSWER']=='LIST'?'selected':'') ?>>列表</option>
+  </select>
+                         </td>
+                
+                        </tr>
+
+                        <tr>
+                         <td colspan="2">
+
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+                             <td colspan="2">
+
+                            <div id="l1_auto_answer_mode_LIST_div" class="<?php print($values['L1_AUTO_ANSWER']=='LIST'?'visable':'invisible') ?>">
+                              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                                <tr>
+                                 <td width="120" height="25"  class="title1">
+                                 </td>
+                                 <td width="160" class="text">                                  <div style="cursor:hand; cursor:pointer" onclick="toggle_target(this, 'line1_auto_answer_target')">自动应答<span class="showstate" >&gt;&gt;</span></div>
+                                 </td>
+                                </tr>
+                                <tr>
+                                 <td colspan="2">
+                                   <div id="line1_auto_answer_target" class="invisible">
+                                	<?php require_once template($type.'/line1_auto_answer'); ?>
+				   </div>
+                                 </td>
+                                </tr>
+
+                              </table>
+                            </div>
+                             </td>
+                            </tr>
+
+                          </table>
+                         </td>
+                        </tr>
+
+<?php endif; ?>
+                        <tr>
+                         <td width="120" height="25"  class="title1">
+                         </td>
+                         <td width="160" class="text">                          <div style="cursor:hand; cursor:pointer" onclick="toggle_target(this, 'codec_preference_p2_target')">语音编码顺序<span class="showstate" >&gt;&gt;</span></div>
+                         </td>
+                        </tr>
+                        <tr>
+                         <td colspan="2">
+                           <div id="codec_preference_p2_target" class="invisible">
+				<?php require_once template($type.'/codec_preference_p2'); ?>
+                           </div>
+                         </td>
+                        </tr>
+
+                      </table>
+                     </div>
+                      </div>
+                      <div id="sip_contact_tab_1_div" class="invisible">
+
+                     <div id="sip_line2_conf" class="visable">
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                        <tr>
+                         <td width="120" height="25" class="title1">电话号码</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_profile2_number" id="sip_profile2_number" value="<?php print($values['SIP_CONTACT3_DIAL_DIGITS']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">显示名字</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_profile2_display_name" id="sip_profile2_display_name" value="<?php print($values['SIP_CONTACT3_DISPLAY_NAME']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">代理服务器</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_profile2_proxy" id="sip_profile2_proxy" value="<?php print($values['SIP_CONTACT3_PROXY']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">注册服务器</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_profile2_registrar" id="sip_profile2_registrar" value="<?php print($values['SIP_CONTACT3_SERVER']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">注册超时(0-36400秒)</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_profile2_register_expired" id="sip_profile2_register_expired" value="<?php print($values['SIP_CONTACT3_EXPIRED']) ?>" class="edit" onblur="onblur_check_integer(this, 0, 36400)" onfocus="onfocus_check_integer(this, 0, 36400)">
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">Outbound Proxy</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_profile2_outbound_proxy" id="sip_profile2_outbound_proxy" value="<?php print($values['SIP_CONTACT3_OUTBOUND_PROXY']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">归属域</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_profile2_home_domain" id="sip_profile2_home_domain" value="<?php print($values['SIP_CONTACT3_HOME_DOMAIN']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">认证ID</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_profile2_auth_id" id="sip_profile2_auth_id" value="<?php print($values['SIP_CONTACT3_LOGIN']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">密码</td>
+                         <td width="160" class="text">
+                          <input type="password" name="sip_profile2_auth_passwd" id="sip_profile2_auth_passwd" value="<?php print($values['SIP_CONTACT3_PASSWD']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">
+<span>呼叫等待</span>                         </td>
+                         <td width="160" class="text">
+                          <input type="radio" name="sip_profile2_call_wait" value="on" id="sip_profile2_call_wait_enable" disabledbyelement="" onclick="toggle('sip_profile2_call_wait_div', 1)" <?php print($values['SIP_CONTACT3_CALL_WAIT']=='1'?'checked':'') ?>><span>启用</span>
+                          <input type="radio" name="sip_profile2_call_wait" value="off" id="sip_profile2_call_wait_disable" disabledbyelement="" onclick="toggle('sip_profile2_call_wait_div', 0)" <?php print($values['SIP_CONTACT3_CALL_WAIT']!='1'?'checked':'') ?>><span>禁用</span>                         </td>
+                        </tr>
+
+                        <tr>
+
+                         <td width="120" height="25" class="title1">呼叫转移类型</td>
+                         <td width="160" class="text">
+  <select name="sip_profile2_fwd_type" id="sip_profile2_fwd_type_select" class="select" onchange="toggle_selected('sip_profile2_fwd_type', 'hide')">
+     <option value="0" <?php print($values['SIP_CONTACT3_FORWARD_TYPE']=='0'?'selected':'') ?>>不转移</option>
+     <option value="1" <?php print($values['SIP_CONTACT3_FORWARD_TYPE']=='1'?'selected':'') ?>>无条件转移</option>
+     <option value="2" <?php print($values['SIP_CONTACT3_FORWARD_TYPE']=='2'?'selected':'') ?>>遇忙转移</option>
+     <option value="3" <?php print($values['SIP_CONTACT3_FORWARD_TYPE']=='3'?'selected':'') ?>>无应答转移</option>
+     <option value="4" <?php print($values['SIP_CONTACT3_FORWARD_TYPE']=='4'?'selected':'') ?>>遇忙或无应答转移</option>
+  </select>
+                         </td>
+                
+                        </tr>
+
+                        <tr>
+                         <td colspan="2">
+
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                          </table>
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">呼叫转移号码</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_profile2_fwd_num" id="sip_profile2_fwd_num" value="<?php print($values['SIP_CONTACT3_FORWARD_NUMBER']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">语音邮箱号码</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_profile2_vm_num" id="sip_profile2_vm_num" value="<?php print($values['SIP_CONTACT3_VM_NUM']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">热线号码</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_profile2_hot_line_num" id="sip_profile2_hot_line_num" value="<?php print($values['P2_HOT_LINE_NUM']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">拨号规则</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_profile2_dial_plan" id="sip_profile2_dial_plan" value="<?php print($values['P2_DIAL_PLAN']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+                        <tr>
+
+                         <td width="120" height="25" class="title1">振铃类型</td>
+                         <td width="160" class="text">
+  <select name="profile2_ring_type" id="profile2_ring_type_select" class="select" onchange="toggle_selected('profile2_ring_type', 'hide')">
+     <option value="0" <?php print($values['P2_RING_TYPE']=='0'?'selected':'') ?>>类型 1</option>
+     <option value="1" <?php print($values['P2_RING_TYPE']=='1'?'selected':'') ?>>类型 2</option>
+     <option value="2" <?php print($values['P2_RING_TYPE']=='2'?'selected':'') ?>>类型 3</option>
+     <option value="3" <?php print($values['P2_RING_TYPE']=='3'?'selected':'') ?>>类型 4</option>
+  </select>
+                         </td>
+                
+                        </tr>
+
+                        <tr>
+                         <td colspan="2">
+
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                          </table>
+                         </td>
+                        </tr>
+
+<?php if($values['AUTO_ANSWER'] !='0'): ?>
+                        <tr>
+
+                         <td width="120" height="25" class="title1">自动应答模式</td>
+                         <td width="160" class="text">
+  <select name="l2_auto_answer_mode" id="l2_auto_answer_mode_select" class="select" onchange="toggle_selected('l2_auto_answer_mode', 'hide')">
+     <option value="DISABLE" <?php print($values['L2_AUTO_ANSWER']=='DISABLE'?'selected':'') ?>>禁止</option>
+     <option value="ALL" <?php print($values['L2_AUTO_ANSWER']=='ALL'?'selected':'') ?>>所有来电</option>
+     <option value="LIST" <?php print($values['L2_AUTO_ANSWER']=='LIST'?'selected':'') ?>>列表</option>
+  </select>
+                         </td>
+                
+                        </tr>
+
+                        <tr>
+                         <td colspan="2">
+
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+                             <td colspan="2">
+
+                            <div id="l2_auto_answer_mode_LIST_div" class="<?php print($values['L2_AUTO_ANSWER']=='LIST'?'visable':'invisible') ?>">
+                              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                                <tr>
+                                 <td width="120" height="25"  class="title1">
+                                 </td>
+                                 <td width="160" class="text">                                  <div style="cursor:hand; cursor:pointer" onclick="toggle_target(this, 'line2_auto_answer_target')">自动应答<span class="showstate" >&gt;&gt;</span></div>
+                                 </td>
+                                </tr>
+                                <tr>
+                                 <td colspan="2">
+                                   <div id="line2_auto_answer_target" class="invisible">
+					<?php require_once template($type.'/line2_auto_answer'); ?>
+                                   </div>
+                                 </td>
+                                </tr>
+
+                              </table>
+                            </div>
+                             </td>
+                            </tr>
+
+                          </table>
+                         </td>
+                        </tr>
+
+<?php endif; ?>
+
+
+                        <tr>
+                         <td width="120" height="25"  class="title1">
+                         </td>
+                         <td width="160" class="text">                          <div style="cursor:hand; cursor:pointer" onclick="toggle_target(this, 'codec_preference_p3_target')">语音编码顺序<span class="showstate" >&gt;&gt;</span></div>
+                         </td>
+                        </tr>
+                        <tr>
+                         <td colspan="2">
+                           <div id="codec_preference_p3_target" class="invisible">
+				<?php require_once template($type.'/codec_preference_p3'); ?>
+                           </div>
+                         </td>
+                        </tr>
+
+			
+                      </table>
+                     </div>
+                      </div>
+
+                     </td>
+                    </tr>
+
+
+                  </table>
+                 </div>
+                 </td>
+                </tr>
+                        <?php require_once template('autocfg'); ?>
+
+                                        <?php require_once template('remote2'); ?>
+
+<?php endif; ?>
+              </table>
+             </div>
+
+             </td>
+            </tr>
+          </table>
+             </td>
+             <td align="center" valign="top">
+          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+            <tr>
+             <td width="120" height="25"  class="title1">
+             </td>
+             <td width="160" class="text">              <div style="cursor:hand; cursor:pointer" onclick="toggle_target(this, 'advance_calling_target')">高级设置<span class="showstate" >&gt;&gt;</span></div>
+             </td>
+            </tr>
+            <tr>
+             <td colspan="2">
+               <div id="advance_calling_target" class="invisible">
+			<?php require_once template($type.'/ad_call2'); ?> 
+              </div>
+             </td>
+            </tr>
+
+            <tr>
+             <td width="120" height="25"  class="title1">
+             </td>
+             <td width="160" class="text">              <div style="cursor:hand; cursor:pointer" onclick="toggle_target(this, 'media_target')">媒体<span class="showstate" >&gt;&gt;</span></div>
+             </td>
+            </tr>
+            <tr>
+             <td colspan="2">
+               <div id="media_target" class="invisible">
+			<?php require_once template($type.'/media'); ?>
+               </div>
+             </td>
+            </tr>
+          </table>
+             </td>
+            </tr>
+
+          </table>
+         </div>
+         </td>
+        </tr>
+
+      </table>

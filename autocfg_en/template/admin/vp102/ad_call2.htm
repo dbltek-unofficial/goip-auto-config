@@ -1,0 +1,831 @@
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+        <tr>
+         <td colspan="2">
+
+         <div id="advance_call_settings" class="visable">
+          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+            <tr>
+
+            </tr>
+
+            <tr>
+             <td colspan="2">
+
+              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                <tr>
+                 <td colspan="2">
+                   <div class="invisible"><br><span class="stitle">Advanced Endpoint Settings - Advanced H.323 Settings</span></div>
+
+                <div id="advance_endpoint_settings_0_div" class="<?php print($values['ENDPOINT_TYPE']=='H323'?'visable':'invisible') ?>">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                    <tr>
+                     <td width="120" height="25" class="title1">RAS Port</td>
+                     <td width="160" class="text">
+                      <input type="text" name="ras_port" id="ras_port" value="<?php print($values['RAS_PORT']) ?>" class="edit">
+                     </td>
+                    </tr>
+
+                    <tr>
+                     <td width="120" height="25" class="title1">Q.931 Port</td>
+                     <td width="160" class="text">
+                      <input type="text" name="q931_port" id="q931_port" value="<?php print($values['Q931_PORT']) ?>" class="edit">
+                     </td>
+                    </tr>
+
+                    <tr>
+                     <td width="120" height="25" class="title1">H.245 Port</td>
+                     <td width="160" class="text">
+                      <input type="text" name="h245_port" id="h245_port" value="<?php print($values['H245_PORT']) ?>" class="edit">
+                     </td>
+                    </tr>
+
+                    <tr>
+                     <td width="120" height="25" class="title1">
+<span>Fast Start</span>                     </td>
+                     <td width="160" class="text">
+                      <input type="radio" name="disable_fast_start" value="on" id="disable_fast_start_enable" onclick="toggle('disable_fast_start_div', 1)" <?php print($values['DISABLE_FASTSTART']!='1'?'checked':'') ?>><span>Enable</span>
+                      <input type="radio" name="disable_fast_start" value="off" id="disable_fast_start_disable" disabledbyelement="" onclick="toggle('disable_fast_start_div', 0)" <?php print($values['DISABLE_FASTSTART']=='1'?'checked':'') ?>><span>Disable</span>                     </td>
+                    </tr>
+
+                    <tr>
+
+                     <td width="120" height="25" class="title1">Register Mode</td>
+                     <td width="160" class="text">
+  <select name="h323_register_mode" id="h323_register_mode_select" class="select" onchange="toggle_selected('h323_register_mode', 'hide')">
+     <option value="0" <?php print($values['H323_REGISTER_MODE']=='0'?'selected':'') ?>>Register Multiple Number</option>
+     <option value="1" <?php print($values['H323_REGISTER_MODE']=='1'?'selected':'') ?>>Register Multiple Times</option>
+  </select>
+                     </td>
+
+                    </tr>
+
+                    <tr>
+                     <td colspan="2">
+
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                      </table>
+                     </td>
+                    </tr>
+
+                    <tr>
+                     <td width="120" height="25" class="title1">Transfer Mode</td>
+                     <td width="160" class="text">
+                      <input type="text" name="h450_transfer_option" id="h450_transfer_option" value="<?php print($values['H450_TRANSFER_OPTION']) ?>" class="edit">
+                     </td>
+                    </tr>
+
+                    <tr>
+
+                     <td width="120" height="25" class="title1">DTMF Signaling</td>
+                     <td width="160" class="text">
+  <select name="h323_dtmf_type" id="h323_dtmf_type_select" class="select" onchange="toggle_selected('h323_dtmf_type', 'hide')">
+     <option value="1" <?php print($values['H323_INBAND_DTMF']=='1'?'selected':'') ?>>Inband</option>
+     <option value="0" <?php print($values['H323_INBAND_DTMF']=='0'?'selected':'') ?>>Outband</option>
+  </select>
+                     </td>
+
+                    </tr>
+
+                    <tr>
+                     <td colspan="2">
+
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                      </table>
+                     </td>
+                    </tr>
+
+                    <tr>
+
+                     <td width="120" height="25" class="title1">Signaling QoS</td>
+                     <td width="160" class="text">
+  <select name="h323_qos" id="h323_qos_select" class="select" onchange="toggle_selected('h323_qos', 'hide')">
+     <option value="NONE" <?php print($values['H323_QOS']=='NONE'?'selected':'') ?>>None</option>
+     <option value="IPTOS" <?php print($values['H323_QOS']=='IPTOS'?'selected':'') ?>>IP TOS</option>
+     <option value="DIFFSERV" <?php print($values['H323_QOS']=='DIFFSERV'?'selected':'') ?>>DiffServ</option>
+  </select>
+                     </td>
+
+                    </tr>
+
+                    <tr>
+                     <td colspan="2">
+
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                        <tr>
+                         <td colspan="2">
+                           <div class="invisible"><br><span class="stitle">Signaling QoS - IP TOS</span></div>
+
+                        <div id="h323_qos_IPTOS_div" class="<?php print($values['H323_QOS']=='IPTOS'?'visable':'invisible') ?>">
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+
+                             <td width="120" height="25" class="title1">&nbsp;&nbsp;Type of Service</td>
+                             <td width="160" class="text">
+  <select name="h323_tos" id="h323_tos_select" class="select" onchange="toggle_selected('h323_tos', 'hide')">
+     <option value="0x00" <?php print($values['H323_TOS']=='0x00'?'selected':'') ?>>Routine - 0</option>
+     <option value="0x20" <?php print($values['H323_TOS']=='0x20'?'selected':'') ?>>Priority - 1</option>
+     <option value="0x40" <?php print($values['H323_TOS']=='0x40'?'selected':'') ?>>Immediate - 2</option>
+     <option value="0x60" <?php print($values['H323_TOS']=='0x60'?'selected':'') ?>>Flash - 3</option>
+     <option value="0x80" <?php print($values['H323_TOS']=='0x80'?'selected':'') ?>>Flash Override - 4</option>
+     <option value="0xa0" <?php print($values['H323_TOS']=='0xa0'?'selected':'') ?>>Critic/ECP - 5</option>
+  </select>
+                             </td>
+
+                            </tr>
+
+                            <tr>
+                             <td colspan="2">
+
+                              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                              </table>
+                             </td>
+                            </tr>
+
+                          </table>
+                        </div>
+                           <div class="invisible"><br><span class="stitle">Signaling QoS - DiffServ</span></div>
+
+                        <div id="h323_qos_DIFFSERV_div" class="<?php print($values['H323_QOS']=='DIFFSERV'?'visable':'invisible') ?>">
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+
+                             <td width="120" height="25" class="title1">&nbsp;&nbsp;DiffServ Class</td>
+                             <td width="160" class="text">
+  <select name="h323_diffserv_class" id="h323_diffserv_class_select" class="select" onchange="toggle_selected('h323_diffserv_class', 'hide')">
+     <option value="0" <?php print($values['H323_DIFFSERV']=='0'?'selected':'') ?>>BE - 0x00</option>
+     <option value="40" <?php print($values['H323_DIFFSERV']=='40'?'selected':'') ?>>AF11 - 0x28</option>
+     <option value="48" <?php print($values['H323_DIFFSERV']=='48'?'selected':'') ?>>AF12 - 0x30</option>
+     <option value="56" <?php print($values['H323_DIFFSERV']=='56'?'selected':'') ?>>AF13 - 0x38</option>
+     <option value="72" <?php print($values['H323_DIFFSERV']=='72'?'selected':'') ?>>AF21 - 0x48</option>
+     <option value="80" <?php print($values['H323_DIFFSERV']=='80'?'selected':'') ?>>AF22 - 0x50</option>
+     <option value="88" <?php print($values['H323_DIFFSERV']=='88'?'selected':'') ?>>AF23 - 0x58</option>
+     <option value="104" <?php print($values['H323_DIFFSERV']=='104'?'selected':'') ?>>AF31 - 0x68</option>
+     <option value="112" <?php print($values['H323_DIFFSERV']=='112'?'selected':'') ?>>AF32 - 0x70</option>
+     <option value="120" <?php print($values['H323_DIFFSERV']=='120'?'selected':'') ?>>AF33 - 0x78</option>
+     <option value="136" <?php print($values['H323_DIFFSERV']=='136'?'selected':'') ?>>AF41 - 0x88</option>
+     <option value="144" <?php print($values['H323_DIFFSERV']=='144'?'selected':'') ?>>AF42 - 0x90</option>
+     <option value="152" <?php print($values['H323_DIFFSERV']=='152'?'selected':'') ?>>AF43 - 0x98</option>
+     <option value="184" <?php print($values['H323_DIFFSERV']=='184'?'selected':'') ?>>EF - 0xB8</option>
+  </select>
+                             </td>
+
+                            </tr>
+
+                            <tr>
+                             <td colspan="2">
+
+                              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                              </table>
+                             </td>
+                            </tr>
+
+                          </table>
+                        </div>
+                           <div class="invisible"><br></div>
+                         </td>
+                        </tr>
+
+                      </table>
+                     </td>
+                    </tr>
+
+                    <tr>
+
+                     <td width="120" height="25" class="title1">Signaling NAT Traversal</td>
+                     <td width="160" class="text">
+  <select name="h323_nat_traversal" id="h323_nat_traversal_select" class="select" onchange="toggle_selected('h323_nat_traversal', 'hide')">
+     <option value="NONE" <?php print($values['H323_NAT_TRAVERSAL']=='NONE'?'selected':'') ?>>None</option>
+     <option value="CITRON" <?php print($values['H323_NAT_TRAVERSAL']=='CITRON'?'selected':'') ?>>Nat Citron</option>
+     <option value="PORTFWD" <?php print($values['H323_NAT_TRAVERSAL']=='PORTFWD'?'selected':'') ?>>Port-forward/DMZ</option>
+     <option value="RELAY" <?php print($values['H323_NAT_TRAVERSAL']=='RELAY'?'selected':'') ?>>Relay Proxy</option>
+  </select>
+                     </td>
+
+                    </tr>
+
+                    <tr>
+                     <td colspan="2">
+
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                        <tr>
+                         <td colspan="2">
+                           <div class="invisible"><br><span class="stitle">Signaling NAT Traversal - Port-forward/DMZ</span></div>
+
+                        <div id="h323_nat_traversal_PORTFWD_div" class="<?php print($values['H323_NAT_TRAVERSAL']=='PORTFWD'?'visable':'invisible') ?>">
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+
+                             <td width="120" height="25" class="title1">NAT Address</td>
+                             <td width="160" class="text">
+  <select name="h323_portfwd_type" id="h323_portfwd_type_select" class="select" onchange="toggle_selected('h323_portfwd_type', 'hide')">
+     <option value="AUTO" <?php print($values['H323_PORTFWD_TYPE']=='AUTO'?'selected':'') ?>>Auto Detect</option>
+     <option value="MANUAL" <?php print($values['H323_PORTFWD_TYPE']=='MANUAL'?'selected':'') ?>>Manual</option>
+  </select>
+                             </td>
+
+                            </tr>
+
+                            <tr>
+                             <td colspan="2">
+
+                              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                                <tr>
+                                 <td colspan="2">
+
+                                <div id="h323_portfwd_type_MANUAL_div" class="<?php print($values['H323_PORTFWD_TYPE']=='MANUAL'?'visable':'invisible') ?>">
+                                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                                    <tr>
+                                     <td width="120" height="25" class="title1">&nbsp;&nbsp;Address</td>
+                                     <td width="160" class="text">
+                                      <input type="text" name="h323_portfwd_gw" id="h323_portfwd_gw" value="<?php print($values['H323_PORTFWD_GW']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                                     </td>
+                                    </tr>
+
+                                  </table>
+                                </div>
+                                 </td>
+                                </tr>
+
+                              </table>
+                             </td>
+                            </tr>
+
+                          </table>
+                        </div>
+                           <div class="invisible"><br><span class="stitle">Signaling NAT Traversal - Relay Proxy</span></div>
+
+                        <div id="h323_nat_traversal_RELAY_div" class="<?php print($values['H323_NAT_TRAVERSAL']=='RELAY'?'visable':'invisible') ?>">
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+                             <td width="120" height="25" class="title1">&nbsp;&nbsp;Address</td>
+                             <td width="160" class="text">
+                              <input type="text" name="h323_relay_server" id="h323_relay_server" value="<?php print($values['H323_RELAY_SERVER']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">&nbsp;&nbsp;Port</td>
+                             <td width="160" class="text">
+                              <input type="text" name="h323_relay_port" id="h323_relay_port" value="<?php print($values['H323_RELAY_PORT']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">&nbsp;&nbsp;User</td>
+                             <td width="160" class="text">
+                              <input type="text" name="h323_relay_user" id="h323_relay_user" value="<?php print($values['H323_RELAY_USER']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">&nbsp;&nbsp;Password</td>
+                             <td width="160" class="text">
+                              <input type="password" name="h323_relay_passwd" id="h323_relay_passwd" value="<?php print($values['H323_RELAY_PASSWD']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">
+                             </td>
+                             <td width="160" class="text">
+                              <input type="checkbox" name="h323_relay_encrypt" id="h323_relay_encrypt" onclick="toggle_checkbox('h323_relay_encrypt', 'hide')" <?php print($values['H323_RELAY_ENCRYPT']=='1'?'checked':'') ?>><span>Encryption</span>
+                             </td>
+                            </tr>
+
+                            <tr>
+
+                             <td width="120" height="25" class="title1">Relay Mode</td>
+                             <td width="160" class="text">
+  <select name="h323_relay_mode" id="h323_relay_mode_select" class="select" onchange="toggle_selected('h323_relay_mode', 'hide')">
+     <option value="0" <?php print($values['H323_RELAY_MODE']=='0'?'selected':'') ?>>1</option>
+     <option value="1" <?php print($values['H323_RELAY_MODE']=='1'?'selected':'') ?>>2</option>
+     <option value="2" <?php print($values['H323_RELAY_MODE']=='2'?'selected':'') ?>>3</option>
+  </select>
+                             </td>
+
+                            </tr>
+
+                            <tr>
+                             <td colspan="2">
+
+                              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                              </table>
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">Backup Relay Server 1</td>
+                             <td width="160" class="text">
+                              <input type="text" name="h323_relay_server1" id="h323_relay_server1" value="<?php print($values['H323_RELAY_SERVER1']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">Backup Relay Server 2</td>
+                             <td width="160" class="text">
+                              <input type="text" name="h323_relay_server2" id="h323_relay_server2" value="<?php print($values['H323_RELAY_SERVER2']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">Backup Relay Server 3</td>
+                             <td width="160" class="text">
+                              <input type="text" name="h323_relay_server3" id="h323_relay_server3" value="<?php print($values['H323_RELAY_SERVER3']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">Backup Relay Server 4</td>
+                             <td width="160" class="text">
+                              <input type="text" name="h323_relay_server4" id="h323_relay_server4" value="<?php print($values['H323_RELAY_SERVER4']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                             </td>
+                            </tr>
+
+                          </table>
+                        </div>
+                           <div class="invisible"><br></div>
+                         </td>
+                        </tr>
+
+                      </table>
+                     </td>
+                    </tr>
+
+                  </table>
+                </div>
+                   <div class="invisible"><br><span class="stitle">Advanced Endpoint Settings - Advanced SIP Settings</span></div>
+
+                <div id="advance_endpoint_settings_1_div" class="<?php print($values['ENDPOINT_TYPE']=='SIP'?'visable':'invisible') ?>">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                    <tr>
+                     <td width="120" height="25" class="title1">Signaling Port</td>
+                     <td width="160" class="text">
+                      <input type="text" name="sip_local_port" id="sip_local_port" value="<?php print($values['SIP_LOCAL_PORT']) ?>" class="edit">
+                     </td>
+                    </tr>
+
+                    <tr>
+                     <td width="120" height="25" class="title1">
+<span>Message Waiting Indication</span>                     </td>
+                     <td width="160" class="text">
+                      <input type="radio" name="sip_mwi" value="on" id="sip_mwi_enable" disabledbyelement="" onclick="toggle('sip_mwi_div', 1)" <?php print($values['SIP_MWI']=='1'?'checked':'') ?>><span>Enable</span>
+                      <input type="radio" name="sip_mwi" value="off" id="sip_mwi_disable" disabledbyelement="" onclick="toggle('sip_mwi_div', 0)" <?php print($values['SIP_MWI']!='1'?'checked':'') ?>><span>Disable</span>                     </td>
+                    </tr>
+
+                    <tr>
+                     <td width="120" height="25" class="title1">
+<span>Call Wait</span>                     </td>
+                     <td width="160" class="text">
+                      <input type="radio" name="sip_disable_call_wait" value="on" id="sip_disable_call_wait_enable" onclick="toggle('sip_disable_call_wait_div', 1)" <?php print($values['SIP_DISABLE_CALL_WAIT']!='1'?'checked':'') ?>><span>Enable</span>
+                      <input type="radio" name="sip_disable_call_wait" value="off" id="sip_disable_call_wait_disable" disabledbyelement="" onclick="toggle('sip_disable_call_wait_div', 0)" <?php print($values['SIP_DISABLE_CALL_WAIT']=='1'?'checked':'') ?>><span>Disable</span>                     </td>
+                    </tr>
+
+                    <tr>
+                     <td width="120" height="25" class="title1">
+<span>NAT Keep-alive</span>                     </td>
+                     <td width="160" class="text">
+                      <input type="radio" name="sip_no_alive" value="on" id="sip_no_alive_enable" onclick="toggle('sip_no_alive_div', 1)" <?php print($values['SIP_NO_ALIVE']!='1'?'checked':'') ?>><span>Enable</span>
+                      <input type="radio" name="sip_no_alive" value="off" id="sip_no_alive_disable" disabledbyelement="" onclick="toggle('sip_no_alive_div', 0)" <?php print($values['SIP_NO_ALIVE']=='1'?'checked':'') ?>><span>Disable</span>                     </td>
+                    </tr>
+
+                    <tr>
+                     <td width="120" height="25" class="title1">
+<span>P2P</span>                     </td>
+                     <td width="160" class="text">
+                      <input type="radio" name="sip_p2p_enable" value="on" id="sip_p2p_enable_enable" disabledbyelement="" onclick="toggle('sip_p2p_enable_div', 1)" <?php print($values['SIP_P2P_ENABLE']=='1'?'checked':'') ?>><span>Enable</span>
+                      <input type="radio" name="sip_p2p_enable" value="off" id="sip_p2p_enable_disable" disabledbyelement="" onclick="toggle('sip_p2p_enable_div', 0)" <?php print($values['SIP_P2P_ENABLE']!='1'?'checked':'') ?>><span>Disable</span>                     </td>
+                    </tr>
+
+                    <tr>
+                     <td width="120" height="25"  class="title1">
+                     </td>
+                     <td width="160" class="text">                      <div style="cursor:hand; cursor:pointer" onclick="toggle_target(this, 'sip_timer_target')">Advanced Timing<span class="showstate" >&gt;&gt;</span></div>
+                     </td>
+                    </tr>
+                    <tr>
+                     <td colspan="2">
+                       <div id="sip_timer_target" class="invisible">
+					   		<?php require_once template($type.'/siptimer_phone'); ?>
+                       </div>
+                     </td>
+                    </tr>
+
+                    <tr>
+
+                     <td width="120" height="25" class="title1">DTMF Signaling</td>
+                     <td width="160" class="text">
+  <select name="sip_dtmf_type" id="sip_dtmf_type_select" class="select" onchange="toggle_selected('sip_dtmf_type', 'hide')">
+     <option value="1" <?php print($values['INBAND_DTMF']=='1'?'selected':'') ?>>Inband</option>
+     <option value="0" <?php print($values['INBAND_DTMF']=='0'?'selected':'') ?>>Outband</option>
+  </select>
+                     </td>
+
+                    </tr>
+
+                    <tr>
+                     <td colspan="2">
+
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                        <tr>
+                         <td colspan="2">
+
+                        <div id="sip_dtmf_type_0_div" class="<?php print($values['INBAND_DTMF']=='0'?'visable':'invisible') ?>">
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+
+                             <td width="120" height="25" class="title1">Outband DTMF type</td>
+                             <td width="160" class="text">
+  <select name="sip_outband_dtmf_type" id="sip_outband_dtmf_type_select" class="select" onchange="toggle_selected('sip_outband_dtmf_type', 'hide')">
+     <option value="2" <?php print($values['SIP_OUTBAND_DTMF_TYPE']=='2'?'selected':'') ?>>SIP INFO</option>
+     <option value="1" <?php print($values['SIP_OUTBAND_DTMF_TYPE']=='1'?'selected':'') ?>>RFC 2833</option>
+  </select>
+                             </td>
+
+                            </tr>
+
+                            <tr>
+                             <td colspan="2">
+
+                              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                                <tr>
+                                 <td colspan="2">
+
+                                <div id="sip_outband_dtmf_type_1_div" class="<?php print($values['SIP_OUTBAND_DTMF_TYPE']=='1'?'visable':'invisible') ?>">
+                                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                                    <tr>
+                                     <td width="120" height="25" class="title1">&nbsp;&nbsp;RTP Payload Type</td>
+                                     <td width="160" class="text">
+                                      <input type="text" name="dtmf_payload" id="dtmf_payload" value="<?php print($values['DTMF_PAYLOAD_TYPE']) ?>" class="edit">
+                                     </td>
+                                    </tr>
+
+                                  </table>
+                                </div>
+                                 </td>
+                                </tr>
+
+                              </table>
+                             </td>
+                            </tr>
+
+                          </table>
+                        </div>
+                         </td>
+                        </tr>
+
+                      </table>
+                     </td>
+                    </tr>
+
+                    <tr>
+
+                     <td width="120" height="25" class="title1">Signaling QoS</td>
+                     <td width="160" class="text">
+  <select name="sip_qos" id="sip_qos_select" class="select" onchange="toggle_selected('sip_qos', 'hide')">
+     <option value="NONE" <?php print($values['SIP_QOS']=='NONE'?'selected':'') ?>>None</option>
+     <option value="IPTOS" <?php print($values['SIP_QOS']=='IPTOS'?'selected':'') ?>>IP TOS</option>
+     <option value="DIFFSERV" <?php print($values['SIP_QOS']=='DIFFSERV'?'selected':'') ?>>DiffServ</option>
+  </select>
+                     </td>
+
+                    </tr>
+
+                    <tr>
+                     <td colspan="2">
+
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                        <tr>
+                         <td colspan="2">
+                           <div class="invisible"><br><span class="stitle">Signaling QoS - IP TOS</span></div>
+
+                        <div id="sip_qos_IPTOS_div" class="<?php print($values['SIP_QOS']=='IPTOS'?'visable':'invisible') ?>">
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+
+                             <td width="120" height="25" class="title1">&nbsp;&nbsp;Type of Service</td>
+                             <td width="160" class="text">
+  <select name="sip_tos" id="sip_tos_select" class="select" onchange="toggle_selected('sip_tos', 'hide')">
+     <option value="0x00" <?php print($values['SIP_TOS']=='0x00'?'selected':'') ?>>Routine - 0</option>
+     <option value="0x20" <?php print($values['SIP_TOS']=='0x20'?'selected':'') ?>>Priority - 1</option>
+     <option value="0x40" <?php print($values['SIP_TOS']=='0x40'?'selected':'') ?>>Immediate - 2</option>
+     <option value="0x60" <?php print($values['SIP_TOS']=='0x60'?'selected':'') ?>>Flash - 3</option>
+     <option value="0x80" <?php print($values['SIP_TOS']=='0x80'?'selected':'') ?>>Flash Override - 4</option>
+     <option value="0xa0" <?php print($values['SIP_TOS']=='0xa0'?'selected':'') ?>>Critic/ECP - 5</option>
+  </select>
+                             </td>
+
+                            </tr>
+
+                            <tr>
+                             <td colspan="2">
+
+                              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                              </table>
+                             </td>
+                            </tr>
+
+                          </table>
+                        </div>
+                           <div class="invisible"><br><span class="stitle">Signaling QoS - DiffServ</span></div>
+
+                        <div id="sip_qos_DIFFSERV_div" class="<?php print($values['SIP_QOS']=='DIFFSERV'?'visable':'invisible') ?>">
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+
+                             <td width="120" height="25" class="title1">&nbsp;&nbsp;DiffServ Class</td>
+                             <td width="160" class="text">
+  <select name="sip_diffserv_class" id="sip_diffserv_class_select" class="select" onchange="toggle_selected('sip_diffserv_class', 'hide')">
+     <option value="0" <?php print($values['SIP_DIFFSERV']=='0'?'selected':'') ?>>BE - 0x00</option>
+     <option value="40" <?php print($values['SIP_DIFFSERV']=='40'?'selected':'') ?>>AF11 - 0x28</option>
+     <option value="48" <?php print($values['SIP_DIFFSERV']=='48'?'selected':'') ?>>AF12 - 0x30</option>
+     <option value="56" <?php print($values['SIP_DIFFSERV']=='56'?'selected':'') ?>>AF13 - 0x38</option>
+     <option value="72" <?php print($values['SIP_DIFFSERV']=='72'?'selected':'') ?>>AF21 - 0x48</option>
+     <option value="80" <?php print($values['SIP_DIFFSERV']=='80'?'selected':'') ?>>AF22 - 0x50</option>
+     <option value="88" <?php print($values['SIP_DIFFSERV']=='88'?'selected':'') ?>>AF23 - 0x58</option>
+     <option value="104" <?php print($values['SIP_DIFFSERV']=='104'?'selected':'') ?>>AF31 - 0x68</option>
+     <option value="112" <?php print($values['SIP_DIFFSERV']=='112'?'selected':'') ?>>AF32 - 0x70</option>
+     <option value="120" <?php print($values['SIP_DIFFSERV']=='120'?'selected':'') ?>>AF33 - 0x78</option>
+     <option value="136" <?php print($values['SIP_DIFFSERV']=='136'?'selected':'') ?>>AF41 - 0x88</option>
+     <option value="144" <?php print($values['SIP_DIFFSERV']=='144'?'selected':'') ?>>AF42 - 0x90</option>
+     <option value="152" <?php print($values['SIP_DIFFSERV']=='152'?'selected':'') ?>>AF43 - 0x98</option>
+     <option value="184" <?php print($values['SIP_DIFFSERV']=='184'?'selected':'') ?>>EF - 0xB8</option>
+  </select>
+                             </td>
+
+                            </tr>
+
+                            <tr>
+                             <td colspan="2">
+
+                              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                              </table>
+                             </td>
+                            </tr>
+
+                          </table>
+                        </div>
+                           <div class="invisible"><br></div>
+                         </td>
+                        </tr>
+
+                      </table>
+                     </td>
+                    </tr>
+
+<?php if($values['SIP_CRYPT'] !='DISABLE'): ?>
+                    <tr>
+
+                     <td width="120" height="25" class="title1">Signaling Encryption</td>
+                     <td width="160" class="text">
+  <select name="sip_signaling_crypt" id="sip_signaling_crypt_select" class="select" onchange="toggle_selected('sip_signaling_crypt', 'hide')">
+     <option value="NONE" <?php print($values['SIP_CRYPT']=='NONE'?'selected':'') ?>>None</option>
+     <option value="RC4" <?php print($values['SIP_CRYPT']=='RC4'?'selected':'') ?>>RC4</option>
+     <option value="FAST" <?php print($values['SIP_CRYPT']=='FAST'?'selected':'') ?>>Fast</option>
+     <option value="VOS" <?php print($values['SIP_CRYPT']=='VOS'?'selected':'') ?>>VOS</option>
+     <option value="AVS" <?php print($values['SIP_CRYPT']=='AVS'?'selected':'') ?>>AVS</option>
+     <option value="ECM" <?php print($values['SIP_CRYPT']=='ECM'?'selected':'') ?>>ECM</option>
+     <option value="ET263" <?php print($values['SIP_CRYPT']=='ET263'?'selected':'') ?>>ET263</option>
+  </select>
+                     </td>
+
+                    </tr>
+
+                    <tr>
+                     <td colspan="2">
+
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                        <tr>
+                         <td colspan="2">
+                           <div class="invisible"><br><span class="stitle">Signaling Encryption - RC4</span></div>
+
+                        <div id="sip_signaling_crypt_RC4_div" class="<?php print($values['SIP_CRYPT']=='RC4'?'visable':'invisible') ?>">
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+                             <td width="120" height="25" class="title1">RC4 Encryption Key</td>
+                             <td width="160" class="text">
+                              <input type="password" name="sip_rc4_key" id="sip_rc4_key" value="<?php print($values['SIP_RC4_KEY']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                          </table>
+                        </div>
+
+                           <div class="invisible"><br><span class="stitle">Signaling Encryption - ECM</span></div>
+                                                                                                                  
+                        <div id="sip_signaling_crypt_ECM_div" class="<?php print($values['SIP_CRYPT']=='ECM'?'visable':'invisible') ?>">
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">                         
+                                                                                                                  
+                            <tr>                                                                                  
+                             <td width="120" height="25" class="title1">&nbsp;&nbsp;ECM Encryption Key</td>                  
+                             <td width="160" class="text">                                                        
+                              <input type="text" name="sip_ecm_crypt_key" id="sip_ecm_crypt_key" value="<?php print($values['ECM_CRYPT_KEY']) ?>" class="edit">
+                             </td>                                                                                
+                            </tr>                                                                                 
+                                                                                                                  
+                          </table>                                                                                
+                        </div> 
+
+                           <div class="invisible"><br><span class="stitle">Signaling Encryption - ET263</span></div>
+
+                        <div id="sip_signaling_crypt_ET263_div" class="<?php print($values['SIP_CRYPT']=='ET263'?'visable':'invisible') ?>">
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+
+                             <td width="120" height="25" class="title1">Encryption Type</td>
+                             <td width="160" class="text">
+  <select name="sip_et263_crypt_type" id="sip_et263_crypt_type_select" class="select" onchange="toggle_selected('sip_et263_crypt_type', 'hide')">
+     <option value="1" <?php print($values['SIP_ET263_CRYPT_TYPE']=='1'?'selected':'') ?>>16Bit Conver</option>
+     <option value="2" <?php print($values['SIP_ET263_CRYPT_TYPE']=='2'?'selected':'') ?>>8Bit Conver</option>
+     <option value="3" <?php print($values['SIP_ET263_CRYPT_TYPE']=='3'?'selected':'') ?>>16Bit Parity Exchange</option>
+     <option value="4" <?php print($values['SIP_ET263_CRYPT_TYPE']=='4'?'selected':'') ?>>8Bit Parity Exchange</option>
+  </select>
+                             </td>
+
+                            </tr>
+
+                            <tr>
+                             <td colspan="2">
+
+                              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                              </table>
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">Encryption Dep</td>
+                             <td width="160" class="text">
+                              <input type="text" name="sip_et263_crypt_dep" id="sip_et263_crypt_dep" value="<?php print($values['SIP_ET263_CRYPT_DEP']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                          </table>
+                        </div>
+                           <div class="invisible"><br></div>
+                         </td>
+                        </tr>
+
+                      </table>
+                     </td>
+                    </tr>
+
+<?php endif; ?>
+                    <tr>
+
+                     <td width="120" height="25" class="title1">Signaling NAT Traversal</td>
+                     <td width="160" class="text">
+  <select name="sip_nat_traversal" id="sip_nat_traversal_select" class="select" onchange="toggle_selected('sip_nat_traversal', 'hide')">
+     <option value="NONE" <?php print($values['SIP_NAT_TRAVERSAL']=='NONE'?'selected':'') ?>>None</option>
+     <option value="STUN" <?php print($values['SIP_NAT_TRAVERSAL']=='STUN'?'selected':'') ?>>STUN(RFC 3489)</option>
+     <option value="RELAY" <?php print($values['SIP_NAT_TRAVERSAL']=='RELAY'?'selected':'') ?>>Relay Proxy</option>
+  </select>
+                     </td>
+
+                    </tr>
+
+                    <tr>
+                     <td colspan="2">
+
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                        <tr>
+                         <td colspan="2">
+                           <div class="invisible"><br><span class="stitle">Signaling NAT Traversal - STUN(RFC 3489)</span></div>
+
+                        <div id="sip_nat_traversal_STUN_div" class="<?php print($values['SIP_NAT_TRAVERSAL']=='STUN'?'visable':'invisible') ?>">
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+                             <td width="120" height="25" class="title1">STUN Server</td>
+                             <td width="160" class="text">
+                              <input type="text" name="sip_stun_server" id="sip_stun_server" value="<?php print($values['SIP_STUN_SERVER']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                             </td>
+                            </tr>
+
+                          </table>
+                        </div>
+                           <div class="invisible"><br><span class="stitle">Signaling NAT Traversal - Relay Proxy</span></div>
+
+                        <div id="sip_nat_traversal_RELAY_div" class="<?php print($values['SIP_NAT_TRAVERSAL']=='RELAY'?'visable':'invisible') ?>">
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+                             <td width="120" height="25" class="title1">&nbsp;&nbsp;Address</td>
+                             <td width="160" class="text">
+                              <input type="text" name="sip_relay_server" id="sip_relay_server" value="<?php print($values['SIP_RELAY_SERVER']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">&nbsp;&nbsp;Port</td>
+                             <td width="160" class="text">
+                              <input type="text" name="sip_relay_port" id="sip_relay_port" value="<?php print($values['SIP_RELAY_PORT']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">&nbsp;&nbsp;User</td>
+                             <td width="160" class="text">
+                              <input type="text" name="sip_relay_user" id="sip_relay_user" value="<?php print($values['SIP_RELAY_USER']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">&nbsp;&nbsp;Password</td>
+                             <td width="160" class="text">
+                              <input type="password" name="sip_relay_passwd" id="sip_relay_passwd" value="<?php print($values['SIP_RELAY_PASSWD']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">
+                             </td>
+                             <td width="160" class="text">
+                              <input type="checkbox" name="sip_relay_encrypt" id="sip_relay_encrypt" onclick="toggle_checkbox('sip_relay_encrypt', 'hide')" <?php print($values['SIP_RELAY_ENCRYPT']=='1'?'checked':'') ?>><span>Encryption</span>
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">Backup Relay Server 1</td>
+                             <td width="160" class="text">
+                              <input type="text" name="sip_relay_server1" id="sip_relay_server1" value="<?php print($values['SIP_RELAY_SERVER1']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">Backup Relay Server 2</td>
+                             <td width="160" class="text">
+                              <input type="text" name="sip_relay_server2" id="sip_relay_server2" value="<?php print($values['SIP_RELAY_SERVER2']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">Backup Relay Server 3</td>
+                             <td width="160" class="text">
+                              <input type="text" name="sip_relay_server3" id="sip_relay_server3" value="<?php print($values['SIP_RELAY_SERVER3']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">Backup Relay Server 4</td>
+                             <td width="160" class="text">
+                              <input type="text" name="sip_relay_server4" id="sip_relay_server4" value="<?php print($values['SIP_RELAY_SERVER4']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                             </td>
+                            </tr>
+
+                          </table>
+                        </div>
+                           <div class="invisible"><br></div>
+                         </td>
+                        </tr>
+
+                      </table>
+                     </td>
+                    </tr>
+
+                  </table>
+                </div>
+                   <div class="invisible"><br></div>
+                 </td>
+                </tr>
+
+              </table>
+             </td>
+            </tr>
+
+          </table>
+         </div>
+         </td>
+        </tr>
+
+      </table>

@@ -1,0 +1,36 @@
+
+	  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+	    <tr>
+         <td colspan="2" class="title2" height="25" >Other Settings</td>
+        </tr>
+<tr>
+<td>
+<div id="other" class="tables"> 	  
+	  	  <table border="0" cellpadding="0" cellspacing="0" width="90%" scrolling="auto">
+		<tr><br></tr>
+
+<?php for($i=0;$i<20;$i++) {
+		$a=$i*2+1;
+		$b=$a+1; 
+		$file1="file"."$a";
+		$file2="file"."$b";
+		print <<<EOT
+		
+		<tr>
+		 <td  class="text" align=center>
+                     <input size=50 type="text" name="$file1" id="$file1" value="$values2[$file1]" class="edit2">
+          </td>
+		 <td  class="text" align=center>
+                     <input size=50 type="text" name="$file2" id="$file2" value="$values2[$file2]" class="edit2">
+         </td>		  
+		</tr>
+		
+EOT;
+} ?>
+
+	</table>
+	
+	</div>
+	</td>
+	</tr>
+</table>	

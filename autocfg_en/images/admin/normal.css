@@ -1,0 +1,452 @@
+A {
+	COLOR: #000; TEXT-DECORATION: none
+}
+.AddressBookDisplay {
+	BORDER-RIGHT: #b0c4de 2px solId; PADDING-RIGHT: 2px; BORDER-TOP: #b0c4de 2px solId; DISPLAY: inline; PADDING-LEFT: 2px; PADDING-BOTTOM: 2px; BORDER-LEFT: #b0c4de 2px solId; CURSOR: default; PADDING-TOP: 2px; BORDER-BOTTOM: #b0c4de 2px solId
+}
+#biglogo IMG {
+	BORDER-RIGHT: 2px rIdge; BORDER-TOP: 2px rIdge; DISPLAY: inline; BORDER-LEFT: 2px rIdge; BORDER-BOTTOM: 2px rIdge; POSITION: relative; TOP: 35px
+}
+.bodyBackground {
+	BACKGROUND-COLOR: #f1f5fa
+}
+#ContactsTable {
+	BACKGROUND-COLOR: #f1f5fa
+}
+#ContactsTable TR TD {
+	BACKGROUND-COLOR: #f1f5fa
+}
+#ContactsListBox {
+	BACKGROUND-COLOR: #f1f5fa
+}
+BODY {
+	BORDER-RIGHT: #34487e 1px solId; BORDER-TOP: #34487e 1px solId; FONT-SIZE: 8pt; MARGIN: 0px; OVERFLOW: auto; BORDER-LEFT: #34487e 1px solId; COLOR: #000; BORDER-BOTTOM: #34487e 1px solId; FONT-FAMILY: tahoma; TEXT-OVERFLOW: ellipsis; BACKGROUND-COLOR: #f1f5fa
+}
+.CalendarCellEntry {
+	PADDING-RIGHT: 5px; BORDER-TOP: menu 1px solId; OVERFLOW-Y: auto; PADDING-LEFT: 5px; OVERFLOW-X: hIdden; PADDING-BOTTOM: 5px; WIdTH: 100%; PADDING-TOP: 5px; POSITION: relative; HEIGHT: 100%; BACKGROUND-COLOR: #f0f0f0
+}
+.CalDayHeader {
+	FILTER: progId:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#ccFFFFFF', EndColorStr='#33FFFFFF'); COLOR: #000000; BACKGROUND-COLOR: #34487e
+}
+.CalHasEntries {
+	FILTER: progId:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#99FFFFFF', EndColorStr='#FFFFFFFF'); ; WIdTH: expression(document.body.offsetWIdth/7); BACKGROUND-COLOR: #1e90ff
+}
+.CalHasEntriesIsToday {
+	BORDER-RIGHT: 2px rIdge; BORDER-TOP: 2px rIdge; FILTER: progId:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#66FFFFFF', EndColorStr='#FFFFFFFF'); BORDER-LEFT: 2px rIdge; ; WIdTH: expression(document.body.offsetWIdth/7); BORDER-BOTTOM: 2px rIdge; BACKGROUND-COLOR: #1e90ff
+}
+.CalHasNoEntries {
+	FILTER: progId:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#99FFFFFF', EndColorStr='#ffFFFFFF'); ; WIdTH: expression(document.body.offsetWIdth/7); BACKGROUND-COLOR: #f1f5fa
+}
+.CalHasNoEntriesIsToday {
+	FILTER: progId:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#99FFFFFF', EndColorStr='#ffFFFFFF'); ; WIdTH: expression(document.body.offsetWIdth/7); BACKGROUND-COLOR: #0000ff
+}
+.calendarTableDay {
+	PADDING-RIGHT: 3px; BORDER-TOP: #000000 1px solId; PADDING-LEFT: 3px; FONT-SIZE: 14pt; FILTER: progId:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#99F0F0F0', EndColorStr='#ffF0F0F0'); PADDING-BOTTOM: 3px; PADDING-TOP: 3px; BORDER-BOTTOM: #000000 1px solId; BACKGROUND-COLOR: #b0c4de
+}
+.CalEditAndDelete {
+	DISPLAY: inline; FLOAT: right
+}
+.calendarTableDay DIV {
+	DISPLAY: inline; FLOAT: right
+}
+.CalendarMonthViewDayCell {
+	FILTER: progId:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#99FFFFFF', EndColorStr='#ffFFFFFF'); WIdTH: 100%; HEIGHT: 14%; BACKGROUND-COLOR: #f1f5fa
+}
+.CalendarMonthViewCellEntry {
+	PADDING-RIGHT: 5px; BORDER-TOP: menu 1px solId; OVERFLOW-Y: auto; PADDING-LEFT: 5px; OVERFLOW-X: hIdden; PADDING-BOTTOM: 5px; ; WIdTH: expression((document.body.offsetWIdth/7 - 10)+'px'); PADDING-TOP: 5px; POSITION: relative; HEIGHT: 50px; TEXT-OVERFLOW: ellipsis; BACKGROUND-COLOR: transparent
+}
+.CalendarWeekViewAddMemo {
+	PADDING-RIGHT: 2px; PADDING-LEFT: 2px; PADDING-BOTTOM: 2px; PADDING-TOP: 2px
+}
+A.CalendarWeekViewAddMemo {
+	BORDER-RIGHT: #34487e 1px solId; BORDER-TOP: #34487e 1px solId; DISPLAY: inline; FILTER: progId:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#66FFFFFF', EndColorStr='#00FFFFFF')
+		progId:DXImageTransform.Microsoft.Shadow(color=#C0C0C0,direction=120,strength=4); BORDER-LEFT: #34487e 1px solId; BORDER-BOTTOM: #34487e 1px solId; BACKGROUND-COLOR: #b0c4de
+}
+.CalendarWeekViewDayCell {
+	BORDER-RIGHT: 1px rIdge; BORDER-TOP: 1px rIdge; FONT-SIZE: 14pt; FILTER: progId:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#99FFFFFF', EndColorStr='#ffFFFFFF'); BORDER-LEFT: 1px rIdge; ; WIdTH: expression(document.body.offsetWIdth / 2 - 10); BORDER-BOTTOM: 1px rIdge; POSITION: relative; BACKGROUND-COLOR: #f1f5fa
+}
+#calday0 {
+	DISPLAY: inline; POSITION: relative; HEIGHT: 25%
+}
+#calday1 {
+	DISPLAY: inline; POSITION: relative; HEIGHT: 25%
+}
+#calday2 {
+	DISPLAY: inline; POSITION: relative; HEIGHT: 25%
+}
+#calday3 {
+	DISPLAY: inline; POSITION: relative; HEIGHT: 25%
+}
+#calday4 {
+	DISPLAY: inline; POSITION: relative; HEIGHT: 25%
+}
+#calday5 {
+	DISPLAY: inline; POSITION: relative; HEIGHT: 25%
+}
+#calday6 {
+	DISPLAY: inline; POSITION: relative; HEIGHT: 25%
+}
+.OffCalHasEntries {
+	FILTER: progId:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#99FFFFFF', EndColorStr='#ffFFFFFF'); BACKGROUND-COLOR: #999999
+}
+.OffCalHasNoEntries {
+	FILTER: progId:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#99FFFFFF', EndColorStr='#ffFFFFFF'); BACKGROUND-COLOR: #cccccc
+}
+.calendarTable {
+	FILTER: progId:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#66FFFFFF', EndColorStr='#00FFFFFF'); BACKGROUND-COLOR: #b0c4de
+}
+.menuBackground {
+	FILTER: progId:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#66FFFFFF', EndColorStr='#00FFFFFF'); BACKGROUND-COLOR: #b0c4de
+}
+.toolbarBackground {
+	FILTER: progId:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#66FFFFFF', EndColorStr='#00FFFFFF'); BACKGROUND-COLOR: #b0c4de
+}
+.ContactsBody {
+	FILTER: progId:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#66FFFFFF', EndColorStr='#00FFFFFF'); BACKGROUND-COLOR: #b0c4de
+}
+.FoldersHeaderBody {
+	FILTER: progId:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#66FFFFFF', EndColorStr='#00FFFFFF'); BACKGROUND-COLOR: #b0c4de
+}
+.toolbar {
+	FILTER: progId:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#66FFFFFF', EndColorStr='#00FFFFFF'); BACKGROUND-COLOR: #b0c4de
+}
+#closeContactsButton {
+	BORDER-RIGHT: #b0c4de 1px solId; BORDER-TOP: #b0c4de 1px solId; FLOAT: right; BORDER-LEFT: #b0c4de 1px solId; CURSOR: default; BORDER-BOTTOM: #b0c4de 1px solId; POSITION: relative; TOP: 3px
+}
+#closeFoldersButton {
+	BORDER-RIGHT: #b0c4de 1px solId; BORDER-TOP: #b0c4de 1px solId; FLOAT: right; BORDER-LEFT: #b0c4de 1px solId; CURSOR: default; BORDER-BOTTOM: #b0c4de 1px solId; POSITION: relative; TOP: 3px
+}
+.ContactsHeader {
+	FONT-SIZE: 16pt; FILTER: progId:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#66FFFFFF', EndColorStr='#00FFFFFF'); MARGIN: 0px; WIdTH: 100%; BACKGROUND-COLOR: #b0c4de
+}
+#ContactsHeaderComment {
+	BORDER-RIGHT: 2px outset; BORDER-TOP: 2px outset; DISPLAY: inline; FONT-WEIGHT: bold; BORDER-LEFT: 2px outset; WIdTH: 34%; BORDER-BOTTOM: 2px outset
+}
+#ContactsHeaderEmail {
+	BORDER-RIGHT: 2px outset; BORDER-TOP: 2px outset; DISPLAY: inline; FONT-WEIGHT: bold; BORDER-LEFT: 2px outset; WIdTH: 33%; BORDER-BOTTOM: 2px outset
+}
+#ContactsHeaderName {
+	BORDER-RIGHT: 2px outset; BORDER-TOP: 2px outset; DISPLAY: inline; FONT-WEIGHT: bold; BORDER-LEFT: 2px outset; WIdTH: 33%; BORDER-BOTTOM: 2px outset
+}
+#ContactsTable {
+	FILTER: progId:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#66FFFFFF', EndColorStr='#00FFFFFF'); BORDER-BOTTOM: 1px outset; BACKGROUND-COLOR: #b0c4de
+}
+.currentMailboxMenu {
+	FILTER: progId:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#33FFFFFF', EndColorStr='#00FFFFFF'); LEFT: 0px; POSITION: absolute; HEIGHT: 32px; BACKGROUND-COLOR: #34487e
+}
+#CurrentPage {
+	BORDER-RIGHT: #000 1px solId; PADDING-RIGHT: 2px; BORDER-TOP: #000 1px solId; PADDING-LEFT: 2px; FONT-SIZE: 10pt; BORDER-LEFT: #000 1px solId; COLOR: #000; BORDER-BOTTOM: #000 1px solId; FONT-FAMILY: tahoma; BACKGROUND-COLOR: #fff
+}
+#CurrentPage INPUT {
+	BORDER-RIGHT: #c0c0c0 1px solId; BORDER-TOP: #c0c0c0 1px solId; DISPLAY: inline; FONT-SIZE: 10pt; VERTICAL-ALIGN: bottom; OVERFLOW: hIdden; BORDER-LEFT: #c0c0c0 1px solId; WIdTH: 45px; BORDER-BOTTOM: #c0c0c0 1px solId; FONT-FAMILY: arial; POSITION: relative; HEIGHT: 18px; TEXT-ALIGN: right
+}
+#CurrentPage #totalPages {
+	FONT-FAMILY: arial
+}
+.disabled {
+	FILTER: gray; CURSOR: default
+}
+DIV {
+	FONT-SIZE: 8pt; COLOR: #000; FONT-FAMILY: tahoma
+}
+P {
+	FONT-SIZE: 8pt; COLOR: #000; FONT-FAMILY: tahoma
+}
+TD {
+	FONT-SIZE: 8pt; COLOR: #000; FONT-FAMILY: tahoma
+}
+#filePercentageContainer {
+	BORDER-RIGHT: 2px inset; BORDER-TOP: 2px inset; DISPLAY: inline; Z-INDEX: 1; BORDER-LEFT: 2px inset; WIdTH: 104px; BORDER-BOTTOM: 2px inset; HEIGHT: 10px; BACKGROUND-COLOR: #eeeeee
+}
+#sizePercentageContainer {
+	BORDER-RIGHT: 2px inset; BORDER-TOP: 2px inset; DISPLAY: inline; Z-INDEX: 1; BORDER-LEFT: 2px inset; WIdTH: 104px; BORDER-BOTTOM: 2px inset; HEIGHT: 10px; BACKGROUND-COLOR: #eeeeee
+}
+#filePercentageFiller {
+	BORDER-RIGHT: 1px outset; BORDER-TOP: 1px outset; DISPLAY: inline; Z-INDEX: 2; FILTER: progId:DXImageTransform.Microsoft.gradient(enabled='true',gradientType='1',startColorstr=#99CC0000, endColorstr=#FF990000); OVERFLOW: hIdden; BORDER-LEFT: 1px outset; WIdTH: 50px; BORDER-BOTTOM: 1px outset; HEIGHT: 6px
+}
+#sizePercentageFiller {
+	BORDER-RIGHT: 1px outset; BORDER-TOP: 1px outset; DISPLAY: inline; Z-INDEX: 2; FILTER: progId:DXImageTransform.Microsoft.gradient(enabled='true',gradientType='1',startColorstr=#99CC0000, endColorstr=#FF990000); OVERFLOW: hIdden; BORDER-LEFT: 1px outset; WIdTH: 50px; BORDER-BOTTOM: 1px outset; HEIGHT: 6px
+}
+#FileToolBar {
+	BORDER-RIGHT: 2px groove; BORDER-TOP: 2px groove; FILTER: progId:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#66FFFFFF', EndColorStr='#00FFFFFF'); VERTICAL-ALIGN: bottom; BORDER-LEFT: 2px groove; BORDER-BOTTOM: 2px groove; POSITION: relative; HEIGHT: 24px
+}
+.Fixed {
+	FONT-FAMILY: tahoma
+}
+.focusedTab {
+	BORDER-RIGHT: 3px outset; BORDER-TOP: 3px outset; BORDER-LEFT: 2px outset; COLOR: #ffffff; BORDER-BOTTOM: 0px; BACKGROUND-COLOR: #34487e; TEXT-ALIGN: center
+}
+.focusedTab A {
+	COLOR: #ffffff; TEXT-DECORATION: none
+}
+#FoldersHeaderButton {
+	DISPLAY: inline
+}
+#FoldersHeaderTable {
+	FILTER: progId:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#66FFFFFF', EndColorStr='#00FFFFFF'); CURSOR: default; BORDER-BOTTOM: 1px outset; POSITION: relative; HEIGHT: 23px; BACKGROUND-COLOR: #b0c4de
+}
+#FoldersHeaderTable IMG {
+	VERTICAL-ALIGN: mIddle
+}
+.FoldersMenu {
+	DISPLAY: inline; FONT-SIZE: 8pt; CURSOR: default; FONT-FAMILY: tahoma
+}
+.headers {
+	PADDING-RIGHT: 5px; PADDING-LEFT: 5px; FONT-SIZE: 8pt
+}
+.headersText {
+	FONT-SIZE: 8pt
+}
+#HighPriorityMessageRow {
+	BORDER-RIGHT: #000 1px solId; BORDER-TOP: #000 1px solId; BORDER-LEFT: #000 1px solId; BORDER-BOTTOM: #000 1px solId; BACKGROUND-COLOR: #34487e
+}
+.ListBody {
+	OVERFLOW: auto; CURSOR: default; BACKGROUND-COLOR: #f1f5fa
+}
+.listRow {
+	BACKGROUND-COLOR: transparent
+}
+.ListRowHighlighted {
+	
+}
+#ListTable {
+	DISPLAY: block; WIdTH: 100%
+}
+.ListViewHeader {
+	OVERFLOW-Y: hIdden; DISPLAY: inline; PADDING-LEFT: 3px; FONT-SIZE: 8pt; FILTER: progId:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#66FFFFFF', EndColorStr='#00FFFFFF'); CURSOR: default; PADDING-TOP: 5px; HEIGHT: 23px; TEXT-OVERFLOW: ellipsis; BACKGROUND-COLOR: #b0c4de
+}
+.ListViewHeaderContainer {
+	FILTER: progId:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#66FFFFFF', EndColorStr='#00FFFFFF'); VERTICAL-ALIGN: bottom; BORDER-BOTTOM: 1px outset; HEIGHT: 25px; BACKGROUND-COLOR: #b0c4de
+}
+.ListViewDivIder {
+	BORDER-RIGHT: 1px inset; BORDER-TOP: 1px inset; DISPLAY: inline; BORDER-LEFT: 1px inset; WIdTH: 1px; BORDER-BOTTOM: 1px inset; HEIGHT: 23px
+}
+.loginBody {
+	BORDER-RIGHT: 0px; BORDER-TOP: 0px; OVERFLOW: auto; BORDER-LEFT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-COLOR: #f1f5fa
+}
+.loginButton {
+	BORDER-RIGHT: darkgray 1px solId; BORDER-TOP: darkgray 1px solId; DISPLAY: inline; FILTER: progId:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#66FFFFFF', EndColorStr='#00FFFFFF'); BORDER-LEFT: darkgray 1px solId; CURSOR: default; BORDER-BOTTOM: darkgray 1px solId; BACKGROUND-COLOR: #b0c4de
+}
+.loginInput {
+	BORDER-RIGHT: #34487e 1px solId; BORDER-TOP: #34487e 1px solId; VERTICAL-ALIGN: mIddle; BORDER-LEFT: #34487e 1px solId; BORDER-BOTTOM: #34487e 1px solId
+}
+#loginTable {
+	BORDER-RIGHT: #000 2px solId; BORDER-TOP: #000 2px solId; FILTER: progId:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#66FFFFFF', EndColorStr='#00FFFFFF'); BORDER-LEFT: #000 2px solId; BORDER-BOTTOM: #000 2px solId; BACKGROUND-COLOR: #34487e
+}
+.loginText {
+	COLOR: #fff
+}
+#logo {
+	FILTER: progId:DXImageTransform.Microsoft.Gradient(GradientType=1, StartColorStr='#ffFFFFFF', EndColorStr='#00FFFFFF') 
+	progId:DXImageTransform.Microsoft.AlphaImageLoader(src='../LookOut/smallbanner.png',sizingMethod='image'); OVERFLOW: hIdden; BORDER-BOTTOM: #34487e 2px solId; POSITION: relative; HEIGHT: 58px; BACKGROUND-COLOR: #b0c4de
+}
+#logo IMG {
+	DISPLAY: none; HEIGHT: 54px
+}
+.LookOutBarBody {
+	BACKGROUND-COLOR: #34487e
+}
+.LookOutBarItem {
+	BORDER-RIGHT: #34487e 2px solId; BORDER-TOP: #34487e 2px solId; BORDER-LEFT: #34487e 2px solId; BORDER-BOTTOM: #34487e 2px solId
+}
+.LookOutBarText {
+	OVERFLOW: hIdden; CURSOR: default; COLOR: #fff; TEXT-OVERFLOW: ellipsis
+}
+.MainBody {
+	BACKGROUND-COLOR: #b0c4de
+}
+.MenuMainMenuText {
+	BORDER-RIGHT: #b0c4de 1px solId; PADDING-RIGHT: 2px; BORDER-TOP: #b0c4de 1px solId; PADDING-LEFT: 2px; FONT-SIZE: 8pt; BORDER-LEFT: #b0c4de 1px solId; COLOR: #000; BORDER-BOTTOM: #b0c4de 1px solId; POSITION: relative; TOP: 2px
+}
+.MenuMainMenuText:hover {
+	BORDER-RIGHT: 1px outset; BORDER-TOP: 1px outset; BORDER-LEFT: 1px outset; BORDER-BOTTOM: 1px outset
+}
+.MenuBody {
+	FONT-SIZE: 8pt; COLOR: #000; FONT-FAMILY: tahoma; BACKGROUND-COLOR: #b0c4de
+}
+.menuButton {
+	BORDER-RIGHT: #b0c4de 1px solId; PADDING-RIGHT: 5px; BORDER-TOP: #b0c4de 1px solId; DISPLAY: inline; PADDING-LEFT: 5px; FILTER: progId:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#66FFFFFF', EndColorStr='#00FFFFFF'); BORDER-LEFT: #b0c4de 1px solId; CURSOR: default; BORDER-BOTTOM: #b0c4de 1px solId; BACKGROUND-COLOR: #b0c4de
+}
+.menuButtonDown {
+	BORDER-RIGHT: 1px inset; PADDING-RIGHT: 5px; BORDER-TOP: 1px inset; DISPLAY: inline; PADDING-LEFT: 5px; FILTER: progId:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#00FFFFFF', EndColorStr='#66eeeeee'); OVERFLOW: hIdden; BORDER-LEFT: 1px inset; CURSOR: default; BORDER-BOTTOM: 1px inset
+}
+.menuButtonOver {
+	BORDER-RIGHT: 1px rIdge; PADDING-RIGHT: 5px; BORDER-TOP: 1px rIdge; DISPLAY: inline; PADDING-LEFT: 5px; FILTER: progId:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#00FFFFFF', EndColorStr='#66FFFFFF'); OVERFLOW: hIdden; BORDER-LEFT: 1px rIdge; CURSOR: default; BORDER-BOTTOM: 1px rIdge
+}
+A.menuButton {
+	BORDER-RIGHT: #b0c4de 1px solId; BORDER-TOP: #b0c4de 1px solId; FILTER: progId:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#66FFFFFF', EndColorStr='#00FFFFFF'); OVERFLOW: hIdden; BORDER-LEFT: #b0c4de 1px solId; CURSOR: default; BORDER-BOTTOM: #b0c4de 1px solId; BACKGROUND-COLOR: #b0c4de; TEXT-DECORATION: none
+}
+.menuButtonArrow {
+	BORDER-RIGHT: #b0c4de 1px solId; BORDER-TOP: #b0c4de 1px solId; FILTER: gray; BORDER-LEFT: #b0c4de 1px solId; BORDER-BOTTOM: #b0c4de 1px solId
+}
+.MenuDivIder {
+	WIdTH: 100%; HEIGHT: 1px; BACKGROUND-COLOR: #34487e
+}
+.menuItemText {
+	FONT-SIZE: 8pt; OVERFLOW: hIdden; TEXT-OVERFLOW: ellipsis; TEXT-ALIGN: center
+}
+.MenuMainMenuText {
+	CURSOR: default
+}
+#MenuTable {
+	BORDER-RIGHT: 2px groove; BORDER-TOP: 0px; FILTER: progId:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#66FFFFFF', EndColorStr='#00FFFFFF'); BORDER-LEFT: 2px groove; BORDER-BOTTOM: 2px groove; POSITION: absolute; TOP: 32px
+}
+.MessageDetail {
+	BORDER-RIGHT: #b0c4de 1px solId; BORDER-TOP: #b0c4de 1px solId; BORDER-LEFT: #b0c4de 1px solId; BORDER-BOTTOM: #b0c4de 1px solId; BACKGROUND-COLOR: #fafad2
+}
+#MessageHeaderTable {
+	FILTER: progId:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#66FFFFFF', EndColorStr='#00FFFFFF'); BORDER-BOTTOM: 1px outset; BACKGROUND-COLOR: #b0c4de
+}
+#MsgBody {
+	BORDER-RIGHT: 0px; BORDER-TOP: 0px; MARGIN: 0px; OVERFLOW: auto; BORDER-LEFT: 0px; WIdTH: 100%; BORDER-BOTTOM: 0px; POSITION: relative; HEIGHT: 100%; BACKGROUND-COLOR: #f1f5fa
+}
+.MsgBody {
+	PADDING-RIGHT: 3px; PADDING-LEFT: 3px; FONT-SIZE: 10pt; PADDING-BOTTOM: 3px; PADDING-TOP: 3px; FONT-FAMILY: monospace
+}
+.MsgBody A {
+	COLOR: blue
+}
+#MultiPageBack {
+	
+}
+#MultiPageFirst {
+	
+}
+#MultiPageLast {
+	
+}
+#MultiPageNext {
+	
+}
+#MultiPageSelect {
+	
+}
+.NavigationalMenu {
+	FILTER: progId:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#66FFFFFF', EndColorStr='#00FFFFFF'); BORDER-BOTTOM: 2px groove; BACKGROUND-COLOR: #b0c4de; align: center
+}
+.NavigationMenuDivIder {
+	BORDER-RIGHT: 1px inset; BORDER-TOP: 1px inset; BORDER-LEFT: 1px inset; WIdTH: 1px; BORDER-BOTTOM: 1px inset
+}
+.optionsPopup {
+	MARGIN-TOP: 0px; FONT-SIZE: 9pt; BACKGROUND-COLOR: #b0c4de
+}
+.panel {
+	BORDER-RIGHT: 2px outset; BORDER-LEFT: 2px outset; BORDER-BOTTOM: 2px outset
+}
+.panelTop {
+	BORDER-BOTTOM: 2px inset
+}
+.popup {
+	MARGIN: 0px; BACKGROUND-COLOR: #b0c4de
+}
+#content {
+	PADDING-RIGHT: 3px; PADDING-LEFT: 3px
+}
+.popupFF {
+	FONT-SIZE: 9pt; COLOR: #000000
+}
+.SetupButtonGroup {
+	RIGHT: 25px; BOTTOM: 20px; PADDING-TOP: 10px; POSITION: absolute
+}
+.SetupHeaderText {
+	FONT-WEIGHT: bold; FONT-SIZE: 14pt
+}
+.SetupActiveStep {
+	COLOR: #fff; TEXT-ALIGN: center
+}
+.SetupInactiveStep {
+	PADDING-RIGHT: 2px; PADDING-LEFT: 2px; PADDING-BOTTOM: 2px; PADDING-TOP: 2px; TEXT-ALIGN: left
+}
+#SetupMainContent {
+	BORDER-RIGHT: 2px groove; PADDING-RIGHT: 5px; BORDER-TOP: 2px groove; PADDING-LEFT: 5px; LEFT: 110px; PADDING-BOTTOM: 5px; BORDER-LEFT: 2px groove; WIdTH: 400px; BOTTOM: 5px; PADDING-TOP: 5px; BORDER-BOTTOM: 2px groove; POSITION: absolute; TOP: 5px; HEIGHT: 97%; BACKGROUND-COLOR: #b0c4de
+}
+#SetupOptionsDiv {
+	BORDER-RIGHT: 2px inset; PADDING-RIGHT: 5px; BORDER-TOP: 2px inset; PADDING-LEFT: 5px; PADDING-BOTTOM: 5px; OVERFLOW: auto; BORDER-LEFT: 2px inset; PADDING-TOP: 5px; BORDER-BOTTOM: 2px inset; HEIGHT: 185px; BACKGROUND-COLOR: #fff
+}
+#SetupClassIdeBanner {
+	BORDER-RIGHT: #fff 1px solId; BORDER-TOP: #fff 1px solId; FONT-WEIGHT: bold; FONT-SIZE: 16px; FILTER: progId:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#088ED8', EndColorStr='#FFFFFF'); LEFT: 5px; OVERFLOW: hIdden; BORDER-LEFT: #fff 1px solId; WIdTH: 100px; COLOR: #fff; BOTTOM: 5px; LINE-HEIGHT: 42px; BORDER-BOTTOM: #fff 1px solId; LETTER-SPACING: 2px; POSITION: absolute; TOP: 5px; HEIGHT: 97%; TEXT-ALIGN: center
+}
+#SetupSignatureTextArea {
+	BORDER-RIGHT: 0px; BORDER-TOP: 0px; OVERFLOW: auto; BORDER-LEFT: 0px; WIdTH: 380px; BORDER-BOTTOM: 0px; HEIGHT: 169px
+}
+#SignOutMenuItem {
+	RIGHT: 2px; POSITION: absolute
+}
+#statusBar {
+	MARGIN: 0px; BACKGROUND-COLOR: #b0c4de
+}
+.statusDivIder {
+	DISPLAY: inline; WIdTH: 2px; HEIGHT: 100%
+}
+#StatusBarMessage {
+	BORDER-RIGHT: 2px inset; PADDING-RIGHT: 1px; BORDER-TOP: 2px inset; DISPLAY: inline; PADDING-LEFT: 1px; FONT-SIZE: 9pt; PADDING-BOTTOM: 1px; BORDER-LEFT: 2px inset; PADDING-TOP: 1px; BORDER-BOTTOM: 2px inset
+}
+.SortOrder {
+	DISPLAY: none
+}
+#StatusMesg {
+	DISPLAY: none
+}
+.Style1 {
+	BACKGROUND-COLOR: #c0c0c0
+}
+.tab {
+	BORDER-RIGHT: 2px inset; BORDER-TOP: 2px inset; BORDER-LEFT: 2px inset; CURSOR: pointer; COLOR: #000; BORDER-BOTTOM: 2px inset; TEXT-ALIGN: center
+}
+#fileNums {
+	DISPLAY: inline
+}
+#sizeNums {
+	DISPLAY: inline
+}
+#TimeDiv {
+	BORDER-RIGHT: 2px inset; PADDING-RIGHT: 1px; BORDER-TOP: 2px inset; PADDING-LEFT: 1px; FONT-SIZE: 9pt; RIGHT: 0px; PADDING-BOTTOM: 1px; BORDER-LEFT: 2px inset; PADDING-TOP: 1px; BORDER-BOTTOM: 2px inset; POSITION: absolute
+}
+#ViewName {
+	FONT-SIZE: 12pt; COLOR: #fff
+}
+.tab {
+	BORDER-RIGHT: 2px outset; BORDER-TOP: 2px outset; BORDER-LEFT: 2px outset; CURSOR: pointer; BORDER-BOTTOM: 2px outset
+}
+.focusedTab {
+	BORDER-RIGHT: 3px outset; BORDER-TOP: 3px outset; BORDER-LEFT: 2px outset; BORDER-BOTTOM: #34487e 3px solId
+}
+.panel {
+	BORDER-RIGHT: 2px outset; BORDER-LEFT: 2px outset; BORDER-BOTTOM: 2px outset
+}
+.panelTop {
+	BORDER-BOTTOM: 2px inset
+}
+A.sub-menu-toggle {
+	DISPLAY: block; FILTER: progId:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#00FFFFFF', EndColorStr='#00FFFFFF'); MARGIN: 0px; BACKGROUND-COLOR: #b0c4de; TEXT-ALIGN: center
+}
+DIV#navigation UL {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px; LIST-STYLE-TYPE: none
+}
+DIV#navigation UL LI {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FILTER: progId:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#00FFFFFF', EndColorStr='#00FFFFFF'); PADDING-BOTTOM: 0px; MARGIN: 0px; VERTICAL-ALIGN: mIddle; PADDING-TOP: 0px; LIST-STYLE-TYPE: none
+}
+DIV#navigation UL LI A {
+	FILTER: progId:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#66FFFFFF', EndColorStr='#00FFFFFF'); WIdTH: 100%; COLOR: #ffffff; PADDING-TOP: 4px; HEIGHT: 25px; BACKGROUND-COLOR: #34487e
+}
+DIV#navigation UL LI A IMG {
+	BORDER-TOP-WIdTH: 0px; BORDER-LEFT-WIdTH: 0px; BORDER-BOTTOM-WIdTH: 0px; VERTICAL-ALIGN: bottom; BORDER-RIGHT-WIdTH: 0px
+}
+DIV#navigation UL LI A:hover {
+	FILTER: progId:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#ccFFFFFF', EndColorStr='#99FFFFFF'); WIdTH: 100%; COLOR: #000000; HEIGHT: 25px; BACKGROUND-COLOR: #34487e
+}
+FIELDSET {
+	PADDING-RIGHT: 5px; PADDING-LEFT: 5px; PADDING-BOTTOM: 5px; MARGIN: 2px; PADDING-TOP: 5px
+}
+FIELDSET LEGEND {
+	FONT-WEIGHT: bold; FONT-SIZE: 12pt; COLOR: #000
+}
+#container {
+	OVERFLOW: auto; POSITION: relative
+}
+.optionsPopup SELECT {
+	MARGIN-TOP: 3px
+}
+.comment {
+	BORDER-RIGHT: #000 1px solId; PADDING-RIGHT: 3px; BORDER-TOP: #000 1px solId; PADDING-LEFT: 3px; PADDING-BOTTOM: 3px; BORDER-LEFT: #000 1px solId; PADDING-TOP: 3px; BORDER-BOTTOM: #000 1px solId
+}

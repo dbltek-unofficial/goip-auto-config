@@ -1,0 +1,100 @@
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+        <tr>
+         <td colspan="2">
+
+         <div id="line14_sim_settings" class="visable">
+          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+            <tr>
+             <td width="120" height="25" class="title1">GSM Number</td>
+             <td width="160" class="text">
+             <input type="text" name="line14_gsm_num" id="line14_gsm_num" value="<?php print($values['L14_GSM_NUMBER']) ?>" class="edit">
+             </td>
+            </tr>
+
+            <tr>
+             <td width="120" height="25" class="title1">IMEI</td>
+             <td width="160" class="text">
+              <input type="text" name="line14_gsm_imei" id="line14_gsm_imei" value="<?php print($values['LINE14_GSM_IMEI']) ?>" class="edit">
+             </td>
+            </tr>
+
+            <tr>
+             <td width="120" height="25" class="title1">Unlock PIN</td>
+             <td width="160" class="text">
+              <input type="text" name="line14_gsm_pin" id="line14_gsm_pin" value="<?php print($values['L14_GSM_PIN']) ?>" class="edit">
+             </td>
+            </tr>
+
+            <tr>
+             <td width="120" height="25" class="title1">Unlock PIN2</td>
+             <td width="160" class="text">
+              <input type="text" name="line14_gsm_pin2" id="line14_gsm_pin2" value="<?php print($values['L14_GSM_PIN2']) ?>" class="edit">
+             </td>
+            </tr>
+
+            <tr>
+             <td width="120" height="25" class="title1">Total Talk Time Limit(m)</td>
+             <td width="160" class="text">
+              <input type="text" name="line14_sim_exp" id="line14_sim_exp" value="<?php print($values['L14_SIM_EXP']) ?>" class="edit">
+             </td>
+            </tr>
+
+            <tr>
+             <td width="120" height="25" class="title1">Talk Time Limit(m)/Call</td>
+             <td width="160" class="text">
+              <input type="text" name="line14_sim_call_limit" id="line14_sim_call_limit" value="<?php print($values['L14_SIM_CALL_LIMIT']) ?>" class="edit">
+             </td>
+            </tr>
+
+            <tr>
+             <td width="120" height="25" class="title1">Billing Increment(s)</td>
+             <td width="160" class="text">
+              <input type="text" name="line14_sim_exp_unit" id="line14_sim_exp_unit" value="<?php print($values['L14_SIM_EXP_UNIT']) ?>" class="edit">
+             </td>
+            </tr>
+
+            <tr>
+             <td width="120" height="25" class="title1">SMS Alert Number</td>
+             <td width="160" class="text">
+              <input type="text" name="line14_sim_strp_num" id="line14_sim_strp_num" value="<?php print($values['L14_SIM_STRP_NUM']) ?>" class="edit">
+             </td>
+            </tr>
+
+            <tr>
+             <td width="120" height="25" class="title1">SMS Alert Schedule(Remain Talk Time(m))</td>
+             <td width="160" class="text">
+              <input type="text" name="line14_sim_strp_time" id="line14_sim_strp_time" value="<?php print($values['L14_SIM_STRP_TIME']) ?>" class="edit">
+             </td>
+            </tr>
+
+                    <tr>
+                     <td width="120" height="25" class="title1">
+<span>Hide My GSM Number</span>                     </td>
+                     <td width="160" class="text">
+                      <input type="radio" name="line14_gsm_caller_anonymous" value="on" id="line14_gsm_caller_anonymous_enable" disabledbyelement="" onclick="toggle('line14_gsm_caller_anonymous_div', 1)" <?php print($values['L14_CALLER_ANONYMOUS']=='1'?'checked':'') ?>><span>Enable</span>
+                      <input type="radio" name="line14_gsm_caller_anonymous" value="off" id="line14_gsm_caller_anonymous_disable" disabledbyelement="" onclick="toggle('line14_gsm_caller_anonymous_div', 0)" <?php print($values['L14_CALLER_ANONYMOUS']!='1'?'checked':'') ?>><span>Disable</span>                     </td>
+                    </tr>
+
+                    <tr>
+                     <td width="120" height="25"  class="title1">
+                     </td>
+                     <td width="160" class="text">                      <div style="cursor:hand; cursor:pointer" onclick="toggle_target(this, 'line14_gsm_cf_list_target')">GSM Call Forward List<span class="showstate" >&gt;&gt;</span></div>
+                     </td>
+                    </tr>
+                    <tr>
+                     <td colspan="2">
+                       <div id="line14_gsm_cf_list_target" class="invisible">
+  					  <?php require_once template($type.'/line14_gsm_cf_list'); ?>
+                       </div>
+                     </td>
+                    </tr>
+
+
+          </table>
+         </div>
+         </td>
+        </tr>
+
+      </table>

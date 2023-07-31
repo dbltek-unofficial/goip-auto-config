@@ -1,0 +1,135 @@
+<!--
+<?php
+print <<<EOT
+--><html>
+<meta name="Author" content="Gaby_chen">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title> Administrator Login</title>
+<LINK href="../images/admin/normal.css" rel=stylesheet type="text/css">
+<SCRIPT type=text/javascript>
+	function init(){
+		try{
+			if (self.parent.frames.length != 0)
+				self.parent.location=document.location;
+			else if (document.forms[0].User.value.length > 0)
+				document.forms[0].Password.focus();
+			else
+				document.forms[0].User.focus();
+		}
+		catch(exception){}
+	}
+	function showFocus(obj){
+		if(!document.getElementById)
+			return; ' else do the thing
+		obj.style.border = "1px solId yellow";
+	}
+	function showBlur(obj){
+		if(!document.getElementById)
+			return; ' else do the thing
+		obj.style.border = "1px solId Menu";
+	}
+	</SCRIPT>
+	<script language=javascript>
+function SetFocus()
+{
+if (document.Login.UserName.value=="")
+	document.Login.UserName.focus();
+else
+	document.Login.UserName.select();
+}
+function CheckForm()
+{
+	if(document.Login.UserName.value=="")
+	{
+		alert("input username!");
+		document.Login.UserName.focus();
+		return false;
+	}
+	if(document.Login.Password.value == "")
+	{
+		alert("input password!");
+		document.Login.Password.focus();
+		return false;
+	}
+}
+</script>
+
+<META content="MSHTML 6.00.2800.1505" name=GENERATOR>
+<style type="text/css">
+<!--
+.style2 {color: #FFFFFF}
+body {
+	background-color: #FFFFFF;
+}
+-->
+</style>
+<BODY>
+<DIV Id=biglogo align=center><IMG 
+src="../images/admin/logo.jpg" wIdth="342" height="98"></DIV>
+<BR>
+<form name="Login" action="login.php" method="post" target="_parent" onSubmit="return CheckForm();">
+  <TABLE Id=loginTable cellSpacing=0 cellPadding=0 wIdth=490 align=center 
+border=0>
+    <TBODY>
+      <TR>
+        <TD vAlign=top colSpan=3><IMG height=25 alt="" 
+      src="../images/admin/spacer.gif" wIdth=490 border=0></TD>
+      </TR>
+      <TR>
+        <TD>&nbsp;</TD>
+        <TD class=loginText vAlign=bottom align=mIddle><STRONG></STRONG></TD>
+        <TD>&nbsp;</TD>
+      </TR>
+      <TR>
+        <TD align=left><IMG height=226 alt="" src="../images/admin/spacer.gif" wIdth=1 
+      border=0></TD>
+        <TD align=right><table wIdth="350" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td wIdth="328"><TABLE cellSpacing=8 cellPadding=0 border=0>
+                  <TBODY>
+                    <TR align=left valign="mIddle">
+                      <TD wIdth="48" class=loginText><B>User Name:</B></TD>
+                      <TD wIdth="130"><input name=UserName class=loginInput Id="UserName" onFocus=showFocus(this) 
+            onBlur=showBlur(this) size=18 maxlength="15"></TD>
+                      <TD wIdth="111">&nbsp;</TD>
+                    </TR>
+                    <TR align=left valign="mIddle">
+                      <TD class=loginText><B>Password:</B></TD>
+                      <TD><INPUT name=Password type="password" class=loginInput Id="Password" onFocus=showFocus(this) 
+            onblur=showBlur(this) size=18 maxlength="15"></TD>
+                      <TD>&nbsp;</TD>
+                    </TR>
+                    <TR align="left" valign="mIddle">
+                      <TD>&nbsp;</TD>
+                      <TD><INPUT class=loginButton type=submit value=Login name=Logon>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <INPUT class=loginButton type=reset value=Reset name=Logon>
+                      </TD>
+                      <TD>&nbsp;</TD>
+                    </TR>
+                  </TBODY>
+              </TABLE>
+              <br></td>
+            </tr>
+        </table></TD>
+        <TD align=right><IMG height=226 alt="" src="../images/admin/spacer.gif" 
+      wIdth=1></TD>
+      </TR>
+      <TR>
+        <TD height="2" colSpan=3 vAlign=bottom><IMG height=1 alt="" 
+      src="../images/admin/spacer.gif" wIdth=490></TD>
+      </TR>
+    </TBODY>
+  </TABLE>
+  <p align="center"> <font color="#FF0000"><strong></strong></font> 
+    <br>
+ <strong><font color="#FF0000"> </font></strong><font color="#FF0000"><strong></strong></font> 
+   </p>
+</form>
+</body>
+</html>
+<!--
+EOT;
+?>
+-->

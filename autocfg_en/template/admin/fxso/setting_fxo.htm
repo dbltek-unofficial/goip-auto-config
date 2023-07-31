@@ -1,0 +1,804 @@
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+        <tr>
+         <td colspan="2">
+
+         <div id="fxo_calling" class="visable">
+          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+<?php if($values['FXOPORT'] == 1 ): ?>
+            <tr>
+             <td colspan="2" class="title1" height="25" >Single Mode</td>
+            </tr>
+
+            <tr>
+             <td colspan="2">
+
+             <div id="sip_fxo_single_mode" class="visable">
+              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                <tr>
+                 <td width="120" height="25" class="title1">Phone Number</td>
+                 <td width="160" class="text">
+                  <input type="text" name="sip_fxo_phone_number" id="sip_fxo_phone_number" value="<?php print($values['SIP_CONTACT10_DIAL_DIGITS']) ?>" class="edit">
+                 </td>
+                </tr>
+
+                <tr>
+                 <td width="120" height="25" class="title1">Display Name</td>
+                 <td width="160" class="text">
+                  <input type="text" name="sip_fxo_display_name" id="sip_fxo_display_name" value="<?php print($values['SIP_CONTACT10_DISPLAY_NAME']) ?>" class="edit">
+                 </td>
+                </tr>
+
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                <tr>
+                 <td width="120" height="25" class="title1">SIP Proxy</td>
+                 <td width="160" class="text">
+                  <input type="text" name="sip_fxo_proxy" id="sip_fxo_proxy" value="<?php print($values['SIP_CONTACT10_PROXY']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                 </td>
+                </tr>
+
+<?php endif; ?>
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                <tr>
+                 <td width="120" height="25" class="title1">SIP Registrar Server</td>
+                 <td width="160" class="text">
+                  <input type="text" name="sip_fxo_registrar" id="sip_fxo_registrar" value="<?php print($values['SIP_CONTACT10_SERVER']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                 </td>
+                </tr>
+
+<?php endif; ?>
+                <tr>
+                 <td width="120" height="25" class="title1">Register Expiry</td>
+                 <td width="160" class="text">
+                  <input type="text" name="sip_fxo_register_expired" id="sip_fxo_register_expired" value="<?php print($values['SIP_CONTACT10_REGISTER_EXPIRED']) ?>" class="edit" onblur="onblur_check_integer(this, 60, 36400)" onfocus="onfocus_check_integer(this, 60, 36400)">
+                 </td>
+                </tr>
+
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                <tr>
+                 <td width="120" height="25" class="title1">Outbound Proxy</td>
+                 <td width="160" class="text">
+                  <input type="text" name="sip_fxo_outbound_proxy" id="sip_fxo_outbound_proxy" value="<?php print($values['SIP_CONTACT10_OUTBOUND_PROXY']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                 </td>
+                </tr>
+
+<?php endif; ?>
+                <tr>
+                 <td width="120" height="25" class="title1">Home Domain</td>
+                 <td width="160" class="text">
+                  <input type="text" name="sip_fxo_home_domain" id="sip_fxo_home_domain" value="<?php print($values['SIP_CONTACT10_HOME_DOMAIN']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                 </td>
+                </tr>
+
+                <tr>
+                 <td width="120" height="25" class="title1">Authentication ID</td>
+                 <td width="160" class="text">
+                  <input type="text" name="sip_fxo_auth_id" id="sip_fxo_auth_id" value="<?php print($values['SIP_CONTACT10_LOGIN']) ?>" class="edit">
+                 </td>
+                </tr>
+
+                <tr>
+                 <td width="120" height="25" class="title1">Password</td>
+                 <td width="160" class="text">
+                  <input type="password" name="sip_fxo_auth_passwd" id="sip_fxo_auth_passwd" value="<?php print($values['SIP_CONTACT10_PASSWD']) ?>" class="edit">
+                 </td>
+                </tr>
+
+                <tr>
+                 <td width="120" height="25" class="title1">
+                 </td>
+                 <td width="160" class="text">
+                  <input type="checkbox" name="sip_fxo_backup_server" id="sip_fxo_backup_server" onclick="toggle_checkbox('sip_fxo_backup_server', 'hide')" <?php print($values['SIP_FXO_USE_BSVR']=='1'?'checked':'') ?>><span>Backup Server</span>
+                 </td>
+                </tr>
+
+                <tr>
+                 <td colspan="2">
+
+                <div id="sip_fxo_backup_server_div" class="<?php print($values['SIP_FXO_USE_BSVR']=='1'?'visable':'invisible') ?>">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                    <tr>
+                     <td width="120" height="25" class="title1">&nbsp;&nbsp;Backup SIP Proxy</td>
+                     <td width="160" class="text">
+                      <input type="text" name="sip_fxo_backup_proxy" id="sip_fxo_backup_proxy" value="<?php print($values['SIP_CONTACT11_PROXY']) ?>" class="edit">
+                     </td>
+                    </tr>
+
+                    <tr>
+                     <td width="120" height="25" class="title1">&nbsp;&nbsp;Backup SIP Registrar Server</td>
+                     <td width="160" class="text">
+                      <input type="text" name="sip_fxo_backup_registrar" id="sip_fxo_backup_registrar" value="<?php print($values['SIP_CONTACT11_SERVER']) ?>" class="edit">
+                     </td>
+                    </tr>
+
+                    <tr>
+                     <td width="120" height="25" class="title1">&nbsp;&nbsp;Backup Home Domain</td>
+                     <td width="160" class="text">
+                      <input type="text" name="sip_fxo_backup_home_domain" id="sip_fxo_backup_home_domain" value="<?php print($values['SIP_CONTACT11_HOME_DOMAIN']) ?>" class="edit">
+                     </td>
+                    </tr>
+
+                  </table>
+                </div>
+                 </td>
+                </tr>
+
+              </table>
+             </div>
+             </td>
+            </tr>
+
+<?php endif; ?>
+<?php if($values['FXOPORT'] > 1): ?>
+            <tr>
+
+             <td width="120" height="25" class="title1">Config Mode</td>
+             <td width="160" class="text">
+  <select name="sip_fxo_config_mode" id="sip_fxo_config_mode_select" class="select" onchange="toggle_selected('sip_fxo_config_mode', 'hide')">
+<?php if($values['FXOPORT'] > 1): ?>
+     <option value="SINGLE_MODE" <?php print($values['SIP_FXO_CONFIG_MODE']=='SINGLE_MODE'?'selected':'') ?>>Single Mode</option>
+<?php endif; ?>
+<?php if($values['FXOPORT'] > 1): ?>
+     <option value="LINE_MODE" <?php print($values['SIP_FXO_CONFIG_MODE']=='LINE_MODE'?'selected':'') ?>>Config by Line</option>
+<?php endif; ?>
+  </select>
+             </td>
+
+            </tr>
+
+            <tr>
+             <td colspan="2">
+
+              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+<?php if($values['FXOPORT'] > 1): ?>
+                <tr>
+                 <td colspan="2">
+                   <div class="invisible"><br><span class="stitle">Config Mode - Single Mode</span></div>
+
+                <div id="sip_fxo_config_mode_SINGLE_MODE_div" class="<?php print($values['SIP_FXO_CONFIG_MODE']=='SINGLE_MODE'?'visable':'invisible') ?>">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                    <tr>
+                     <td width="120" height="25" class="title1">Phone Number</td>
+                     <td width="160" class="text">
+                      <input type="text" name="sip_fxo_phone_number" id="sip_fxo_phone_number" value="<?php print($values['SIP_CONTACT10_DIAL_DIGITS']) ?>" class="edit">
+                     </td>
+                    </tr>
+
+                    <tr>
+                     <td width="120" height="25" class="title1">Display Name</td>
+                     <td width="160" class="text">
+                      <input type="text" name="sip_fxo_display_name" id="sip_fxo_display_name" value="<?php print($values['SIP_CONTACT10_DISPLAY_NAME']) ?>" class="edit">
+                     </td>
+                    </tr>
+
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                    <tr>
+                     <td width="120" height="25" class="title1">SIP Proxy</td>
+                     <td width="160" class="text">
+                      <input type="text" name="sip_fxo_proxy" id="sip_fxo_proxy" value="<?php print($values['SIP_CONTACT10_PROXY']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                     </td>
+                    </tr>
+
+<?php endif; ?>
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                    <tr>
+                     <td width="120" height="25" class="title1">SIP Registrar Server</td>
+                     <td width="160" class="text">
+                      <input type="text" name="sip_fxo_registrar" id="sip_fxo_registrar" value="<?php print($values['SIP_CONTACT10_SERVER']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                     </td>
+                    </tr>
+
+<?php endif; ?>
+                    <tr>
+                     <td width="120" height="25" class="title1">Register Expiry</td>
+                     <td width="160" class="text">
+                      <input type="text" name="sip_fxo_register_expired" id="sip_fxo_register_expired" value="<?php print($values['SIP_CONTACT10_REGISTER_EXPIRED']) ?>" class="edit" onblur="onblur_check_integer(this, 60, 36400)" onfocus="onfocus_check_integer(this, 60, 36400)">
+                     </td>
+                    </tr>
+
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                    <tr>
+                     <td width="120" height="25" class="title1">Outbound Proxy</td>
+                     <td width="160" class="text">
+                      <input type="text" name="sip_fxo_outbound_proxy" id="sip_fxo_outbound_proxy" value="<?php print($values['SIP_CONTACT10_OUTBOUND_PROXY']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                     </td>
+                    </tr>
+
+<?php endif; ?>
+                    <tr>
+                     <td width="120" height="25" class="title1">Home Domain</td>
+                     <td width="160" class="text">
+                      <input type="text" name="sip_fxo_home_domain" id="sip_fxo_home_domain" value="<?php print($values['SIP_CONTACT10_HOME_DOMAIN']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                     </td>
+                    </tr>
+
+                    <tr>
+                     <td width="120" height="25" class="title1">Authentication ID</td>
+                     <td width="160" class="text">
+                      <input type="text" name="sip_fxo_auth_id" id="sip_fxo_auth_id" value="<?php print($values['SIP_CONTACT10_LOGIN']) ?>" class="edit">
+                     </td>
+                    </tr>
+
+                    <tr>
+                     <td width="120" height="25" class="title1">Password</td>
+                     <td width="160" class="text">
+                      <input type="password" name="sip_fxo_auth_passwd" id="sip_fxo_auth_passwd" value="<?php print($values['SIP_CONTACT10_PASSWD']) ?>" class="edit">
+                     </td>
+                    </tr>
+
+                    <tr>
+                     <td width="120" height="25" class="title1">
+                     </td>
+                     <td width="160" class="text">
+                      <input type="checkbox" name="sip_fxo_backup_server" id="sip_fxo_backup_server" onclick="toggle_checkbox('sip_fxo_backup_server', 'hide')" <?php print($values['SIP_FXO_USE_BSVR']=='1'?'checked':'') ?>><span>Backup Server</span>
+                     </td>
+                    </tr>
+
+                    <tr>
+                     <td colspan="2">
+
+                    <div id="sip_fxo_backup_server_div" class="<?php print($values['SIP_FXO_USE_BSVR']=='1'?'visable':'invisible') ?>">
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                        <tr>
+                         <td width="120" height="25" class="title1">&nbsp;&nbsp;Backup SIP Proxy</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_fxo_backup_proxy" id="sip_fxo_backup_proxy" value="<?php print($values['SIP_CONTACT11_PROXY']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">&nbsp;&nbsp;Backup SIP Registrar Server</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_fxo_backup_registrar" id="sip_fxo_backup_registrar" value="<?php print($values['SIP_CONTACT11_SERVER']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">&nbsp;&nbsp;Backup Home Domain</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_fxo_backup_home_domain" id="sip_fxo_backup_home_domain" value="<?php print($values['SIP_CONTACT11_HOME_DOMAIN']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+                      </table>
+                    </div>
+                     </td>
+                    </tr>
+
+                  </table>
+                </div>
+
+<?php endif; ?>
+<?php if($values['FXOPORT'] > 1): ?>                   <div class="invisible"><br><span class="stitle">Config Mode - Config by Line</span></div>
+
+                <div id="sip_fxo_config_mode_LINE_MODE_div" class="<?php print($values['SIP_FXO_CONFIG_MODE']=='LINE_MODE'?'visable':'invisible') ?>">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                    <tr>
+                     <td class="text" width="280">
+                      <input type=radio name="sip_fxo_line_mode_tab" value="sip_fxo_line1_conf" onclick="toggle2('sip_fxo_line_mode_tab', 4, 0)" checked>Line 1&nbsp;
+<?php if($values['FXOPORT'] >= 2): ?>
+                      <input type=radio name="sip_fxo_line_mode_tab" value="sip_fxo_line2_conf" onclick="toggle2('sip_fxo_line_mode_tab', 4, 1)">Line 2&nbsp;
+<?php endif; ?>
+<?php if($values['FXOPORT'] >= 3): ?>
+                      <input type=radio name="sip_fxo_line_mode_tab" value="sip_fxo_line3_conf" onclick="toggle2('sip_fxo_line_mode_tab', 4, 2)">Line 3&nbsp;
+<?php endif; ?>
+<?php if($values['FXOPORT'] >= 4): ?>
+                      <input type=radio name="sip_fxo_line_mode_tab" value="sip_fxo_line4_conf" onclick="toggle2('sip_fxo_line_mode_tab', 4, 3)">Line 4&nbsp;
+<?php endif; ?>
+
+                     </td>
+                    </tr>
+                    <tr>
+                     <td>
+                      <div id="sip_fxo_line_mode_tab_0_div" class="visable">
+
+                     <div id="sip_fxo_line1_conf" class="visable">
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                        <tr>
+                         <td width="120" height="25" class="title1">Phone Number</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_fxo_line1_number" id="sip_fxo_line1_number" value="<?php print($values['SIP_CONTACT12_DIAL_DIGITS']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">Display Name</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_fxo_line1_display_name" id="sip_fxo_line1_display_name" value="<?php print($values['SIP_CONTACT12_DISPLAY_NAME']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                        <tr>
+                         <td width="120" height="25" class="title1">SIP Proxy</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_fxo_line1_proxy" id="sip_fxo_line1_proxy" value="<?php print($values['SIP_CONTACT12_PROXY']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                         </td>
+                        </tr>
+
+<?php endif; ?>
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                        <tr>
+                         <td width="120" height="25" class="title1">SIP Registrar Server</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_fxo_line1_registrar" id="sip_fxo_line1_registrar" value="<?php print($values['SIP_CONTACT12_SERVER']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                         </td>
+                        </tr>
+
+<?php endif; ?>
+                        <tr>
+                         <td width="120" height="25" class="title1">Register Expiry</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_fxo_line1_register_expired" id="sip_fxo_line1_register_expired" value="<?php print($values['SIP_CONTACT12_REGISTER_EXPIRED']) ?>" class="edit" onblur="onblur_check_integer(this, 60, 36400)" onfocus="onfocus_check_integer(this, 60, 36400)">
+                         </td>
+                        </tr>
+
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                        <tr>
+                         <td width="120" height="25" class="title1">Outbound Proxy</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_fxo_line1_outbound_proxy" id="sip_fxo_line1_outbound_proxy" value="<?php print($values['SIP_CONTACT12_OUTBOUND_PROXY']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                         </td>
+                        </tr>
+
+<?php endif; ?>
+                        <tr>
+                         <td width="120" height="25" class="title1">Home Domain</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_fxo_line1_home_domain" id="sip_fxo_line1_home_domain" value="<?php print($values['SIP_CONTACT12_HOME_DOMAIN']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">Authentication ID</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_fxo_line1_auth_id" id="sip_fxo_line1_auth_id" value="<?php print($values['SIP_CONTACT12_LOGIN']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">Password</td>
+                         <td width="160" class="text">
+                          <input type="password" name="sip_fxo_line1_auth_passwd" id="sip_fxo_line1_auth_passwd" value="<?php print($values['SIP_CONTACT12_PASSWD']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">
+                         </td>
+                         <td width="160" class="text">
+                          <input type="checkbox" name="sip_fxo_line1_backup_server" id="sip_fxo_line1_backup_server" onclick="toggle_checkbox('sip_fxo_line1_backup_server', 'hide')" <?php print($values['SIP_FXO0_USE_BSVR']=='1'?'checked':'') ?>><span>Backup Server</span>
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td colspan="2">
+
+                        <div id="sip_fxo_line1_backup_server_div" class="<?php print($values['SIP_FXO0_USE_BSVR']=='1'?'visable':'invisible') ?>">
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                            <tr>
+                             <td width="120" height="25" class="title1">&nbsp;&nbsp;Backup SIP Proxy</td>
+                             <td width="160" class="text">
+                              <input type="text" name="sip_fxo_line1_backup_proxy" id="sip_fxo_line1_backup_proxy" value="<?php print($values['SIP_CONTACT13_PROXY']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                             </td>
+                            </tr>
+
+<?php endif; ?>
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                            <tr>
+                             <td width="120" height="25" class="title1">&nbsp;&nbsp;Backup SIP Registrar Server</td>
+                             <td width="160" class="text">
+                              <input type="text" name="sip_fxo_line1_backup_registrar" id="sip_fxo_line1_backup_registrar" value="<?php print($values['SIP_CONTACT13_SERVER']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                             </td>
+                            </tr>
+
+<?php endif; ?>
+                            <tr>
+                             <td width="120" height="25" class="title1">&nbsp;&nbsp;Backup Home Domain</td>
+                             <td width="160" class="text">
+                              <input type="text" name="sip_fxo_line1_backup_home_domain" id="sip_fxo_line1_backup_home_domain" value="<?php print($values['SIP_CONTACT13_HOME_DOMAIN']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                             </td>
+                            </tr>
+
+                          </table>
+                        </div>
+                         </td>
+                        </tr>
+
+                      </table>
+                     </div>
+                      </div>
+                      <div id="sip_fxo_line_mode_tab_1_div" class="invisible">
+
+                     <div id="sip_fxo_line2_conf" class="visable">
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                        <tr>
+                         <td width="120" height="25" class="title1">Phone Number</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_fxo_line2_number" id="sip_fxo_line2_number" value="<?php print($values['SIP_CONTACT14_DIAL_DIGITS']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">Display Name</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_fxo_line2_display_name" id="sip_fxo_line2_display_name" value="<?php print($values['SIP_CONTACT14_DISPLAY_NAME']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                        <tr>
+                         <td width="120" height="25" class="title1">SIP Proxy</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_fxo_line2_proxy" id="sip_fxo_line2_proxy" value="<?php print($values['SIP_CONTACT14_PROXY']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                         </td>
+                        </tr>
+
+<?php endif; ?>
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                        <tr>
+                         <td width="120" height="25" class="title1">SIP Registrar Server</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_fxo_line2_registrar" id="sip_fxo_line2_registrar" value="<?php print($values['SIP_CONTACT14_SERVER']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                         </td>
+                        </tr>
+
+<?php endif; ?>
+                        <tr>
+                         <td width="120" height="25" class="title1">Register Expiry</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_fxo_line2_register_expired" id="sip_fxo_line2_register_expired" value="<?php print($values['SIP_CONTACT14_REGISTER_EXPIRED']) ?>" class="edit" onblur="onblur_check_integer(this, 60, 36400)" onfocus="onfocus_check_integer(this, 60, 36400)">
+                         </td>
+                        </tr>
+
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                        <tr>
+                         <td width="120" height="25" class="title1">Outbound Proxy</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_fxo_line2_outbound_proxy" id="sip_fxo_line2_outbound_proxy" value="<?php print($values['SIP_CONTACT14_OUTBOUND_PROXY']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                         </td>
+                        </tr>
+
+<?php endif; ?>
+                        <tr>
+                         <td width="120" height="25" class="title1">Home Domain</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_fxo_line2_home_domain" id="sip_fxo_line2_home_domain" value="<?php print($values['SIP_CONTACT14_HOME_DOMAIN']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">Authentication ID</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_fxo_line2_auth_id" id="sip_fxo_line2_auth_id" value="<?php print($values['SIP_CONTACT14_LOGIN']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">Password</td>
+                         <td width="160" class="text">
+                          <input type="password" name="sip_fxo_line2_auth_passwd" id="sip_fxo_line2_auth_passwd" value="<?php print($values['SIP_CONTACT14_PASSWD']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">
+                         </td>
+                         <td width="160" class="text">
+                          <input type="checkbox" name="sip_fxo_line2_backup_server" id="sip_fxo_line2_backup_server" onclick="toggle_checkbox('sip_fxo_line2_backup_server', 'hide')" <?php print($values['SIP_FXO1_USE_BSVR']=='1'?'checked':'') ?>><span>Backup Server</span>
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td colspan="2">
+
+                        <div id="sip_fxo_line2_backup_server_div" class="<?php print($values['SIP_FXO1_USE_BSVR']=='1'?'visable':'invisible') ?>">
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                            <tr>
+                             <td width="120" height="25" class="title1">&nbsp;&nbsp;Backup SIP Proxy</td>
+                             <td width="160" class="text">
+                              <input type="text" name="sip_fxo_line2_backup_proxy" id="sip_fxo_line2_backup_proxy" value="<?php print($values['SIP_CONTACT15_PROXY']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                             </td>
+                            </tr>
+
+<?php endif; ?>
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                            <tr>
+                             <td width="120" height="25" class="title1">&nbsp;&nbsp;Backup SIP Registrar Server</td>
+                             <td width="160" class="text">
+                              <input type="text" name="sip_fxo_line2_backup_registrar" id="sip_fxo_line2_backup_registrar" value="<?php print($values['SIP_CONTACT15_SERVER']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                             </td>
+                            </tr>
+
+<?php endif; ?>
+                            <tr>
+                             <td width="120" height="25" class="title1">&nbsp;&nbsp;Backup Home Domain</td>
+                             <td width="160" class="text">
+                              <input type="text" name="sip_fxo_line2_backup_home_domain" id="sip_fxo_line2_backup_home_domain" value="<?php print($values['SIP_CONTACT15_HOME_DOMAIN']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                             </td>
+                            </tr>
+
+                          </table>
+                        </div>
+                         </td>
+                        </tr>
+
+                      </table>
+                     </div>
+                      </div>
+                      <div id="sip_fxo_line_mode_tab_2_div" class="invisible">
+
+                     <div id="sip_fxo_line3_conf" class="visable">
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                        <tr>
+                         <td width="120" height="25" class="title1">Phone Number</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_fxo_line3_number" id="sip_fxo_line3_number" value="<?php print($values['SIP_CONTACT16_DIAL_DIGITS']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">Display Name</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_fxo_line3_display_name" id="sip_fxo_line3_display_name" value="<?php print($values['SIP_CONTACT16_DISPLAY_NAME']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                        <tr>
+                         <td width="120" height="25" class="title1">SIP Proxy</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_fxo_line3_proxy" id="sip_fxo_line3_proxy" value="<?php print($values['SIP_CONTACT16_PROXY']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                         </td>
+                        </tr>
+
+<?php endif; ?>
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                        <tr>
+                         <td width="120" height="25" class="title1">SIP Registrar Server</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_fxo_line3_registrar" id="sip_fxo_line3_registrar" value="<?php print($values['SIP_CONTACT16_SERVER']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                         </td>
+                        </tr>
+
+<?php endif; ?>
+                        <tr>
+                         <td width="120" height="25" class="title1">Register Expiry</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_fxo_line3_register_expired" id="sip_fxo_line3_register_expired" value="<?php print($values['SIP_CONTACT16_REGISTER_EXPIRED']) ?>" class="edit" onblur="onblur_check_integer(this, 60, 36400)" onfocus="onfocus_check_integer(this, 60, 36400)">
+                         </td>
+                        </tr>
+
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                        <tr>
+                         <td width="120" height="25" class="title1">Outbound Proxy</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_fxo_line3_outbound_proxy" id="sip_fxo_line3_outbound_proxy" value="<?php print($values['SIP_CONTACT16_OUTBOUND_PROXY']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                         </td>
+                        </tr>
+
+<?php endif; ?>
+                        <tr>
+                         <td width="120" height="25" class="title1">Home Domain</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_fxo_line3_home_domain" id="sip_fxo_line3_home_domain" value="<?php print($values['SIP_CONTACT16_HOME_DOMAIN']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">Authentication ID</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_fxo_line3_auth_id" id="sip_fxo_line3_auth_id" value="<?php print($values['SIP_CONTACT16_LOGIN']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">Password</td>
+                         <td width="160" class="text">
+                          <input type="password" name="sip_fxo_line3_auth_passwd" id="sip_fxo_line3_auth_passwd" value="<?php print($values['SIP_CONTACT16_PASSWD']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">
+                         </td>
+                         <td width="160" class="text">
+                          <input type="checkbox" name="sip_fxo_line3_backup_server" id="sip_fxo_line3_backup_server" onclick="toggle_checkbox('sip_fxo_line3_backup_server', 'hide')" <?php print($values['SIP_FXO2_USE_BSVR']=='1'?'checked':'') ?>><span>Backup Server</span>
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td colspan="2">
+
+                        <div id="sip_fxo_line3_backup_server_div" class="<?php print($values['SIP_FXO2_USE_BSVR']=='1'?'visable':'invisible') ?>">
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                            <tr>
+                             <td width="120" height="25" class="title1">&nbsp;&nbsp;Backup SIP Proxy</td>
+                             <td width="160" class="text">
+                              <input type="text" name="sip_fxo_line3_backup_proxy" id="sip_fxo_line3_backup_proxy" value="<?php print($values['SIP_CONTACT17_PROXY']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                             </td>
+                            </tr>
+
+<?php endif; ?>
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                            <tr>
+                             <td width="120" height="25" class="title1">&nbsp;&nbsp;Backup SIP Registrar Server</td>
+                             <td width="160" class="text">
+                              <input type="text" name="sip_fxo_line3_backup_registrar" id="sip_fxo_line3_backup_registrar" value="<?php print($values['SIP_CONTACT17_SERVER']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                             </td>
+                            </tr>
+
+<?php endif; ?>
+                            <tr>
+                             <td width="120" height="25" class="title1">&nbsp;&nbsp;Backup Home Domain</td>
+                             <td width="160" class="text">
+                              <input type="text" name="sip_fxo_line3_backup_home_domain" id="sip_fxo_line3_backup_home_domain" value="<?php print($values['SIP_CONTACT17_HOME_DOMAIN']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                             </td>
+                            </tr>
+
+                          </table>
+                        </div>
+                         </td>
+                        </tr>
+
+                      </table>
+                     </div>
+                      </div>
+                      <div id="sip_fxo_line_mode_tab_3_div" class="invisible">
+
+                     <div id="sip_fxo_line4_conf" class="visable">
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                        <tr>
+                         <td width="120" height="25" class="title1">Phone Number</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_fxo_line4_number" id="sip_fxo_line4_number" value="<?php print($values['SIP_CONTACT18_DIAL_DIGITS']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">Display Name</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_fxo_line4_display_name" id="sip_fxo_line4_display_name" value="<?php print($values['SIP_CONTACT18_DISPLAY_NAME']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                        <tr>
+                         <td width="120" height="25" class="title1">SIP Proxy</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_fxo_line4_proxy" id="sip_fxo_line4_proxy" value="<?php print($values['SIP_CONTACT18_PROXY']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                         </td>
+                        </tr>
+
+<?php endif; ?>
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                        <tr>
+                         <td width="120" height="25" class="title1">SIP Registrar Server</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_fxo_line4_registrar" id="sip_fxo_line4_registrar" value="<?php print($values['SIP_CONTACT18_SERVER']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                         </td>
+                        </tr>
+
+<?php endif; ?>
+                        <tr>
+                         <td width="120" height="25" class="title1">Register Expiry</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_fxo_line4_register_expired" id="sip_fxo_line4_register_expired" value="<?php print($values['SIP_CONTACT18_REGISTER_EXPIRED']) ?>" class="edit" onblur="onblur_check_integer(this, 60, 36400)" onfocus="onfocus_check_integer(this, 60, 36400)">
+                         </td>
+                        </tr>
+
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                        <tr>
+                         <td width="120" height="25" class="title1">Outbound Proxy</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_fxo_line4_outbound_proxy" id="sip_fxo_line4_outbound_proxy" value="<?php print($values['SIP_CONTACT18_OUTBOUND_PROXY']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                         </td>
+                        </tr>
+
+<?php endif; ?>
+                        <tr>
+                         <td width="120" height="25" class="title1">Home Domain</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_fxo_line4_home_domain" id="sip_fxo_line4_home_domain" value="<?php print($values['SIP_CONTACT18_HOME_DOMAIN']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">Authentication ID</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_fxo_line4_auth_id" id="sip_fxo_line4_auth_id" value="<?php print($values['SIP_CONTACT18_LOGIN']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">Password</td>
+                         <td width="160" class="text">
+                          <input type="password" name="sip_fxo_line4_auth_passwd" id="sip_fxo_line4_auth_passwd" value="<?php print($values['SIP_CONTACT18_PASSWD']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">
+                         </td>
+                         <td width="160" class="text">
+                          <input type="checkbox" name="sip_fxo_line4_backup_server" id="sip_fxo_line4_backup_server" onclick="toggle_checkbox('sip_fxo_line4_backup_server', 'hide')" <?php print($values['SIP_FXO3_USE_BSVR']=='1'?'checked':'') ?>><span>Backup Server</span>
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td colspan="2">
+
+                        <div id="sip_fxo_line4_backup_server_div" class="<?php print($values['SIP_FXO3_USE_BSVR']=='1'?'visable':'invisible') ?>">
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                            <tr>
+                             <td width="120" height="25" class="title1">&nbsp;&nbsp;Backup SIP Proxy</td>
+                             <td width="160" class="text">
+                              <input type="text" name="sip_fxo_line4_backup_proxy" id="sip_fxo_line4_backup_proxy" value="<?php print($values['SIP_CONTACT19_PROXY']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                             </td>
+                            </tr>
+
+<?php endif; ?>
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                            <tr>
+                             <td width="120" height="25" class="title1">&nbsp;&nbsp;Backup SIP Registrar Server</td>
+                             <td width="160" class="text">
+                              <input type="text" name="sip_fxo_line4_backup_registrar" id="sip_fxo_line4_backup_registrar" value="<?php print($values['SIP_CONTACT19_SERVER']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                             </td>
+                            </tr>
+
+<?php endif; ?>
+                            <tr>
+                             <td width="120" height="25" class="title1">&nbsp;&nbsp;Backup Home Domain</td>
+                             <td width="160" class="text">
+                              <input type="text" name="sip_fxo_line4_backup_home_domain" id="sip_fxo_line4_backup_home_domain" value="<?php print($values['SIP_CONTACT19_HOME_DOMAIN']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                             </td>
+                            </tr>
+
+                          </table>
+                        </div>
+                         </td>
+                        </tr>
+
+                      </table>
+                     </div>
+                      </div>
+
+                     </td>
+                    </tr>
+
+                  </table>
+                </div>
+                   <div class="invisible"><br></div>
+                 </td>
+                </tr>
+
+<?php endif; ?>
+              </table>
+             </td>
+            </tr>
+
+<?php endif; ?>
+          </table>
+         </div>
+         </td>
+        </tr>
+
+      </table>

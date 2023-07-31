@@ -1,0 +1,79 @@
+ <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+        <tr>
+         <td colspan="2">
+
+         <div id="line13_sim_settings" class="visable">
+          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                    <tr>
+                     <td width="120" height="25" class="title1">
+<span>SMS Sender</span>                     </td>
+                     <td width="160" class="text">
+                      <input type="radio" name="line13_sms_sender" value="on" id="line13_sms_sender_enable" onclick="toggle('line13_sms_sender_div', 1)" <?php print($values['L13_SMS_SENDER']=='1'?'checked':'') ?>><span>Enable</span>
+                      <input type="radio" name="line13_sms_sender" value="off" id="line13_sms_sender_disable" disabledbyelement="" onclick="toggle('line13_sms_sender_div', 0)" <?php print($values['L13_SMS_SENDER']!='1'?'checked':'') ?>><span>Disable</span>                     </td>
+                    </tr>
+
+
+                        <tr>
+                         <td colspan="2">
+
+                        <div id="line13_sms_sender_div" class="<?php print($values['L13_SMS_SENDER']=='1'?'visable':'invisible') ?>">
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+                             <td width="120" height="25" class="text">&nbsp;&nbsp;SMS Server IP</td>
+                             <td width="160" class="text">
+                              <input type="text" name="line13_sms_server" id="line13_sms_server" value="<?php print($values['L13_SMS_SERVER']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="text">&nbsp;&nbsp;SMS Server Port</td>
+                             <td width="160" class="text">
+                              <input type="text" name="line13_sms_port" id="line13_sms_port" value="<?php print($values['L13_SMS_PORT']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="text">&nbsp;&nbsp;SMS Client ID</td>
+                             <td width="160" class="text">
+                              <input type="text" name="line13_sms_cli_id" id="line13_sms_cli_id" value="<?php print($values['L13_SMS_CLI_ID']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="text">&nbsp;&nbsp;Password</td>
+                             <td width="160" class="text">
+                              <input type="password" name="line13_sms_cli_passwd" id="line13_sms_cli_passwd" value="<?php print($values['L13_SMS_CLI_PASSWD']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                          </table>
+                        </div>
+                         </td>
+                        </tr>
+
+                    <tr>
+                     <td width="120" height="25" class="title1">
+<span>SMS Sending Validity Time</span>                     </td>
+                     <td width="160" class="text">
+                      <input type="text" name="line13_sms_validity_time" id="line13_sms_validity_time" value="<?php print($values['LINE13_SMS_VALIDITY_TIME']) ?>" onblur="onfocus_check_integer(this, 0, 255)" class="edit">
+                     </td>
+                    </tr>
+
+                    <tr>
+                     <td width="120" height="25" class="title1">
+<span>SMS ACK</span>                     </td>
+                     <td width="160" class="text">
+                      <input type="radio" name="line13_sms_ack_enable" value="on" id="line13_sms_ack_enable" <?php print($values['L13_DISABLE_SMS_ACK']!='1'?'checked':'') ?>><span>Enable</span>
+                      <input type="radio" name="line13_sms_ack_enable" value="off" id="line13_sms_ack_enable" <?php print($values['L13_DISABLE_SMS_ACK']=='1'?'checked':'') ?>><span>Disable</span>
+                     </td>
+                    </tr>
+
+          </table>
+         </div>
+         </td>
+        </tr>
+
+      </table>

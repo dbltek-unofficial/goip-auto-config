@@ -1,0 +1,110 @@
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+        <tr>
+         <td colspan="2" class="title2" height="25" >FXS设置</td>
+        </tr>
+
+        <tr>
+         <td colspan="2">
+
+         <div id="fxs_settings" class="visable">
+          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+            <tr>
+             <td align="center" valign="top">
+          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+            <tr>
+             <td width="120" height="25" class="title1">拨号规则</td>
+             <td width="160" class="text">
+              <input type="text" name="fxs1_dial_plan" id="fxs1_dial_plan" value="<?php print($values['S1_DIGIT_MAP']) ?>" class="edit">
+             </td>
+            </tr>
+
+            <tr>
+             <td width="120" height="25" class="title1">
+<span>热线</span>             </td>
+             <td width="160" class="text">
+              <input type="radio" name="fxs1_hot_line_enable" value="on" id="fxs1_hot_line_enable_enable" disabledbyelement="" onclick="toggle('fxs1_hot_line_enable_div', 1)" <?php print($values['L1_HOT_LINE_ENABLE']=='1'?'checked':'') ?>><span>启用</span>
+              <input type="radio" name="fxs1_hot_line_enable" value="off" id="fxs1_hot_line_enable_disable" disabledbyelement="" onclick="toggle('fxs1_hot_line_enable_div', 0)" <?php print($values['L1_HOT_LINE_ENABLE']!='1'?'checked':'') ?>><span>禁用</span>             </td>
+            </tr>
+
+            <tr>
+             <td colspan="2">
+
+            <div id="fxs1_hot_line_enable_div" class="<?php print($values['L1_HOT_LINE_ENABLE']=='1'?'visible':'invisible') ?>">
+              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                <tr>
+                 <td width="120" height="25" class="title1">热线号码</td>
+                 <td width="160" class="text">
+                  <input type="text" name="fxs1_hot_line_num" id="fxs1_hot_line_num" value="<?php print($values['L1_HOT_LINE_NUM']) ?>" class="edit">
+                 </td>
+                </tr>
+
+              </table>
+            </div>
+
+             </td>
+            </tr>
+          </table>
+             </td>
+             <td align="center" valign="top">
+<?php if($values['ENDPOINT_TYPE']=='SIP'): ?>
+          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+            <tr>
+             <td width="120" height="25" class="title1">Hold建</td>
+             <td width="160" class="text">
+              <input type="text" name="star_cmd_hold" id="star_cmd_hold" value="<?php print($values['STAR_CMD_HOLD_KEY']) ?>" class="edit">
+             </td>
+            </tr>
+<?php endif; ?>
+<?php if($values['ENDPOINT_TYPE']=='SIP'): ?>
+
+            <tr>
+             <td width="120" height="25" class="title1">Transfer键</td>
+             <td width="160" class="text">
+              <input type="text" name="star_cmd_transfer" id="star_cmd_transfer" value="<?php print($values['STAR_CMD_TRANSFER_KEY']) ?>" class="edit">
+             </td>
+            </tr>
+<?php endif; ?>
+
+            <tr>
+             <td width="120" height="25" class="title1">自动拨出时间</td>
+             <td width="160" class="text">
+              <input type="text" name="auto_dial_time" id="auto_dial_time" value="<?php print($values['AUTODIAL_TIME']) ?>" class="edit" onblur="onblur_check_integer(this, 2, 6)" onfocus="onfocus_check_integer(this, 2, 6)">
+             </td>
+            </tr>
+<?php if($values['ENDPOINT_TYPE']=='SIP'): ?>
+
+            <tr>
+             <td width="120" height="25" class="title1">
+<span>呼叫保持</span>             </td>
+             <td width="160" class="text">
+              <input type="radio" name="call_hold" value="on" id="call_hold_enable" disabledbyelement="" onclick="toggle('call_hold_div', 1)" <?php print($values['CALL_HOLD']=='1'?'checked':'') ?>><span>启用</span>
+              <input type="radio" name="call_hold" value="off" id="call_hold_disable" disabledbyelement="" onclick="toggle('call_hold_div', 0)" <?php print($values['CALL_HOLD']!='1'?'checked':'') ?>><span>禁用</span>             </td>
+            </tr>
+<?php endif; ?>
+<?php if($values['ENDPOINT_TYPE']=='SIP'): ?>
+
+            <tr>
+             <td width="120" height="25" class="title1">
+<span>呼叫前传</span>             </td>
+             <td width="160" class="text">
+              <input type="radio" name="call_transfer" value="on" id="call_transfer_enable" disabledbyelement="" onclick="toggle('call_transfer_div', 1)" <?php print($values['CALL_TRANSFER']=='1'?'checked':'') ?>><span>启用</span>
+              <input type="radio" name="call_transfer" value="off" id="call_transfer_disable" disabledbyelement="" onclick="toggle('call_transfer_div', 0)" <?php print($values['CALL_TRANSFER']!='1'?'checked':'') ?>><span>禁用</span>             </td>
+            </tr>
+<?php endif; ?>
+
+          </table>
+             </td>
+            </tr>
+
+          </table>
+         </div>
+         </td>
+        </tr>
+
+      </table>
+

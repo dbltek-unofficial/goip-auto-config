@@ -1,0 +1,562 @@
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+        <tr>
+         <td colspan="2" class="title2" height="25" >呼叫设置</td>
+        </tr>
+
+        <tr>
+         <td colspan="2">
+
+         <div id="call_settings" class="visable">
+          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+            <tr>
+             <td align="center" valign="top">
+          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+            <tr>
+             <td colspan="2">
+
+             <div id="basic_calling" class="visable">
+              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                <tr>
+
+                 <td width="120" height="25" class="title1">终端类型</td>
+                 <td width="160" class="text">
+  <select name="endpoint_type" id="endpoint_type_select" class="select" onchange="toggle_selected('endpoint_type', 'hide'); toggle2('advance_endpoint_settings', 2, this.selectedIndex)">
+     <option value="H323" <?php print($values['ENDPOINT_TYPE']=='H323'?'selected':'') ?>>H.323终端</option>
+     <option value="SIP" <?php print($values['ENDPOINT_TYPE']=='SIP'?'selected':'') ?>>SIP终端</option>
+  </select>
+                 </td>
+		
+                </tr>
+
+                <tr>
+                 <td colspan="2">
+
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                    <tr>
+                     <td colspan="2">
+                       <div class="invisible"><br><span class="stitle">终端类型 - H.323终端</span></div>
+
+                    <div id="endpoint_type_H323_div" class="<?php print($values['ENDPOINT_TYPE']=='H323'?'visable':'invisible') ?>">
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                        <tr>
+
+                         <td width="120" height="25" class="title1">终端模式</td>
+                         <td width="160" class="text">
+  <select name="h323_endpoint_mode" id="h323_endpoint_mode_select" class="select" onchange="toggle_selected('h323_endpoint_mode', 'hide')">
+     <option value="DIRECT_MODE" <?php print($values['H323_ENDPOINT_MODE']=='DIRECT_MODE'?'selected':'') ?>>直连模式</option>
+     <option value="GK_MODE" <?php print($values['H323_ENDPOINT_MODE']=='GK_MODE'?'selected':'') ?>>关守模式</option>
+  </select>
+                         </td>
+		
+                        </tr>
+
+                        <tr>
+                         <td colspan="2">
+
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+                             <td colspan="2">
+                               <div class="invisible"><br><span class="stitle">终端模式 - 直连模式</span></div>
+
+                            <div id="h323_endpoint_mode_DIRECT_MODE_div" class="<?php print($values['H323_ENDPOINT_MODE']=='DIRECT_MODE'?'visable':'invisible') ?>">
+                              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                                <tr>
+                                 <td width="120" height="25" class="title1">电话号码</td>
+                                 <td width="160" class="text">
+                                  <input type="text" name="h323_local_number" id="h323_local_number" value="<?php print($values['H323_LOCAL_NUMBER']) ?>" class="edit">
+                                 </td>
+                                </tr>
+
+                                <tr>
+                                 <td width="120" height="25" class="title1">显示名</td>
+                                 <td width="160" class="text">
+                                  <input type="text" name="h323_local_name" id="h323_local_name" value="<?php print($values['H323_LOCAL_NAME']) ?>" class="edit">
+                                 </td>
+                                </tr>
+
+                                <tr>
+                                 <td width="120" height="25" class="title1">H.323 Id</td>
+                                 <td width="160" class="text">
+                                  <input type="text" name="h323_local_id" id="h323_local_id" value="<?php print($values['H323_LOCAL_ID']) ?>" class="edit">
+                                 </td>
+                                </tr>
+
+                                <tr>
+                                 <td width="120" height="25" class="title1">默认语音网关</td>
+                                 <td width="160" class="text">
+                                  <input type="text" name="h323_default_gw" id="h323_default_gw" value="<?php print($values['H323_DEFAULT_GATEWAY']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                                 </td>
+                                </tr>
+
+                              </table>
+                            </div>
+                               <div class="invisible"><br><span class="stitle">终端模式 - 关守模式</span></div>
+
+                            <div id="h323_endpoint_mode_GK_MODE_div" class="<?php print($values['H323_ENDPOINT_MODE']=='GK_MODE'?'visable':'invisible') ?>">
+                              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                                <tr>
+                                 <td width="120" height="25" class="title1">电话号码</td>
+                                 <td width="160" class="text">
+                                  <input type="text" name="h323_phone_number" id="h323_phone_number" value="<?php print($values['H323_PHONE_NUM']) ?>" class="edit">
+                                 </td>
+                                </tr>
+
+                                <tr>
+                                 <td width="120" height="25" class="title1">网关前缀</td>
+                                 <td width="160" class="text">
+                                  <input type="text" name="h323_gw_prefix" id="h323_gw_prefix" value="<?php print($values['H323_GW_PREFIX']) ?>" class="edit">
+                                 </td>
+                                </tr>
+
+                                <tr>
+                                 <td width="120" height="25" class="title1">显示名</td>
+                                 <td width="160" class="text">
+                                  <input type="text" name="display_name" id="display_name" value="<?php print($values['H323_DISPLAY_NAME']) ?>" class="edit">
+                                 </td>
+                                </tr>
+
+                                <tr>
+                                 <td width="120" height="25" class="title1">H.323 Id</td>
+                                 <td width="160" class="text">
+                                  <input type="text" name="h323_id" id="h323_id" value="<?php print($values['H323_ID']) ?>" class="edit">
+                                 </td>
+                                </tr>
+
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                                <tr>
+                                 <td width="120" height="25" class="title1">关守地址</td>
+                                 <td width="160" class="text">
+                                  <input type="text" name="gk_addr" id="gk_addr" value="<?php print($values['H323_GK_ADDR']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                                 </td>
+                                </tr>
+
+<?php endif; ?>
+                                <tr>
+                                 <td width="120" height="25" class="title1">
+                                 </td>
+                                 <td width="160" class="text">
+                                  <input type="checkbox" name="vos_enable" id="vos_enable" onclick="toggle_checkbox('vos_enable', 'hide')" <?php print($values['H323_VOS_ENABLE']=='1'?'checked':'') ?>><span>启用VOS/AVS信令加密</span>
+                                 </td>
+                                </tr>
+
+                                <tr>
+                                 <td colspan="2">
+
+                                <div id="vos_enable_div" class="<?php print($values['H323_VOS_ENABLE']=='1'?'visable':'invisible') ?>">
+                                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                                    <tr>
+
+                                     <td width="120" height="25" class="title1">加密模式</td>
+                                     <td width="160" class="text">
+  <select name="vos_mod" id="vos_mod_select" class="select" onchange="toggle_selected('vos_mod', 'hide')">
+     <option value="1" <?php print($values['H323_VOS_MODE']=='1'?'selected':'') ?>>VOS信令加密</option>
+     <option value="2" <?php print($values['H323_VOS_MODE']=='2'?'selected':'') ?>>VOS信令媒体加密</option>
+     <option value="3" <?php print($values['H323_VOS_MODE']=='3'?'selected':'') ?>>AVS信令加密</option>
+     <option value="4" <?php print($values['H323_VOS_MODE']=='4'?'selected':'') ?>>AVS信令媒体加密</option>
+  </select>
+                                     </td>
+		
+                                    </tr>
+
+                                    <tr>
+                                     <td colspan="2">
+
+                                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                                      </table>
+                                     </td>
+                                    </tr>
+
+                                  </table>
+                                </div>
+                                 </td>
+                                </tr>
+
+                                <tr>
+                                 <td width="120" height="25" class="title1">
+                                 </td>
+                                 <td width="160" class="text">
+                                  <input type="checkbox" name="h235_auth" id="h235_auth" onclick="toggle_checkbox('h235_auth', 'hide')" <?php print($values['H235_AUTH']=='1'?'checked':'') ?>><span>启用认证</span>
+                                 </td>
+                                </tr>
+
+                                <tr>
+                                 <td colspan="2">
+
+                                <div id="h235_auth_div" class="<?php print($values['H235_AUTH']=='1'?'visable':'invisible') ?>">
+                                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                                    <tr>
+                                     <td width="120" height="25" class="title1">认证Id</td>
+                                     <td width="160" class="text">
+                                      <input type="text" name="h235_id" id="h235_id" value="<?php print($values['H235_ID']) ?>" class="edit">
+                                     </td>
+                                    </tr>
+
+                                    <tr>
+                                     <td width="120" height="25" class="title1">密码</td>
+                                     <td width="160" class="text">
+                                      <input type="password" name="h235_passwd" id="h235_passwd" value="<?php print($values['H235_PASSWD']) ?>" class="edit">
+                                     </td>
+                                    </tr>
+
+                                  </table>
+                                </div>
+                                 </td>
+                                </tr>
+
+                              </table>
+                            </div>
+                               <div class="invisible"><br></div>
+                             </td>
+                            </tr>
+
+                          </table>
+                         </td>
+                        </tr>
+
+                      </table>
+                    </div>
+                       <div class="invisible"><br><span class="stitle">终端类型 - SIP终端</span></div>
+
+                    <div id="endpoint_type_SIP_div" class="<?php print($values['ENDPOINT_TYPE']=='SIP'?'visable':'invisible') ?>">
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                        <tr>
+
+                         <td width="120" height="25" class="title1">配置模式</td>
+                         <td width="160" class="text">
+  <select name="sip_config_mode" id="sip_config_mode_select" class="select" onchange="toggle_selected('sip_config_mode', 'hide')">
+     <option value="SINGLE_MODE" <?php print($values['SIP_CONFIG_MODE']=='SINGLE_MODE'?'selected':'') ?>>单服务器模式</option>
+     <option value="TRUNK_GW_MODE" <?php print($values['SIP_CONFIG_MODE']=='TRUNK_GW_MODE'?'selected':'') ?>>Trunk Gateway模式</option>
+  </select>
+                         </td>
+		
+                        </tr>
+
+                        <tr>
+                         <td colspan="2">
+
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+                             <td colspan="2">
+                               <div class="invisible"><br><span class="stitle">配置模式 - 单服务器模式</span></div>
+
+                            <div id="sip_config_mode_SINGLE_MODE_div" class="<?php print($values['SIP_CONFIG_MODE']=='SINGLE_MODE'?'visable':'invisible') ?>">
+                              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                                <tr>
+                                 <td width="120" height="25" class="title1">电话号码</td>
+                                 <td width="160" class="text">
+                                  <input type="text" name="sip_phone_number" id="sip_phone_number" value="<?php print($values['SIP_PHONE_NUMBER']) ?>" class="edit">
+                                 </td>
+                                </tr>
+
+                                <tr>
+                                 <td width="120" height="25" class="title1">显示名</td>
+                                 <td width="160" class="text">
+                                  <input type="text" name="sip_display_name" id="sip_display_name" value="<?php print($values['SIP_DISPLAY_NAME']) ?>" class="edit">
+                                 </td>
+                                </tr>
+
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                                <tr>
+                                 <td width="120" height="25" class="title1">代理服务器</td>
+                                 <td width="160" class="text">
+                                  <input type="text" name="sip_proxy" id="sip_proxy" value="<?php print($values['SIP_PROXY']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                                 </td>
+                                </tr>
+
+<?php endif; ?>
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                                <tr>
+                                 <td width="120" height="25" class="title1">注册服务器</td>
+                                 <td width="160" class="text">
+                                  <input type="text" name="sip_registrar" id="sip_registrar" value="<?php print($values['SIP_REGISTRAR']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                                 </td>
+                                </tr>
+
+<?php endif; ?>
+                                <tr>
+                                 <td width="120" height="25" class="title1">注册超时(秒)</td>
+                                 <td width="160" class="text">
+                                  <input type="text" name="sip_register_expired" id="sip_register_expired" value="<?php print($values['SIP_REGISTER_EXPIRED']) ?>" class="edit" onblur="onblur_check_integer(this, 60, 36400)" onfocus="onfocus_check_integer(this, 60, 36400)">
+                                 </td>
+                                </tr>
+
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                                <tr>
+                                 <td width="120" height="25" class="title1">Outbound Proxy</td>
+                                 <td width="160" class="text">
+                                  <input type="text" name="sip_outbound_proxy" id="sip_outbound_proxy" value="<?php print($values['SIP_OUTBOUND_PROXY']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                                 </td>
+                                </tr>
+
+<?php endif; ?>
+                                <tr>
+                                 <td width="120" height="25" class="title1">归属域</td>
+                                 <td width="160" class="text">
+                                  <input type="text" name="sip_home_domain" id="sip_home_domain" value="<?php print($values['SIP_HOME_DOMAIN']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                                 </td>
+                                </tr>
+
+                                <tr>
+                                 <td width="120" height="25" class="title1">认证Id</td>
+                                 <td width="160" class="text">
+                                  <input type="text" name="sip_auth_id" id="sip_auth_id" value="<?php print($values['SIP_AUTH_ID']) ?>" class="edit">
+                                 </td>
+                                </tr>
+
+                                <tr>
+                                 <td width="120" height="25" class="title1">密码</td>
+                                 <td width="160" class="text">
+                                  <input type="password" name="sip_auth_passwd" id="sip_auth_passwd" value="<?php print($values['SIP_AUTH_PASSWD']) ?>" class="edit">
+                                 </td>
+                                </tr>
+
+                                <tr>
+
+                                 <td width="120" height="25" class="title1">呼叫转移类型</td>
+                                 <td width="160" class="text">
+  <select name="sip_fwd_type" id="sip_fwd_type_select" class="select" onchange="toggle_selected('sip_fwd_type', 'hide')">
+     <option value="0" <?php print($values['SIP_FORWARD_TYPE']=='0'?'selected':'') ?>>不转移</option>
+     <option value="1" <?php print($values['SIP_FORWARD_TYPE']=='1'?'selected':'') ?>>无条件转移</option>
+     <option value="2" <?php print($values['SIP_FORWARD_TYPE']=='2'?'selected':'') ?>>遇忙转移</option>
+     <option value="3" <?php print($values['SIP_FORWARD_TYPE']=='3'?'selected':'') ?>>无应答转移</option>
+     <option value="4" <?php print($values['SIP_FORWARD_TYPE']=='4'?'selected':'') ?>>遇忙或无应答转移</option>
+  </select>
+                                 </td>
+		
+                                </tr>
+
+                                <tr>
+                                 <td colspan="2">
+
+                                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                                  </table>
+                                 </td>
+                                </tr>
+
+                                <tr>
+                                 <td width="120" height="25" class="title1">呼叫转移号码</td>
+                                 <td width="160" class="text">
+                                  <input type="text" name="sip_fwd_num" id="sip_fwd_num" value="<?php print($values['SIP_FORWARD_NUMBER']) ?>" class="edit">
+                                 </td>
+                                </tr>
+
+                                <tr>
+                                 <td width="120" height="25" class="title1">
+<span>后备服务器</span>                                 </td>
+                                 <td width="160" class="text">
+                                  <input type="radio" name="sip_backup_server" value="on" id="sip_backup_server_enable" disabledbyelement="" onclick="toggle('sip_backup_server_div', 1)" <?php print($values['SIP_SMODE_USE_BSVR']=='1'?'checked':'') ?>><span>启用</span>
+                                  <input type="radio" name="sip_backup_server" value="off" id="sip_backup_server_disable" disabledbyelement="" onclick="toggle('sip_backup_server_div', 0)" <?php print($values['SIP_SMODE_USE_BSVR']!='1'?'checked':'') ?>><span>禁用</span>                                 </td>
+                                </tr>
+
+                                <tr>
+                                 <td colspan="2">
+
+                                <div id="sip_backup_server_div" class="<?php print($values['SIP_SMODE_USE_BSVR']=='1'?'visable':'invisible') ?>">
+                                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                                    <tr>
+                                     <td width="120" height="25" class="title1">&nbsp;&nbsp;后备代理服务器</td>
+                                     <td width="160" class="text">
+                                      <input type="text" name="sip_backup_proxy" id="sip_backup_proxy" value="<?php print($values['SIP_BACKUP_PROXY']) ?>" class="edit">
+                                     </td>
+                                    </tr>
+
+<?php endif; ?>
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                                    <tr>
+                                     <td width="120" height="25" class="title1">&nbsp;&nbsp;后备注册服务器</td>
+                                     <td width="160" class="text">
+                                      <input type="text" name="sip_backup_registrar" id="sip_backup_registrar" value="<?php print($values['SIP_BACKUP_REGISTRAR']) ?>" class="edit">
+                                     </td>
+                                    </tr>
+
+<?php endif; ?>
+                                    <tr>
+                                     <td width="120" height="25" class="title1">&nbsp;&nbsp;后备归属域</td>
+                                     <td width="160" class="text">
+                                      <input type="text" name="sip_backup_home_domain" id="sip_backup_home_domain" value="<?php print($values['SIP_BACKUP_HOME_DOMAIN']) ?>" class="edit">
+                                     </td>
+                                    </tr>
+
+                                  </table>
+                                </div>
+                                 </td>
+                                </tr>
+
+                              </table>
+                            </div>
+                               <div class="invisible"><br><span class="stitle">配置模式 - Trunk Gateway模式</span></div>
+
+                            <div id="sip_config_mode_TRUNK_GW_MODE_div" class="<?php print($values['SIP_CONFIG_MODE']=='TRUNK_GW_MODE'?'visable':'invisible') ?>">
+                              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                                <tr>
+                                 <td width="120" height="25" class="title1">SIP Trunk Gateway1</td>
+                                 <td width="160" class="text">
+                                  <input type="text" name="sip_trunk_gw1" id="sip_trunk_gw1" value="<?php print($values['SIP_TRUNK_GW1']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                                 </td>
+                                </tr>
+
+                                <tr>
+                                 <td width="120" height="25" class="title1">SIP Trunk Gateway2</td>
+                                 <td width="160" class="text">
+                                  <input type="text" name="sip_trunk_gw2" id="sip_trunk_gw2" value="<?php print($values['SIP_TRUNK_GW2']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                                 </td>
+                                </tr>
+
+                                <tr>
+                                 <td width="120" height="25" class="title1">SIP Trunk Gateway3</td>
+                                 <td width="160" class="text">
+                                  <input type="text" name="sip_trunk_gw3" id="sip_trunk_gw3" value="<?php print($values['SIP_TRUNK_GW3']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                                 </td>
+                                </tr>
+
+                                <tr>
+                                 <td width="120" height="25" class="title1">电话号码</td>
+                                 <td width="160" class="text">
+                                  <input type="text" name="sip_trunk_number" id="sip_trunk_number" value="<?php print($values['SIP_TRUNK_NUMBER']) ?>" class="edit">
+                                 </td>
+                                </tr>
+
+                                <tr>
+                                 <td width="120" height="25" class="title1">注册超时(秒)</td>
+                                 <td width="160" class="text">
+                                  <input type="text" name="sip_trunk_register_expired" id="sip_trunk_register_expired" value="<?php print($values['SIP_TRUNK_REGISTER_EXPIRED']) ?>" class="edit" onblur="onblur_check_integer(this, 0, 36400)" onfocus="onfocus_check_integer(this, 0, 36400)">
+                                 </td>
+                                </tr>
+
+                                <tr>
+                                 <td width="120" height="25" class="title1">认证ID</td>
+                                 <td width="160" class="text">
+                                  <input type="text" name="sip_trunk_auth_id" id="sip_trunk_auth_id" value="<?php print($values['SIP_TRUNK_AUTH_ID']) ?>" class="edit">
+                                 </td>
+                                </tr>
+
+                                <tr>
+                                 <td width="120" height="25" class="title1">密码</td>
+                                 <td width="160" class="text">
+                                  <input type="password" name="sip_trunk_auth_passwd" id="sip_trunk_auth_passwd" value="<?php print($values['SIP_TRUNK_AUTH_PASSWD']) ?>" class="edit">
+                                 </td>
+                                </tr>
+
+                              </table>
+                            </div>
+                               <div class="invisible"><br></div>
+                             </td>
+                            </tr>
+
+                          </table>
+                         </td>
+                        </tr>
+
+                      </table>
+                    </div>
+                       <div class="invisible"><br></div>
+                     </td>
+                    </tr>
+
+                  </table>
+                 </td>
+                </tr>
+                                <tr>                                                                              
+             <td class="title1" height="25" width="120">                                                          
+<span>自动配置</span>             </td>                                                                           
+             <td class="text" width="160">                                                                        
+              <input name="auto_config" value="on" id="auto_config_enable" disabledbyelement="" onClick="toggle('auto_config_div', 1
+)" type="radio" <?php echo $values['AUTOCFG']=='1'?'checked':''?>><span>启用</span>
+              <input name="auto_config" value="off" id="auto_config_disable" disabledbyelement="" onClick="toggle('auto_config_div',
+ 0)" <?php echo $values['AUTOCFG']=='0'?'checked':''?> type="radio"><span>禁用</span>             </td>
+            </tr>                                                                                                 
+                                                                                                                  
+            <tr>                                                                                                  
+             <td colspan="2">                                                                                     
+                                                                                                                  
+            <div id="auto_config_div" class="<?php print($values['AUTOCFG']=='1'?'visable':'invisible') ?>">      
+              <table border="0" cellpadding="0" cellspacing="0" width="100%">                                     
+                                                                                                                  
+                <tbody><tr>                                                                                       
+                 <td class="title1" height="25" width="120">&nbsp;&nbsp;自动配置服务器</td>                       
+                 <td class="text" width="160">                                                                    
+                  <input name="auto_config_server" id="auto_config_server" value="<?php print($values['AUTOCFG_SERVER'])?>" class="e
+dit" type="text">
+                 </td>                                                                                            
+                </tr>                                                                                             
+                                                                                                                  
+                <tr>                                                                                              
+                 <td class="title1" height="25" width="120">&nbsp;&nbsp;自动配置更新间隔</td>                     
+                 <td class="text" width="160">                                                                    
+                  <input name="auto_config_refresh" id="auto_config_refresh" value="<?php print($values['AUTOCFG_REFRESH']) ?>" clas
+s="edit" type="text">
+                 </td>                                                                                            
+                </tr>                                                                                             
+                                                                                                                  
+              </tbody></table>                                                                                    
+            </div>  
+                        </td></tr>                                                                                
+                                                                                                                  
+                                        <?php require_once template('remote2'); ?>                                
+              </table>
+             </div>
+
+             </td>
+            </tr>
+          </table>
+             </td>
+             <td align="center" valign="top">
+          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+            <tr>
+             <td width="120" height="25"  class="title1">
+             </td>
+             <td width="160" class="text">              <div style="cursor:hand; cursor:pointer" onclick="toggle_target(this, 'advance_calling_target')">高级设置<span class="showstate" >&gt;&gt;</span></div>
+             </td>
+            </tr>
+            <tr>
+             <td colspan="2">
+               <div id="advance_calling_target" class="invisible">
+			<?php require_once template($type.'/ad_call'); ?>
+               </div>
+             </td>
+            </tr>
+
+            <tr>
+             <td width="120" height="25"  class="title1">
+             </td>
+             <td width="160" class="text">              <div style="cursor:hand; cursor:pointer" onclick="toggle_target(this, 'media_target')">媒体<span class="showstate" >&gt;&gt;</span></div>
+             </td>
+            </tr>
+            <tr>
+             <td colspan="2">
+               <div id="media_target" class="invisible">
+			<?php require_once template('media'); ?>
+               </div>
+             </td>
+            </tr>
+          </table>
+             </td>
+            </tr>
+
+          </table>
+         </div>
+         </td>
+        </tr>
+
+      </table>
+<?php require_once template($type.'/gsm_setting'); ?>

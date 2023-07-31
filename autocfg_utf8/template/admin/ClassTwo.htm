@@ -1,0 +1,265 @@
+<!--
+<?php
+print <<<EOT
+-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Column management</title>
+<meta name="Author" content="Gaby_chen">
+<link href="Style.css" rel="stylesheet" type="text/css">
+</head>
+<body leftmargin="2" topmargin="0" marginwIdth="0" marginheight="0">
+<table wIdth="100%" border="0" align="center" cellpadding="2" cellspacing="1" class="border">
+  <tr class="topbg"> 
+    <td height="22" colspan="2" align="center"><strong>Column management</strong></td>
+  </tr>
+  <tr class="tdbg"> 
+    <td wIdth="70" height="30"><strong>admin navigation:</strong></td>
+    <td height="30"><a href="{$URL}?job=ClassTwo">Column management page</a> | <a href="{$URL}?job=ClassTwo&action=add">append column</a>&nbsp;|&nbsp;</td>
+  </tr>
+</table>
+<!--
+EOT;
+if($statu=="main"){
+print <<<EOT
+-->
+<br> 
+<table wIdth="100%" border="0" align="center" cellpadding="0" cellspacing="1" class="border">
+  <tr class="title"> 
+    <td wIdth="80" height="22" align="center"><strong>OrderId</strong></td>
+    <td wIdth="639" align="center"><strong>ClassName</strong></td>
+    <td wIdth="246" height="22" align="center"><strong>operation options</strong></td>
+  </tr>
+  {$ClassList}
+<!--
+EOT;
+foreach($rsdb as $rs) {
+print <<<EOT
+-->
+  <tr class="tdbg" onmouseout="this.style.backgroundColor=''" onmouseover="this.style.backgroundColor='#BFDFFF'"> 
+    <td>{$rs['OrderId']}</td>
+    <td>{$rs['ClassName']}</td>
+    <td align="center">| <a href="{$URL}?job=ClassTwo&action=modify&ClassId={$rs['ClassId']}">Modify</a>
+      | <a href="{$URL}?job=ClassTwo&action=Clear&ClassId={$rs['ClassId']}" onClick="return ConfirmDel2();">Clear</a> 
+      | <a href="{$URL}?job=ClassTwo&action=Del&ClassId={$rs['ClassId']}" onClick="return ConfirmDel1();">Delete</a></td>
+  </tr>
+  <!--
+EOT;
+}
+print <<<EOT
+-->
+</table> 
+<script language="JavaScript" type="text/JavaScript">
+function ConfirmDel1()
+{
+   if(confirm("Delete column will delete all the content and you can鈥檛 get back it. Be sure to delete the column?"))
+     return true;
+   else
+     return false;
+	 
+}
+function ConfirmDel2()
+{
+   if(confirm("Clear-up column will transfer all the content into recycle bin! Be sure to clear up the column?"))
+     return true;
+   else
+     return false;
+	 
+}
+</script>
+<br><br>
+<!--
+EOT;
+}
+if($statu=="order") {
+print <<<EOT
+-->
+<br>
+<form method="post" action="job.php?action=order">
+<table wIdth="100%" border="0" align="center" cellpadding="0" cellspacing="1" class="border">
+  <tr class="title"> 
+    <td wIdth="80" height="22" align="center"><strong>OrderId</strong></td>
+    <td wIdth="639" align="center"><strong>ClassName</strong></td>
+    <td wIdth="246" height="22" align="center"><strong>sort order</strong></td>
+  </tr>
+<!--
+EOT;
+foreach($rsdb as $rs) {
+print <<<EOT
+-->
+  <tr class="tdbg" onmouseout="this.style.backgroundColor=''" onmouseover="this.style.backgroundColor='#BFDFFF'"> 
+    <td>{$rs['OrderId']}</td>
+    <td>{$rs['ClassName']}</td>
+    <td align="center"><input type="text" name="{$rs['ClassId']}" value="{$rs['OrderId']}"></td>
+  </tr>
+  <!--
+EOT;
+}
+print <<<EOT
+-->
+ <tr class="tdbg"> 
+      <td height="40" colspan="3" align="center">
+        <input name="Add" type="submit" value=" sort order "  style="cursor:hand;"> &nbsp; 
+        <input name="Cancel" type="Reset" Id="Cancel" value="Cancel" onClick="window.location.href='{$URL}?job=Product_Class'" style="cursor:hand;"> 
+      </td>
+    </tr>
+</table>
+</form>
+<!--
+EOT;
+}
+if($statu=="add") {
+print <<<EOT
+-->
+<form name="form1" method="post" action="{$URL}?job=ClassTwo&action=saveadd" onsubmit="return check()">
+  <table wIdth="100%" border="0" align="center" cellpadding="2" cellspacing="1" class="border">
+    <tr class="title"> 
+      <td height="22" colspan="2" align="center"><strong>append column</strong></td>
+    </tr>
+	    <tr class="tdbg"> 
+      <td wIdth="350"><strong>column:</strong><br>
+         </td>
+      <td wIdth="673"> {$ParentClassName}
+        <input type="hIdden" name="ParentId" value="{$ParentId}"></td>
+    </tr>
+
+    <tr class="tdbg"> 
+      <td wIdth="350"><strong>column title:</strong></td>
+      <td><input name="ClassName" type="text" size="37"></td>
+    </tr>
+<!--
+EOT;
+}
+if($ParentClassName!="First column" && $statu=="add") {
+print <<<EOT
+-->
+	 <tr class="tdbg"> 
+      <td wIdth="350"><strong>Photo:</strong></td>
+      <td><input name="UrlLink" type="text" Id="UrlLink" size="37" maxlength="20"></td>
+    </tr>
+	<tr class="tdbg"> 
+      <td wIdth="350"><strong>ReadMe:</strong></td>
+      <td><textarea name="ReadMe" cols="37" rows="6" Id="ReadMe"></textarea></td>
+    </tr>
+		<tr class="tdbg">
+			<td align=right><b>Show Index:</b>(<font color=red>*</font>)</td>
+			<td ><input name="ShowIndex" type="checkbox" value="checked" >
+			</td>
+		</tr>
+<!--
+EOT;
+}
+if($statu=="add") {
+print <<<EOT
+-->
+    <tr class="tdbg"> 
+      <td height="40" colspan="2" align="center">
+        <input name="Add" type="submit" value="Add"  style="cursor:hand;"> 
+        &nbsp; 
+        <input name="Cancel" type="Reset" Id="Cancel" value="Cancel" onClick="window.location.href='{$URL}?job=Product_Class'" style="cursor:hand;"> 
+      </td>
+    </tr>
+  </table>
+</form>
+<script language="JavaScript" type="text/JavaScript">
+function check()
+{
+  if (document.form1.ClassName.value=="")
+  {
+    alert("column title shouldn鈥檛 be empty!");
+	document.form1.ClassName.focus();
+	return false;
+  }
+}
+</script>
+<!--
+EOT;
+}
+if($statu=="modify") {
+print <<<EOT
+-->
+<form name="form1" method="post" action="{$URL}?job=ClassTwo&action=savemodify" onsubmit="return check()">
+  <table wIdth="100%" border="0" align="center" cellpadding="2" cellspacing="1" class="border">
+    <tr class="title"> 
+      <td height="22" colspan="2" align="center"><strong>modify column</strong></td>
+    </tr>
+	    <tr class="tdbg"> 
+      <td wIdth="350"><strong>affiliated column:</strong><br></td>
+      <td> 
+		<select name="ClassParentId" Id="ClassParentId">
+          {$ClassList}
+        </select>
+		<input name="ShowIndex1" type="hIdden" Id="ShowIndex1" value="{$ShowIndex1}">
+      </td>
+    </tr>
+
+    <tr class="tdbg"> 
+      <td wIdth="350"><strong>column title:</strong></td>
+      <td><input name="ClassName" type="text" value="{$ClassName}" size="37"> 
+        <input name="ClassId" type="hIdden" Id="ClassId" value="{$ClassId}"></td>
+    </tr>
+    <tr class="tdbg">
+      <td wIdth="350"><strong>Sort column order:</strong></td>
+      <td><input name="OrderId" type="text" Id="OrderId" value="{$OrderId}" size="37" maxlength="20">
+        [only for number]</td>
+    </tr>
+	<!--
+EOT;
+}
+if($ClassType!="1" && $statu=="modify") {
+print <<<EOT
+-->
+	 <tr class="tdbg">
+      <td wIdth="350"><strong>Photo:</strong></td>
+      <td><input name="UrlLink" type="text" Id="UrlLink" value="{$UrlLink}" size="37" maxlength="20">
+       </td>
+    </tr>
+	 <tr class="tdbg">
+      <td wIdth="350"><strong>ReadMe:</strong></td>
+      <td><textarea name="ReadMe" cols="37" rows="6" Id="ReadMe">{$ReadMe}</textarea></td>
+    </tr>
+	<tr class="tdbg">
+			<td align=right><b>Show Index:</b>(<font color=red>*</font>)</td>
+			<td >
+			  <input name="ShowIndex" type="checkbox" value="checked"  {$ShowIndex}>
+			</td>
+		</tr>
+	
+	<!--
+EOT;
+}
+if($statu=="modify") {
+print <<<EOT
+-->
+    <tr class="tdbg"> 
+      <td height="40" colspan="2" align="center"><input name="Action" type="hIdden" Id="Action" value="SaveModify"> 
+        <input name="Submit" type="submit" value="Modify"style="cursor:hand;"> 
+        &nbsp; <input name="Cancel" type="Reset" Id="Cancel" value="Cancel" onClick="window.location.href='{$URL}?job=ClassTwo'" style="cursor:hand;"> 
+      </td>
+    </tr>
+  </table>
+</form>
+<script language="JavaScript" type="text/JavaScript">
+function check()
+{
+  if (document.form1.ClassName.value=="")
+  {
+    alert("column title shouldn鈥檛 be empty!");
+	document.form1.ClassName.focus();
+	return false;
+  }
+}
+</script> 
+<!--
+EOT;
+}
+print <<<EOT
+-->
+</body> 
+</html> 
+<!--
+EOT;
+?>
+-->

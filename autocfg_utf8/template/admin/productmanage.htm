@@ -1,0 +1,192 @@
+<!--
+<?php
+print <<<EOT
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="Style.css" rel="stylesheet" type="text/css">
+<title></title>
+<script language="javascript">
+function unselectall()
+	{
+	    if(document.myform.chkAll.checked){
+		document.myform.chkAll.checked = document.myform.chkAll.checked&0;
+	    } 	
+	}
+
+function CheckAll(form)
+	{
+		var trck;
+		var e;
+		for (var i=0;i<form.elements.length;i++)
+	    {
+		    e = form.elements[i];
+		    if (e.type == 'checkbox' && e.id != "chkAll" && e.disabled==false){
+				e.checked = form.chkAll.checked;
+		 		do {e=e.parentNode} while (e.tagName!="TR") 
+		 		if(form.chkAll.checked)
+		 			e.className = 'even marked';
+		 		else
+		 			e.className = 'even';
+			}
+	    }
+		//form.chkAll.classname = 'even';
+	}
+
+function mouseover(obj) {
+                obj.className += ' hover';
+				//alert(obj.className);
+            	
+			}
+
+function mouseout(obj) {
+            	obj.className = obj.className.replace( ' hover', '' );
+				//alert(obj.className);
+			}
+
+function trclick(obj) {
+		//alert("ddddd");
+        var checkbox = obj.getElementsByTagName( 'input' )[0];
+        //if ( checkbox && checkbox.type == 'checkbox' ) 
+        checkbox.checked ^= 1;
+		if(checkbox.checked)
+			obj.className = 'even marked';
+		else obj.className = 'even';
+//		var ckpage=document.modifyform.elements['chkAll'+num];
+	    if(document.myform.chkAll.checked){
+		document.myform.chkAll.checked = document.myform.chkAll.checked&0;
+	    } 	
+		
+
+		}
+		
+</script>
+<style type="text/css">
+.invisible{display:none;}
+</style>
+</head>
+<body leftmargin="2" topmargin="0" marginwIdth="0" marginheight="0">
+<table wIdth="100%" border="0" align="center" cellpadding="2" cellspacing="1" class="border">
+  <tr class="topbg"> 
+    <td height="22" colspan="2" align="center"><strong>终端管理</strong></td>
+  </tr>
+  <tr class="tdbg"> 
+    <td wIdth="70" height="30"><strong>管理导航:</strong></td>
+    <td height="30">
+<!--
+EOT;
+//<a href="{$URL}?job=product&action=addupload&classid={$classid}">终端导入</a> | 
+print <<<EOT
+-->
+<a href="{$URL}?job=product&action=add&classid={$classid}" target=main>添加终端</a>&nbsp;|&nbsp;
+<a href="?job=product&action=addmore&classid={$classid}" target=main>批量添加终端</a>&nbsp;|&nbsp;
+<a href="{$URL}?job=productmanage&classid={$classid}" target=main>终端管理</a>&nbsp;|&nbsp;<a href="{$URL}?job=productseachbefore&action=before&classid={$classid}" target=main>终端搜索批量修改</a>&nbsp;
+
+  </tr>
+</table>
+<br>
+<table width="100%" height="25"  border="0" cellpadding="0" cellspacing="0">
+  <tr class="topbg">
+    <td width="8%">&nbsp;</td>
+    <td width="92%" height="25"><strong>当前位置：{$classname}管理</strong></td>
+  </tr>
+</table>
+<form action="{$URL}?job=product&classid={$classid}&action=delmore" method=post name=myform onSubmit="return confirm('确认删除?')">
+<table wIdth="100%"  border="0" cellspacing="2" cellpadding="2" nowrap=true>
+
+	<tr class=title>
+		<td wIdth="30" align=center height="25"><b>选择</b></td>
+		<td align="center"><b>SN</b></td>
+		<td align="center"><b>USER</b></td>
+		<td align="center"><b>CLASS</b></td>
+		<td align="center"><b>ENDPOINT</b></td>
+		<td align="center"><b>CONFIG_MODE</b></td>
+		<td align="center"><b>SIP_SERVER</b></td>
+		<td align="center"><b>SIP_ID</b></td>
+		<td align="center"><b>H323_GK</b></td>
+		<td align="center"><b>H323_ID</b></td>
+		<td align="center"><b>RELAY_SERVER</b></td>
+		<td align="center"><strong>UPDATE_TIME</strong></td>
+		<td align=center><b>OPERATION</b></td>
+	</tr>
+	
+<!--
+EOT;
+$j=0;
+foreach($rsdb as $rs) {
+if($classid){
+print <<<EOT
+-->
+	<tr class="even" onmouseover="mouseover(this)" onmouseout="mouseout(this)" onmousedown="trclick(this)">
+		<td align=center wIdth="30"><input name="chanpinid{$j}" type='checkbox' onClick="return false" Id="chanpinid{$j}" value={$rs['chanpinid']}></td>
+<!--
+EOT;
+}
+else {
+print <<<EOT
+-->
+	<tr class="even" onmouseover="mouseover(this)" onmouseout="mouseout(this)" onmousedown="trclick(this)">
+		<td align=center wIdth="30"><input name="chanpinid{$j}" type='checkbox' onClick="return false;" Id="chanpinid{$j}" value={$rs['allchanpinid']}></td>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+		<td nowrap=true align="center">{$rs["SN"]}</td>
+		<td nowrap=true align="center">{$rs["USER"]}</td>
+		<td nowrap=true align="center">{$rs["classname"]}</td>
+		<td nowrap=true align="center">{$rs["ENDPOINT_TYPE"]}</td>
+		<td nowrap=true align="center">{$rs["CONFIG_MODE"]}</td>
+		<td nowrap=true align="center" title="{$rs['sipservertitle']}">{$rs["sipserver"]}</td>
+		<td nowrap=true align="center" title="{$rs['sipidtitle']}">{$rs["sipid"]}</td>
+		<td nowrap=true align="center" title="{$rs['h323gktitle']}">{$rs["h323gk"]}</td>
+		<td nowrap=true align="center" title="{$rs['h323idtitle']}">{$rs["h323id"]}</td>
+		<td nowrap=true align="center" title="{$rs['relayservertitle']}">{$rs["relayserver"]}</td>
+		<td nowrap=true align="center" >{$rs[updatetime]}</td>
+		<td nowrap=true align=center ><a href="{$URL}?job=product&action=modify&chanpinid={$rs['chanpinid']}&classid={$rs['classid']}">修改</a> | <a href="{$URL}?job=product&chanpinid={$rs['chanpinid']}&classid={$rs['classid']}&action=del" onClick="return confirm('确认删除?')">删除</a></td>
+    </tr>
+
+<!--
+EOT;
+$j++;
+}
+print <<<EOT
+-->
+</table>
+<table wIdth="100%"  border="0" cellspacing="2" cellpadding="2">
+
+
+					<tr>
+						<td height="30" ><input name="chkAll" type="checkbox" Id="chkAll" onclick=CheckAll(this.form) value="checkbox"> 
+					  选择当前页面<input name="submit" type='submit' value='删除所选'></td>
+					</tr>
+					<tr>
+						<td  align=center>{$fenye}</td>
+					</tr>
+</table>
+
+<input type="hIdden" name="boxs" value="{$j}">
+<script language="JavaScript" type="text/JavaScript">
+function check()
+{
+  if (document.myform.keyword.value=="")
+  {
+    alert("请输入关键字!");
+	document.myform.keyword.focus();
+	return false;
+  }
+}
+</script>
+</form>
+
+					  </td> 
+					</tr>
+</table>
+				
+</body>
+</html>
+<!--
+EOT;
+?>
+-->

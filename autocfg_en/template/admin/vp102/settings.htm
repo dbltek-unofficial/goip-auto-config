@@ -1,0 +1,426 @@
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+        <tr>
+         <td colspan="2" class="title2" height="25" >Call Settings</td>
+        </tr>
+
+        <tr>
+         <td colspan="2">
+
+         <div id="call_settings" class="visable">
+          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+            <tr>
+             <td align="center" valign="top">
+          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+            <tr>
+             <td colspan="2">
+
+             <div id="basic_calling" class="visable">
+              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                <tr>
+
+                 <td width="120" height="25" class="title1">Endpoint Type</td>
+                 <td width="160" class="text">
+  <select name="endpoint_type" id="endpoint_type_select" class="select" onchange="toggle_selected('endpoint_type', 'hide'); toggle2('advance_endpoint_settings', 2, this.selectedIndex)">
+     <option value="H323" <?php print($values['ENDPOINT_TYPE']=='H323'?'selected':'') ?>>H.323 Phone</option>
+     <option value="SIP" <?php print($values['ENDPOINT_TYPE']=='SIP'?'selected':'') ?>>SIP Phone</option>
+  </select>
+                 </td>
+		
+                </tr>
+
+                <tr>
+                 <td colspan="2">
+
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                    <tr>
+                     <td colspan="2">
+                       <div class="invisible"><br><span class="stitle">Endpoint Type - H.323 Phone</span></div>
+
+                    <div id="endpoint_type_H323_div" class="<?php print($values['ENDPOINT_TYPE']=='H323'?'visable':'invisible') ?>">
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                        <tr>
+                         <td width="120" height="25" class="title1">Phone Number</td>
+                         <td width="160" class="text">
+                          <input type="text" name="h323_phone_number" id="h323_phone_number" value="<?php print($values['H323_PHONE_NUM']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">H.323 ID</td>
+                         <td width="160" class="text">
+                          <input type="text" name="h323_id" id="h323_id" value="<?php print($values['H323_ID']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">Display Name</td>
+                         <td width="160" class="text">
+                          <input type="text" name="display_name" id="display_name" value="<?php print($values['DISPLAY_NAME']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+                        <tr>
+
+                         <td width="120" height="25" class="title1">Endpoint Mode</td>
+                         <td width="160" class="text">
+  <select name="h323_endpoint_mode" id="h323_endpoint_mode_select" class="select" onchange="toggle_selected('h323_endpoint_mode', 'hide')">
+     <option value="GK_MODE" <?php print($values['H323_ENDPOINT_MODE']=='GK_MODE'?'selected':'') ?>>Gatekeeper Mode</option>
+     <option value="DIRECT_MODE" <?php print($values['H323_ENDPOINT_MODE']=='DIRECT_MODE'?'selected':'') ?>>Direct Mode</option>
+  </select>
+                         </td>
+		
+                        </tr>
+
+                        <tr>
+                         <td colspan="2">
+
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+                             <td colspan="2">
+                               <div class="invisible"><br><span class="stitle">Endpoint Mode - Gatekeeper Mode</span></div>
+
+                            <div id="h323_endpoint_mode_GK_MODE_div" class="<?php print($values['H323_ENDPOINT_MODE']=='GK_MODE'?'visable':'invisible') ?>">
+                              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                                <tr>
+                                 <td width="120" height="25" class="title1">Gatekeeper Address</td>
+                                 <td width="160" class="text">
+                                  <input type="text" name="gk_addr" id="gk_addr" value="<?php print($values['H323_GK_ADDR']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                                 </td>
+                                </tr>
+
+                                <tr>
+                                 <td width="120" height="25" class="title1">
+                                 </td>
+                                 <td width="160" class="text">
+                                  <input type="checkbox" name="h235_auth" id="h235_auth" onclick="toggle_checkbox('h235_auth', 'hide')" <?php print($values['H235_AUTH']=='1'?'checked':'') ?>><span>Enable Authentication</span>
+                                 </td>
+                                </tr>
+
+                                <tr>
+                                 <td colspan="2">
+
+                                <div id="h235_auth_div" class="<?php print($values['H235_AUTH']=='1'?'visable':'invisible') ?>">
+                                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                                    <tr>
+                                     <td width="120" height="25" class="title1">Authenitcation ID</td>
+                                     <td width="160" class="text">
+                                      <input type="text" name="h235_id" id="h235_id" value="<?php print($values['H235_ID']) ?>" class="edit">
+                                     </td>
+                                    </tr>
+
+                                    <tr>
+                                     <td width="120" height="25" class="title1">Password</td>
+                                     <td width="160" class="text">
+                                      <input type="password" name="h235_passwd" id="h235_passwd" value="<?php print($values['H235_PASSWD']) ?>" class="edit">
+                                     </td>
+                                    </tr>
+
+                                  </table>
+                                </div>
+                                 </td>
+                                </tr>
+
+                              </table>
+                            </div>
+                               <div class="invisible"><br><span class="stitle">Endpoint Mode - Direct Mode</span></div>
+
+                            <div id="h323_endpoint_mode_DIRECT_MODE_div" class="<?php print($values['H323_ENDPOINT_MODE']=='DIRECT_MODE'?'visable':'invisible') ?>">
+                              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                                <tr>
+                                 <td width="120" height="25" class="title1">Default Voice Gateway</td>
+                                 <td width="160" class="text">
+                                  <input type="text" name="h323_default_gw" id="h323_default_gw" value="<?php print($values['H323_DEFAULT_GATEWAY']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                                 </td>
+                                </tr>
+
+                              </table>
+                            </div>
+                               <div class="invisible"><br></div>
+                             </td>
+                            </tr>
+
+                          </table>
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">
+                         </td>
+                         <td width="160" class="text">
+                          <input type="checkbox" name="call_forward" id="call_forward" onclick="toggle_checkbox('call_forward', 'hide')" <?php print($values['H323_FORWARD_ENABLE']=='1'?'checked':'') ?>><span>Enable Call Forward</span>
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td colspan="2">
+
+                        <div id="call_forward_div" class="<?php print($values['H323_FORWARD_ENABLE']=='1'?'visable':'invisible') ?>">
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+                             <td width="120" height="25" class="title1">Always Forward</td>
+                             <td width="160" class="text">
+                              <input type="text" name="cfu_number" id="cfu_number" value="<?php print($values['H323_CFU_NUMBER']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">No Reply Forward</td>
+                             <td width="160" class="text">
+                              <input type="text" name="cfnr_number" id="cfnr_number" value="<?php print($values['H323_CFNR_NUMBER']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">Busy Forward</td>
+                             <td width="160" class="text">
+                              <input type="text" name="cfb_number" id="cfb_number" value="<?php print($values['H323_CFB_NUMBER']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                          </table>
+                        </div>
+                         </td>
+                        </tr>
+
+                      </table>
+                    </div>
+                       <div class="invisible"><br><span class="stitle">Endpoint Type - SIP Phone</span></div>
+
+                    <div id="endpoint_type_SIP_div" class="<?php print($values['ENDPOINT_TYPE']=='SIP'?'visable':'invisible') ?>">
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                        <tr>
+                         <td width="120" height="25" class="title1">Phone Number</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_phone_number" id="sip_phone_number" value="<?php print($values['SIP_LOCAL_PHONE_NUM']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">Display Name</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_display_name" id="sip_display_name" value="<?php print($values['SIP_DISPLAY_NAME']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">SIP Proxy</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_proxy" id="sip_proxy" value="<?php print($values['SIP_PROXY']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">SIP Registrar Server</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_registrar" id="sip_registrar" value="<?php print($values['SIP_REGISTRAR']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">Home Domain</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_home_domain" id="sip_home_domain" value="<?php print($values['SIP_CONTACT0_HOME_DOMAIN']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">
+                         </td>
+                         <td width="160" class="text">
+                          <input type="checkbox" name="sip_auth" id="sip_auth" onclick="toggle_checkbox('sip_auth', 'hide')" <?php print($values['SIP_PHONE_AUTH_ENABLE']=='1'?'checked':'') ?>><span>Enable Authentication</span>
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td colspan="2">
+
+                        <div id="sip_auth_div" class="<?php print($values['SIP_PHONE_AUTH_ENABLE']=='1'?'visable':'invisible') ?>">
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+                             <td width="120" height="25" class="title1">Authentication ID</td>
+                             <td width="160" class="text">
+                              <input type="text" name="sip_auth_id" id="sip_auth_id" value="<?php print($values['SIP_PHONE_AUTH_ID']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">Password</td>
+                             <td width="160" class="text">
+                              <input type="password" name="sip_auth_passwd" id="sip_auth_passwd" value="<?php print($values['SIP_PHONE_AUTH_PASSWD']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                          </table>
+                        </div>
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">
+<span>Backup Server</span>                         </td>
+                         <td width="160" class="text">
+                          <input type="radio" name="sip_backup_server" value="on" id="sip_backup_server_enable" disabledbyelement="" onclick="toggle('sip_backup_server_div', 1)" <?php print($values['USE_BACKUP_SIP_SVR']=='1'?'checked':'') ?>><span>Enable</span>
+                          <input type="radio" name="sip_backup_server" value="off" id="sip_backup_server_disable" disabledbyelement="" onclick="toggle('sip_backup_server_div', 0)" <?php print($values['USE_BACKUP_SIP_SVR']!='1'?'checked':'') ?>><span>Disable</span>                         </td>
+                        </tr>
+
+                        <tr>
+                         <td colspan="2">
+
+                        <div id="sip_backup_server_div" class="<?php print($values['USE_BACKUP_SIP_SVR']=='1'?'visable':'invisible') ?>">
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+                             <td width="120" height="25" class="title1">&nbsp;&nbsp;Backup SIP Proxy</td>
+                             <td width="160" class="text">
+                              <input type="text" name="sip_backup_proxy" id="sip_backup_proxy" value="<?php print($values['SIP_BACKUP_PROXY']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">&nbsp;&nbsp;Backup SIP Registrar Server</td>
+                             <td width="160" class="text">
+                              <input type="text" name="sip_backup_registrar" id="sip_backup_registrar" value="<?php print($values['SIP_BACKUP_REGISTRAR']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">&nbsp;&nbsp;Backup Home Domain</td>
+                             <td width="160" class="text">
+                              <input type="text" name="sip_backup_home_domain" id="sip_backup_home_domain" value="<?php print($values['SIP_BACKUP_HOME_DOMAIN']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">Register Fail-retry Interval(s)</td>
+                             <td width="160" class="text">
+                              <input type="text" name="sip_fail_retry_interval" id="sip_fail_retry_interval" value="<?php print($values['SIP_FAIL_RETRY_INTERVAL']) ?>" class="edit" onblur="onblur_check_integer(this, 1, 180)" onfocus="onfocus_check_integer(this, 1, 180)">
+                             </td>
+                            </tr>
+
+                          </table>
+                        </div>
+                         </td>
+                        </tr>
+
+                        <tr>
+
+                         <td width="120" height="25" class="title1">Call Forward Type</td>
+                         <td width="160" class="text">
+  <select name="sip_fwd_type" id="sip_fwd_type_select" class="select" onchange="toggle_selected('sip_fwd_type', 'hide')">
+     <option value="0" <?php print($values['SIP_CONTACT0_FORWARD_TYPE']=='0'?'selected':'') ?>>Not Forward</option>
+     <option value="1" <?php print($values['SIP_CONTACT0_FORWARD_TYPE']=='1'?'selected':'') ?>>Unconditional Forward</option>
+     <option value="2" <?php print($values['SIP_CONTACT0_FORWARD_TYPE']=='2'?'selected':'') ?>>Busy Forward</option>
+     <option value="3" <?php print($values['SIP_CONTACT0_FORWARD_TYPE']=='3'?'selected':'') ?>>No Answer Forward</option>
+     <option value="4" <?php print($values['SIP_CONTACT0_FORWARD_TYPE']=='4'?'selected':'') ?>>Busy or No Answer Forward</option>
+  </select>
+                         </td>
+		
+                        </tr>
+
+                        <tr>
+                         <td colspan="2">
+
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                          </table>
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">Call Forward Number</td>
+                         <td width="160" class="text">
+                          <input type="text" name="sip_fwd_num" id="sip_fwd_num" value="<?php print($values['SIP_FORWARD_NUM']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+                        <tr>
+
+                         <td width="120" height="25" class="title1">Voice-mail Number</td>
+                         <td width="160" class="text">
+                          <input type="text" name="voice_mail" id="voice_mail" value="<?php print($values['SIP_VOICE_MAIL']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+                      </table>
+                    </div>
+                       <div class="invisible"><br></div>
+                     </td>
+                    </tr>
+
+
+                  </table>
+                 </td>
+                </tr>
+           <tr>
+             <td width="120" height="25" class="title1">Dial Plan(Digit Map)</td>
+             <td width="160" class="text">
+              <input type="text" name="dial_plan" id="dial_plan" value="<?php echo $values['DIAL_PALN']?>" class="edit">
+             </td>
+            </tr>
+			<?php require_once template('autocfg'); ?>	
+
+			   		<?php require_once template('remote2'); ?>
+			
+			</td></tr>	
+              </table>
+			  
+             </div>
+
+             </td>
+            </tr>
+          </table>
+             </td>
+             <td align="center" valign="top">
+          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+            <tr>
+             <td width="120" height="25"  class="title1">
+             </td>
+             <td width="160" class="text">              <div style="cursor:hand; cursor:pointer" onclick="toggle_target(this, 'advance_calling_target')">Advanced Settings<span class="showstate" >&gt;&gt;</span></div>
+             </td>
+            </tr>
+            <tr>
+             <td colspan="2">
+               <div id="advance_calling_target" class="invisible">
+			   		<?php require_once template($type.'/ad_call2'); ?>
+               </div>
+             </td>
+            </tr>
+
+            <tr>
+             <td width="120" height="25"  class="title1">
+             </td>
+             <td width="160" class="text">              <div style="cursor:hand; cursor:pointer" onclick="toggle_target(this, 'media_target')">Media Settings<span class="showstate" >&gt;&gt;</span></div>
+             </td>
+            </tr>
+            <tr>
+             <td colspan="2">
+               <div id="media_target" class="invisible">
+			   		<?php require_once template('media'); ?>
+               </div>
+             </td>
+            </tr>
+          </table>
+             </td>
+            </tr>
+
+          </table>
+         </div>
+         </td>
+        </tr>
+
+      </table>
+

@@ -1,0 +1,119 @@
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+        <tr>
+         <td colspan="2">
+
+         <div id="fxs_calling" class="visable">
+          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+            <tr>
+             <td width="120" height="25" class="title1">电话号码</td>
+             <td width="160" class="text">
+              <input type="text" name="h323_phone_number" id="h323_phone_number" value="<?php print($values['H323_PHONE_NUM']) ?>" class="edit">
+             </td>
+            </tr>
+
+            <tr>
+             <td width="120" height="25" class="title1">显示名</td>
+             <td width="160" class="text">
+              <input type="text" name="display_name" id="display_name" value="<?php print($values['H323_DISPLAY_NAME']) ?>" class="edit">
+             </td>
+            </tr>
+
+            <tr>
+             <td width="120" height="25" class="title1">H.323 Id</td>
+             <td width="160" class="text">
+              <input type="text" name="h323_id" id="h323_id" value="<?php print($values['H323_ID']) ?>" class="edit">
+             </td>
+            </tr>
+
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+            <tr>
+             <td width="120" height="25" class="title1">关守地址</td>
+             <td width="160" class="text">
+              <input type="text" name="gk_addr" id="gk_addr" value="<?php print($values['H323_GK_ADDR']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+             </td>
+            </tr>
+
+<?php endif; ?>
+            <tr>
+             <td width="120" height="25" class="title1">
+             </td>
+             <td width="160" class="text">
+              <input type="checkbox" name="vos_enable" id="vos_enable" onclick="toggle_checkbox('vos_enable', 'hide')" <?php print($values['H323_VOS_ENABLE']=='1'?'checked':'') ?>><span>启用VOS/AVS信令加密</span>
+             </td>
+            </tr>
+
+            <tr>
+             <td colspan="2">
+
+            <div id="vos_enable_div" class="<?php print($values['H323_VOS_ENABLE']=='1'?'visable':'invisible') ?>">
+              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                <tr>
+
+                 <td width="120" height="25" class="title1">加密模式</td>
+                 <td width="160" class="text">
+  <select name="vos_mod" id="vos_mod_select" class="select" onchange="toggle_selected('vos_mod', 'hide')">
+     <option value="1" <?php print($values['H323_VOS_MODE']=='1'?'selected':'') ?>>VOS信令加密</option>
+     <option value="2" <?php print($values['H323_VOS_MODE']=='2'?'selected':'') ?>>VOS信令媒体加密</option>
+     <option value="3" <?php print($values['H323_VOS_MODE']=='3'?'selected':'') ?>>AVS信令加密</option>
+     <option value="4" <?php print($values['H323_VOS_MODE']=='4'?'selected':'') ?>>AVS信令媒体加密</option>
+  </select>
+                 </td>
+
+                </tr>
+
+                <tr>
+                 <td colspan="2">
+
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                  </table>
+                 </td>
+                </tr>
+
+              </table>
+            </div>
+             </td>
+            </tr>
+
+            <tr>
+             <td width="120" height="25" class="title1">
+             </td>
+             <td width="160" class="text">
+              <input type="checkbox" name="h235_auth" id="h235_auth" onclick="toggle_checkbox('h235_auth', 'hide')" <?php print($values['H235_AUTH']=='1'?'checked':'') ?>><span>启用认证</span>
+             </td>
+            </tr>
+
+            <tr>
+             <td colspan="2">
+
+            <div id="h235_auth_div" class="<?php print($values['H235_AUTH']=='1'?'visable':'invisible') ?>">
+              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                <tr>
+                 <td width="120" height="25" class="title1">认证Id</td>
+                 <td width="160" class="text">
+                  <input type="text" name="h235_id" id="h235_id" value="<?php print($values['H235_ID']) ?>" class="edit">
+                 </td>
+                </tr>
+
+                <tr>
+                 <td width="120" height="25" class="title1">密码</td>
+                 <td width="160" class="text">
+                  <input type="password" name="h235_passwd" id="h235_passwd" value="<?php print($values['H235_PASSWD']) ?>" class="edit">
+                 </td>
+                </tr>
+
+              </table>
+            </div>
+             </td>
+            </tr>
+
+          </table>
+         </div>
+         </td>
+        </tr>
+
+      </table>

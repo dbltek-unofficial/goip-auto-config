@@ -1,0 +1,52 @@
+
+            <tr>
+             <td class="title1" height="25" width="120">
+<span>远程控制</span>             </td>
+             <td class="text" width="160">
+              <input name="remote_enable" value="on" id="remote_enable" disabledbyelement="" onClick="toggle('remote_enable_div', 1)" type="radio" <?php echo $values['RADMIN_ENABLE']=='1'?'checked':''?>><span>启用</span>
+              <input name="remote_enable" value="off" id="remote_disable" disabledbyelement="" onClick="toggle('remote_enable_div', 0)" <?php echo $values['RADMIN_ENABLE']=='0'?'checked':''?> type="radio"><span>禁用</span>             </td>
+
+             </td>
+            </tr>
+
+            <tr>
+             <td colspan="2">
+
+            <div id="remote_enable_div" class="<?php print($values['RADMIN_ENABLE']=='1'?'visable':'invisible') ?>">
+              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+
+            <tr>
+             <td width="120" id="remotes" height="25" class="title1">远程控制服务器</td>
+             <td width="160" class="text">
+              <input type="text" name="remote_server" id="remote_server" value="<?php echo $values['RADMIN_SERVER'] ?>" class="edit" onBlur="onblur_validate(this, hostport)" >
+             </td>
+            </tr>
+
+            <tr>
+             <td width="120" height="25" class="title1">远程控制端口</td>
+             <td width="160" class="text">
+              <input type="text" name="remote_server_port" id="remote_server_port" value="<?php echo $values['RADMIN_PORT'] ?>" class="edit" onBlur="onblur_check_integer(this, 1024, 65535)" onFocus="onfocus_check_integer(this, 1024, 65535)">
+             </td>
+            </tr>
+
+            <tr>
+             <td width="120" height="25" class="title1">远程控制用户</td>
+             <td width="160" class="text">
+              <input type="text" name="remote_server_id" id="remote_server_id" value="<?php echo $values['RADMIN_ID'] ?>" class="edit">
+             </td>
+            </tr>
+
+            <tr>
+             <td width="120" height="25" class="title1">远程控制密码</td>
+             <td width="160" class="text">
+              <input type="password" name="remote_server_key" id="remote_server_key" value="<?php echo $values['RADMIN_KEY'] ?>" class="edit">
+             </td>
+            </tr>
+
+
+              </table>
+            </div>
+             </td>
+            </tr>
+

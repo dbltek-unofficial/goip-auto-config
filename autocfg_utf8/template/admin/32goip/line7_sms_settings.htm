@@ -1,0 +1,78 @@
+ <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+        <tr>
+         <td colspan="2">
+
+         <div id="line7_sim_settings" class="visable">
+          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                    <tr>
+                     <td width="120" height="25" class="title1">
+<span>短信发送</span>                     </td>
+                     <td width="160" class="text">
+                      <input type="radio" name="line7_sms_sender" value="on" id="line7_sms_sender_enable" onclick="toggle('line7_sms_sender_div', 1)" <?php print($values['L7_SMS_SENDER']=='1'?'checked':'') ?>><span>启用</span>
+                      <input type="radio" name="line7_sms_sender" value="off" id="line7_sms_sender_disable" disabledbyelement="" onclick="toggle('line7_sms_sender_div', 0)" <?php print($values['L7_SMS_SENDER']!='1'?'checked':'') ?>><span>禁用</span></td>
+                    </tr>
+
+
+                        <tr>
+                         <td colspan="2">
+
+                        <div id="line7_sms_sender_div" class="<?php print($values['L7_SMS_SENDER']=='1'?'visable':'invisible') ?>">
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+                             <td width="120" height="25" class="text">&nbsp;&nbsp;短信服务器地址</td>
+                             <td width="160" class="text">
+                              <input type="text" name="line7_sms_server" id="line7_sms_server" value="<?php print($values['L7_SMS_SERVER']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="text">&nbsp;&nbsp; 短信服务器端口</td>
+                             <td width="160" class="text">
+                              <input type="text" name="line7_sms_port" id="line7_sms_port" value="<?php print($values['L7_SMS_PORT']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="text">&nbsp;&nbsp; 认证ID</td>
+                             <td width="160" class="text">
+                              <input type="text" name="line7_sms_cli_id" id="line7_sms_cli_id" value="<?php print($values['L7_SMS_CLI_ID']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="text">&nbsp;&nbsp;认证密码</td>
+                             <td width="160" class="text">
+                              <input type="password" name="line7_sms_cli_passwd" id="line7_sms_cli_passwd" value="<?php print($values['L7_SMS_CLI_PASSWD']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                          </table>
+                        </div>
+                         </td>
+                        </tr>
+
+                    <tr>
+                     <td width="120" height="25" class="title1">
+<span>SMS Sending Validity Time</span>                     </td>
+                     <td width="160" class="text">
+                      <input type="text" name="line7_sms_validity_time" id="line7_sms_validity_time" value="<?php print($values['LINE7_SMS_VALIDITY_TIME']) ?>" onblur="onfocus_check_integer(this, 0, 255)" class="edit">
+                     </td>
+                    </tr>
+
+                    <tr>
+                     <td width="120" height="25" class="title1">
+<span>SMS ACK</span>                     </td>
+                     <td width="160" class="text">
+                      <input type="radio" name="line7_sms_ack_enable" value="on" id="line7_sms_ack_enable" <?php print($values['L7_DISABLE_SMS_ACK']!='1'?'checked':'') ?>><span>启用</span>
+                      <input type="radio" name="line7_sms_ack_enable" value="off" id="line7_sms_ack_enable" <?php print($values['L7_DISABLE_SMS_ACK']=='1'?'checked':'') ?>><span>禁用</span></td>
+                    </tr>
+
+          </table>
+         </div>
+         </td>
+        </tr>
+
+      </table>

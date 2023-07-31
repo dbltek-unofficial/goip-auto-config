@@ -1,0 +1,119 @@
+<style type="text/css">
+.p3_audiocodec {
+        font-size: 11px;
+        font-family: tahoma,sans-serif;
+cursor: pointer; 
+cursor: hand 
+}
+</style>
+<script lang="JavaScript">
+var p3_current_codec_index;
+function p3_select_codec(idx)
+{
+        if (document.getElementById){
+                var p3_obj
+
+                if(p3_current_codec_index){
+                        p3_obj=document.getElementById("p3_codec"+p3_current_codec_index+"_div");
+                        p3_obj.style.background="#FFFFFF";
+                        p3_obj.style.color="#000000"
+                }
+                p3_obj=document.getElementById("p3_codec"+idx+"_div");
+                p3_obj.style.background="#000088";
+                p3_obj.style.color="#FFFFFF";
+                p3_current_codec_index=idx
+        }
+}
+
+function p3_get_code_name_obj(curobj)
+{
+        var spantags=curobj.getElementsByTagName("SPAN")
+        var codecnameobj;
+
+        for (i=0; i<spantags.length; i++){
+                if (spantags[i].className=="p3_codec_name"){
+                        codecnameobj=spantags[i];
+                        break
+                }
+        }
+
+        return codecnameobj
+}
+
+function p3_swap_codec(idx1, idx2)
+{
+        var obj1
+        var obj2
+        var tmp
+
+        obj1=document.getElementById("p3_codec"+idx1+"_enabled");
+        obj2=document.getElementById("p3_codec"+idx2+"_enabled");
+        tmp=obj1.checked;
+        obj1.checked=obj2.checked;
+        obj2.checked=tmp;
+
+        obj1=document.getElementById("p3_prefer_codec"+idx1);
+        obj2=document.getElementById("p3_prefer_codec"+idx2);
+        tmp=obj1.value;
+        obj1.value=obj2.value;
+        obj2.value=tmp;
+
+        obj1=document.getElementById("p3_codec"+idx1+"_div");
+        obj1=p3_get_code_name_obj(obj1);
+        obj2=document.getElementById("p3_codec"+idx2+"_div");
+        obj2=p3_get_code_name_obj(obj2);
+        tmp=obj1.innerHTML;
+        obj1.innerHTML=obj2.innerHTML;
+        obj2.innerHTML=tmp;
+}
+
+function p3_codec_up()
+{
+        if(p3_current_codec_index > 1){
+                var idx=p3_current_codec_index - 1
+
+                p3_swap_codec(p3_current_codec_index, idx);
+                p3_select_codec(idx);
+        }
+}
+
+function p3_codec_down()
+{
+        if(p3_current_codec_index >= 1 && p3_current_codec_index<7){
+                var idx=p3_current_codec_index + 1
+
+                p3_swap_codec(p3_current_codec_index, idx);
+                p3_select_codec(idx);
+        }
+}
+</script>
+
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+                <td width="20">&nbsp;</td>
+                <td valign="top" align="left" width="60">
+                        <div style="padding:5px">
+                                <input type="button" class="button" style="width:50px" onclick="p3_codec_up()" value="上移"> 
+                        </div>
+                        <div style="padding:5px">
+                                <input type="button" class="button" style="width:50px" onclick="p3_codec_down()" value="下移">
+                        </div>
+                </td>
+                <td>
+                        <table width="100" cellpadding="0" cellspacing="5" class="button" Align="center">
+                                <tr><td Align="left">
+                                                <div id="p3_codec1_div" onclick="p3_select_codec(1)" class="p3_audiocodec"><input type="checkbox" id="p3_codec1_enabled" name="p3_codec1_enabled" <?php print($values['P3_CODEC1_DISABLE']=='0'?'checked':'') ?>><span class="p3_codec_name"><?php echo $values['P3_PREFER_CODEC1'] ?></span><input type="hidden" id="p3_prefer_codec1" name="p3_prefer_codec1" value="<?php echo $values['P3_PREFER_CODEC1'] ?>"></div>
+                                                <div id="p3_codec2_div" onclick="p3_select_codec(2)" class="p3_audiocodec"><input type="checkbox" id="p3_codec2_enabled" name="p3_codec2_enabled" <?php print($values['P3_CODEC2_DISABLE']=='0'?'checked':'') ?>><span class="p3_codec_name"><?php echo $values['P3_PREFER_CODEC2'] ?></span><input type="hidden" id="p3_prefer_codec2" name="p3_prefer_codec2" value="<?php echo $values['P3_PREFER_CODEC2'] ?>"></div>
+                                                <div id="p3_codec3_div" onclick="p3_select_codec(3)" class="p3_audiocodec"><input type="checkbox" id="p3_codec3_enabled" name="p3_codec3_enabled" <?php print($values['P3_CODEC3_DISABLE']=='0'?'checked':'') ?>><span class="p3_codec_name"><?php echo $values['P3_PREFER_CODEC3'] ?></span><input type="hidden" id="p3_prefer_codec3" name="p3_prefer_codec3" value="<?php echo $values['P3_PREFER_CODEC3'] ?>"></div>
+                                                <div id="p3_codec4_div" onclick="p3_select_codec(4)" class="p3_audiocodec"><input type="checkbox" id="p3_codec4_enabled" name="p3_codec4_enabled" <?php print($values['P3_CODEC4_DISABLE']=='0'?'checked':'') ?>><span class="p3_codec_name"><?php echo $values['P3_PREFER_CODEC4'] ?></span><input type="hidden" id="p3_prefer_codec4" name="p3_prefer_codec4" value="<?php echo $values['P3_PREFER_CODEC4'] ?>"></div>
+                                                <div id="p3_codec5_div" onclick="p3_select_codec(5)" class="p3_audiocodec"><input type="checkbox" id="p3_codec5_enabled" name="p3_codec5_enabled" <?php print($values['P3_CODEC5_DISABLE']=='0'?'checked':'') ?>><span class="p3_codec_name"><?php echo $values['P3_PREFER_CODEC5'] ?></span><input type="hidden" id="p3_prefer_codec5" name="p3_prefer_codec5" value="<?php echo $values['P3_PREFER_CODEC5'] ?>"></div>
+                                                <div id="p3_codec6_div" onclick="p3_select_codec(6)" class="p3_audiocodec"><input type="checkbox" id="p3_codec6_enabled" name="p3_codec6_enabled" <?php print($values['P3_CODEC6_DISABLE']=='0'?'checked':'') ?>><span class="p3_codec_name"><?php echo $values['P3_PREFER_CODEC6'] ?></span><input type="hidden" id="p3_prefer_codec6" name="p3_prefer_codec6" value="<?php echo $values['P3_PREFER_CODEC6'] ?>"></div>
+<?php if($values['P3_PREFER_CODEC7'] !=''): ?>
+                                                <div id="p3_codec7_div" onclick="p3_select_codec(7)" class="p3_audiocodec"><input type="checkbox" id="p3_codec7_enabled" name="p3_codec7_enabled" <?php print($values['P3_CODEC7_DISABLE']=='0'?'checked':'') ?>><span class="p3_codec_name"><?php echo $values['P3_PREFER_CODEC7'] ?></span><input type="hidden" id="p3_prefer_codec7" name="p3_prefer_codec7" value="<?php echo $values['P3_PREFER_CODEC7'] ?>"></div>
+<?php endif; ?>
+                                </td></tr>
+                        </table>
+                </td>
+                <td width="20">&nbsp;</td>
+        </tr>
+</table>

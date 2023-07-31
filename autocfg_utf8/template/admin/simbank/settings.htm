@@ -1,0 +1,640 @@
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+	<tr>
+		<td colspan="2" class="title2" height="25" >SIM Bank Setting</td>
+	</tr>
+</table>
+
+ <table border="0" cellpadding="0" cellspacing="0" width="51%">
+
+        <tr>
+         <td colspan="2">
+
+         <div id="smb_setting" class="visable">
+          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+            <tr>
+             <td align="center" valign="top">
+          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+            <tr>
+
+             <td width="120" height="25" class="title1">SIM Bank Mode</td>
+             <td width="160" class="text" style="text-align:left">
+  <select name="smb_mode" id="smb_mode_select" class="select" onchange="toggle_selected('smb_mode', 'hide')">
+     <option value="cli" <?php print($values['SMB_MODE']=='cli'?'selected':'') ?>>客户端模式</option>
+	 <option value="sche_local" <?php print($values['SMB_MODE']=='sche_local'?'selected':'') ?>>SIM数据中转模式</option>
+     <option value="svr" <?php print($values['SMB_MODE']=='svr'?'selected':'') ?>>服务器模式</option>
+  </select>
+             </td>
+                
+            </tr>
+
+            <tr>
+             <td colspan="2">
+
+              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                <tr style="text-align:left">
+                 <td colspan="2">
+                   <div class="invisible"><br><span class="stitle">SIM Bank Mode - as Client</span></div>
+
+                <div id="smb_mode_cli_div" class="<?php print($values['SMB_MODE']=='cli'?'visable':'invisible') ?>">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                    <tr>
+                     <td width="120" height="25" class="title1">服务器地址</td>
+                     <td width="160" class="text">
+                      <input type="text" name="smb_server" id="smb_server" value="<?php print($values['SMB_SVR']) ?>" class="edit">
+                     </td>
+                    </tr>
+
+                    <tr>
+                     <td width="120" height="25" class="title1">用户号</td>
+                     <td width="160" class="text">
+                      <input type="text" name="smb_id" id="smb_id" value="<?php print($values['SMB_ID']) ?>" class="edit">
+                     </td>
+                    </tr>
+
+                    <tr>
+                     <td width="120" height="25" class="title1">密码</td>
+                     <td width="160" class="text">
+                      <input type="text" name="smb_key" id="smb_key" value="<?php print($values['SMB_KEY']) ?>" class="edit">
+                     </td>
+                    </tr>
+
+                  </table>
+                </div>
+				
+				
+				<div class="invisible"><br><span class="stitle">SIM Bank Mode - Local SIM Data Relay</span></div>
+
+                <div id="smb_mode_sche_local_div" class="<?php print($values['SMB_MODE']=='sche_local'?'visable':'invisible') ?>">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                    <tr>
+                     <td width="120" height="25" class="title1">服务器地址</td>
+                     <td width="160" class="text">
+                      <input type="text" name="smb_server2" id="smb_server2" value="<?php print($values['SMB_SERVER']) ?>" class="edit">
+                     </td>
+                    </tr>
+
+                    <tr>
+                     <td width="120" height="25" class="title1">用户号</td>
+                     <td width="160" class="text">
+                      <input type="text" name="smb_id2" id="smb_id2" value="<?php print($values['SMB_ID']) ?>" class="edit">
+                     </td>
+                    </tr>
+
+                    <tr>
+                     <td width="120" height="25" class="title1">密码</td>
+                     <td width="160" class="text">
+                      <input type="text" name="smb_key" id="smb_key" value="<?php print($values['SMB_KEY']) ?>" class="edit">
+                     </td>
+                    </tr>
+
+                  </table>
+                </div>
+				
+				
+                   <div class="invisible"><br><span class="stitle">SIM Bank Mode - as Server</span></div>
+
+                <div id="smb_mode_svr_div" class="<?php print($values['SMB_MODE']=='svr'?'visable':'invisible') ?>">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                    <tr>
+                     <td width="120" height="25" class="title1">本地端口</td>
+                     <td width="160" class="text">
+                      <input type="text" name="sche_local_port" id="sche_local_port" value="<?php print($values['SCHE_LC_PORT']) ?>" class="edit">
+                     </td>
+                    </tr>
+
+                    <tr>
+                     <td width="120" height="25" class="title1">
+<span>Random IMEI</span>                     </td>
+                     <td width="160" class="text">
+                      <input type="radio" name="sche_random_imei" value="on" id="sche_random_imei_enable" disabledbyelement="" onclick="toggle('sche_random_imei_div', 1)" <?php print($values['RD_IMEI']=='1'?'checked':'') ?>><span>启用</span>
+                      <input type="radio" name="sche_random_imei" value="off" id="sche_random_imei_disable" disabledbyelement="" onclick="toggle('sche_random_imei_div', 0)" <?php print($values['RD_IMEI']!='1'?'checked':'') ?>><span>禁用</span>                     </td>
+                    </tr>
+
+                    <tr>
+
+                     <td width="120" height="25" class="title1">调度模式</td>
+                     <td width="160" class="text">
+  <select name="sche_mode" id="sche_mode_select" class="select" onchange="toggle_selected('sche_mode', 'hide')">
+     <option value="sche" <?php print($values['SCHE_MODE']=='sche'?'selected':'') ?>>调度</option>
+     <option value="fixed" <?php print($values['SCHE_MODE']=='fixed'?'selected':'') ?>>固定</option>
+  </select>
+                     </td>
+                
+                    </tr>
+
+                    <tr>
+                     <td colspan="2">
+
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                        <tr>
+                         <td colspan="2">
+
+                        <div id="sche_mode_sche_div" class="<?php print($values['SCHE_MODE']=='sche'?'visable':'invisible') ?>">
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+                             <td width="120" height="25" class="title1">工作时长(分)</td>
+                             <td width="160" class="text">
+                              <input type="text" name="work_int" id="work_int" value="<?php print($values['WORK_INT']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">睡眠时长(秒)</td>
+                             <td width="160" class="text">
+                              <input type="text" name="sleep_int" id="sleep_int" value="<?php print($values['SLEEP_INT']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                          </table>
+                        </div>
+                         </td>
+                        </tr>
+
+                      </table>
+                     </td>
+                    </tr>
+
+                    <tr>
+                     <td colspan="2" class="title1" height="25" >机器设置</td>
+                    </tr>
+
+                    <tr>
+                     <td colspan="2">
+
+                     <div id="machine_conf" class="visable">
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                        <tr>
+                         <td class="text" width="280" style="text-align:left">
+                          <input type=radio name="machine_conf_tab" value="m1_conf" onclick="toggle2('machine_conf_tab', 8, 0)" checked>机器1&nbsp;
+                          <input type=radio name="machine_conf_tab" value="m2_conf" onclick="toggle2('machine_conf_tab', 8, 1)">机器2&nbsp;
+                          <input type=radio name="machine_conf_tab" value="m3_conf" onclick="toggle2('machine_conf_tab', 8, 2)">机器3&nbsp;
+                          <input type=radio name="machine_conf_tab" value="m4_conf" onclick="toggle2('machine_conf_tab', 8, 3)">机器4&nbsp;
+                         </td>
+                        </tr>
+                        <tr>
+                         <td class="text" width="280" style="text-align:left">
+                          <input type=radio name="machine_conf_tab" value="m5_conf" onclick="toggle2('machine_conf_tab', 8, 4)">机器5&nbsp;
+                          <input type=radio name="machine_conf_tab" value="m6_conf" onclick="toggle2('machine_conf_tab', 8, 5)">机器6&nbsp;
+                          <input type=radio name="machine_conf_tab" value="m7_conf" onclick="toggle2('machine_conf_tab', 8, 6)">机器7&nbsp;
+                          <input type=radio name="machine_conf_tab" value="m8_conf" onclick="toggle2('machine_conf_tab', 8, 7)">机器8&nbsp;
+
+                         </td>
+                        </tr>
+                        <tr>
+                         <td>
+                          <div id="machine_conf_tab_0_div" class="visable">
+
+                         <div id="m1_conf" class="visable">
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+                             <td width="120" height="25" class="title1">用户号</td>
+                             <td width="160" class="text">
+                              <input type="text" name="m1_id" id="m1_id" value="<?php print($values['M1_ID']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">区域号</td>
+                             <td width="160" class="text">
+                              <input type="text" name="m1_aid" id="m1_aid" value="<?php print($values['M1_AID']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">密码</td>
+                             <td width="160" class="text">
+                              <input type="text" name="m1_key" id="m1_key" value="<?php print($values['M1_KEY']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                            <tr>
+
+                             <td width="120" height="25" class="title1">线数</td>
+                             <td width="160" class="text">
+  <select name="m1_line" id="m1_line_select" class="select" onchange="toggle_selected('m1_line', 'hide')">
+     <option value="1" <?php print($values['M1_LINE']=='1'?'selected':'') ?>>x1</option>
+     <option value="4" <?php print($values['M1_LINE']=='4'?'selected':'') ?>>x4</option>
+     <option value="8" <?php print($values['M1_LINE']=='8'?'selected':'') ?>>x8</option>
+     <option value="16" <?php print($values['M1_LINE']=='16'?'selected':'') ?>>x16</option>
+  </select>
+                             </td>
+                
+                            </tr>
+
+                            <tr>
+                             <td colspan="2">
+
+                              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                              </table>
+                             </td>
+                            </tr>
+
+                          </table>
+                         </div>
+                          </div>
+                          <div id="machine_conf_tab_1_div" class="invisible">
+
+                         <div id="m2_conf" class="visable">
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+                             <td width="120" height="25" class="title1">用户号</td>
+                             <td width="160" class="text">
+                              <input type="text" name="m2_id" id="m2_id" value="<?php print($values['M2_ID']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">区域号</td>
+                             <td width="160" class="text">
+                              <input type="text" name="m2_aid" id="m2_aid" value="<?php print($values['M2_AID']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">密码</td>
+                             <td width="160" class="text">
+                              <input type="text" name="m2_key" id="m2_key" value="<?php print($values['M2_KEY']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                            <tr>
+
+                             <td width="120" height="25" class="title1">线数</td>
+                             <td width="160" class="text">
+  <select name="m2_line" id="m2_line_select" class="select" onchange="toggle_selected('m2_line', 'hide')">
+     <option value="1" <?php print($values['M2_LINE']=='1'?'selected':'') ?>>x1</option>
+     <option value="4" <?php print($values['M2_LINE']=='4'?'selected':'') ?>>x4</option>
+     <option value="8" <?php print($values['M2_LINE']=='8'?'selected':'') ?>>x8</option>
+     <option value="16" <?php print($values['M2_LINE']=='16'?'selected':'') ?>>x16</option>
+  </select>
+                             </td>
+                
+                            </tr>
+
+                            <tr>
+                             <td colspan="2">
+
+                              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                              </table>
+                             </td>
+                            </tr>
+
+                          </table>
+                         </div>
+                          </div>
+                          <div id="machine_conf_tab_2_div" class="invisible">
+
+                         <div id="m3_conf" class="visable">
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+                             <td width="120" height="25" class="title1">用户号</td>
+                             <td width="160" class="text">
+                              <input type="text" name="m3_id" id="m3_id" value="<?php print($values['M3_ID']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">区域号</td>
+                             <td width="160" class="text">
+                              <input type="text" name="m3_aid" id="m3_aid" value="<?php print($values['M3_AID']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">密码</td>
+                             <td width="160" class="text">
+                              <input type="text" name="m3_key" id="m3_key" value="<?php print($values['M3_KEY']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                            <tr>
+
+                             <td width="120" height="25" class="title1">线数</td>
+                             <td width="160" class="text">
+  <select name="m3_line" id="m3_line_select" class="select" onchange="toggle_selected('m3_line', 'hide')">
+     <option value="1" <?php print($values['M3_LINE']=='1'?'selected':'') ?>>x1</option>
+     <option value="4" <?php print($values['M3_LINE']=='4'?'selected':'') ?>>x4</option>
+     <option value="8" <?php print($values['M3_LINE']=='8'?'selected':'') ?>>x8</option>
+     <option value="16" <?php print($values['M3_LINE']=='16'?'selected':'') ?>>x16</option>
+  </select>
+                             </td>
+                
+                            </tr>
+
+                            <tr>
+                             <td colspan="2">
+
+                              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                              </table>
+                             </td>
+                            </tr>
+
+                          </table>
+                         </div>
+                          </div>
+                          <div id="machine_conf_tab_3_div" class="invisible">
+
+                         <div id="m4_conf" class="visable">
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+                             <td width="120" height="25" class="title1">用户号</td>
+                             <td width="160" class="text">
+                              <input type="text" name="m4_id" id="m4_id" value="<?php print($values['M4_ID']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">区域号</td>
+                             <td width="160" class="text">
+                              <input type="text" name="m4_aid" id="m4_aid" value="<?php print($values['M4_AID']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">密码</td>
+                             <td width="160" class="text">
+                              <input type="text" name="m4_key" id="m4_key" value="<?php print($values['M4_KEY']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                            <tr>
+
+                             <td width="120" height="25" class="title1">线数</td>
+                             <td width="160" class="text">
+  <select name="m4_line" id="m4_line_select" class="select" onchange="toggle_selected('m4_line', 'hide')">
+     <option value="1" <?php print($values['M4_LINE']=='1'?'selected':'') ?>>x1</option>
+     <option value="4" <?php print($values['M4_LINE']=='4'?'selected':'') ?>>x4</option>
+     <option value="8" <?php print($values['M4_LINE']=='8'?'selected':'') ?>>x8</option>
+     <option value="16" <?php print($values['M4_LINE']=='16'?'selected':'') ?>>x16</option>
+  </select>
+                             </td>
+                
+                            </tr>
+
+                            <tr>
+                             <td colspan="2">
+
+                              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                              </table>
+                             </td>
+                            </tr>
+
+                          </table>
+                         </div>
+                          </div>
+                          <div id="machine_conf_tab_4_div" class="invisible">
+
+                         <div id="m5_conf" class="visable">
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+                             <td width="120" height="25" class="title1">用户号</td>
+                             <td width="160" class="text">
+                              <input type="text" name="m5_id" id="m5_id" value="<?php print($values['M5_ID']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">区域号</td>
+                             <td width="160" class="text">
+                              <input type="text" name="m5_aid" id="m5_aid" value="<?php print($values['M5_AID']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">密码</td>
+                             <td width="160" class="text">
+                              <input type="text" name="m5_key" id="m5_key" value="<?php print($values['M5_KEY']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                            <tr>
+
+                             <td width="120" height="25" class="title1">线数</td>
+                             <td width="160" class="text">
+  <select name="m5_line" id="m5_line_select" class="select" onchange="toggle_selected('m5_line', 'hide')">
+     <option value="1" <?php print($values['M5_LINE']=='1'?'selected':'') ?>>x1</option>
+     <option value="4" <?php print($values['M5_LINE']=='4'?'selected':'') ?>>x4</option>
+     <option value="8" <?php print($values['M5_LINE']=='8'?'selected':'') ?>>x8</option>
+     <option value="16" <?php print($values['M5_LINE']=='16'?'selected':'') ?>>x16</option>
+  </select>
+                             </td>
+                
+                            </tr>
+
+                            <tr>
+                             <td colspan="2">
+
+                              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                              </table>
+                             </td>
+                            </tr>
+
+                          </table>
+                         </div>
+                          </div>
+                          <div id="machine_conf_tab_5_div" class="invisible">
+
+                         <div id="m6_conf" class="visable">
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+                             <td width="120" height="25" class="title1">用户号</td>
+                             <td width="160" class="text">
+                              <input type="text" name="m6_id" id="m6_id" value="<?php print($values['M6_ID']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">区域号</td>
+                             <td width="160" class="text">
+                              <input type="text" name="m6_aid" id="m6_aid" value="<?php print($values['M6_AID']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">密码</td>
+                             <td width="160" class="text">
+                              <input type="text" name="m6_key" id="m6_key" value="<?php print($values['M6_KEY']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                            <tr>
+
+                             <td width="120" height="25" class="title1">线数</td>
+                             <td width="160" class="text">
+  <select name="m6_line" id="m6_line_select" class="select" onchange="toggle_selected('m6_line', 'hide')">
+     <option value="1" <?php print($values['M6_LINE']=='1'?'selected':'') ?>>x1</option>
+     <option value="4" <?php print($values['M6_LINE']=='4'?'selected':'') ?>>x4</option>
+     <option value="8" <?php print($values['M6_LINE']=='8'?'selected':'') ?>>x8</option>
+     <option value="16" <?php print($values['M6_LINE']=='16'?'selected':'') ?>>x16</option>
+  </select>
+                             </td>
+                
+                            </tr>
+
+                            <tr>
+                             <td colspan="2">
+
+                              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                              </table>
+                             </td>
+                            </tr>
+
+                          </table>
+                         </div>
+                          </div>
+                          <div id="machine_conf_tab_6_div" class="invisible">
+
+                         <div id="m7_conf" class="visable">
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+                             <td width="120" height="25" class="title1">用户号</td>
+                             <td width="160" class="text">
+                              <input type="text" name="m7_id" id="m7_id" value="<?php print($values['M7_ID']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">区域号</td>
+                             <td width="160" class="text">
+                              <input type="text" name="m7_aid" id="m7_aid" value="<?php print($values['M7_AID']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">密码</td>
+                             <td width="160" class="text">
+                              <input type="text" name="m7_key" id="m7_key" value="<?php print($values['M7_KEY']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                            <tr>
+
+                             <td width="120" height="25" class="title1">线数</td>
+                             <td width="160" class="text">
+  <select name="m7_line" id="m7_line_select" class="select" onchange="toggle_selected('m7_line', 'hide')">
+     <option value="1" <?php print($values['M7_LINE']=='1'?'selected':'') ?>>x1</option>
+     <option value="4" <?php print($values['M7_LINE']=='4'?'selected':'') ?>>x4</option>
+     <option value="8" <?php print($values['M7_LINE']=='8'?'selected':'') ?>>x8</option>
+     <option value="16" <?php print($values['M7_LINE']=='16'?'selected':'') ?>>x16</option>
+  </select>
+                             </td>
+                
+                            </tr>
+
+                            <tr>
+                             <td colspan="2">
+
+                              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                              </table>
+                             </td>
+                            </tr>
+
+                          </table>
+                         </div>
+                          </div>
+                          <div id="machine_conf_tab_7_div" class="invisible">
+
+                         <div id="m8_conf" class="visable">
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+                             <td width="120" height="25" class="title1">用户号</td>
+                             <td width="160" class="text">
+                              <input type="text" name="m8_id" id="m8_id" value="<?php print($values['M8_ID']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">区域号</td>
+                             <td width="160" class="text">
+                              <input type="text" name="m8_aid" id="m8_aid" value="<?php print($values['M8_AID']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">密码</td>
+                             <td width="160" class="text">
+                              <input type="text" name="m8_key" id="m8_key" value="<?php print($values['M8_KEY']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                            <tr>
+
+                             <td width="120" height="25" class="title1">线数</td>
+                             <td width="160" class="text">
+  <select name="m8_line" id="m8_line_select" class="select" onchange="toggle_selected('m8_line', 'hide')">
+     <option value="1" <?php print($values['M8_LINE']=='1'?'selected':'') ?>>x1</option>
+     <option value="4" <?php print($values['M8_LINE']=='4'?'selected':'') ?>>x4</option>
+     <option value="8" <?php print($values['M8_LINE']=='8'?'selected':'') ?>>x8</option>
+     <option value="16" <?php print($values['M8_LINE']=='16'?'selected':'') ?>>x16</option>
+  </select>
+                             </td>
+                
+                            </tr>
+
+                            <tr>
+                             <td colspan="2">
+
+                              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                              </table>
+                             </td>
+                            </tr>
+
+                          </table>
+                         </div>
+                          </div>
+
+                         </td>
+                        </tr>
+
+                      </table>
+                     </div>
+                     </td>
+                    </tr>
+
+                  </table>
+                </div>
+                   <div class="invisible"><br></div>
+                 </td>
+                </tr>
+
+              </table>
+
+             </td>
+            </tr>
+			
+            </tr>
+
+          </table>
+         </div>
+         </td>
+        </tr>
+
+      </table>
+	  <?php require_once template('autocfg'); ?>
+
+      <?php require_once template('remote2'); ?>
+	

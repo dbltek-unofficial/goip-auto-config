@@ -1,0 +1,30 @@
+            <tr>
+             <td class="title1" height="25" width="120">
+<span>Auto-provision</span>             </td>
+             <td class="text" width="160">
+              <input name="auto_config" value="on" id="auto_config_enable" disabledbyelement="" onClick="toggle('auto_config_div', 1)" type="radio" <?php echo $values['AUTOCFG']=='1'?'checked':''?>><span>Enable</span>
+              <input name="auto_config" value="off" id="auto_config_disable" disabledbyelement="" onClick="toggle('auto_config_div', 0)" <?php echo $values['AUTOCFG']=='0'?'checked':''?> type="radio"><span>Disable</span>             </td>
+            </tr>
+
+            <tr>
+             <td colspan="2">
+
+            <div id="auto_config_div" class="<?php print($values['AUTOCFG']=='1'?'visable':'invisible') ?>">
+              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                <tbody><tr>
+                 <td class="title1" height="25" width="120">&nbsp;&nbsp;Provision Server</td>
+                 <td class="text" width="160">
+                  <input name="auto_config_server" id="auto_config_server" value="<?php print($values['AUTOCFG_SERVER'])?>" class="edit" type="text">
+                 </td>
+                </tr>
+
+                <tr>
+                 <td class="title1" height="25" width="120">&nbsp;&nbsp;Provision Interval</td>
+                 <td class="text" width="160">
+                  <input name="auto_config_refresh" id="auto_config_refresh" value="<?php print($values['AUTOCFG_REFRESH']) ?>" class="edit" type="text">
+                 </td>
+                </tr>
+              </tbody></table>
+            </div>
+			</td></tr>	

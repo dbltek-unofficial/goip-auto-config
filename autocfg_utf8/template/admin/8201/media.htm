@@ -1,0 +1,500 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Column management</title>
+<meta name="Author" content="Gaby_chen">
+<link href="Style.css" rel="stylesheet" type="text/css">
+</head>
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+        <tr>
+         <td colspan="2">
+
+         <div id="media_settings" class="visable">
+          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+            <tr>
+             <td width="120" height="25" class="title1">RTP 端口范围</td>
+             <td width="160" class="text">
+			 <?php $RTP_array=explode("-", $values['RTP_PORT']) ?>
+ <input type="text" name="rtp_port_lower" id="rtp_port_lower" value="<?php print($RTP_array[0]) ?>" class="valuerange" onBlur="onblur_validate_range_lower('rtp_port', 0,65535,<?php echo $valuse['TELPORT']==''?4:TELPORT*2 ?>,32768)"> -
+              <input type="text" name="rtp_port_upper" id="rtp_port_upper" disabledbyelement="" value="<?php print($RTP_array[1]) ?>" class="valuerange" onBlur="onblur_validate_range_upper('rtp_port', 0,65535,<?php echo $valuse['TELPORT']==''?4:TELPORT*2 ?>,32768)">
+             </td>
+            </tr>
+
+            <tr>
+             <td width="120" height="25" class="title1">RTP包长度(ms)</td>
+             <td width="160" class="text">
+              <input type="text" name="rtp_pkt_len" id="rtp_pkt_len" value="<?php print($values['PACKETIZE_PERIOD']) ?>" class="edit">
+             </td>
+            </tr>
+
+            <tr>
+
+             <td width="120" height="25" class="title1">抖动延时处理</td>
+             <td width="160" class="text">
+  <select name="jb_mode" id="jb_mode_select" class="select" onChange="toggle_selected('jb_mode', 'hide')">
+     <option value="2" <?php print($values['VPDSP_JB_MODE']=='2'?'selected':'') ?>>自适应</option>
+     <option value="1" <?php print($values['VPDSP_JB_MODE']=='1'?'selected':'') ?>>顺序</option>
+     <option value="0" <?php print($values['VPDSP_JB_MODE']=='0'?'selected':'') ?>>固定</option>
+  </select>
+             </td>
+		
+            </tr>
+
+            <tr>
+             <td colspan="2">
+
+              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                <tr>
+                 <td colspan="2">
+                   <div class="invisible"><br><span class="stitle">抖动延时处理 - 自适应</span></div>
+
+                <div id="jb_mode_2_div" class="<?php print($values['VPDSP_JB_MODE']=='2'?'visable':'invisible') ?>">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                    <tr>
+                     <td width="120" height="25" class="title1">&nbsp;&nbsp;&nbsp;&nbsp;最小延时</td>
+                     <td width="160" class="text">
+                      <input type="text" name="adpt_min_jitter" id="adpt_min_jitter" value="<?php print($values['VPDSP_ADPT_MIN_JITTER']) ?>" class="edit">
+                     </td>
+                    </tr>
+
+                    <tr>
+                     <td width="120" height="25" class="title1">&nbsp;&nbsp;&nbsp;&nbsp;最大延时</td>
+                     <td width="160" class="text">
+                      <input type="text" name="adpt_max_jitter" id="adpt_max_jitter" value="<?php print($values['VPDSP_ADPT_MAX_JITTER']) ?>" class="edit">
+                     </td>
+                    </tr>
+
+                  </table>
+                </div>
+                   <div class="invisible"><br><span class="stitle">抖动延时处理 - 顺序</span></div>
+
+                <div id="jb_mode_1_div" class="<?php print($values['VPDSP_JB_MODE']=='1'?'visable':'invisible') ?>">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                    <tr>
+                     <td width="120" height="25" class="title1">&nbsp;&nbsp;&nbsp;&nbsp;最小延时</td>
+                     <td width="160" class="text">
+                      <input type="text" name="seq_min_jitter" id="seq_min_jitter" value="<?php print($values['VPDSP_SEQ_MIN_JITTER']) ?>" class="edit">
+                     </td>
+                    </tr>
+
+                    <tr>
+                     <td width="120" height="25" class="title1">&nbsp;&nbsp;&nbsp;&nbsp;最大延时</td>
+                     <td width="160" class="text">
+                      <input type="text" name="seq_max_jitter" id="seq_max_jitter" value="<?php print($values['VPDSP_SEQ_MAX_JITTER']) ?>" class="edit">
+                     </td>
+                    </tr>
+
+                  </table>
+                </div>
+                   <div class="invisible"><br><span class="stitle">抖动延时处理 - 固定</span></div>
+
+                <div id="jb_mode_0_div" class="<?php print($values['VPDSP_JB_MODE']=='0'?'visable':'invisible') ?>">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                    <tr>
+                     <td width="120" height="25" class="title1">&nbsp;&nbsp;&nbsp;&nbsp;抖动延时</td>
+                     <td width="160" class="text">
+                      <input type="text" name="jitter_buffer" id="jitter_buffer" value="<?php print($values['VPDSP_MIN_JITTER']) ?>" class="edit">
+                     </td>
+                    </tr>
+
+                  </table>
+                </div>
+                   <div class="invisible"><br></div>
+                 </td>
+                </tr>
+
+              </table>
+             </td>
+            </tr>
+
+            <tr>
+
+             <td width="120" height="25" class="title1">媒体 QoS</td>
+             <td width="160" class="text">
+  <select name="rtp_qos" id="rtp_qos_select" class="select" onChange="toggle_selected('rtp_qos', 'hide')">
+     <option value="NONE" <?php print($values['RTP_QOS']=='NONE'?'selected':'') ?>>无</option>
+     <option value="IPTOS" <?php print($values['RTP_QOS']=='IPTOS'?'selected':'') ?>>IP TOS</option>
+     <option value="DIFFSERV" <?php print($values['RTP_QOS']=='DIFFSERV'?'selected':'') ?>>DiffServ</option>
+  </select>
+             </td>
+		
+            </tr>
+
+            <tr>
+             <td colspan="2">
+
+              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                <tr>
+                 <td colspan="2">
+                   <div class="invisible"><br><span class="stitle">媒体 QoS - IP TOS</span></div>
+
+                <div id="rtp_qos_IPTOS_div" class="<?php print($values['RTP_QOS']=='IPTOS'?'visable':'invisible') ?>">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                    <tr>
+
+                     <td width="120" height="25" class="title1">&nbsp;&nbsp;服务类型</td>
+                     <td width="160" class="text">
+  <select name="rtp_tos" id="rtp_tos_select" class="select" onChange="toggle_selected('rtp_tos', 'hide')">
+     <option value="0x00" <?php print($values['RTP_TOS']=='0x00'?'selected':'') ?>>普通 - 0 </option>
+     <option value="0x20" <?php print($values['RTP_TOS']=='0x20'?'selected':'') ?>>优先 - 1</option>
+     <option value="0x40" <?php print($values['RTP_TOS']=='0x40'?'selected':'') ?>>立即 - 2</option>
+     <option value="0x60" <?php print($values['RTP_TOS']=='0x60'?'selected':'') ?>>迅速 - 3</option>
+     <option value="0x80" <?php print($values['RTP_TOS']=='0x80'?'selected':'') ?>>强制迅速 - 4</option>
+     <option value="0xa0" <?php print($values['RTP_TOS']=='0xa0'?'selected':'') ?>>危急 - 5</option>
+  </select>
+                     </td>
+		
+                    </tr>
+
+                    <tr>
+                     <td colspan="2">
+
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                      </table>
+                     </td>
+                    </tr>
+
+                  </table>
+                </div>
+                   <div class="invisible"><br><span class="stitle">媒体 QoS - DiffServ</span></div>
+
+                <div id="rtp_qos_DIFFSERV_div" class="<?php print($values['RTP_QOS']=='DIFFSERV'?'visable':'invisible') ?>">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                    <tr>
+
+                     <td width="120" height="25" class="title1">&nbsp;&nbsp;DiffServ类型</td>
+                     <td width="160" class="text">
+  <select name="rtp_diffserv_class" id="rtp_diffserv_class_select" class="select" onChange="toggle_selected('rtp_diffserv_class', 'hide')">
+     <option value="0" <?php print($values['RTP_DIFFSERV']=='0'?'selected':'') ?>>BE - 0x00</option>
+     <option value="40" <?php print($values['RTP_DIFFSERV']=='40'?'selected':'') ?>>AF11 - 0x28</option>
+     <option value="48" <?php print($values['RTP_DIFFSERV']=='48'?'selected':'') ?>>AF12 - 0x30</option>
+     <option value="56" <?php print($values['RTP_DIFFSERV']=='56'?'selected':'') ?>>AF13 - 0x38</option>
+     <option value="72" <?php print($values['RTP_DIFFSERV']=='72'?'selected':'') ?>>AF21 - 0x48</option>
+     <option value="80" <?php print($values['RTP_DIFFSERV']=='80'?'selected':'') ?>>AF22 - 0x50</option>
+     <option value="88" <?php print($values['RTP_DIFFSERV']=='88'?'selected':'') ?>>AF23 - 0x58</option>
+     <option value="104" <?php print($values['RTP_DIFFSERV']=='104'?'selected':'') ?>>AF31 - 0x68</option>
+     <option value="112" <?php print($values['RTP_DIFFSERV']=='112'?'selected':'') ?>>AF32 - 0x70</option>
+     <option value="120" <?php print($values['RTP_DIFFSERV']=='120'?'selected':'') ?>>AF33 - 0x78</option>
+     <option value="136" <?php print($values['RTP_DIFFSERV']=='136'?'selected':'') ?>>AF41 - 0x88</option>
+     <option value="144" <?php print($values['RTP_DIFFSERV']=='144'?'selected':'') ?>>AF42 - 0x90</option>
+     <option value="152" <?php print($values['RTP_DIFFSERV']=='152'?'selected':'') ?>>AF43 - 0x98</option>
+     <option value="184" <?php print($values['RTP_DIFFSERV']=='184'?'selected':'') ?>>EF - 0xB8</option>
+  </select>
+                     </td>
+		
+                    </tr>
+
+                    <tr>
+                     <td colspan="2">
+
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                      </table>
+                     </td>
+                    </tr>
+
+                  </table>
+                </div>
+                   <div class="invisible"><br></div>
+                 </td>
+                </tr>
+
+              </table>
+             </td>
+            </tr>
+
+            <tr>
+             <td width="120" height="25" class="title1">
+             </td>
+             <td width="160" class="text">
+              <input type="checkbox" name="symmetric_rtp" id="symmetric_rtp" onClick="toggle_checkbox('symmetric_rtp', 'hide')" <?php print($values['SYMMETRIC_RTP']=='1'?'checked':'') ?>><span>对称 RTP</span>
+             </td>
+            </tr>
+
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+            <tr>
+
+             <td width="120" height="25" class="title1">媒体 NAT穿越</td>
+             <td width="160" class="text">
+  <select name="rtp_nat_traversal" id="rtp_nat_traversal_select" class="select" onChange="toggle_selected('rtp_nat_traversal', 'hide')">
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+     <option value="NONE" <?php print($values['MG_NAT_TRAVERSAL']=='NONE'?'selected':'') ?>>无</option>
+<?php endif; ?>
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+     <option value="STUN" <?php print($values['MG_NAT_TRAVERSAL']=='STUN'?'selected':'') ?>>STUN(RFC 3489)</option>
+<?php endif; ?>
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+     <option value="PORTFWD" <?php print($values['MG_NAT_TRAVERSAL']=='PORTFWD'?'selected':'') ?>>端口透明/DMZ</option>
+<?php endif; ?>
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+     <option value="RELAY" <?php print($values['MG_NAT_TRAVERSAL']=='RELAY'?'selected':'') ?>>中继代理</option>
+<?php endif; ?>
+  </select>
+             </td>
+		
+            </tr>
+
+            <tr>
+             <td colspan="2">
+
+              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+<?php endif; ?>
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                <tr>
+                 <td colspan="2">
+                   <div class="invisible"><br><span class="stitle">媒体 NAT穿越 - STUN(RFC 3489)</span></div>
+
+                <div id="rtp_nat_traversal_STUN_div" class="<?php print($values['MG_NAT_TRAVERSAL']=='STUN'?'visable':'invisible') ?>">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                    <tr>
+                     <td width="120" height="25" class="title1">STUN服务器地址</td>
+                     <td width="160" class="text">
+                      <input type="text" name="rtp_stun_server" id="rtp_stun_server" value="<?php print($values['MG_STUN_SERVER']) ?>" class="edit" onBlur="onblur_validate(this, hostport)" onFocus="onfocus_validate(this, hostport)">
+                     </td>
+                    </tr>
+
+<?php endif; ?>
+                  </table>
+                </div>
+
+<?php endif; ?>
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+
+                <div id="rtp_nat_traversal_PORTFWD_div" class="<?php print($values['MG_NAT_TRAVERSAL']=='PORTFWD'?'visable':'invisible') ?>">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                    <tr>
+
+                     <td width="120" height="25" class="title1">NAT地址</td>
+                     <td width="160" class="text">
+  <select name="rtp_portfwd_type" id="rtp_portfwd_type_select" class="select" onChange="toggle_selected('rtp_portfwd_type', 'hide')">
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+     <option value="AUTO" <?php print($values['MG_PORTFWD_TYPE']=='AUTO'?'selected':'') ?>>Auto Detect</option>
+<?php endif; ?>
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+     <option value="MANUAL" <?php print($values['MG_PORTFWD_TYPE']=='MANUAL'?'selected':'') ?>>Manual</option>
+<?php endif; ?>
+  </select>
+                     </td>
+		
+                    </tr>
+
+                    <tr>
+                     <td colspan="2">
+
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+<?php endif; ?>
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                        <tr>
+                         <td colspan="2">
+
+                        <div id="rtp_portfwd_type_MANUAL_div" class="<?php print($values['MG_PORTFWD_TYPE']=='MANUAL'?'visable':'invisible') ?>">
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                            <tr>
+                             <td width="120" height="25" class="title1">&nbsp;&nbsp;地址</td>
+                             <td width="160" class="text">
+                              <input type="text" name="rtp_portfwd_gw" id="rtp_portfwd_gw" value="<?php print($values['MG_PORTFWD_GW']) ?>" class="edit" onBlur="onblur_validate(this, hostport)" onFocus="onfocus_validate(this, hostport)">
+                             </td>
+                            </tr>
+
+<?php endif; ?>
+                          </table>
+                        </div>
+                         </td>
+                        </tr>
+
+<?php endif; ?>
+                      </table>
+                     </td>
+                    </tr>
+
+                  </table>
+                </div>
+
+<?php endif; ?>
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+
+                <div id="rtp_nat_traversal_RELAY_div" class="<?php print($values['MG_NAT_TRAVERSAL']=='RELAY'?'visable':'invisible') ?>">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                    <tr>
+                     <td width="120" height="25" class="title1">&nbsp;&nbsp;地址</td>
+                     <td width="160" class="text">
+                      <input type="text" name="rtp_relay_server" id="rtp_relay_server" value="<?php print($values['MG_RELAY_SERVER']) ?>" class="edit" onBlur="onblur_validate(this, hostport)" onFocus="onfocus_validate(this, hostport)">
+                     </td>
+                    </tr>
+
+<?php endif; ?>
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                    <tr>
+                     <td width="120" height="25" class="title1">&nbsp;&nbsp;端口</td>
+                     <td width="160" class="text">
+                      <input type="text" name="rtp_relay_port" id="rtp_relay_port" value="<?php print($values['MG_RELAY_PORT']) ?>" class="edit">
+                     </td>
+                    </tr>
+
+<?php endif; ?>
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                    <tr>
+                     <td width="120" height="25" class="title1">&nbsp;&nbsp;用户名</td>
+                     <td width="160" class="text">
+                      <input type="text" name="rtp_relay_user" id="rtp_relay_user" value="<?php print($values['MG_RELAY_USER']) ?>" class="edit">
+                     </td>
+                    </tr>
+
+<?php endif; ?>
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                    <tr>
+                     <td width="120" height="25" class="title1">&nbsp;&nbsp;密码</td>
+                     <td width="160" class="text">
+                      <input type="password" name="rtp_relay_passwd" id="rtp_relay_passwd" value="<?php print($values['MG_RELAY_PASSWD']) ?>" class="edit">
+                     </td>
+                    </tr>
+
+<?php endif; ?>
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                    <tr>
+                     <td width="120" height="25" class="title1">
+                     </td>
+                     <td width="160" class="text">
+                      <input type="checkbox" name="rtp_relay_encrypt" id="rtp_relay_encrypt" onClick="toggle_checkbox('rtp_relay_encrypt', 'hide')" <?php print($values['MG_RELAY_ENCRYPT']=='1'?'checked':'') ?>><span>加密</span>
+                     </td>
+                    </tr>
+
+<?php endif; ?>
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                    <tr>
+
+                     <td width="120" height="25" class="title1">代理模式</td>
+                     <td width="160" class="text">
+  <select name="rtp_relay_mode" id="rtp_relay_mode_select" class="select" onChange="toggle_selected('rtp_relay_mode', 'hide')">
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+     <option value="0" <?php print($values['MG_RELAY_MODE']=='0'?'selected':'') ?>>1</option>
+<?php endif; ?>
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+     <option value="1" <?php print($values['MG_RELAY_MODE']=='1'?'selected':'') ?>>2</option>
+<?php endif; ?>
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+     <option value="2" <?php print($values['MG_RELAY_MODE']=='2'?'selected':'') ?>>3</option>
+<?php endif; ?>
+  </select>
+                     </td>
+		
+                    </tr>
+
+                    <tr>
+                     <td colspan="2">
+
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+<?php endif; ?>
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+<?php endif; ?>
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+<?php endif; ?>
+                      </table>
+                     </td>
+                    </tr>
+
+<?php endif; ?>
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                    <tr>
+                     <td width="120" height="25" class="title1">备份中继代理1</td>
+                     <td width="160" class="text">
+                      <input type="text" name="rtp_relay_server1" id="rtp_relay_server1" value="<?php print($values['MG_RELAY_SERVER1']) ?>" class="edit" onBlur="onblur_validate(this, hostport)" onFocus="onfocus_validate(this, hostport)">
+                     </td>
+                    </tr>
+
+<?php endif; ?>
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                    <tr>
+                     <td width="120" height="25" class="title1">备份中继代理2</td>
+                     <td width="160" class="text">
+                      <input type="text" name="rtp_relay_server2" id="rtp_relay_server2" value="<?php print($values['MG_RELAY_SERVER2']) ?>" class="edit" onBlur="onblur_validate(this, hostport)" onFocus="onfocus_validate(this, hostport)">
+                     </td>
+                    </tr>
+
+<?php endif; ?>
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                    <tr>
+                     <td width="120" height="25" class="title1">备份中继代理3</td>
+                     <td width="160" class="text">
+                      <input type="text" name="rtp_relay_server3" id="rtp_relay_server3" value="<?php print($values['MG_RELAY_SERVER3']) ?>" class="edit" onBlur="onblur_validate(this, hostport)" onFocus="onfocus_validate(this, hostport)">
+                     </td>
+                    </tr>
+
+<?php endif; ?>
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                    <tr>
+                     <td width="120" height="25" class="title1">备份中继代理4</td>
+                     <td width="160" class="text">
+                      <input type="text" name="rtp_relay_server4" id="rtp_relay_server4" value="<?php print($values['MG_RELAY_SERVER4']) ?>" class="edit" onBlur="onblur_validate(this, hostport)" onFocus="onfocus_validate(this, hostport)">
+                     </td>
+                    </tr>
+
+<?php endif; ?>
+                  </table>
+                </div>
+                   <div class="invisible"><br></div>
+                 </td>
+                </tr>
+
+<?php endif; ?>
+              </table>
+             </td>
+            </tr>
+
+<?php endif; ?>
+<?php if($values['SIDE_TONE']=='1'): ?>
+            <tr>
+
+             <td width="120" height="25" class="title1">侧音级别</td>
+             <td width="160" class="text">
+  <select name="side_tone_level" id="side_tone_level_select" class="select" onChange="toggle_selected('side_tone_level', 'hide')">
+     <option value="0" <?php print($values['VPDSP_SIDE_TONE']=='0'?'selected':'') ?>>无侧音</option>
+     <option value="1" <?php print($values['VPDSP_SIDE_TONE']=='1'?'selected':'') ?>>-18分贝</option>
+     <option value="2" <?php print($values['VPDSP_SIDE_TONE']=='2'?'selected':'') ?>>-12分贝</option>
+     <option value="3" <?php print($values['VPDSP_SIDE_TONE']=='3'?'selected':'') ?>>-8.5分贝</option>
+  </select>
+             </td>
+		
+            </tr>
+
+            <tr>
+             <td colspan="2">
+
+              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+              </table>
+             </td>
+            </tr>
+
+<?php endif; ?>
+
+          </table>
+         </div>
+         </td>
+        </tr>
+
+      </table>
+</html>

@@ -1,0 +1,96 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Column management</title>
+<meta name="Author" content="Gaby_chen">
+<link href="Style.css" rel="stylesheet" type="text/css">
+</head>
+
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+        <tr>
+         <td colspan="2">
+
+         <div id="ata_remote" class="visable">
+          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+            <tr>
+             <td width="120" height="25" class="title1">
+             </td>
+             <td width="160" class="text">
+              <input type="checkbox" name="remote_enable" id="remote_enable" onclick="toggle_checkbox('remote_enable', 'hide')" <?php echo $values['RADMIN_ENABLE']=='1'?'checked':''?>><span>远程控制</span>
+             </td>
+            </tr>
+
+            <tr>
+             <td colspan="2">
+
+            <div id="remote_enable_div" class="<?php print($values['RADMIN_ENABLE']=='1'?'visable':'invisible') ?>">
+              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+            <tr>
+             <td width="120" id="remotes" height="25" class="title1">远程控制服务器</td>
+             <td width="160" class="text">
+              <input type="text" name="remote_server" id="remote_server" value="<?php echo $values['RADMIN_SERVER'] ?>" class="edit" onBlur="onblur_validate(this, hostport)" >
+             </td>
+            </tr>
+
+            <tr>
+             <td width="120" height="25" class="title1">远程控制端口</td>
+             <td width="160" class="text">
+              <input type="text" name="remote_server_port" id="remote_server_port" value="<?php echo $values['RADMIN_PORT'] ?>" class="edit" onBlur="onblur_check_integer(this, 1024, 65535)" onFocus="onfocus_check_integer(this, 1024, 65535)">
+             </td>
+            </tr>
+
+            <tr>
+             <td width="120" height="25" class="title1">远程控制用户</td>
+             <td width="160" class="text">
+              <input type="text" name="remote_server_id" id="remote_server_id" value="<?php echo $values['RADMIN_ID'] ?>" class="edit">
+             </td>
+            </tr>
+
+            <tr>
+             <td width="120" height="25" class="title1">远程控制密码</td>
+             <td width="160" class="text">
+              <input type="password" name="remote_server_key" id="remote_server_key" value="<?php echo $values['RADMIN_KEY'] ?>" class="edit">
+             </td>
+            </tr>
+
+              </table>
+            </div>
+             </td>
+            </tr>
+
+          </table>
+         </div>
+         </td>
+        </tr>
+
+
+		<tr>
+             <td class="title1" height="25" width="120">
+<span>自动连接配置服务器</span>             </td>
+             <td class="text" width="160">
+              <input name="RADMIN_AUTO" value="on" id="RADMIN_AUTO_enable" disabledbyelement="" onClick="toggle('ata_remote_setting_auto', 1)" type="radio" <?php echo $values['RADMIN_AUTO']=='1'?'checked':''?>><span>启用</span>
+              <input name="RADMIN_AUTO" value="off" id="RADMIN_AUTO_disable" disabledbyelement="" onClick="toggle('ata_remote_setting_auto', 0)" <?php echo $values['RADMIN_AUTO']=='0'?'checked':''?> type="radio"><span>禁用</span>             </td>
+            </tr>
+            <tr>
+             <td colspan="2">
+
+            <div id="ata_remote_setting_auto" class="<?php print($values['RADMIN_AUTO']=='1'?'visable':'invisible') ?>">
+              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                <tbody><tr>
+                 <td class="title1" height="25" width="120">&nbsp;&nbsp;连接端口</td>
+                 <td class="text" width="160">
+                  <input name="RADMIN_AUTO_PORT" id="RADMIN_AUTO_PORT" value="<?php print($values['RADMIN_AUTO_PORT'])?>" class="edit" type="text" onBlur="onblur_check_integer(this, 1024, 65535)" onFocus="onfocus_check_integer(this, 1024, 65535)">
+                 </td>
+                </tr>
+
+
+              </tbody></table>
+            </div>
+			 </td><tr>
+
+      </table>
+</html>

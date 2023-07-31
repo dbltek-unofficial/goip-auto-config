@@ -1,0 +1,1435 @@
+
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+        <tr>
+         <td colspan="2">
+
+         <div id="fxs_calling" class="visable">
+          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+<?php if($values['FXSPORT'] ==1  ): ?>
+            <tr>
+             <td colspan="2">
+
+             <div id="h323_single_line" class="visable">
+              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                <tr>
+                 <td width="120" height="25" class="title1">电话号码</td>
+                 <td width="160" class="text">
+                  <input type="text" name="h323_phone_number" id="h323_phone_number" value="<?php print($values['H323_PHONE_NUM']) ?>" class="edit">
+                 </td>
+                </tr>
+
+                <tr>
+                 <td width="120" height="25" class="title1">显示名</td>
+                 <td width="160" class="text">
+                  <input type="text" name="display_name" id="display_name" value="<?php print($values['H323_DISPLAY_NAME']) ?>" class="edit">
+                 </td>
+                </tr>
+
+                <tr>
+                 <td width="120" height="25" class="title1">H.323 Id</td>
+                 <td width="160" class="text">
+                  <input type="text" name="h323_id" id="h323_id" value="<?php print($values['H323_ID']) ?>" class="edit">
+                 </td>
+                </tr>
+
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                <tr>
+                 <td width="120" height="25" class="title1">关守地址</td>
+                 <td width="160" class="text">
+                  <input type="text" name="gk_addr" id="gk_addr" value="<?php print($values['H323_GK_ADDR']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                 </td>
+                </tr>
+
+<?php endif; ?>
+                <tr>
+                 <td width="120" height="25" class="title1">
+                 </td>
+                 <td width="160" class="text">
+                  <input type="checkbox" name="vos_enable" id="vos_enable" onclick="toggle_checkbox('vos_enable', 'hide')" <?php print($values['H323_VOS_ENABLE']=='1'?'checked':'') ?>><span>启用VOS/AVS信令加密</span>
+                 </td>
+                </tr>
+
+                <tr>
+                 <td colspan="2">
+
+                <div id="vos_enable_div" class="<?php print($values['H323_VOS_ENABLE']=='1'?'visable':'invisible') ?>">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                    <tr>
+
+                     <td width="120" height="25" class="title1">加密模式</td>
+                     <td width="160" class="text">
+  <select name="vos_mod" id="vos_mod_select" class="select" onchange="toggle_selected('vos_mod', 'hide')">
+     <option value="1" <?php print($values['H323_VOS_MODE']=='1'?'selected':'') ?>>VOS信令加密</option>
+     <option value="2" <?php print($values['H323_VOS_MODE']=='2'?'selected':'') ?>>VOS信令媒体加密</option>
+     <option value="3" <?php print($values['H323_VOS_MODE']=='3'?'selected':'') ?>>AVS信令加密</option>
+     <option value="4" <?php print($values['H323_VOS_MODE']=='4'?'selected':'') ?>>AVS信令媒体加密</option>
+  </select>
+                     </td>
+
+                    </tr>
+
+                    <tr>
+                     <td colspan="2">
+
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                      </table>
+                     </td>
+                    </tr>
+
+                  </table>
+                </div>
+                 </td>
+                </tr>
+
+                <tr>
+                 <td width="120" height="25" class="title1">
+                 </td>
+                 <td width="160" class="text">
+                  <input type="checkbox" name="h235_auth" id="h235_auth" onclick="toggle_checkbox('h235_auth', 'hide')" <?php print($values['H235_AUTH']=='1'?'checked':'') ?>><span>启用认证</span>
+                 </td>
+                </tr>
+
+                <tr>
+                 <td colspan="2">
+
+                <div id="h235_auth_div" class="<?php print($values['H235_AUTH']=='1'?'visable':'invisible') ?>">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                    <tr>
+                     <td width="120" height="25" class="title1">认证Id</td>
+                     <td width="160" class="text">
+                      <input type="text" name="h235_id" id="h235_id" value="<?php print($values['H235_ID']) ?>" class="edit">
+                     </td>
+                    </tr>
+
+                    <tr>
+                     <td width="120" height="25" class="title1">密码</td>
+                     <td width="160" class="text">
+                      <input type="password" name="h235_passwd" id="h235_passwd" value="<?php print($values['H235_PASSWD']) ?>" class="edit">
+                     </td>
+                    </tr>
+
+                  </table>
+                </div>
+                 </td>
+                </tr>
+
+              </table>
+             </div>
+             </td>
+            </tr>
+
+<?php endif; ?>
+<?php if($values['FXSPORT'] > 1): ?>
+            <tr>
+
+             <td width="120" height="25" class="title1">配置模式</td>
+             <td width="160" class="text">
+  <select name="h323_config_mode" id="h323_config_mode_select" class="select" onchange="toggle_selected('h323_config_mode', 'hide')">
+     <option value="SINGLE_MODE" <?php print($values['H323_CONFIG_MODE']=='SINGLE_MODE'?'selected':'') ?>>单服务器模式</option>
+<?php if($values['FXSPORT'] > 1): ?>
+     <option value="LINE_MODE" <?php print($values['H323_CONFIG_MODE']=='LINE_MODE'?'selected':'') ?>>按线路配置</option>
+<?php endif; ?>
+     <option value="GROUP_MODE" <?php print($values['H323_CONFIG_MODE']=='GROUP_MODE'?'selected':'') ?>>分组配置</option>
+  </select>
+             </td>
+
+            </tr>
+
+            <tr>
+             <td colspan="2">
+
+              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                <tr>
+                 <td colspan="2">
+                   <div class="invisible"><br><span class="stitle">配置模式 - 单服务器模式</span></div>
+
+                <div id="h323_config_mode_SINGLE_MODE_div" class="<?php print($values['H323_CONFIG_MODE']=='SINGLE_MODE'?'visable':'invisible') ?>">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                    <tr>
+                     <td width="120" height="25" class="title1">电话号码</td>
+                     <td width="160" class="text">
+                      <input type="text" name="h323_phone_number" id="h323_phone_number" value="<?php print($values['H323_PHONE_NUM']) ?>" class="edit">
+                     </td>
+                    </tr>
+
+                    <tr>
+                     <td width="120" height="25" class="title1">显示名</td>
+                     <td width="160" class="text">
+                      <input type="text" name="display_name" id="display_name" value="<?php print($values['H323_DISPLAY_NAME']) ?>" class="edit">
+                     </td>
+                    </tr>
+
+                    <tr>
+                     <td width="120" height="25" class="title1">H.323 Id</td>
+                     <td width="160" class="text">
+                      <input type="text" name="h323_id" id="h323_id" value="<?php print($values['H323_ID']) ?>" class="edit">
+                     </td>
+                    </tr>
+
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                    <tr>
+                     <td width="120" height="25" class="title1">关守地址</td>
+                     <td width="160" class="text">
+                      <input type="text" name="gk_addr" id="gk_addr" value="<?php print($values['H323_GK_ADDR']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                     </td>
+                    </tr>
+
+<?php endif; ?>
+                    <tr>
+                     <td width="120" height="25" class="title1">
+                     </td>
+                     <td width="160" class="text">
+                      <input type="checkbox" name="vos_enable" id="vos_enable" onclick="toggle_checkbox('vos_enable', 'hide')" <?php print($values['H323_VOS_ENABLE']=='1'?'checked':'') ?>><span>启用VOS/AVS信令加密</span>
+                     </td>
+                    </tr>
+
+                    <tr>
+                     <td colspan="2">
+
+                    <div id="vos_enable_div" class="<?php print($values['H323_VOS_ENABLE']=='1'?'visable':'invisible') ?>">
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                        <tr>
+
+                         <td width="120" height="25" class="title1">加密模式</td>
+                         <td width="160" class="text">
+  <select name="vos_mod" id="vos_mod_select" class="select" onchange="toggle_selected('vos_mod', 'hide')">
+     <option value="1" <?php print($values['H323_VOS_MODE']=='1'?'selected':'') ?>>VOS信令加密</option>
+     <option value="2" <?php print($values['H323_VOS_MODE']=='2'?'selected':'') ?>>VOS信令媒体加密</option>
+     <option value="3" <?php print($values['H323_VOS_MODE']=='3'?'selected':'') ?>>AVS信令加密</option>
+     <option value="4" <?php print($values['H323_VOS_MODE']=='4'?'selected':'') ?>>AVS信令媒体加密</option>
+  </select>
+                         </td>
+
+                        </tr>
+
+                        <tr>
+                         <td colspan="2">
+
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                          </table>
+                         </td>
+                        </tr>
+
+                      </table>
+                    </div>
+                     </td>
+                    </tr>
+
+                    <tr>
+                     <td width="120" height="25" class="title1">
+                     </td>
+                     <td width="160" class="text">
+                      <input type="checkbox" name="h235_auth" id="h235_auth" onclick="toggle_checkbox('h235_auth', 'hide')" <?php print($values['H235_AUTH']=='1'?'checked':'') ?>><span>启用认证</span>
+                     </td>
+                    </tr>
+
+                    <tr>
+                     <td colspan="2">
+
+                    <div id="h235_auth_div" class="<?php print($values['H235_AUTH']=='1'?'visable':'invisible') ?>">
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                        <tr>
+                         <td width="120" height="25" class="title1">认证Id</td>
+                         <td width="160" class="text">
+                          <input type="text" name="h235_id" id="h235_id" value="<?php print($values['H235_ID']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">密码</td>
+                         <td width="160" class="text">
+                          <input type="password" name="h235_passwd" id="h235_passwd" value="<?php print($values['H235_PASSWD']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+                      </table>
+                    </div>
+                     </td>
+                    </tr>
+
+                  </table>
+                </div>
+
+<?php if($values['FXSPORT'] > 1): ?>                   <div class="invisible"><br><span class="stitle">配置模式 - 按线路配置</span></div>
+
+                <div id="h323_config_mode_LINE_MODE_div" class="<?php print($values['H323_CONFIG_MODE']=='LINE_MODE'?'visable':'invisible') ?>">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                    <tr>
+                     <td class="text" width="280">
+                      <input type=radio name="h323_line_mode_tab" value="h323_l1_conf" onclick="toggle2('h323_line_mode_tab', 4, 0)" checked>线路 1&nbsp;
+<?php if($values['FXSPORT'] >= 2): ?>
+                      <input type=radio name="h323_line_mode_tab" value="h323_l2_conf" onclick="toggle2('h323_line_mode_tab', 4, 1)">线路 2&nbsp;
+<?php endif; ?>
+<?php if($values['FXSPORT'] >= 3): ?>
+                      <input type=radio name="h323_line_mode_tab" value="h323_l3_conf" onclick="toggle2('h323_line_mode_tab', 4, 2)">线路 3&nbsp;
+<?php endif; ?>
+<?php if($values['FXSPORT'] >= 4): ?>
+                      <input type=radio name="h323_line_mode_tab" value="h323_l4_conf" onclick="toggle2('h323_line_mode_tab', 4, 3)">线路 4&nbsp;
+<?php endif; ?>
+
+                     </td>
+                    </tr>
+                    <tr>
+                     <td>
+                      <div id="h323_line_mode_tab_0_div" class="visable">
+
+                     <div id="h323_l1_conf" class="visable">
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                        <tr>
+                         <td width="120" height="25" class="title1">电话号码</td>
+                         <td width="160" class="text">
+                          <input type="text" name="l1_h323_phone_num" id="l1_h323_phone_num" value="<?php print($values['H323_LINE1_NUMBER']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">H.323 Id</td>
+                         <td width="160" class="text">
+                          <input type="text" name="l1_h323_id" id="l1_h323_id" value="<?php print($values['H323_LINE1_H323_ID']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                        <tr>
+                         <td width="120" height="25" class="title1">关守地址</td>
+                         <td width="160" class="text">
+                          <input type="text" name="l1_gk_addr" id="l1_gk_addr" value="<?php print($values['H323_LINE1_GKADDR']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                         </td>
+                        </tr>
+
+<?php endif; ?>
+                        <tr>
+                         <td width="120" height="25" class="title1">
+                         </td>
+                         <td width="160" class="text">
+                          <input type="checkbox" name="l1_vos_enable" id="l1_vos_enable" onclick="toggle_checkbox('l1_vos_enable', 'hide')" <?php print($values['H323_LINE1_VOS_ENABLE']=='1'?'checked':'') ?>><span>启用VOS/AVS信令加密</span>
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td colspan="2">
+
+                        <div id="l1_vos_enable_div" class="<?php print($values['H323_LINE1_VOS_ENABLE']=='1'?'visable':'invisible') ?>">
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+
+                             <td width="120" height="25" class="title1">加密模式</td>
+                             <td width="160" class="text">
+  <select name="l1_vos_mod" id="l1_vos_mod_select" class="select" onchange="toggle_selected('l1_vos_mod', 'hide')">
+     <option value="1" <?php print($values['H323_LINE1_VOS_MODE']=='1'?'selected':'') ?>>VOS信令加密</option>
+     <option value="2" <?php print($values['H323_LINE1_VOS_MODE']=='2'?'selected':'') ?>>VOS信令媒体加密</option>
+     <option value="3" <?php print($values['H323_LINE1_VOS_MODE']=='3'?'selected':'') ?>>AVS信令加密</option>
+     <option value="4" <?php print($values['H323_LINE1_VOS_MODE']=='4'?'selected':'') ?>>AVS信令媒体加密</option>
+  </select>
+                             </td>
+
+                            </tr>
+
+                            <tr>
+                             <td colspan="2">
+
+                              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                              </table>
+                             </td>
+                            </tr>
+
+                          </table>
+                        </div>
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">
+                         </td>
+                         <td width="160" class="text">
+                          <input type="checkbox" name="l1_h235_auth" id="l1_h235_auth" onclick="toggle_checkbox('l1_h235_auth', 'hide')" <?php print($values['H323_LINE1_AUTH']=='1'?'checked':'') ?>><span>使用认证</span>
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td colspan="2">
+
+                        <div id="l1_h235_auth_div" class="<?php print($values['H323_LINE1_AUTH']=='1'?'visable':'invisible') ?>">
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+                             <td width="120" height="25" class="title1">认证Id</td>
+                             <td width="160" class="text">
+                              <input type="text" name="l1_h235_id" id="l1_h235_id" value="<?php print($values['H323_LINE1_H235_ID']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">密码</td>
+                             <td width="160" class="text">
+                              <input type="password" name="l1_h235_passwd" id="l1_h235_passwd" value="<?php print($values['H323_LINE1_H235_PASSWD']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                          </table>
+                        </div>
+                         </td>
+                        </tr>
+
+                      </table>
+                     </div>
+                      </div>
+                      <div id="h323_line_mode_tab_1_div" class="invisible">
+
+                     <div id="h323_l2_conf" class="visable">
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                        <tr>
+                         <td width="120" height="25" class="title1">电话号码</td>
+                         <td width="160" class="text">
+                          <input type="text" name="l2_h323_phone_num" id="l2_h323_phone_num" value="<?php print($values['H323_LINE2_NUMBER']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">H.323 Id</td>
+                         <td width="160" class="text">
+                          <input type="text" name="l2_h323_id" id="l2_h323_id" value="<?php print($values['H323_LINE2_H323_ID']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                        <tr>
+                         <td width="120" height="25" class="title1">关守地址</td>
+                         <td width="160" class="text">
+                          <input type="text" name="l2_gk_addr" id="l2_gk_addr" value="<?php print($values['H323_LINE2_GKADDR']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                         </td>
+                        </tr>
+
+<?php endif; ?>
+                        <tr>
+                         <td width="120" height="25" class="title1">
+                         </td>
+                         <td width="160" class="text">
+                          <input type="checkbox" name="l2_vos_enable" id="l2_vos_enable" onclick="toggle_checkbox('l2_vos_enable', 'hide')" <?php print($values['H323_LINE2_VOS_ENABLE']=='1'?'checked':'') ?>><span>启用VOS/AVS信令加密</span>
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td colspan="2">
+
+                        <div id="l2_vos_enable_div" class="<?php print($values['H323_LINE2_VOS_ENABLE']=='1'?'visable':'invisible') ?>">
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+
+                             <td width="120" height="25" class="title1">加密模式</td>
+                             <td width="160" class="text">
+  <select name="l2_vos_mod" id="l2_vos_mod_select" class="select" onchange="toggle_selected('l2_vos_mod', 'hide')">
+     <option value="1" <?php print($values['H323_LINE2_VOS_MODE']=='1'?'selected':'') ?>>VOS信令加密</option>
+     <option value="2" <?php print($values['H323_LINE2_VOS_MODE']=='2'?'selected':'') ?>>VOS信令媒体加密</option>
+     <option value="3" <?php print($values['H323_LINE2_VOS_MODE']=='3'?'selected':'') ?>>AVS信令加密</option>
+     <option value="4" <?php print($values['H323_LINE2_VOS_MODE']=='4'?'selected':'') ?>>AVS信令媒体加密</option>
+  </select>
+                             </td>
+
+                            </tr>
+
+                            <tr>
+                             <td colspan="2">
+
+                              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                              </table>
+                             </td>
+                            </tr>
+
+                          </table>
+                        </div>
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">
+                         </td>
+                         <td width="160" class="text">
+                          <input type="checkbox" name="l2_h235_auth" id="l2_h235_auth" onclick="toggle_checkbox('l2_h235_auth', 'hide')" <?php print($values['H323_LINE2_AUTH']=='1'?'checked':'') ?>><span>使用认证</span>
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td colspan="2">
+
+                        <div id="l2_h235_auth_div" class="<?php print($values['H323_LINE2_AUTH']=='1'?'visable':'invisible') ?>">
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+                             <td width="120" height="25" class="title1">认证Id</td>
+                             <td width="160" class="text">
+                              <input type="text" name="l2_h235_id" id="l2_h235_id" value="<?php print($values['H323_LINE2_H235_ID']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">密码</td>
+                             <td width="160" class="text">
+                              <input type="password" name="l2_h235_passwd" id="l2_h235_passwd" value="<?php print($values['H323_LINE2_H235_PASSWD']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                          </table>
+                        </div>
+                         </td>
+                        </tr>
+
+                      </table>
+                     </div>
+                      </div>
+                      <div id="h323_line_mode_tab_2_div" class="invisible">
+
+                     <div id="h323_l3_conf" class="visable">
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                        <tr>
+                         <td width="120" height="25" class="title1">电话号码</td>
+                         <td width="160" class="text">
+                          <input type="text" name="l3_h323_phone_num" id="l3_h323_phone_num" value="<?php print($values['H323_LINE3_NUMBER']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">H.323 Id</td>
+                         <td width="160" class="text">
+                          <input type="text" name="l3_h323_id" id="l3_h323_id" value="<?php print($values['H323_LINE3_H323_ID']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                        <tr>
+                         <td width="120" height="25" class="title1">关守地址</td>
+                         <td width="160" class="text">
+                          <input type="text" name="l3_gk_addr" id="l3_gk_addr" value="<?php print($values['H323_LINE3_GKADDR']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                         </td>
+                        </tr>
+
+<?php endif; ?>
+                        <tr>
+                         <td width="120" height="25" class="title1">
+                         </td>
+                         <td width="160" class="text">
+                          <input type="checkbox" name="l3_vos_enable" id="l3_vos_enable" onclick="toggle_checkbox('l3_vos_enable', 'hide')" <?php print($values['H323_LINE3_VOS_ENABLE']=='1'?'checked':'') ?>><span>启用VOS/AVS信令加密</span>
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td colspan="2">
+
+                        <div id="l3_vos_enable_div" class="<?php print($values['H323_LINE3_VOS_ENABLE']=='1'?'visable':'invisible') ?>">
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+
+                             <td width="120" height="25" class="title1">加密模式</td>
+                             <td width="160" class="text">
+  <select name="l3_vos_mod" id="l3_vos_mod_select" class="select" onchange="toggle_selected('l3_vos_mod', 'hide')">
+     <option value="1" <?php print($values['H323_LINE3_VOS_MODE']=='1'?'selected':'') ?>>VOS信令加密</option>
+     <option value="2" <?php print($values['H323_LINE3_VOS_MODE']=='2'?'selected':'') ?>>VOS信令媒体加密</option>
+     <option value="3" <?php print($values['H323_LINE3_VOS_MODE']=='3'?'selected':'') ?>>AVS信令加密</option>
+     <option value="4" <?php print($values['H323_LINE3_VOS_MODE']=='4'?'selected':'') ?>>AVS信令媒体加密</option>
+  </select>
+                             </td>
+
+                            </tr>
+
+                            <tr>
+                             <td colspan="2">
+
+                              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                              </table>
+                             </td>
+                            </tr>
+
+                          </table>
+                        </div>
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">
+                         </td>
+                         <td width="160" class="text">
+                          <input type="checkbox" name="l3_h235_auth" id="l3_h235_auth" onclick="toggle_checkbox('l3_h235_auth', 'hide')" <?php print($values['H323_LINE3_AUTH']=='1'?'checked':'') ?>><span>使用认证</span>
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td colspan="2">
+
+                        <div id="l3_h235_auth_div" class="<?php print($values['H323_LINE3_AUTH']=='1'?'visable':'invisible') ?>">
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+                             <td width="120" height="25" class="title1">认证Id</td>
+                             <td width="160" class="text">
+                              <input type="text" name="l3_h235_id" id="l3_h235_id" value="<?php print($values['H323_LINE3_H235_ID']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">密码</td>
+                             <td width="160" class="text">
+                              <input type="password" name="l3_h235_passwd" id="l3_h235_passwd" value="<?php print($values['H323_LINE3_H235_PASSWD']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                          </table>
+                        </div>
+                         </td>
+                        </tr>
+
+                      </table>
+                     </div>
+                      </div>
+                      <div id="h323_line_mode_tab_3_div" class="invisible">
+
+                     <div id="h323_l4_conf" class="visable">
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                        <tr>
+                         <td width="120" height="25" class="title1">电话号码</td>
+                         <td width="160" class="text">
+                          <input type="text" name="l4_h323_phone_num" id="l4_h323_phone_num" value="<?php print($values['H323_LINE4_NUMBER']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">H.323 Id</td>
+                         <td width="160" class="text">
+                          <input type="text" name="l4_h323_id" id="l4_h323_id" value="<?php print($values['H323_LINE4_H323_ID']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                        <tr>
+                         <td width="120" height="25" class="title1">关守地址</td>
+                         <td width="160" class="text">
+                          <input type="text" name="l4_gk_addr" id="l4_gk_addr" value="<?php print($values['H323_LINE4_GKADDR']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                         </td>
+                        </tr>
+
+<?php endif; ?>
+                        <tr>
+                         <td width="120" height="25" class="title1">
+                         </td>
+                         <td width="160" class="text">
+                          <input type="checkbox" name="l4_vos_enable" id="l4_vos_enable" onclick="toggle_checkbox('l4_vos_enable', 'hide')" <?php print($values['H323_LINE4_VOS_ENABLE']=='1'?'checked':'') ?>><span>启用VOS/AVS信令加密</span>
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td colspan="2">
+
+                        <div id="l4_vos_enable_div" class="<?php print($values['H323_LINE4_VOS_ENABLE']=='1'?'visable':'invisible') ?>">
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+
+                             <td width="120" height="25" class="title1">加密模式</td>
+                             <td width="160" class="text">
+  <select name="l4_vos_mod" id="l4_vos_mod_select" class="select" onchange="toggle_selected('l4_vos_mod', 'hide')">
+     <option value="1" <?php print($values['H323_LINE4_VOS_MODE']=='1'?'selected':'') ?>>VOS信令加密</option>
+     <option value="2" <?php print($values['H323_LINE4_VOS_MODE']=='2'?'selected':'') ?>>VOS信令媒体加密</option>
+     <option value="3" <?php print($values['H323_LINE4_VOS_MODE']=='3'?'selected':'') ?>>AVS信令加密</option>
+     <option value="4" <?php print($values['H323_LINE4_VOS_MODE']=='4'?'selected':'') ?>>AVS信令媒体加密</option>
+  </select>
+                             </td>
+
+                            </tr>
+
+                            <tr>
+                             <td colspan="2">
+
+                              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                              </table>
+                             </td>
+                            </tr>
+
+                          </table>
+                        </div>
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">
+                         </td>
+                         <td width="160" class="text">
+                          <input type="checkbox" name="l4_h235_auth" id="l4_h235_auth" onclick="toggle_checkbox('l4_h235_auth', 'hide')" <?php print($values['H323_LINE4_AUTH']=='1'?'checked':'') ?>><span>使用认证</span>
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td colspan="2">
+
+                        <div id="l4_h235_auth_div" class="<?php print($values['H323_LINE4_AUTH']=='1'?'visable':'invisible') ?>">
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+                             <td width="120" height="25" class="title1">认证Id</td>
+                             <td width="160" class="text">
+                              <input type="text" name="l4_h235_id" id="l4_h235_id" value="<?php print($values['H323_LINE4_H235_ID']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">密码</td>
+                             <td width="160" class="text">
+                              <input type="password" name="l4_h235_passwd" id="l4_h235_passwd" value="<?php print($values['H323_LINE4_H235_PASSWD']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                          </table>
+                        </div>
+                         </td>
+                        </tr>
+
+                      </table>
+                     </div>
+                      </div>
+
+                     </td>
+                    </tr>
+
+                  </table>
+                </div>
+
+<?php endif; ?>
+
+                <div id="h323_config_mode_GROUP_MODE_div" class="<?php print($values['H323_CONFIG_MODE']=='GROUP_MODE'?'visable':'invisible') ?>">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                    <tr>
+                     <td class="text" width="280">
+                      <input type=radio name="h323_group_mode_tab" value="h323_group1_conf" onclick="toggle2('h323_group_mode_tab', 4, 0)" checked>组 1&nbsp;
+                      <input type=radio name="h323_group_mode_tab" value="h323_group2_conf" onclick="toggle2('h323_group_mode_tab', 4, 1)">组 2&nbsp;
+<?php if($values['FXSPORT'] >= 3): ?>
+                      <input type=radio name="h323_group_mode_tab" value="h323_group3_conf" onclick="toggle2('h323_group_mode_tab', 4, 2)">组 3&nbsp;
+<?php endif; ?>
+<?php if($values['FXSPORT'] >= 4): ?>
+                      <input type=radio name="h323_group_mode_tab" value="h323_group4_conf" onclick="toggle2('h323_group_mode_tab', 4, 3)">组 4&nbsp;
+<?php endif; ?>
+
+                     </td>
+                    </tr>
+                    <tr>
+                     <td>
+                      <div id="h323_group_mode_tab_0_div" class="visable">
+
+                     <div id="h323_group1_conf" class="visable">
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                        <tr>
+                         <td width="120" height="25" class="title1">电话号码</td>
+                         <td width="160" class="text">
+                          <input type="text" name="group1_h323_phone_num" id="group1_h323_phone_num" value="<?php print($values['H323_GROUP1_NUMBER']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">H.323 Id</td>
+                         <td width="160" class="text">
+                          <input type="text" name="group1_h323_id" id="group1_h323_id" value="<?php print($values['H323_GROUP1_H323_ID']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                        <tr>
+                         <td width="120" height="25" class="title1">关守地址</td>
+                         <td width="160" class="text">
+                          <input type="text" name="group1_gk_addr" id="group1_gk_addr" value="<?php print($values['H323_GROUP1_GKADDR']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                         </td>
+                        </tr>
+
+<?php endif; ?>
+                        <tr>
+                         <td width="120" height="25" class="title1">
+                         </td>
+                         <td width="160" class="text">
+                          <input type="checkbox" name="group1_vos_enable" id="group1_vos_enable" onclick="toggle_checkbox('group1_vos_enable', 'hide')" <?php print($values['H323_G1_VOS_ENABLE']=='1'?'checked':'') ?>><span>启用VOS/AVS信令加密</span>
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td colspan="2">
+
+                        <div id="group1_vos_enable_div" class="<?php print($values['H323_G1_VOS_ENABLE']=='1'?'visable':'invisible') ?>">
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+
+                             <td width="120" height="25" class="title1">加密模式</td>
+                             <td width="160" class="text">
+  <select name="group1_vos_mod" id="group1_vos_mod_select" class="select" onchange="toggle_selected('group1_vos_mod', 'hide')">
+     <option value="1" <?php print($values['H323_G1_VOS_MODE']=='1'?'selected':'') ?>>VOS信令加密</option>
+     <option value="2" <?php print($values['H323_G1_VOS_MODE']=='2'?'selected':'') ?>>VOS信令媒体加密</option>
+     <option value="3" <?php print($values['H323_G1_VOS_MODE']=='3'?'selected':'') ?>>AVS信令加密</option>
+     <option value="4" <?php print($values['H323_G1_VOS_MODE']=='4'?'selected':'') ?>>AVS信令媒体加密</option>
+  </select>
+                             </td>
+
+                            </tr>
+
+                            <tr>
+                             <td colspan="2">
+
+                              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                              </table>
+                             </td>
+                            </tr>
+
+                          </table>
+                        </div>
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">
+                         </td>
+                         <td width="160" class="text">
+                          <input type="checkbox" name="group1_h235_auth" id="group1_h235_auth" onclick="toggle_checkbox('group1_h235_auth', 'hide')" <?php print($values['H323_GROUP1_AUTH']=='1'?'checked':'') ?>><span>使用认证</span>
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td colspan="2">
+
+                        <div id="group1_h235_auth_div" class="<?php print($values['H323_GROUP1_AUTH']=='1'?'visable':'invisible') ?>">
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+                             <td width="120" height="25" class="title1">认证Id</td>
+                             <td width="160" class="text">
+                              <input type="text" name="group1_h235_id" id="group1_h235_id" value="<?php print($values['H323_GROUP1_H235_ID']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">密码</td>
+                             <td width="160" class="text">
+                              <input type="password" name="group1_h235_passwd" id="group1_h235_passwd" value="<?php print($values['H323_GROUP1_H235_PASSWD']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                          </table>
+                        </div>
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td colspan="2" class="title1" height="25" >该组包括线路</td>
+                        </tr>
+
+                        <tr>
+                         <td colspan="2">
+
+                         <div id="h323_group1_lines" class="visable">
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+                             <td align="center" valign="top">
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+                             <td width="20" height="25" class="text">
+                              <input type="checkbox" name="h323_line1_in_group1" id="h323_line1_in_group1" onclick="toggle_checkbox('h323_line1_in_group1', 'hide')" <?php print($values['H323_L1_IN_G1']=='1'?'checked':'') ?>><span>线1</span>
+                             </td>
+                            </tr>
+                          </table>
+                             </td>
+                             <td align="center" valign="top">
+<?php if($values['FXSPORT'] >= 2): ?>
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+                             <td width="20" height="25" class="text">
+                              <input type="checkbox" name="h323_line2_in_group1" id="h323_line2_in_group1" onclick="toggle_checkbox('h323_line2_in_group1', 'hide')" <?php print($values['H323_L2_IN_G1']=='1'?'checked':'') ?>><span>线2</span>
+                             </td>
+                            </tr>
+                          </table>
+<?php endif; ?>
+                             </td>
+                             <td align="center" valign="top">
+<?php if($values['FXSPORT'] >= 3): ?>
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+                             <td width="20" height="25" class="text">
+                              <input type="checkbox" name="h323_line3_in_group1" id="h323_line3_in_group1" onclick="toggle_checkbox('h323_line3_in_group1', 'hide')" <?php print($values['H323_L3_IN_G1']=='1'?'checked':'') ?>><span>线3</span>
+                             </td>
+                            </tr>
+                          </table>
+<?php endif; ?>
+                             </td>
+                             <td align="center" valign="top">
+<?php if($values['FXSPORT'] >= 4): ?>
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+                             <td width="20" height="25" class="text">
+                              <input type="checkbox" name="h323_line4_in_group1" id="h323_line4_in_group1" onclick="toggle_checkbox('h323_line4_in_group1', 'hide')" <?php print($values['H323_L4_IN_G1']=='1'?'checked':'') ?>><span>线4</span>
+                             </td>
+                            </tr>
+                          </table>
+<?php endif; ?>
+                             </td>
+                            </tr>
+
+                          </table>
+                         </div>
+                         </td>
+                        </tr>
+
+                      </table>
+                     </div>
+                      </div>
+                      <div id="h323_group_mode_tab_1_div" class="invisible">
+
+                     <div id="h323_group2_conf" class="visable">
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                        <tr>
+                         <td width="120" height="25" class="title1">电话号码</td>
+                         <td width="160" class="text">
+                          <input type="text" name="group2_h323_phone_num" id="group2_h323_phone_num" value="<?php print($values['H323_GROUP2_NUMBER']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">H.323 Id</td>
+                         <td width="160" class="text">
+                          <input type="text" name="group2_h323_id" id="group2_h323_id" value="<?php print($values['H323_GROUP2_H323_ID']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                        <tr>
+                         <td width="120" height="25" class="title1">关守地址</td>
+                         <td width="160" class="text">
+                          <input type="text" name="group2_gk_addr" id="group2_gk_addr" value="<?php print($values['H323_GROUP2_GKADDR']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                         </td>
+                        </tr>
+
+<?php endif; ?>
+                        <tr>
+                         <td width="120" height="25" class="title1">
+                         </td>
+                         <td width="160" class="text">
+                          <input type="checkbox" name="group2_vos_enable" id="group2_vos_enable" onclick="toggle_checkbox('group2_vos_enable', 'hide')" <?php print($values['H323_G2_VOS_ENABLE']=='1'?'checked':'') ?>><span>启用VOS/AVS信令加密</span>
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td colspan="2">
+
+                        <div id="group2_vos_enable_div" class="<?php print($values['H323_G2_VOS_ENABLE']=='1'?'visable':'invisible') ?>">
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+
+                             <td width="120" height="25" class="title1">加密模式</td>
+                             <td width="160" class="text">
+  <select name="group2_vos_mod" id="group2_vos_mod_select" class="select" onchange="toggle_selected('group2_vos_mod', 'hide')">
+     <option value="1" <?php print($values['H323_G2_VOS_MODE']=='1'?'selected':'') ?>>VOS信令加密</option>
+     <option value="2" <?php print($values['H323_G2_VOS_MODE']=='2'?'selected':'') ?>>VOS信令媒体加密</option>
+     <option value="3" <?php print($values['H323_G2_VOS_MODE']=='3'?'selected':'') ?>>AVS信令加密</option>
+     <option value="4" <?php print($values['H323_G2_VOS_MODE']=='4'?'selected':'') ?>>AVS信令媒体加密</option>
+  </select>
+                             </td>
+
+                            </tr>
+
+                            <tr>
+                             <td colspan="2">
+
+                              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                              </table>
+                             </td>
+                            </tr>
+
+                          </table>
+                        </div>
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">
+                         </td>
+                         <td width="160" class="text">
+                          <input type="checkbox" name="group2_h235_auth" id="group2_h235_auth" onclick="toggle_checkbox('group2_h235_auth', 'hide')" <?php print($values['H323_GROUP2_AUTH']=='1'?'checked':'') ?>><span>使用认证</span>
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td colspan="2">
+
+                        <div id="group2_h235_auth_div" class="<?php print($values['H323_GROUP2_AUTH']=='1'?'visable':'invisible') ?>">
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+                             <td width="120" height="25" class="title1">认证Id</td>
+                             <td width="160" class="text">
+                              <input type="text" name="group2_h235_id" id="group2_h235_id" value="<?php print($values['H323_GROUP2_H235_ID']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">密码</td>
+                             <td width="160" class="text">
+                              <input type="password" name="group2_h235_passwd" id="group2_h235_passwd" value="<?php print($values['H323_GROUP2_H235_PASSWD']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                          </table>
+                        </div>
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td colspan="2" class="title1" height="25" >该组包括线路</td>
+                        </tr>
+
+                        <tr>
+                         <td colspan="2">
+
+                         <div id="h323_group2_lines" class="visable">
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+                             <td align="center" valign="top">
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+                             <td width="20" height="25" class="text">
+                              <input type="checkbox" name="h323_line1_in_group2" id="h323_line1_in_group2" onclick="toggle_checkbox('h323_line1_in_group2', 'hide')" <?php print($values['H323_L1_IN_G2']=='1'?'checked':'') ?>><span>线1</span>
+                             </td>
+                            </tr>
+                          </table>
+                             </td>
+                             <td align="center" valign="top">
+<?php if($values['FXSPORT'] >= 2): ?>
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+                             <td width="20" height="25" class="text">
+                              <input type="checkbox" name="h323_line2_in_group2" id="h323_line2_in_group2" onclick="toggle_checkbox('h323_line2_in_group2', 'hide')" <?php print($values['H323_L2_IN_G2']=='1'?'checked':'') ?>><span>线2</span>
+                             </td>
+                            </tr>
+                          </table>
+<?php endif; ?>
+                             </td>
+                             <td align="center" valign="top">
+<?php if($values['FXSPORT'] >= 3): ?>
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+                             <td width="20" height="25" class="text">
+                              <input type="checkbox" name="h323_line3_in_group2" id="h323_line3_in_group2" onclick="toggle_checkbox('h323_line3_in_group2', 'hide')" <?php print($values['H323_L3_IN_G2']=='1'?'checked':'') ?>><span>线3</span>
+                             </td>
+                            </tr>
+                          </table>
+<?php endif; ?>
+                             </td>
+                             <td align="center" valign="top">
+<?php if($values['FXSPORT'] >= 4): ?>
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+                             <td width="20" height="25" class="text">
+                              <input type="checkbox" name="h323_line4_in_group2" id="h323_line4_in_group2" onclick="toggle_checkbox('h323_line4_in_group2', 'hide')" <?php print($values['H323_L4_IN_G2']=='1'?'checked':'') ?>><span>线4</span>
+                             </td>
+                            </tr>
+                          </table>
+<?php endif; ?>
+                             </td>
+                            </tr>
+
+                          </table>
+                         </div>
+                         </td>
+                        </tr>
+
+                      </table>
+                     </div>
+                      </div>
+                      <div id="h323_group_mode_tab_2_div" class="invisible">
+
+                     <div id="h323_group3_conf" class="visable">
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                        <tr>
+                         <td width="120" height="25" class="title1">电话号码</td>
+                         <td width="160" class="text">
+                          <input type="text" name="group3_h323_phone_num" id="group3_h323_phone_num" value="<?php print($values['H323_GROUP3_NUMBER']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">H.323 Id</td>
+                         <td width="160" class="text">
+                          <input type="text" name="group3_h323_id" id="group3_h323_id" value="<?php print($values['H323_GROUP3_H323_ID']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                        <tr>
+                         <td width="120" height="25" class="title1">关守地址</td>
+                         <td width="160" class="text">
+                          <input type="text" name="group3_gk_addr" id="group3_gk_addr" value="<?php print($values['H323_GROUP3_GKADDR']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                         </td>
+                        </tr>
+
+<?php endif; ?>
+                        <tr>
+                         <td width="120" height="25" class="title1">
+                         </td>
+                         <td width="160" class="text">
+                          <input type="checkbox" name="group3_vos_enable" id="group3_vos_enable" onclick="toggle_checkbox('group3_vos_enable', 'hide')" <?php print($values['H323_G3_VOS_ENABLE']=='1'?'checked':'') ?>><span>启用VOS/AVS信令加密</span>
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td colspan="2">
+
+                        <div id="group3_vos_enable_div" class="<?php print($values['H323_G3_VOS_ENABLE']=='1'?'visable':'invisible') ?>">
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+
+                             <td width="120" height="25" class="title1">加密模式</td>
+                             <td width="160" class="text">
+  <select name="group3_vos_mod" id="group3_vos_mod_select" class="select" onchange="toggle_selected('group3_vos_mod', 'hide')">
+     <option value="1" <?php print($values['H323_G3_VOS_MODE']=='1'?'selected':'') ?>>VOS信令加密</option>
+     <option value="2" <?php print($values['H323_G3_VOS_MODE']=='2'?'selected':'') ?>>VOS信令媒体加密</option>
+     <option value="3" <?php print($values['H323_G3_VOS_MODE']=='3'?'selected':'') ?>>AVS信令加密</option>
+     <option value="4" <?php print($values['H323_G3_VOS_MODE']=='4'?'selected':'') ?>>AVS信令媒体加密</option>
+  </select>
+                             </td>
+
+                            </tr>
+
+                            <tr>
+                             <td colspan="2">
+
+                              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                              </table>
+                             </td>
+                            </tr>
+
+                          </table>
+                        </div>
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">
+                         </td>
+                         <td width="160" class="text">
+                          <input type="checkbox" name="group3_h235_auth" id="group3_h235_auth" onclick="toggle_checkbox('group3_h235_auth', 'hide')" <?php print($values['H323_GROUP3_AUTH']=='1'?'checked':'') ?>><span>使用认证</span>
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td colspan="2">
+
+                        <div id="group3_h235_auth_div" class="<?php print($values['H323_GROUP3_AUTH']=='1'?'visable':'invisible') ?>">
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+                             <td width="120" height="25" class="title1">认证Id</td>
+                             <td width="160" class="text">
+                              <input type="text" name="group3_h235_id" id="group3_h235_id" value="<?php print($values['H323_GROUP3_H235_ID']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">密码</td>
+                             <td width="160" class="text">
+                              <input type="password" name="group3_h235_passwd" id="group3_h235_passwd" value="<?php print($values['H323_GROUP3_H235_PASSWD']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                          </table>
+                        </div>
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td colspan="2" class="title1" height="25" >该组包括线路</td>
+                        </tr>
+
+                        <tr>
+                         <td colspan="2">
+
+                         <div id="h323_group3_lines" class="visable">
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+                             <td align="center" valign="top">
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+                             <td width="20" height="25" class="text">
+                              <input type="checkbox" name="h323_line1_in_group3" id="h323_line1_in_group3" onclick="toggle_checkbox('h323_line1_in_group3', 'hide')" <?php print($values['H323_L1_IN_G3']=='1'?'checked':'') ?>><span>线1</span>
+                             </td>
+                            </tr>
+                          </table>
+                             </td>
+                             <td align="center" valign="top">
+<?php if($values['FXSPORT'] >= 2): ?>
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+                             <td width="20" height="25" class="text">
+                              <input type="checkbox" name="h323_line2_in_group3" id="h323_line2_in_group3" onclick="toggle_checkbox('h323_line2_in_group3', 'hide')" <?php print($values['H323_L2_IN_G3']=='1'?'checked':'') ?>><span>线2</span>
+                             </td>
+                            </tr>
+                          </table>
+<?php endif; ?>
+                             </td>
+                             <td align="center" valign="top">
+<?php if($values['FXSPORT'] >= 3): ?>
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+                             <td width="20" height="25" class="text">
+                              <input type="checkbox" name="h323_line3_in_group3" id="h323_line3_in_group3" onclick="toggle_checkbox('h323_line3_in_group3', 'hide')" <?php print($values['H323_L3_IN_G3']=='1'?'checked':'') ?>><span>线3</span>
+                             </td>
+                            </tr>
+                          </table>
+<?php endif; ?>
+                             </td>
+                             <td align="center" valign="top">
+<?php if($values['FXSPORT'] >= 4): ?>
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+                             <td width="20" height="25" class="text">
+                              <input type="checkbox" name="h323_line4_in_group3" id="h323_line4_in_group3" onclick="toggle_checkbox('h323_line4_in_group3', 'hide')" <?php print($values['H323_L4_IN_G3']=='1'?'checked':'') ?>><span>线4</span>
+                             </td>
+                            </tr>
+                          </table>
+<?php endif; ?>
+                             </td>
+                            </tr>
+
+                          </table>
+                         </div>
+                         </td>
+                        </tr>
+
+                      </table>
+                     </div>
+                      </div>
+                      <div id="h323_group_mode_tab_3_div" class="invisible">
+
+                     <div id="h323_group4_conf" class="visable">
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                        <tr>
+                         <td width="120" height="25" class="title1">电话号码</td>
+                         <td width="160" class="text">
+                          <input type="text" name="group4_h323_phone_num" id="group4_h323_phone_num" value="<?php print($values['H323_GROUP4_NUMBER']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">H.323 Id</td>
+                         <td width="160" class="text">
+                          <input type="text" name="group4_h323_id" id="group4_h323_id" value="<?php print($values['H323_GROUP4_H323_ID']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+<?php if($SUPER_USER == '' || $_SESSION['autocfg_adminname'] == $SUPER_USER):?>
+                        <tr>
+                         <td width="120" height="25" class="title1">关守地址</td>
+                         <td width="160" class="text">
+                          <input type="text" name="group4_gk_addr" id="group4_gk_addr" value="<?php print($values['H323_GROUP4_GKADDR']) ?>" class="edit" onblur="onblur_validate(this, hostport)" onfocus="onfocus_validate(this, hostport)">
+                         </td>
+                        </tr>
+
+<?php endif; ?>
+                        <tr>
+                         <td width="120" height="25" class="title1">
+                         </td>
+                         <td width="160" class="text">
+                          <input type="checkbox" name="group4_vos_enable" id="group4_vos_enable" onclick="toggle_checkbox('group4_vos_enable', 'hide')" <?php print($values['H323_G4_VOS_ENABLE']=='1'?'checked':'') ?>><span>启用VOS/AVS信令加密</span>
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td colspan="2">
+
+                        <div id="group4_vos_enable_div" class="<?php print($values['H323_G4_VOS_ENABLE']=='1'?'visable':'invisible') ?>">
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+
+                             <td width="120" height="25" class="title1">加密模式</td>
+                             <td width="160" class="text">
+  <select name="group4_vos_mod" id="group4_vos_mod_select" class="select" onchange="toggle_selected('group4_vos_mod', 'hide')">
+     <option value="1" <?php print($values['H323_G4_VOS_MODE']=='1'?'selected':'') ?>>VOS信令加密</option>
+     <option value="2" <?php print($values['H323_G4_VOS_MODE']=='2'?'selected':'') ?>>VOS信令媒体加密</option>
+     <option value="3" <?php print($values['H323_G4_VOS_MODE']=='3'?'selected':'') ?>>AVS信令加密</option>
+     <option value="4" <?php print($values['H323_G4_VOS_MODE']=='4'?'selected':'') ?>>AVS信令媒体加密</option>
+  </select>
+                             </td>
+
+                            </tr>
+
+                            <tr>
+                             <td colspan="2">
+
+                              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                              </table>
+                             </td>
+                            </tr>
+
+                          </table>
+                        </div>
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td width="120" height="25" class="title1">
+                         </td>
+                         <td width="160" class="text">
+                          <input type="checkbox" name="group4_h235_auth" id="group4_h235_auth" onclick="toggle_checkbox('group4_h235_auth', 'hide')" <?php print($values['H323_GROUP4_AUTH']=='1'?'checked':'') ?>><span>使用认证</span>
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td colspan="2">
+
+                        <div id="group4_h235_auth_div" class="<?php print($values['H323_GROUP4_AUTH']=='1'?'visable':'invisible') ?>">
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+                             <td width="120" height="25" class="title1">认证Id</td>
+                             <td width="160" class="text">
+                              <input type="text" name="group4_h235_id" id="group4_h235_id" value="<?php print($values['H323_GROUP4_H235_ID']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                            <tr>
+                             <td width="120" height="25" class="title1">密码</td>
+                             <td width="160" class="text">
+                              <input type="password" name="group4_h235_passwd" id="group4_h235_passwd" value="<?php print($values['H323_GROUP4_H235_PASSWD']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                          </table>
+                        </div>
+                         </td>
+                        </tr>
+
+                        <tr>
+                         <td colspan="2" class="title1" height="25" >该组包括线路</td>
+                        </tr>
+
+                        <tr>
+                         <td colspan="2">
+
+                         <div id="h323_group4_lines" class="visable">
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+                             <td align="center" valign="top">
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+                             <td width="20" height="25" class="text">
+                              <input type="checkbox" name="h323_line1_in_group4" id="h323_line1_in_group4" onclick="toggle_checkbox('h323_line1_in_group4', 'hide')" <?php print($values['H323_L1_IN_G4']=='1'?'checked':'') ?>><span>线1</span>
+                             </td>
+                            </tr>
+                          </table>
+                             </td>
+                             <td align="center" valign="top">
+<?php if($values['FXSPORT'] >= 2): ?>
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+                             <td width="20" height="25" class="text">
+                              <input type="checkbox" name="h323_line2_in_group4" id="h323_line2_in_group4" onclick="toggle_checkbox('h323_line2_in_group4', 'hide')" <?php print($values['H323_L2_IN_G4']=='1'?'checked':'') ?>><span>线2</span>
+                             </td>
+                            </tr>
+                          </table>
+<?php endif; ?>
+                             </td>
+                             <td align="center" valign="top">
+<?php if($values['FXSPORT'] >= 3): ?>
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+                             <td width="20" height="25" class="text">
+                              <input type="checkbox" name="h323_line3_in_group4" id="h323_line3_in_group4" onclick="toggle_checkbox('h323_line3_in_group4', 'hide')" <?php print($values['H323_L3_IN_G4']=='1'?'checked':'') ?>><span>线3</span>
+                             </td>
+                            </tr>
+                          </table>
+<?php endif; ?>
+                             </td>
+                             <td align="center" valign="top">
+<?php if($values['FXSPORT'] >= 4): ?>
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+                             <td width="20" height="25" class="text">
+                              <input type="checkbox" name="h323_line4_in_group4" id="h323_line4_in_group4" onclick="toggle_checkbox('h323_line4_in_group4', 'hide')" <?php print($values['H323_L4_IN_G4']=='1'?'checked':'') ?>><span>线4</span>
+                             </td>
+                            </tr>
+                          </table>
+<?php endif; ?>
+                             </td>
+                            </tr>
+
+                          </table>
+                         </div>
+                         </td>
+                        </tr>
+
+                      </table>
+                     </div>
+                      </div>
+
+                     </td>
+                    </tr>
+
+                  </table>
+                </div>
+                   <div class="invisible"><br></div>
+                 </td>
+                </tr>
+
+              </table>
+             </td>
+            </tr>
+
+<?php endif; ?>
+          </table>
+         </div>
+         </td>
+        </tr>
+
+      </table>

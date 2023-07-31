@@ -1,0 +1,337 @@
+
+.input {
+	BORDER-RIGHT: #BFBFBF 1px solid; PADDING-RIGHT: 1px; BACKGROUND-POSITION: 14px 50%; BORDER-TOP: #BFBFBF 1px solid; PADDING-LEFT: 1px; FONT-SIZE: 11px; PADDING-BOTTOM: 1px; BORDER-LEFT: #BFBFBF 1px solid; COLOR: #737272; PADDING-TOP: 1px; BORDER-BOTTOM: #BFBFBF 1px solid; FONT-FAMILY: Tahoma; HEIGHT: 20px; background:url(../images/inputdi.jpg)
+}
+.input2 {
+	BORDER-RIGHT: #767676 1px solid; PADDING-RIGHT: 1px; BACKGROUND-POSITION: 14px 50%; BORDER-TOP: #767676 1px solid; PADDING-LEFT: 1px; FONT-SIZE: 11px; PADDING-BOTTOM: 1px; BORDER-LEFT: #767676 1px solid; COLOR: #737272; PADDING-TOP: 0px; BORDER-BOTTOM: #767676 1px solid; FONT-FAMILY: Tahoma; HEIGHT: 18px; BACKGROUND-COLOR: #EBEBEB
+}
+.sh7 {
+	BORDER-RIGHT: #946331 1px solid; BORDER-TOP: #946331 1px solid; BORDER-LEFT: #946331 1px solid; COLOR: #f5aa78; BORDER-BOTTOM: #946331 1px solid; HEIGHT: 12pt; BACKGROUND-COLOR: #6a3805
+}
+.aniu {
+	BORDER-RIGHT: #014D87 1px solid; BORDER-TOP: #014D87 1px solid; BORDER-LEFT: #014D87 1px solid; COLOR: #014D87; BORDER-BOTTOM: #014D87 1px solid; HEIGHT: 14pt; BACKGROUND-COLOR: #014D87
+}
+.sh9 {
+	BORDER-RIGHT: #666666 1px solid; BORDER-TOP: #666666 1px solid; BORDER-LEFT: #666666 1px solid; COLOR: #000000; BORDER-BOTTOM: #666666 1px solid; HEIGHT: 14pt; BACKGROUND-COLOR: #ffffff
+}
+.sh5 {
+	BORDER-RIGHT: #946331 1px solid; BORDER-TOP: #946331 1px solid; BORDER-LEFT: #946331 1px solid; BORDER-BOTTOM: #946331 1px solid; HEIGHT: 14pt
+}
+TD {
+	FONT-SIZE: 12px; COLOR: #593922
+}
+LI {
+	FONT-SIZE: 12px; COLOR: #593922
+}
+SELECT {
+	FONT-SIZE: 12px; COLOR: #593922
+}
+.l18yellow {
+	font-size: 11px;
+	color: #ff3300;
+	FONT-FAMILY: Tahoma;
+	}
+.l18 {
+	font-size: 11px;
+	color: #787878;
+	FONT-FAMILY: Tahoma;
+	}
+.l18h {
+	font-size: 11px;
+	color: #787878;
+	FONT-FAMILY: Tahoma;
+	}
+A.l18h:link {
+	font-size: 11px;
+	color: #333333;
+	FONT-FAMILY: Tahoma;
+	TEXT-DECORATION: none;
+	}
+A.l18h:hover {
+	font-size: 11px;
+	color: #0076A3;
+	FONT-FAMILY: Tahoma;
+	TEXT-DECORATION: none;
+	}
+A.l18h:visited {
+	font-size: 11px;
+	color: #333333;
+	FONT-FAMILY: Tahoma;
+	TEXT-DECORATION: none;
+	}
+.l171 {
+	font-size: 12px;
+	color: #406619;
+}
+.l17l {
+	font-size: 11px;
+	color: #406619;
+	FONT-FAMILY: Tahoma;
+	HEIGHT: 16px
+}
+.l17 {
+	font-size: 11px;
+	color: #646464;
+	FONT-FAMILY: Tahoma;
+	HEIGHT: 16px
+}
+.l20 {
+	LINE-HEIGHT: 120%;
+	font-size: 14px;
+	color: #014D87;
+}
+.l15 {
+	COLOR: #333333; LINE-HEIGHT: 150%
+}
+.l15z {
+	FONT-SIZE: 14px; LINE-HEIGHT: 150%
+}
+A {
+	FONT-SIZE: 11px; COLOR: #333333; FONT-FAMILY: "Arial","Verdana"
+}
+TD {
+	FONT-SIZE: 11px; COLOR: #333333; FONT-FAMILY: "Arial","Verdana"
+}
+TEXTAREA {
+	FONT-SIZE: 11px; COLOR: #333333; FONT-FAMILY: "Arial","Verdana"
+}
+INPUT {
+	FONT-SIZE: 11px; COLOR: #333333; FONT-FAMILY: "Arial","Verdana"
+}
+SPAN {
+	FONT-SIZE: 11px; COLOR: #333333; FONT-FAMILY: "Arial","Verdana"
+}
+SELECT {
+	FONT-SIZE: 11px; COLOR: #333333; FONT-FAMILY: "Arial","Verdana"
+}
+A:link {
+	TEXT-DECORATION: none
+}
+A:visited {
+	TEXT-DECORATION: none
+}
+A:hover {
+	TEXT-DECORATION: underline
+}
+A:active {
+	TEXT-DECORATION: none
+}
+FORM {
+	MARGIN: 0px
+}
+SELECT {
+	COLOR: #333333
+}
+TABLE.show {
+	TABLE-LAYOUT: fixed
+}
+pp {
+	BORDER-RIGHT: #666666 1px solid; BORDER-TOP: #666666 1px solid; BORDER-LEFT: #666666 1px solid; COLOR: #333333; BORDER-BOTTOM: #666666 1px solid; BACKGROUND-COLOR: #ffffff
+}
+TEXTAREA {
+	BORDER-RIGHT: #666666 1px solid; BORDER-TOP: #666666 1px solid; BORDER-LEFT: #666666 1px solid; COLOR: #333333; BORDER-BOTTOM: #666666 1px solid; BACKGROUND-COLOR: #ffffff
+}
+IMG {
+	BORDER-RIGHT: 0px; BORDER-TOP: 0px; BORDER-LEFT: 0px; BORDER-BOTTOM: 0px
+}
+.redStar {
+	COLOR: #ff0000
+}
+.noBorder {
+	BORDER-RIGHT: medium none; BORDER-TOP: medium none; BACKGROUND: none transparent scroll repeat 0% 0%; BORDER-LEFT: medium none; BORDER-BOTTOM: medium none
+}
+.button {
+	BORDER-RIGHT: #000000 1px solid; PADDING-RIGHT: 1px; BORDER-TOP: #ffffff 1px solid; PADDING-LEFT: 1px; PADDING-BOTTOM: 1px; BORDER-LEFT: #ffffff 1px solid; COLOR: #333333; PADDING-TOP: 1px; BORDER-BOTTOM: #000000 1px solid; HEIGHT: 19px; BACKGROUND-COLOR: #e1e1e1
+}
+.button1 {
+	 PADDING-RIGHT: 1px; BORDER-TOP: #ffffff 1px solid; PADDING-LEFT: 1px; PADDING-BOTTOM: 1px; BORDER-LEFT: #ffffff 1px solid; COLOR: #333333; PADDING-TOP: 1px; BORDER-BOTTOM: #000000 1px solid; HEIGHT: 19px; BACKGROUND-COLOR: #e1e1e1
+}
+A.topMenulink:link {
+	COLOR: #ffffff; TEXT-DECORATION: none
+}
+A.topMenulink:visited {
+	COLOR: #ffffff; TEXT-DECORATION: none
+}
+A.topMenulink:hover {
+	COLOR: #d0f3ff; TEXT-DECORATION: none
+}
+A.topMenulink:active {
+	COLOR: #ffffff; TEXT-DECORATION: none
+}
+A.red_link:link {
+	FONT-WEIGHT: 700; COLOR: #cc0000; TEXT-DECORATION: underline
+}
+A.red_link:visited {
+	FONT-WEIGHT: 700; COLOR: #cc0000; TEXT-DECORATION: underline
+}
+A.red_link:hover {
+	FONT-WEIGHT: 700; COLOR: #333333; TEXT-DECORATION: underline
+}
+A.red_link:active {
+	FONT-WEIGHT: 700; COLOR: #cc0000; TEXT-DECORATION: underline
+}
+A.red_link:active {
+	FONT-WEIGHT: 700; COLOR: #cc0000; TEXT-DECORATION: underline
+}
+A.blove_link:link {
+	FONT-WEIGHT: 700; COLOR: #0e65a5; TEXT-DECORATION: underline
+}
+A.blove_link:visited {
+	FONT-WEIGHT: 700; COLOR: #0e65a5; TEXT-DECORATION: underline
+}
+A.blove_link:hover {
+	FONT-WEIGHT: 700; COLOR: #cc0000; TEXT-DECORATION: underline
+}
+A.blove_link:active {
+	FONT-WEIGHT: 700; COLOR: #0e65a5; TEXT-DECORATION: none
+}
+.gray {
+	BACKGROUND-COLOR: #f0f0f0
+}
+.gray1 {
+	BACKGROUND-COLOR: #cccccc
+}
+.gray2 {
+	COLOR: #ffffff; BACKGROUND-COLOR: #595959
+}
+.gray3 {
+	BACKGROUND-COLOR: #e0e0e0
+}
+.gray_strong {
+	FONT-WEIGHT: 700
+}
+.red {
+	FONT-WEIGHT: 700; COLOR: #cc0000
+}
+.blove {
+	FONT-WEIGHT: 700; COLOR: #406619
+}
+.blove2 {
+	FONT-WEIGHT: 700; COLOR: #336699; BACKGROUND-COLOR: #f1f7fe
+}
+.blove3 {
+	FONT-WEIGHT: 700; COLOR: #ffffff; BACKGROUND-COLOR: #0e65a5
+}
+.blove4 {
+	FONT-WEIGHT: 700; FONT-SIZE: 15px; COLOR: #336699
+}
+.topic {
+	FONT-WEIGHT: 700; FONT-SIZE: 18px; COLOR: #c20606; FONT-FAMILY: arial
+}
+A.gray_link:link {
+	FONT-WEIGHT: 700; COLOR: #333333; TEXT-DECORATION: none
+}
+A.gray_link:visited {
+	FONT-WEIGHT: 700; COLOR: #333333; TEXT-DECORATION: none
+}
+A.gray_link:hover {
+	FONT-WEIGHT: 700; COLOR: #333333; TEXT-DECORATION: underline
+}
+A.gray_link:active {
+	FONT-WEIGHT: 700; COLOR: #333333; TEXT-DECORATION: none
+}
+A.blovelinkUnderline:link {
+	FONT-WEIGHT: 700; COLOR: #0e65a5; TEXT-DECORATION: underline
+}
+A.blovelinkUnderline:visited {
+	FONT-WEIGHT: 700; COLOR: #0e65a5; TEXT-DECORATION: underline
+}
+A.blovelinkUnderline:hover {
+	FONT-WEIGHT: 700; COLOR: #0e65a5; TEXT-DECORATION: underline
+}
+A.blovelinkUnderline:active {
+	FONT-WEIGHT: 700; COLOR: #0e65a5; TEXT-DECORATION: underline
+}
+A.underline:link {
+	COLOR: #006699; TEXT-DECORATION: underline
+}
+A.underline:visited {
+	COLOR: #800080; TEXT-DECORATION: underline
+}
+A.underline:hover {
+	COLOR: #666666; TEXT-DECORATION: underline
+}
+A.underline:active {
+	COLOR: #333333; TEXT-DECORATION: underline
+}
+.back1 {
+	FONT-WEIGHT: 700; COLOR: #406619; BACKGROUND-COLOR: #CFEAA7
+}
+.back2 {
+	FONT-WEIGHT: 700; COLOR: #333333; BACKGROUND-COLOR: #dcdcdc
+}
+.font_top {
+	FONT-WEIGHT: 600; COLOR: #4b4b4b
+}
+.tr0 {
+	COLOR: #333333; BACKGROUND-COLOR: #ffffff
+}
+.tr1 {
+	COLOR: #333333; BACKGROUND-COLOR: #f8f8f8
+}
+.green {
+	FONT-WEIGHT: 700; COLOR: #619f3c; BACKGROUND-COLOR: #e7f3de
+}
+.popTitle {
+	FONT-WEIGHT: 700; COLOR: #0e65a5
+}
+.popText {
+	TEXT-INDENT: 24px; LINE-HEIGHT: 18px
+}
+.red14px {
+	FONT-WEIGHT: 700; FONT-SIZE: 14px; COLOR: #cc0000
+}
+.topMenus {
+	COLOR: #ffffff; TEXT-DECORATION: none
+}
+.Documentblove2 {
+	FONT-WEIGHT: 700; COLOR: #336699; BACKGROUND-COLOR: #f1f7fe
+}
+.point {
+	COLOR: #c20606
+}
+.back_white {
+	COLOR: #000000; BACKGROUND-COLOR: #ffffff
+}
+.barchar {
+	FONT-WEIGHT: 700; FONT-SIZE: 12px; COLOR: #cc0000; BACKGROUND-COLOR: #f2f2f2
+}
+.databg {
+	FONT-SIZE: 9px; COLOR: #595959; BACKGROUND-COLOR: #dfdfdf
+}
+SPAN.topic {
+	FONT-WEIGHT: 700; FONT-SIZE: 25px; COLOR: #222222; FONT-FAMILY: arial,verdana
+}
+SPAN.font1 {
+	FONT-SIZE: 11px; COLOR: #333333; FONT-FAMILY: arial,verdana
+}
+SPAN.font2 {
+	FONT-SIZE: 12px; COLOR: #333333; FONT-FAMILY: arial,verdana
+}
+SPAN.font3 {
+	FONT-SIZE: 13px; COLOR: #333333; FONT-FAMILY: arial,verdana
+}
+SPAN.font4 {
+	FONT-SIZE: 14px; COLOR: #333333; FONT-FAMILY: arial,verdana
+}
+SPAN.font5 {
+	FONT-SIZE: 15px; COLOR: #333333; FONT-FAMILY: arial,verdana
+}
+SPAN.title1 {
+	FONT-WEIGHT: bold; FONT-SIZE: 22px; FONT-FAMILY: Arial, verdana
+}
+SPAN.title2 {
+	FONT-WEIGHT: bold; FONT-SIZE: 21px; FONT-FAMILY: Arial, verdana
+}
+SPAN.title3 {
+	FONT-WEIGHT: bold; FONT-SIZE: 20px; FONT-FAMILY: Arial, verdana
+}
+SPAN.title4 {
+	FONT-WEIGHT: bold; FONT-SIZE: 18px; FONT-FAMILY: Arial, verdana
+}
+.outTable {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 1px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px
+}
+.tables{
+	  OVERFLOW:   auto;HEIGHT:   200px 
+}

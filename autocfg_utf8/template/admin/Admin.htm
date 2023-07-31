@@ -1,0 +1,234 @@
+<!--
+<?php
+print <<<EOT
+-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>administrator management</title>
+<meta name="Author" content="Gaby_chen">
+<link href="Style.css" rel="stylesheet" type="text/css">
+</head>
+<body leftmargin="2" topmargin="0" marginwIdth="0" marginheight="0">
+<table wIdth="100%" border="0" align="center" cellpadding="2" cellspacing="1" class="border">
+  <tr class="topbg"> 
+    <td height="22" colspan="2" align="center"><strong>administrator management</strong></td>
+  </tr>
+  <tr class="tdbg"> 
+    <td wIdth="70" height="30"><strong>admin navigation:</strong></td>
+    <td height="30"><a href="{$URL}?job=Admin">administrator login page</a> | <a href="{$URL}?job=Admin&action=add">append another administrator</a>&nbsp;|&nbsp;</td>
+  </tr>
+</table>
+<!--
+EOT;
+if($statu=="main"){
+print <<<EOT
+-->
+<br> 
+<table wIdth='100%' border="0" cellpadding="0" cellspacing="0">
+  <tr>
+  <form name="myform" method="Post" action="job.php?action=Admin_Del" onsubmit="return confirm('be sure to delete the administrator?');">
+     <td>
+<table wIdth="100%" border="0" align="center" cellpadding="2" cellspacing="1" class="border">
+  <tr align="center" class="title">
+    <td  wIdth="30"><strong>pitch on</strong></td>
+    <td  wIdth="30" height="22"><strong>Id</strong></td>
+    <td height="22"><strong> username</strong></td>
+    <td  wIdth="150" height="22"><strong>operation</strong></td>
+  </tr>
+<!--
+EOT;
+$j=0;
+foreach($rsdb as $rs) {
+print <<<EOT
+-->
+  <tr align="center" class="tdbg" onmouseout="this.style.backgroundColor=''" onmouseover="this.style.backgroundColor='#BFDFFF'"> 
+    <td wIdth="30"><input name="Id{$j}" type="checkbox" value="{$rs['Id']}" onclick="unselectall()"></td>
+    <td wIdth="30">{$rs['Id']}</td>
+    <td align="left">
+<!--
+EOT;
+if($adminname==$rs['UserName']){
+print <<<EOT
+-->
+<font color=red><b>{$rs['UserName']}</b></font>
+<!--
+EOT;
+}
+else
+{
+print <<<EOT
+-->
+{$rs['UserName']}
+<!--
+EOT;
+}
+print <<<EOT
+-->
+</td>
+    <td wIdth="150"><a href="{$URL}?job=Admin&action=modify&Id={$rs['Id']}">Change password</a>&nbsp;&nbsp;
+	<a href="job.php?action=Admin_Del&Id={$rs['Id']}" onClick="return confirm('be sure to delete the administrator?');" >Delete</a></td>
+  </tr>
+<!--
+EOT;
+$j++;
+}
+print <<<EOT
+-->
+</table>  
+<table wIdth="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td wIdth="200" height="30"><input name="chkAll" type="checkbox" Id="chkAll" onclick=CheckAll(this.form) value="checkbox">
+              choose all the administrators on the page</td>
+            <td><input name="Action" type="hIdden" Id="Action" value="Del">
+              <input name="Submit" type="submit" Id="Submit" value="delete the chosen administrator"></td>
+  </tr>
+</table>
+</td>
+<input type="hIdden" name="boxs" value="{$j}">
+
+</form>
+</tr></table> 
+<SCRIPT language=javascript>
+function unselectall()
+{
+    if(document.myform.chkAll.checked){
+	document.myform.chkAll.checked = document.myform.chkAll.checked&0;
+    } 	
+}
+
+function CheckAll(form)
+{
+  for (var i=0;i<form.elements.length;i++)
+    {
+    var e = form.elements[i];
+    if (e.Name != "chkAll"&&e.disabled!=true)
+       e.checked = form.chkAll.checked;
+    }
+}
+</script>
+<!--
+EOT;
+}
+if($statu=="add") {
+print <<<EOT
+-->
+<form method="post" action="job.php?action=Admin_Add" name="form1" onsubmit="javascript:return CheckAdd();">
+  <table wIdth="100%" border="0" align="center" cellpadding="2" cellspacing="1" class="border" >
+    <tr class="title"> 
+      <td height="22" colspan="2"> <div align="center"><strong>append administrator</strong></div></td>
+    </tr>
+    <tr class="tdbg"> 
+      <td wIdth="35%" class="tdbg"><strong> username:</strong></td>
+      <td wIdth="65%" class="tdbg"><input name="username" type="text"> &nbsp;</td>
+    </tr>
+    <tr class="tdbg"> 
+      <td wIdth="35%" class="tdbg"><strong> original password: </strong></td>
+      <td wIdth="65%" class="tdbg"><font size="2"> 
+        <input type="password" name="Password">
+      </font></td>
+    </tr>
+    <tr class="tdbg"> 
+      <td wIdth="35%" class="tdbg"><strong> confirm password:</strong></td>
+      <td wIdth="65%" class="tdbg"><font size="2"> 
+        <input type="password" name="PwdConfirm">
+      </font></td>
+    </tr>
+    <tr> 
+      <td height="40" colspan="2" align="center" class="tdbg"><input name="Action" type="hIdden" Id="Action" value="SaveAdd"> 
+        <input  type="submit" name="Submit" value=" append " style="cursor:hand;"> 
+        &nbsp; <input name="Cancel" type="button" Id="Cancel" value=" cancel " onClick="window.location.href='{$URL}?job=Admin_List'" style="cursor:hand;"></td>
+    </tr>
+  </table>
+</form>
+<SCRIPT language=javascript>
+function CheckAdd()
+{
+  if(document.form1.username.value=="")
+    {
+      alert("Your username should not be empty!");
+	  document.form1.username.focus();
+      return false;
+    }
+    
+  if(document.form1.Password.value=="")
+    {
+      alert("Your password should not be empty!");
+	  document.form1.Password.focus();
+      return false;
+    }
+    
+  if((document.form1.Password.value)!=(document.form1.PwdConfirm.value))
+    {
+      alert("The original password is not the same as the confirm password!");
+	  document.form1.PwdConfirm.select();
+	  document.form1.PwdConfirm.focus();	  
+      return false;
+    }
+  if (document.form1.Purview[1].checked==true){
+	GetClassPurview();
+  }
+}</script>
+<!--
+EOT;
+}
+if($statu=="modify") {
+print <<<EOT
+-->
+<form method="post" action="job.php?action=Admin_Modify" name="form1" onsubmit="javascript:return CheckModify();">
+  <table wIdth="100%" border="0" align="center" cellpadding="2" cellspacing="1" class="border" >
+    <tr class="title"> 
+      <td height="22" colspan="2"> <div align="center"><font size="2"><strong>change administrator password</strong></font></div></td>
+    </tr>
+    <tr> 
+      <td wIdth="40%" class="tdbg"><strong>username:</strong></td>
+      <td wIdth="60%" class="tdbg">{$UserName} <input name="Id" type="hIdden" Id="Id" value="{$Id}"></td>
+    </tr>
+    <tr> 
+      <td wIdth="40%" class="tdbg"><strong>new password:</strong></td>
+      <td wIdth="60%" class="tdbg"><input type="password" name="Password">
+      </td>
+    </tr>
+    <tr> 
+      <td wIdth="40%" class="tdbg"><strong>confirm password:</strong></td>
+      <td wIdth="60%" class="tdbg"><input type="password" name="PwdConfirm">
+      </td>
+    </tr>
+    <tr> 
+      <td colspan="2" align="center" class="tdbg"><input name="Action" type="hIdden" Id="Action" value="SaveModifyPwd"> 
+        <input  type="submit" name="Submit" value="save modification" style="cursor:hand;">
+        &nbsp;
+        <input name="Cancel" type="button" Id="Cancel" value=" cancel " onClick="window.location.href='{$URL}?job=Admin_List'" style="cursor:hand;"></td>
+    </tr>
+  </table>
+</form>
+<SCRIPT language=javascript>
+function CheckModifyPwd()
+{
+  if(document.form1.Password.value=="")
+    {
+      alert("Your password should not be empty!");
+	  document.form1.Password.focus();
+      return false;
+    }
+  if((document.form1.Password.value)!=(document.form1.PwdConfirm.value))
+    {
+      alert("The original password is not the same as the confirm password!");
+	  document.form1.PwdConfirm.select();
+	  document.form1.PwdConfirm.focus();	  
+      return false;
+    }
+}
+</script>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+</body> 
+</html> 
+<!--
+EOT;
+?>
+-->

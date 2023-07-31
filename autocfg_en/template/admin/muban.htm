@@ -1,0 +1,338 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>muban management</title>
+<meta name="Author" content="Gaby_chen">
+
+<link href="Style.css" rel="stylesheet" type="text/css">
+
+<script src="dynamic.bin" lang="javascript"></script>
+<script lang="javascript">
+if (document.getElementById){
+
+	document.write('<style type="text/css">\n');
+	document.write('.invisible{display:none;}\n');
+	document.write('</style>\n');
+}
+
+function auto_cfg(port)
+{
+        if(!confirm("Auto config from line 1:\nPhone Number increase step by 1 from line 1\nDisplay Name increase step by 1 from line 1\nAuthentication ID increase step by 1 from line 1\nGateway Prefix increase step by 1 from line 1\nOther configs the same as line 1.")) return;
+
+        auto_config("sip_line", "_number", port, 1);
+        auto_config("sip_line", "_display_name", port, 1);
+        auto_config("sip_line", "_auth_id", port, 1);
+        auto_config("sip_line", "_auth_passwd", port, 0);
+        auto_config("sip_line", "_gw_prefix", port, 1);
+        auto_config("sip_line", "_proxy", port, 0);
+        auto_config("sip_line", "_registrar", port, 0);
+        auto_config("sip_line", "_register_expired", port, 0);
+        auto_config("sip_line", "_outbound_proxy", port, 0);
+        auto_config("sip_line", "_home_domain", port, 0);
+}
+
+function auto_cfg2(port)
+{
+        var i;
+        if(!confirm("Auto config from line 1:\nAll configs the same as line 1.")) return;
+        auto_config("line", "_fw_to_pstn", port, 0, 1, 1);
+        auto_config("line", "_fw_num_to_pstn", port, 0);
+        auto_config("line", "_p_dial_plan", port, 0);
+        auto_config("line", "_p_dial_plan_rst", port, 0, 1);
+        auto_config("line", "_fw2pstn_auth_mode", port, 0, 2, 1);
+        auto_config("line", "_fw_to_pstn_passwd", port, 0);
+        auto_config("l", "_fw_to_pstn_passwd", port, 0);
+        auto_config("line", "_out_interval", port, 0);
+        auto_config("line", "_o_sleep_mode", port, 0, 1);
+        for(i=1;i<=15;i++) auto_config("l", "_voip_trust_num"+i, port, 0);
+}
+
+function auto_cfg3(port)
+{
+        var i;
+        if(!confirm("Auto config from line 1:\nOther configs the same as line 1.")) return;
+        auto_config("line", "_fw_to_voip", port, 0, 1, 1);
+        auto_config("line", "_fw_num_to_voip", port, 0);
+        auto_config("line", "_v_dial_plan", port, 0);
+        auto_config("line", "_fw2voip_auth_mode", port, 0, 2, 1);
+        auto_config("line", "_fw_to_voip_passwd", port, 0);
+        auto_config("l", "_fw_to_voip_passwd", port, 0);
+        auto_config("line", "_auto_blacklist_in_enable", port, 0, 1, 1);
+        auto_config("line", "_auto_blacklist_in_repeat_limit", port, 0, 0);
+        auto_config("line", "_gsm_group_mode", port, 0, 2, 1);
+        auto_config("line", "_gsm_fw_mode", port, 0, 2);
+        auto_config("line", "_group_share_addr", port, 0);
+        auto_config("line", "_group_svr_addr", port, 0);
+        for(i=1;i<=15;i++) auto_config("l", "_pstn_trust_num"+i, port, 0);
+}
+
+function auto_config(var_prefix, var_postfix, id, add_flag, radio_flag, toggle_flag)
+{
+        var i,j;
+        var value;
+        var checked;
+        if(!document.getElementById) {
+                alert("javacript getElementById error");
+                return;
+        }
+        if(radio_flag==1) {
+                var enable_checked=document.getElementById(var_prefix+"1"+var_postfix+"_enable").checked;
+                var disable_checked=document.getElementById(var_prefix+"1"+var_postfix+"_disable").checked;
+                for(i=2;i<=id;i++){
+                        document.getElementById(var_prefix+i+var_postfix+"_enable").checked=enable_checked;
+                        document.getElementById(var_prefix+i+var_postfix+"_disable").checked=disable_checked;
+                        if(toggle_flag && enable_checked) toggle(var_prefix+i+var_postfix+"_div", 1);
+                        if(toggle_flag && disable_checked) toggle(var_prefix+i+var_postfix+"_div", 0);
+                }
+        }
+        else if(radio_flag==2){
+                if(!document.getElementById(var_prefix+"1"+var_postfix+"_select")) return;
+                else value=document.getElementById(var_prefix+"1"+var_postfix+"_select").value;
+                for(i=2;i<=id;i++){
+                        if(document.getElementById(var_prefix+i+var_postfix+"_select")) {
+                                document.getElementById(var_prefix+i+var_postfix+"_select").value=value;
+                                if(toggle_flag) toggle_selected(var_prefix+i+var_postfix, 'hide');
+                        }
+                }
+        }
+        else if(radio_flag==3){
+                var enable_checked=document.getElementById(var_prefix+"1"+var_postfix).checked;
+                for(i=2;i<=id;i++){
+                        document.getElementById(var_prefix+i+var_postfix).checked=enable_checked;
+                        toggle_checkbox(var_prefix+i+var_postfix, 'hide');
+                }
+        }
+        else {
+
+                if(!document.getElementById(var_prefix+"1"+var_postfix)) return;
+                else value=document.getElementById(var_prefix+"1"+var_postfix).value;
+                var value_prefix=value.replace(/\d+$/,"");
+                var value_postfix=value.match(/\d+$/);
+                var old_len=value.length;
+                for(i=2;i<=id;i++){
+                        if(add_flag && value) {
+                                if(!value_postfix) value_postfix=i;
+                                else value_postfix++;
+                                value_postfix=String(value_postfix);
+                                for(j=value_prefix.length+value_postfix.length;j<old_len;j++){
+                                        value_postfix="0"+value_postfix;
+                                }
+                                value=value_prefix+value_postfix;
+                        }
+                        if(document.getElementById(var_prefix+i+var_postfix)) document.getElementById(var_prefix+i+var_postfix).value=value;
+                }
+        }
+}
+</script><style type="text/css">
+.invisible{display:none;}
+</style>
+
+<style type="text/css">
+.audiocodec {
+	font-size: 11px;
+	font-family: tahoma,sans-serif;
+cursor: pointer; 
+cursor: hand 
+}
+
+               
+
+</style></head>
+
+<body leftmargin="2" topmargin="0" marginwIdth="0" marginheight="0">
+<table wIdth="100%" border="0" align="center" cellpadding="2" cellspacing="1" class="border">
+  <tr class="topbg"> 
+    <td height="22" colspan="2" align="center"><strong><?php echo $webtitle ?></strong></td>
+  </tr>
+  <tr class="tdbg"> 
+    <td wIdth="70" height="30"><strong>Navigation Manage:</strong></td>
+    <td height="30"><a href="<?php echo $URL ?>?job=muban">Template Manage</a> | <a href="<?php  echo $URL ?>?job=muban&action=add">Template Add</a><!--|&nbsp;<a href="{$URL}?job=muban&action=uploadadd">导入模板</a>&nbsp;|&nbsp;--></td>
+  </tr>
+</table>
+<?php if($statu=="main"): ?>
+<table wIdth="100%" border="0" align="center" cellpadding="0" cellspacing="1" class="border">
+  <tr class="title"> 
+    <td wIdth="80" height="22" align="center"><strong>Serial Sort Number</strong></td>
+    <td wIdth="319" align="center"><strong>Serial Name</strong></td>
+	<td wIdth="80" height="22" align="center"><strong>Template Sort Number</strong></td>
+    <td wIdth="319" align="center"><strong>Template Name</strong></td>	
+    <td wIdth="246" height="22" align="center"><strong>Operate</strong></td>
+  </tr>
+  
+
+<?php
+foreach($rsdb as $rs){
+print <<<EOT
+  <tr class="tdbg" onmouseout="this.style.backgroundColor=''" onmouseover="this.style.backgroundColor='#BFDFFF'"> 
+    <td>{$rs['classid']}</td>
+    <td>{$rs['title']}</td>
+    <td>{$rs['orderid']}</td>
+	<td>{$rs['muban']}</td>
+    <td align="center">| <a href="{$URL}?job=muban&action=modify&id={$rs['id']}&classid={$rs['classid']}">Modify</a>
+      | <a href="{$URL}?job=muban&action=del&id={$rs['id']}&classid={$rs['classid']}" onClick="return ConfirmDel1();">Delete</a></td>
+  </tr>
+EOT;
+}
+?>
+</table> 
+<script language="JavaScript" type="text/JavaScript">
+function ConfirmDel1()
+{
+   if(confirm("Clear-up column will transfer all the content into recycle bin! Be sure to clear up the column?"))
+     return true;
+   else
+     return false;
+	 
+}
+</script>
+<?php else: ?>
+
+<?php if($statu=="add"): ?>   
+	<form id="config_form" method="post" action="?job=muban&action=saveadd" onsubmit="return check()">
+<?php else: ?>
+	<form id="config_form" method="post" action="?job=muban&action=modifysave&id=<?php print($values['id']) ?>&classid=<?php print($values['classid']) ?>" >
+<?php endif; ?>  
+<table wIdth="100%" border="0" align="center" cellpadding="0" cellspacing="0" class="border">
+  <tr colspan="2" class="tdbg"> 
+						 
+     <td width="120" height="25" class="title1">Serial Name</td>
+	 <td width="160" class="text">
+  <select name="projectid" class="select" onchange="if(this.options[this.selectedIndex].value!=''){location='?job=muban&action=add&classid='+this.options[this.selectedIndex].value;}">  
+
+<?php if($statu=="add"): ?> 
+<?php foreach($rsprojectclass as $rs) {
+if($rs['classid']==$classid) {
+?>
+	<option value="<?php print($rs['classid']) ?>" selected><?php print($rs['classname']) ?></option>
+
+<?php }
+else {
+?>
+	<option value="<?php print($rs['classid']) ?>" ><?php print($rs['classname']) ?></option>
+<?php } 
+} ?>
+<?php else : ?>
+	<option value="<?php print($values['classid']) ?>" selected><?php print($values['title']) ?></option>
+<?php endif; ?>
+
+</select>
+      </td>
+     <td width="120" height="25" class="title1">Template Name</td>
+	 <td width="160" class="text">
+     <input type="text" name="muban_name" id="muban_name" value="<?php if($statu!="add") echo $values['muban'] ?>" class="edit">
+     </td>	
+  </tr>
+  <tr class="tdbg">
+     <td width="120" height="25" class="title1">Template Sort Number</td>
+	 <td width="160" class="text">
+     <input type="text" name="muban_orderid" id="muban_orderid" value="<?php echo $values['orderid'] ?>" class="edit">
+     </td>							 
+     <td></td>
+	 <td></td>
+  </tr>
+  <tr class="tdbg">                                                                                               
+     <td width="120" height="25" class="title1">Encryption Key</td>
+         <td width="160" class="text">                                                                            
+     <input type="text" name="AUTOCFG_KEY" id="AUTOCFG_KEY" value="<?php echo $values['AUTOCFG_KEY'] ?>" class="edit">
+     </td>                                                                                                        
+     <td></td>                                                                                                    
+         <td></td>                                                                                                
+  </tr> 
+</table>  
+
+
+<?php if($muban['TELPORT']>16): ?>   
+	
+		<?php require_once template($type.'/settings'); ?>
+	
+		<?php require_once template($type.'/gsm_setting'); ?>
+	
+		<?php require_once template('other_settings'); ?>
+	
+
+<?php else: ?>
+	<?php require_once template($type.'/settings'); ?>
+
+	<?php require_once template('other_settings'); ?>
+
+
+<?php endif; ?>  
+<h1 align="center" >
+	                <td valign="top", align=center><input type=submit name=btnadd value="<?php echo $statu=='add'?"add":"modify" ?>" onclick="return check();">
+			  <input type="Reset" name="Cancel" value="cancel" onClick="window.location.reload()" style="cursor:hand;"></td>
+</h1>
+	  </form>
+<script language="JavaScript" type="text/JavaScript">
+function check()
+{
+  if(config_form.remote_server.value=="")
+  {
+  		
+  	if(confirm('Warning: do not set up to detect the value of the remote control servers, which could lead to the terminal under the template can not connect to remote server. are you sure you want to continue?')==false)
+	{		
+		//config_form.remotes.focus();
+		return false;		
+	}
+  }
+  if(config_form.remote_server_port.value!="<?php echo $_SESSION["PORT"]; ?>")
+  {
+  		
+  	if(confirm('Warning: Detection to the remote control port（'+config_form.remote_server_port.value+'） inconsistent with the host remote server listening port （<?php echo $_SESSION["PORT"]; ?>）, which could lead to the terminal under the template Unable to connect to remote server, are you sure you want to continue?')==false)
+	{		
+		//config_form.remote_server.focus();
+		return false;		
+	}
+  }
+  if(config_form.remote_server_id.value=="")
+  {
+  		
+  	if(confirm('Warning: Do not set up to detect the value of the user remote control, which could lead to the terminal under the template can not connect to remote server, are you sure you want to continue?')==false)
+	{		
+		//config_form.remote_server.focus();
+		return false;		
+	}
+  }
+
+	//alert(config_form.auto_config_enable.checked+config_form.auto_config_disable.checked);
+  if(config_form.auto_config_disable.checked)
+  { 		
+  	if(confirm('Warning: detected disabled Auto-provision, which could lead to the terminal under the template can not be automatically configured, are you sure you want to continue?')==false)
+	{		
+		config_form.auto_config_disable.focus();
+		return false;		
+	}
+  }
+  if(config_form.auto_config_enable.checked && config_form.auto_config_server.value == "")
+  { 		
+  	if(confirm('Warning: detected enabled Auto-provision but did not set the value of Provision Server, which could lead to the terminal under the template can not be automatically configured, are you sure you want to continue?')==false)
+	{		
+		config_form.auto_config_server.focus();
+		return false;		
+	}
+  }
+  if(config_form.auto_config_enable.checked && config_form.auto_config_refresh.value == "")
+  { 		
+  	if(confirm('Warning: detected enabled Auto-provision but did not set the value of Provision Interval, which could lead to the terminal under the template can not be automatically configured, are you sure you want to continue?')==false)
+	{		
+		config_form.auto_config_refresh.focus();
+		return false;		
+	}
+  }
+  if (config_form.muban_name.value=="")
+  {
+    alert("Please input template name!");
+	config_form.muban_name.focus();
+	return false;
+  }
+  if (config_form.projectid.value=="")
+  {
+    alert("Please choice a serial!");
+	config_form.projectid.focus();
+	return false;
+  }
+}
+</script>
+<?php endif; ?>
+	  </body>
+</html>

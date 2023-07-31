@@ -1,0 +1,438 @@
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+        <tr>
+         <td colspan="2" class="title2" height="25" >GSM设置</td>
+        </tr>
+
+        <tr>
+         <td colspan="2">
+
+         <div id="fxo_route_setting" class="visable">
+          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+            <tr>
+             <td align="center" valign="top">
+          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+            <tr>
+             <td colspan="2">
+
+             <div id="lines_setting" class="visable">
+              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                <tr>
+                 <td width="120" height="25" class="title1">
+<span>呼叫PSTN</span>                 </td>
+                 <td width="160" class="text">
+                  <input type="radio" name="line1_fw_to_pstn" value="on" id="line1_fw_to_pstn_enable" onclick="toggle('line1_fw_to_pstn_div', 1)" <?php print($values['L1_DISABLE_OUT']!='1'?'checked':'') ?>><span>启用</span>
+                  <input type="radio" name="line1_fw_to_pstn" value="off" id="line1_fw_to_pstn_disable" disabledbyelement="" onclick="toggle('line1_fw_to_pstn_div', 0)" <?php print($values['L1_DISABLE_OUT']=='1'?'checked':'') ?>><span>禁用</span>                 </td>
+                </tr>
+
+                <tr>
+                 <td colspan="2">
+
+                <div id="line1_fw_to_pstn_div" class="<?php print($values['L1_DISABLE_OUT']=='1'?'invisible':'visable') ?>">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                    <tr>
+                     <td width="120" height="25" class="title1">呼叫PSTN转移号码(VoIP来电,立即转移到PSTN)</td>
+                     <td width="160" class="text">
+                      <input type="text" name="line1_fw_num_to_pstn" id="line1_fw_num_to_pstn" value="<?php print($values['L1_FW_NUM_TO_PSTN']) ?>" class="edit">
+                     </td>
+                    </tr>
+
+                    <tr>
+                     <td width="120" height="25" class="title1">呼叫PSTN拨号规则</td>
+                     <td width="160" class="text">
+                      <input type="text" name="line1_p_dial_plan" id="line1_p_dial_plan" value="<?php print($values['L1_P_DIGIT_MAP']) ?>" class="edit">
+                     </td>
+                    </tr>
+
+                    <tr>
+
+                     <td width="120" height="25" class="title1">转移到PSTN认证模式</td>
+                     <td width="160" class="text">
+  <select name="line1_fw2pstn_auth_mode" id="line1_fw2pstn_auth_mode_select" class="select" onchange="toggle_selected('line1_fw2pstn_auth_mode', 'hide')">
+     <option value="NOAUTH" <?php print($values['L1_FW2PSTN_AUTH_MODE']=='NOAUTH'?'selected':'') ?>>不认证</option>
+     <option value="PASSWD" <?php print($values['L1_FW2PSTN_AUTH_MODE']=='PASSWD'?'selected':'') ?>>密码认证</option>
+     <option value="TRUSTLIST" <?php print($values['L1_FW2PSTN_AUTH_MODE']=='TRUSTLIST'?'selected':'') ?>>信任列表认证</option>
+     <option value="PASSWD_TRUSTLIST" <?php print($values['L1_FW2PSTN_AUTH_MODE']=='PASSWD_TRUSTLIST'?'selected':'') ?>>密码或信任列表认证</option>
+  </select>
+                     </td>
+
+                    </tr>
+
+                    <tr>
+                     <td colspan="2">
+
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                        <tr>
+                         <td colspan="2">
+                           <div class="invisible"><br><span class="stitle">转移到PSTN认证模式 - 密码认证</span></div>
+
+                        <div id="line1_fw2pstn_auth_mode_PASSWD_div" class="<?php print($values['L1_FW2PSTN_AUTH_MODE']=='PASSWD'?'visable':'invisible') ?>">
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+                             <td width="120" height="25" class="title1">呼叫PSTN认证密码</td>
+                             <td width="160" class="text">
+                              <input type="password" name="line1_fw_to_pstn_passwd" id="line1_fw_to_pstn_passwd" value="<?php print($values['L1_FW_TO_PSTN_PASSWD']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                          </table>
+                        </div>
+                           <div class="invisible"><br><span class="stitle">转移到PSTN认证模式 - 密码或信任列表认证</span></div>
+
+                        <div id="line1_fw2pstn_auth_mode_PASSWD_TRUSTLIST_div" class="<?php print($values['L1_FW2PSTN_AUTH_MODE']=='PASSWD_TRUSTLIST'?'visable':'invisible') ?>">
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+                             <td width="120" height="25" class="title1">呼叫PSTN认证密码</td>
+                             <td width="160" class="text">
+                              <input type="password" name="l1_fw_to_pstn_passwd" id="l1_fw_to_pstn_passwd" value="<?php print($values['L1_FW_TO_PSTN_PASSWD']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                          </table>
+                        </div>
+                           <div class="invisible"><br></div>
+                         </td>
+                        </tr>
+
+                      </table>
+                     </td>
+                    </tr>
+
+                    <tr>
+                     <td width="120" height="25" class="title1">SIM卡限制时间</td>
+                     <td width="160" class="text">
+                      <input type="text" name="line1_sim_exp" id="line1_sim_exp" value="<?php print($values['L1_SIM_EXP']) ?>" class="edit">
+                     </td>
+                    </tr>
+
+                    <tr>
+                     <td width="120" height="25" class="title1">SIM卡计费时间(s)</td>
+                     <td width="160" class="text">
+                      <input type="text" name="line1_sim_exp_unit" id="line1_sim_exp_unit" value="<?php print($values['L1_SIM_EXP_UNIT']) ?>" class="edit">
+                     </td>
+                    </tr>
+
+                    <tr>
+                     <td width="120" height="25" class="title1">SIM卡状态汇报号码</td>
+                     <td width="160" class="text">
+                      <input type="text" name="line1_sim_strp_num" id="line1_sim_strp_num" value="<?php print($values['L1_SIM_STRP_NUM']) ?>" class="edit">
+                     </td>
+                    </tr>
+
+                    <tr>
+                     <td width="120" height="25" class="title1">SIM卡状态汇报时间</td>
+                     <td width="160" class="text">
+                      <input type="text" name="line1_sim_strp_time" id="line1_sim_strp_time" value="<?php print($values['L1_SIM_STRP_TIME']) ?>" class="edit">
+                     </td>
+                    </tr>
+
+                    <tr>
+                     <td width="120" height="25" class="title1">SIM卡识别号</td>
+                     <td width="160" class="text">
+                      <input type="text" name="line1_sim_id" id="line1_sim_id" value="<?php print($values['L1_SIM_ID']) ?>" class="edit">
+                     </td>
+                    </tr>
+
+                    <tr>
+                     <td width="120" height="25"  class="title1">
+                     </td>
+                     <td width="160" class="text">                      <div style="cursor:hand; cursor:pointer" onclick="toggle_target(this, 'line1_voip_trust_list_target')">VoIP信任号码列表<span class="showstate" >&gt;&gt;</span></div>
+                     </td>
+                    </tr>
+                    <tr>
+                     <td colspan="2">
+                       <div id="line1_voip_trust_list_target" class="invisible">
+   <?php require_once template($type."/line1_voip_trust_list") ?>
+                       </div>
+                     </td>
+                    </tr>
+
+                  </table>
+                </div>
+                 </td>
+                </tr>
+
+                <tr>
+                 <td width="120" height="25" class="title1">
+<span>呼叫VoIP</span>                 </td>
+                 <td width="160" class="text">
+                  <input type="radio" name="line1_fw_to_voip" value="on" id="line1_fw_to_voip_enable" onclick="toggle('line1_fw_to_voip_div', 1)" <?php print($values['L1_DISABLE_IN']!='1'?'checked':'') ?>><span>启用</span>
+                  <input type="radio" name="line1_fw_to_voip" value="off" id="line1_fw_to_voip_disable" disabledbyelement="" onclick="toggle('line1_fw_to_voip_div', 0)" <?php print($values['L1_DISABLE_IN']=='1'?'checked':'') ?>><span>禁用</span>                 </td>
+                </tr>
+
+                <tr>
+                 <td colspan="2">
+
+                <div id="line1_fw_to_voip_div" class="<?php print($values['L1_DISABLE_IN']=='1'?'invisible':'visable') ?>">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                    <tr>
+                     <td width="120" height="25" class="title1">呼叫VoIP转移号码(PSTN来电,立即转移到VoIP)</td>
+                     <td width="160" class="text">
+                      <input type="text" name="line1_fw_num_to_voip" id="line1_fw_num_to_voip" value="<?php print($values['L1_FW_NUM_TO_VOIP']) ?>" class="edit">
+                     </td>
+                    </tr>
+
+                    <tr>
+                     <td width="120" height="25" class="title1">呼叫VoIP拨号规则</td>
+                     <td width="160" class="text">
+                      <input type="text" name="line1_v_dial_plan" id="line1_v_dial_plan" value="<?php print($values['L1_V_DIGIT_MAP']) ?>" class="edit">
+                     </td>
+                    </tr>
+
+                    <tr>
+
+                     <td width="120" height="25" class="title1">转移到VoIP认证模式</td>
+                     <td width="160" class="text">
+  <select name="line1_fw2voip_auth_mode" id="line1_fw2voip_auth_mode_select" class="select" onchange="toggle_selected('line1_fw2voip_auth_mode', 'hide')">
+     <option value="NOAUTH" <?php print($values['L1_FW2VOIP_AUTH_MODE']=='NOAUTH'?'selected':'') ?>>不认证</option>
+     <option value="PASSWD" <?php print($values['L1_FW2VOIP_AUTH_MODE']=='PASSWD'?'selected':'') ?>>密码认证</option>
+     <option value="TRUSTLIST" <?php print($values['L1_FW2VOIP_AUTH_MODE']=='TRUSTLIST'?'selected':'') ?>>信任列表认证</option>
+     <option value="PASSWD_TRUSTLIST" <?php print($values['L1_FW2VOIP_AUTH_MODE']=='PASSWD_TRUSTLIST'?'selected':'') ?>>密码或信任列表认证</option>
+  </select>
+                     </td>
+
+                    </tr>
+
+                    <tr>
+                     <td colspan="2">
+
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                        <tr>
+                         <td colspan="2">
+                           <div class="invisible"><br><span class="stitle">转移到VoIP认证模式 - 密码认证</span></div>
+
+                        <div id="line1_fw2voip_auth_mode_PASSWD_div" class="<?php print($values['L1_FW2VOIP_AUTH_MODE']=='PASSWD'?'visable':'invisible') ?>">
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+                             <td width="120" height="25" class="title1">呼叫VoIP认证密码</td>
+                             <td width="160" class="text">
+                              <input type="password" name="line1_fw_to_voip_passwd" id="line1_fw_to_voip_passwd" value="<?php print($values['L1_FW_TO_VOIP_PASSWD']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                          </table>
+                        </div>
+                           <div class="invisible"><br><span class="stitle">转移到VoIP认证模式 - 密码或信任列表认证</span></div>
+
+                        <div id="line1_fw2voip_auth_mode_PASSWD_TRUSTLIST_div" class="<?php print($values['L1_FW2VOIP_AUTH_MODE']=='PASSWD_TRUSTLIST'?'visable':'invisible') ?>">
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+                             <td width="120" height="25" class="title1">呼叫VoIP认证密码</td>
+                             <td width="160" class="text">
+                              <input type="password" name="l1_fw_to_voip_passwd" id="l1_fw_to_voip_passwd" value="<?php print($values['L1_FW_TO_VOIP_PASSWD']) ?>" class="edit">
+                             </td>
+                            </tr>
+
+                          </table>
+                        </div>
+                           <div class="invisible"><br></div>
+                         </td>
+                        </tr>
+
+                      </table>
+                     </td>
+                    </tr>
+
+                    <tr>
+                     <td width="120" height="25"  class="title1">
+                     </td>
+                     <td width="160" class="text">                      <div style="cursor:hand; cursor:pointer" onclick="toggle_target(this, 'line1_pstn_trust_list_target')">PSTN信任号码列表<span class="showstate" >&gt;&gt;</span></div>
+                     </td>
+                    </tr>
+                    <tr>
+                     <td colspan="2">
+                       <div id="line1_pstn_trust_list_target" class="invisible">
+   <?php require_once template($type."/line1_pstn_trust_list") ?>
+                       </div>
+                     </td>
+                    </tr>
+
+                  </table>
+                </div>
+                 </td>
+                </tr>
+
+                <tr>
+                 <td width="120" height="25" class="title1">
+<span>GSM呼叫等待</span>                 </td>
+                 <td width="160" class="text">
+                  <input type="radio" name="line1_gsm_cw_enable" value="on" id="line1_gsm_cw_enable_enable" disabledbyelement="" onclick="toggle('line1_gsm_cw_enable_div', 1)" <?php print($values['GSM_CW_ENABLE']=='1'?'checked':'') ?>><span>启用</span>
+                  <input type="radio" name="line1_gsm_cw_enable" value="off" id="line1_gsm_cw_enable_disable" disabledbyelement="" onclick="toggle('line1_gsm_cw_enable_div', 0)" <?php print($values['GSM_CW_ENABLE']!='1'?'checked':'') ?>><span>禁用</span>                 </td>
+                </tr>
+
+                <tr>
+                 <td width="120" height="25"  class="title1">
+                 </td>
+                 <td width="160" class="text">                  <div style="cursor:hand; cursor:pointer" onclick="toggle_target(this, 'line0_gsm_cf_list_target')">GSM呼叫转移列表<span class="showstate" >&gt;&gt;</span></div>
+                 </td>
+                </tr>
+                <tr>
+                 <td colspan="2">
+                   <div id="line0_gsm_cf_list_target" class="invisible">
+   <?php require_once template($type."/line0_gsm_cf_list") ?>
+                   </div>
+                 </td>
+                </tr>
+
+              </table>
+             </div>
+
+             </td>
+            </tr>
+
+            <tr>
+
+             <td width="120" height="25" class="title1">SMS模式</td>
+             <td width="160" class="text">
+  <select name="sms_mode" id="sms_mode_select" class="select" onchange="toggle_selected('sms_mode', 'hide')">
+     <option value="DISABLE" <?php print($values['SMS_MODE']=='DISABLE'?'selected':'') ?>>禁用</option>
+     <option value="DIAL" <?php print($values['SMS_MODE']=='DIAL'?'selected':'') ?>>拨号</option>
+     <option value="RELAY" <?php print($values['SMS_MODE']=='RELAY'?'selected':'') ?>>中转</option>
+  </select>
+             </td>
+
+            </tr>
+
+            <tr>
+             <td colspan="2">
+
+              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                <tr>
+                 <td colspan="2">
+                   <div class="invisible"><br><span class="stitle">SMS模式 - 拨号</span></div>
+
+                <div id="sms_mode_DIAL_div" class="<?php print($values['SMS_MODE']=='DIAL'?'visable':'invisible') ?>">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                    <tr>
+
+                     <td width="120" height="25" class="title1">SMS拨号</td>
+                     <td width="160" class="text">
+  <select name="sms_dial" id="sms_dial_select" class="select" onchange="toggle_selected('sms_dial', 'hide')">
+     <option value="1" <?php print($values['SMS_DIAL_ENABLE']=='1'?'selected':'') ?>>模式1</option>
+     <option value="2" <?php print($values['SMS_DIAL_ENABLE']=='2'?'selected':'') ?>>模式2</option>
+     <option value="3" <?php print($values['SMS_DIAL_ENABLE']=='3'?'selected':'') ?>>模式3</option>
+  </select>
+                     </td>
+
+                    </tr>
+
+                    <tr>
+                     <td colspan="2">
+
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                      </table>
+                     </td>
+                    </tr>
+
+                    <tr>
+                     <td width="120" height="25" class="title1">SMS拨号前缀</td>
+                     <td width="160" class="text">
+                      <input type="text" name="sms_dial_prefix" id="sms_dial_prefix" value="<?php print($values['SMS_PREFIX']) ?>" class="edit">
+                     </td>
+                    </tr>
+
+                  </table>
+                </div>
+                   <div class="invisible"><br><span class="stitle">SMS模式 - 中转</span></div>
+
+                <div id="sms_mode_RELAY_div" class="<?php print($values['SMS_MODE']=='RELAY'?'visable':'invisible') ?>">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                    <tr>
+                     <td width="120" height="25" class="title1">SMS中转号码</td>
+                     <td width="160" class="text">
+                      <input type="text" name="sms_fw_num" id="sms_fw_num" value="<?php print($values['SMS_FW_NUM']) ?>" class="edit">
+                     </td>
+                    </tr>
+
+                  </table>
+                </div>
+                   <div class="invisible"><br></div>
+                 </td>
+                </tr>
+
+              </table>
+
+             </td>
+            </tr>
+          </table>
+             </td>
+             <td align="center" valign="top">
+<?php if($values['ENDPOINT_TYPE']=='SIP'): ?>
+          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+            <tr>
+
+             <td width="120" height="25" class="title1">CID穿透模式</td>
+             <td width="160" class="text">
+  <select name="cid_fw_mode" id="cid_fw_mode_select" class="select" onchange="toggle_selected('cid_fw_mode', 'hide')">
+     <option value="DISABLE" <?php print($values['SIP_CID_FW_MODE']=='DISABLE'?'selected':'') ?>>禁用</option>
+     <option value="0" <?php print($values['SIP_CID_FW_MODE']=='0'?'selected':'') ?>>使用Remote Party ID</option>
+     <option value="1" <?php print($values['SIP_CID_FW_MODE']=='1'?'selected':'') ?>>使用CID作为SIP主叫号码</option>
+  </select>
+             </td>
+
+            </tr>
+
+            <tr>
+             <td colspan="2">
+
+              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                <tr>
+                 <td colspan="2">
+
+                <div id="cid_fw_mode_1_div" class="<?php print($values['SIP_CID_FW_MODE']=='1'?'visable':'invisible') ?>">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                    <tr>
+                     <td width="120" height="25" class="title1">&nbsp;&nbsp;CID前缀</td>
+                     <td width="160" class="text">
+                      <input type="text" name="cid_fw_prefix" id="cid_fw_prefix" value="<?php print($values['CID_FW_PREFIX']) ?>" class="edit">
+                     </td>
+                    </tr>
+
+                  </table>
+                </div>
+                 </td>
+                </tr>
+
+              </table>
+
+             </td>
+            </tr>
+<?php endif; ?>
+<?php if($values['ENDPOINT_TYPE']=='H323'): ?>
+
+            <tr>
+             <td width="120" height="25" class="title1">
+<span>CID穿透</span>             </td>
+             <td width="160" class="text">
+              <input type="radio" name="h323_cid_fw" value="on" id="h323_cid_fw_enable" disabledbyelement="" onclick="toggle('h323_cid_fw_div', 1)" <?php print($values['H323_CID_FW']=='1'?'checked':'') ?>><span>启用</span>
+              <input type="radio" name="h323_cid_fw" value="off" id="h323_cid_fw_disable" disabledbyelement="" onclick="toggle('h323_cid_fw_div', 0)" <?php print($values['H323_CID_FW']!='1'?'checked':'') ?>><span>禁用</span>             </td>
+            </tr>
+<?php endif; ?>
+          </table>
+             </td>
+            </tr>
+
+          </table>
+         </div>
+         </td>
+        </tr>
+
+      </table>

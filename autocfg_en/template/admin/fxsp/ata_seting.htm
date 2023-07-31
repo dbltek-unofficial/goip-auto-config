@@ -1,0 +1,257 @@
+
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+        <tr>
+         <td colspan="2" class="title2" height="25" >Phone Settings</td>
+        </tr>
+		
+        <tr>
+         <td colspan="2">
+
+         <div id="ata_setting" class="visable">
+          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+            <tr>                                                                                                  
+             <td align="center" valign="top">                                                                     
+          <table border="0" cellpadding="0" cellspacing="0" width="100%">                                         
+                                                                                                                  
+            <tr>                                                                                                  
+             <td colspan="2">                                                                                     
+                                                                                                                  
+             <div id="ata_basic_setting" class="visable">                                                         
+              <table border="0" cellpadding="0" cellspacing="0" width="100%">  
+
+            <tr>
+             <td colspan="2">
+
+             <div id="ata_basic_setting" class="visable">
+              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+<?php if($values['LIVELINE']==1): ?>
+                <tr>
+                 <td width="120" height="25" class="title1">Start VoIP Dial</td>
+                 <td width="160" class="text">
+                  <input type="text" name="star_cmd_voip" id="star_cmd_voip" value="<?php print($values['STAR_CMD_START_VOIP_DIAL']) ?>" class="edit">
+                 </td>
+                </tr>
+
+<?php endif; ?>
+<?php if($values['LIVELINE']==1): ?>
+                <tr>
+                 <td width="120" height="25" class="title1">Switch to PSTN</td>
+                 <td width="160" class="text">
+                  <input type="text" name="star_cmd_pstn" id="star_cmd_pstn" value="<?php print($values['STAR_CMD_SWITCH_TO_PSTN']) ?>" class="edit">
+                 </td>
+                </tr>
+
+<?php endif; ?>
+
+                    <tr>
+                     <td colspan="2">
+
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                      </table>
+                     </td>
+                    </tr>
+
+                  </table>
+                </div>
+                 </td>
+                </tr>
+
+<?php if($values['LIVELINE']==1): ?>
+                <tr>
+
+                 <td width="120" height="25" class="title1">Line 1 Default</td>
+                 <td width="160" class="text">
+  <select name="line1_default_mode" id="line1_default_mode_select" class="select" onchange="toggle_selected('line1_default_mode', 'hide')">
+     <option value="VOIP" <?php print($values['S_L1_DFC']=='VOIP'?'selected':'') ?>>VoIP</option>
+     <option value="PSTN" <?php print($values['S_L1_DFC']=='PSTN'?'selected':'') ?>>PSTN</option>
+  </select>
+                 </td>
+		
+                </tr>
+
+                <tr>
+                 <td colspan="2">
+
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                    <tr>
+                     <td colspan="2">
+
+                    <div id="line1_default_mode_PSTN_div" class="<?php print($values['S_L1_DFC']=='PSTN'?'visable':'invisible') ?>">
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+<?php if($values['LIVELINE']==1 && $values['L1_VOIP_MATCHING_ENABLE']==1): ?>
+                        <tr>
+                         <td width="120" height="25" class="title1">Line 1 VoIP Matching Prefix</td>
+                         <td width="160" class="text">
+                          <input type="text" name="line1_voip_digits" id="line1_voip_digits" value="<?php print($values['L1_VOIP_DIGITS']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+<?php endif; ?>
+                      </table>
+                    </div>
+                     </td>
+                    </tr>
+
+                  </table>
+                 </td>
+                </tr>
+
+<?php endif; ?>
+<?php if($values['LIVELINE']==1 && $values['TELPORT']>=2): ?>
+                <tr>
+
+                 <td width="120" height="25" class="title1">Line 2 Default</td>
+                 <td width="160" class="text">
+  <select name="line2_default_mode" id="line2_default_mode_select" class="select" onchange="toggle_selected('line2_default_mode', 'hide')">
+     <option value="VOIP" <?php print($values['S_L2_DFC']=='VOIP'?'selected':'') ?>>VoIP</option>
+     <option value="PSTN" <?php print($values['S_L2_DFC']=='PSTN'?'selected':'') ?>>PSTN</option>
+  </select>
+                 </td>
+		
+                </tr>
+
+                <tr>
+                 <td colspan="2">
+
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                    <tr>
+                     <td colspan="2">
+
+                    <div id="line2_default_mode_PSTN_div" class="<?php print($values['S_L2_DFC']=='PSTN'?'visable':'invisible') ?>">
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+<?php if($values['LIVELINE']==1 && $values['TELPORT'] >=2 && $values['L2_VOIP_MATCHING_ENABLE']==1): ?>
+                        <tr>
+                         <td width="120" height="25" class="title1">Line 2 VoIP Matching Prefix</td>
+                         <td width="160" class="text">
+                          <input type="text" name="line2_voip_digits" id="line2_voip_digits" value="<?php print($values['L2_VOIP_DIGITS']) ?>" class="edit">
+                         </td>
+                        </tr>
+
+<?php endif; ?>
+                      </table>
+                    </div>
+                     </td>
+                    </tr>
+
+                  </table>
+                 </td>
+                </tr>
+
+<?php endif; ?>
+<?php if($values['LIVELINE']==1 && $values['TELPORT']>=3): ?>
+                <tr>
+
+                 <td width="120" height="25" class="title1">Line 3 Default</td>
+                 <td width="160" class="text">
+  <select name="line3_default_mode" id="line3_default_mode_select" class="select" onchange="toggle_selected('line3_default_mode', 'hide')">
+     <option value="VOIP" <?php print($values['S_L3_DFC']=='VOIP'?'selected':'') ?>>voIP</option>
+     <option value="PSTN" <?php print($values['S_L3_DFC']=='PSTN'?'selected':'') ?>>PSTN</option>
+  </select>
+                 </td>
+		
+                </tr>
+
+                <tr>
+                 <td colspan="2">
+
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                  </table>
+                 </td>
+                </tr>
+
+<?php endif; ?>
+<?php if($values['LIVELINE']==1 && $values['TELPORT']>=4 ): ?>
+                <tr>
+
+                 <td width="120" height="25" class="title1">Line 2 Default</td>
+                 <td width="160" class="text">
+  <select name="line4_default_mode" id="line4_default_mode_select" class="select" onchange="toggle_selected('line4_default_mode', 'hide')">
+     <option value="VOIP" <?php print($values['S_L4_DFC']=='VOIP'?'selected':'') ?>>VoIP</option>
+     <option value="PSTN" <?php print($values['S_L4_DFC']=='PSTN'?'selected':'') ?>>PSTN</option>
+  </select>
+                 </td>
+		
+                </tr>
+
+                <tr>
+                 <td colspan="2">
+
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                  </table>
+                 </td>
+                </tr>
+
+<?php endif; ?>
+<?php if($values['LIVELINE']==1 && $values['TELPORT'] >= 2 && $values['HOOK_MODE']=='MULTI' && $values['PSTN_RING_LINE'] ): ?>
+                <tr>
+                 <td width="120" height="25" class="title1">
+                 </td>
+                 <td width="160" class="text">
+                  <input type="checkbox" name="line1_pstn_ring" id="line1_pstn_ring" onclick="toggle_checkbox('line1_pstn_ring', 'hide')" <?php print($values['L1_PSTN_RING']=='1'?'checked':'') ?>><span>Line 1 PSTN Ring</span>
+                 </td>
+                </tr>
+
+<?php endif; ?>
+<?php if($values['LIVELINE']==1 && $values['TELPORT'] >= 2 && $values['HOOK_MODE']=='MULTI' && $values['PSTN_RING_LINE'] ): ?>
+                <tr>
+                 <td width="120" height="25" class="title1">
+                 </td>
+                 <td width="160" class="text">
+                  <input type="checkbox" name="line2_pstn_ring" id="line2_pstn_ring" onclick="toggle_checkbox('line2_pstn_ring', 'hide')" <?php print($values['L2_PSTN_RING']=='1'?'checked':'') ?>><span>Line 2 PSTN Ring</span>
+                 </td>
+                </tr>
+
+<?php endif; ?>
+
+              </table>
+             </div>
+
+             </td>
+            </tr>
+
+          </table>
+             </td>
+             <td align="center" valign="top">
+<?php if($values['LIVELINE']==1): ?>
+          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+            <tr>
+             <td width="120" height="25"  class="title1">
+             </td>
+             <td width="160" class="text">              <div style="cursor:hand; cursor:pointer" onclick="toggle_target(this, 'emergency_call_target')">Emergency Call<span class="showstate" >&gt;&gt;</span></div>
+             </td>
+            </tr>
+            <tr>
+             <td colspan="2">
+               <div id="emergency_call_target" class="invisible">
+			   		<?php require_once template($type.'/emergency_call'); ?>
+               </div>
+             </td>
+            </tr>
+
+
+          </table>
+<?php endif; ?>
+             </td>
+            </tr>
+
+          </table>
+         </div>
+         </td>
+        </tr>
+
+      </table>
+
+
+
+

@@ -1,0 +1,362 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>终端管理</title>
+<meta name="Author" content="Gaby_chen">
+<link href="Style.css" rel="stylesheet" type="text/css">
+
+<script src="dynamic.bin" lang="javascript"></script>
+<script lang="javascript">
+if (document.getElementById){
+
+	document.write('<style type="text/css">\n');
+	document.write('.invisible{display:none;}\n');
+	document.write('</style>\n');
+}
+
+function auto_cfg(port)
+{
+        if(!confirm("自动配置其他线路电话号码参数为前一路加1。\n显示名参数为前一路加1。\n认证ID参数为前一路加1。\n网关前缀参数为前一路加1。\n其他参数与第一路相同。")) return;
+
+        auto_config("sip_line", "_number", port, 1);
+        auto_config("sip_line", "_display_name", port, 1);
+        auto_config("sip_line", "_auth_id", port, 1);
+        auto_config("sip_line", "_auth_passwd", port, 0);
+        auto_config("sip_line", "_gw_prefix", port, 1);
+        auto_config("sip_line", "_proxy", port, 0);
+        auto_config("sip_line", "_registrar", port, 0);
+        auto_config("sip_line", "_register_expired", port, 0);
+        auto_config("sip_line", "_outbound_proxy", port, 0);
+        auto_config("sip_line", "_home_domain", port, 0);
+}
+
+function auto_cfg2(port)
+{
+        var i;
+        if(!confirm("自动配置其他线路:\n所有参数与第一路相同。")) return;
+        auto_config("line", "_fw_to_pstn", port, 0, 1, 1);
+        auto_config("line", "_fw_num_to_pstn", port, 0);
+        auto_config("line", "_p_dial_plan", port, 0);
+        auto_config("line", "_p_dial_plan_rst", port, 0, 1);
+        auto_config("line", "_fw2pstn_auth_mode", port, 0, 2, 1);
+        auto_config("line", "_fw_to_pstn_passwd", port, 0);
+        auto_config("l", "_fw_to_pstn_passwd", port, 0);
+        auto_config("line", "_out_interval", port, 0);
+        auto_config("line", "_o_sleep_mode", port, 0, 1);
+        for(i=1;i<=15;i++) auto_config("l", "_voip_trust_num"+i, port, 0);
+}
+
+function auto_cfg3(port)
+{
+        var i;
+        if(!confirm("自动配置其他线路:\n所有参数与第一路相同。")) return;
+        auto_config("line", "_fw_to_voip", port, 0, 1, 1);
+        auto_config("line", "_fw_num_to_voip", port, 0);
+        auto_config("line", "_v_dial_plan", port, 0);
+        auto_config("line", "_fw2voip_auth_mode", port, 0, 2, 1);
+        auto_config("line", "_fw_to_voip_passwd", port, 0);
+        auto_config("l", "_fw_to_voip_passwd", port, 0);
+        auto_config("line", "_auto_blacklist_in_enable", port, 0, 1, 1);
+        auto_config("line", "_auto_blacklist_in_repeat_limit", port, 0, 0);
+        auto_config("line", "_gsm_group_mode", port, 0, 2, 1);
+        auto_config("line", "_gsm_fw_mode", port, 0, 2);
+        auto_config("line", "_group_share_addr", port, 0);
+        auto_config("line", "_group_svr_addr", port, 0);
+        for(i=1;i<=15;i++) auto_config("l", "_pstn_trust_num"+i, port, 0);
+}
+
+function auto_config(var_prefix, var_postfix, id, add_flag, radio_flag, toggle_flag)
+{
+        var i,j;
+        var value;
+        var checked;
+        if(!document.getElementById) {
+                alert("javacript getElementById error");
+                return;
+        }
+        if(radio_flag==1) {
+                var enable_checked=document.getElementById(var_prefix+"1"+var_postfix+"_enable").checked;
+                var disable_checked=document.getElementById(var_prefix+"1"+var_postfix+"_disable").checked;
+                for(i=2;i<=id;i++){
+                        document.getElementById(var_prefix+i+var_postfix+"_enable").checked=enable_checked;
+                        document.getElementById(var_prefix+i+var_postfix+"_disable").checked=disable_checked;
+                        if(toggle_flag && enable_checked) toggle(var_prefix+i+var_postfix+"_div", 1);
+                        if(toggle_flag && disable_checked) toggle(var_prefix+i+var_postfix+"_div", 0);
+                }
+        }
+        else if(radio_flag==2){
+                if(!document.getElementById(var_prefix+"1"+var_postfix+"_select")) return;
+                else value=document.getElementById(var_prefix+"1"+var_postfix+"_select").value;
+                for(i=2;i<=id;i++){
+                        if(document.getElementById(var_prefix+i+var_postfix+"_select")) {
+                                document.getElementById(var_prefix+i+var_postfix+"_select").value=value;
+                                if(toggle_flag) toggle_selected(var_prefix+i+var_postfix, 'hide');
+                        }
+                }
+        }
+        else if(radio_flag==3){
+                var enable_checked=document.getElementById(var_prefix+"1"+var_postfix).checked;
+                for(i=2;i<=id;i++){
+                        document.getElementById(var_prefix+i+var_postfix).checked=enable_checked;
+                        toggle_checkbox(var_prefix+i+var_postfix, 'hide');
+                }
+        }
+        else {
+
+                if(!document.getElementById(var_prefix+"1"+var_postfix)) return;
+                else value=document.getElementById(var_prefix+"1"+var_postfix).value;
+                var value_prefix=value.replace(/\d+$/,"");
+                var value_postfix=value.match(/\d+$/);
+                var old_len=value.length;
+                for(i=2;i<=id;i++){
+                        if(add_flag && value) {
+                                if(!value_postfix) value_postfix=i;
+                                else value_postfix++;
+                                value_postfix=String(value_postfix);
+                                for(j=value_prefix.length+value_postfix.length;j<old_len;j++){
+                                        value_postfix="0"+value_postfix;
+                                }
+                                value=value_prefix+value_postfix;
+                        }
+                        if(document.getElementById(var_prefix+i+var_postfix)) document.getElementById(var_prefix+i+var_postfix).value=value;
+                }
+        }
+}
+</script><style type="text/css">
+.invisible{display:none;}
+</style>
+
+<style type="text/css">
+.audiocodec {
+	font-size: 11px;
+	font-family: tahoma,sans-serif;
+cursor: pointer; 
+cursor: hand 
+}
+.STYLE1 {
+	font-size: 18px;
+	font-weight: bold;
+}
+</style></head>
+
+<body leftmargin="2" topmargin="0" marginwIdth="0" marginheight="0">
+<table wIdth="100%" border="0" align="center" cellpadding="2" cellspacing="1" class="border">
+  <tr class="topbg"> 
+    <td height="22" colspan="2" align="center"><strong>终端管理</strong></td>
+  </tr>
+  <tr class="tdbg"> 
+    <td wIdth="70" height="30"><strong>管理导航:</strong></td>
+    <td height="30"><!--<a href="?job=product&action=addupload&classid=<?php echo $classid ?>">终端导入</a> | --><a href="?job=product&action=add&classid=<?php echo $classid ?>" target=main>单个添加终端</a>&nbsp;|&nbsp;<a href="?job=product&action=addmore&classid=<?php echo $classid ?>" target=main>批量添加终端</a>&nbsp;|&nbsp;<a href="?job=productmanage&classid=<?php echo $classid ?>" target=main>终端管理</a>&nbsp;|&nbsp;<a href="?job=productseachbefore&action=before&classid=<?php echo $classid ?>" target=main>终端搜索批量修改</a>&nbsp;<!--|&nbsp;<a href="?job=productseachbefore&action=modifymore&classid=<?php echo $classid ?>" target=main>终端批量修改</a>--></td>
+  </tr>
+</table>
+
+
+<?php if($statu=="add"): ?>
+	<table width="100%" height="25"  border="0" cellpadding="0" cellspacing="0">
+  		<tr class="topbg">
+    		<td width="8%">&nbsp;</td>
+    		<td width="92%" height="25"><strong>当前位置:<?php echo $classname ?>型号-->单个添加终端</strong></td>
+  		</tr>
+	</table>
+	<form name="config_form" method="post" action="?job=product&action=saveadd&classid=<?php print($values['classid']) ?>" onsubmit="return check()">
+<table wIdth="100%" border="0" align="center" cellpadding="0" cellspacing="0" class="border">
+  <tr class="tdbg"> 
+     <td width="120" height="25" class="title1">模板名称</td>
+	 <td width="160" class="text">
+	   <select name="mubanid" onchange="if(this.options[this.selectedIndex].value!=''){location='?job=product&action=add&classid=<?php print($values['classid']) ?>&mubanid='+this.options[this.selectedIndex].value;}">  
+
+<?php foreach($rsmuban as $rs) {
+if($rs['id']==$mubanid) {
+?>
+	<option value="<?php print($rs['id']) ?>" selected><?php print($rs['muban']) ?></option>
+
+<?php }
+else {
+?>
+	<option value="<?php print($rs['id']) ?>" ><?php print($rs['muban']) ?></option>
+<?php } 
+} ?>
+
+</select>
+     </td>							 
+     <td width="120" height="25" class="title1">终端类型</td>
+	 <td width="160" class="text">
+  <select name="classid" onchange="if(this.options[this.selectedIndex].value!=''){location='?job=product&action=add&classid='+this.options[this.selectedIndex].value;}">  
+
+<?php foreach($rsprojectclass as $rs) {
+if($rs['classid']==$classid) {
+?>
+	<option value="<?php print($rs['classid']) ?>" selected><?php print($rs['classname']) ?></option>
+
+<?php }
+else {
+?>
+	<option value="<?php print($rs['classid']) ?>" ><?php print($rs['classname']) ?></option>
+<?php } 
+} ?>
+
+
+</select>
+    </td>
+  </tr>
+  <tr class="tdbg"> 
+  	  <td width="120" height="25" class="title1">序列号(SN)</td>
+      <td width="160" class="text">
+          <input type="text" name="SN" id="SN" value="" class="edit">
+      </td>
+  	  <td width="120" height="25" class="title1">客户名</td>
+      <td width="160" class="text">
+          <input type="text" name="USER" id="USER" value="" class="edit">
+      </td>
+  </tr>
+  <tr class="tdbg">
+     <td width="120" height="25" class="title1">加密密钥</td>
+         <td width="160" class="text"> 
+     <input type="text" name="AUTOCFG_KEY" id="AUTOCFG_KEY" value="<?php echo $values['AUTOCFG_KEY'] ?>" class="edit">
+     </td>
+     <td></td>                                                                                                    
+         <td></td>                                                                                                
+  </tr> 
+</table>  	
+<?php elseif($statu=="addmore"): ?>
+	<table width="100%" height="25"  border="0" cellpadding="0" cellspacing="0">
+  		<tr class="topbg">
+    		<td width="8%">&nbsp;</td>
+    		<td width="92%" height="25"><strong>当前位置:<?php echo $classname ?>型号-->批量添加终端</strong></td>
+  		</tr>
+	</table>
+	<form name="config_form" method="post" action="?job=product&action=saveaddmore&classid=<?php print($values['classid']) ?>" onsubmit="return check()">
+<table wIdth="100%" border="0" align="center" cellpadding="0" cellspacing="0" class="border">
+  <tr class="tdbg"> 
+     <td width="120" height="25" class="title1">模板名称</td>
+	 <td width="160" class="text">
+	   <select name="mubanid" onchange="if(this.options[this.selectedIndex].value!=''){location='?job=product&action=addmore&classid=<?php print($values['classid']) ?>&mubanid='+this.options[this.selectedIndex].value;}">  
+
+<?php foreach($rsmuban as $rs) {
+if($rs['id']==$mubanid) {
+?>
+	<option value="<?php print($rs['id']) ?>" selected><?php print($rs['muban']) ?></option>
+
+<?php }
+else {
+?>
+	<option value="<?php print($rs['id']) ?>" ><?php print($rs['muban']) ?></option>
+<?php } 
+} ?>
+</select>     </td>							 
+     <td width="120" height="25" class="title1">终端类型</td>
+	 <td width="160" class="text">
+  <select name="classid" onchange="if(this.options[this.selectedIndex].value!=''){location='?job=product&action=addmore&classid='+this.options[this.selectedIndex].value;}">  
+
+<?php foreach($rsprojectclass as $rs) {
+if($rs['classid']==$classid) {
+?>
+	<option value="<?php print($rs['classid']) ?>" selected><?php print($rs['classname']) ?></option>
+
+<?php }
+else {
+?>
+	<option value="<?php print($rs['classid']) ?>" ><?php print($rs['classname']) ?></option>
+<?php } 
+} ?>
+</select>      </td>
+  </tr>
+  <tr class="tdbg"> 
+  	  <td width="120" height="25" class="title1">序列号(请输入起始和结束的SN)</td>
+    <td width="160" class="text">
+		<input type="text" name="SN" id="SN" value="" class="edit3">-<input type="text" name="SN2" id="SN2" value="" class="edit4">
+	  </td>
+    <td width="120" height="25" class="title1">客户名</td>
+      <td width="160" class="text">
+          <input type="text" name="USER" id="USER" value="" class="edit">      </td>
+  </tr>
+  <tr class="tdbg">
+     <td width="120" height="25" class="title1">加密密钥</td>
+         <td width="160" class="text">
+     <input type="text" name="AUTOCFG_KEY" id="AUTOCFG_KEY" value="<?php echo $values['AUTOCFG_KEY'] ?>" class="edit">
+     </td>
+     <td></td>
+         <td></td>
+  </tr>
+</table>  	
+<?php else: ?>
+	<table width="100%" height="25"  border="0" cellpadding="0" cellspacing="0">
+  		<tr class="topbg">
+    		<td width="8%">&nbsp;</td>
+    		<td width="42%" height="25"><strong>当前位置：<?php echo $classname ?>型号-->终端修改</strong></td>
+			<td width="8%">&nbsp;</td>
+    		<td width="42%" height="25" class="STYLE1"><a href="http://<?php echo $values['RADMIN_SERVER'].":".$remoteserverport[0]; ?>/?findcli=<?php echo $values['RADMIN_ID']=='${SN}'?$values['SN']:$values['RADMIN_ID'] ?>" target="_blank" class="STYLE1">远程登录到网页配置</a></strong></td>
+    		<!-- 远程控制服务器IP：POST-->
+  		</tr>
+	</table>
+	<form name="config_form" method="post" action="?job=product&action=savemodify&classid=<?php print($values['classid']) ?>&chanpinid=<?php print($values['chanpinid']) ?>" onsubmit="return check()">
+<table wIdth="100%" border="0" align="center" cellpadding="0" cellspacing="0" class="border">
+  <tr class="tdbg">
+  	  <td width="120" height="25" class="title1">更新时间</td>
+      <td width="160" class="text"><?php echo $values['updatetime'] ?></td>
+  	  <td width="120" height="25" class="title1">终端型号</td>
+      <td width="160" class="text"><?php echo $values['classname'] ?></td>	  
+  </tr>
+  <tr class="tdbg"> 
+  	  <td width="120" height="25" class="title1">序列号</td>
+      <td width="160" class="text">
+		<input type="text" name="SN" id="SN" value="<?php echo $values['SN'] ?>" class="edit">
+      </td>
+  	  <td width="120" height="25" class="title1">客户名</td>
+      <td width="160" class="text">
+          <input type="text" name="USER" id="USER" value="<?php echo $values['USER'] ?>" class="edit">
+      </td>
+  </tr>
+  <tr class="tdbg">
+     <td width="120" height="25" class="title1">加密密钥</td>
+         <td width="160" class="text">
+     <input type="text" name="AUTOCFG_KEY" id="AUTOCFG_KEY" value="<?php echo $values['AUTOCFG_KEY'] ?>" class="edit">
+     </td>
+     <td></td>
+         <td></td>
+  </tr>
+</table>
+<?php endif; ?>  
+
+<?php require_once template($type.'/settings'); ?>
+<?php require_once template('other_settings'); ?>
+
+
+<h1 align="center" >
+  <td width="100%" height="40"  align=center><input  style="width:60;height:40" name="btnadd" type='submit' value="<?php echo $statu=='modify'?"修改":"添加" ?>" onClick="return check();">
+    <input style="width:50;height:40" type="Reset" name="Cancel" value="取消" onClick="window.location.reload()" style="cursor:hand;"></td>
+</h1>
+<!--
+	  		<tr>
+	                <td valign="top", align=center><input type=submit name=btnadd value="<?php echo $statu=='add'?"添加":"修改" ?>" onclick="return check();">
+			  <input type="Reset" name="Cancel" value="取消" onClick="window.location.reload()" style="cursor:hand;"></td>
+            </tr>
+-->
+</form>
+<script language="JavaScript" type="text/JavaScript">
+function check()
+{
+    if (config_form.SN.value=="")
+  {
+    alert("请填机身号码（SN）!");
+	config_form.SN.focus();
+	return false;
+  }
+  if (config_form.mubanid.value=="")
+  {
+    alert("请填写模板名!");
+	config_form.mubanid.focus();
+	return false;
+  }
+  if (config_form.classid.value=="")
+  {
+    alert("请选择一个型号!");
+	config_form.classid.focus();
+	return false;
+  }
+
+}
+</script>
+</body>
+</html>

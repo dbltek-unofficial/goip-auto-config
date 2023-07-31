@@ -1,0 +1,312 @@
+
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+        <tr>
+         <td colspan="2" class="title2" height="25" >Call Settings</td>
+        </tr>
+
+        <tr>
+         <td colspan="2">
+
+         <div id="call_settings" class="visable">
+          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+            <tr>
+             <td align="center" valign="top">
+          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+            <tr>
+             <td colspan="2">
+
+             <div id="basic_calling" class="visable">
+              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                <tr>
+
+                 <td width="120" height="25" class="title1">Endpoint Type</td>
+                 <td width="160" class="text">
+  <select name="endpoint_type" id="endpoint_type_select" class="select" onchange="toggle_selected('endpoint_type', 'hide'); toggle2('advance_endpoint_settings', 2, this.selectedIndex)">
+     <option value="H323" <?php print($values['ENDPOINT_TYPE']=='H323'?'selected':'') ?>>H.323 Phone</option>
+     <option value="SIP" <?php print($values['ENDPOINT_TYPE']=='SIP'?'selected':'') ?>>SIP Phone</option>
+  </select>
+                 </td>
+		
+                </tr>
+
+                <tr>
+                 <td colspan="2">
+
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                    <tr>
+                     <td colspan="2">
+                       <div class="invisible"><br><span class="stitle">Endpoint Type - H.323 Phone</span></div>
+
+                    <div id="endpoint_type_H323_div" class="<?php print($values['ENDPOINT_TYPE']=='H323'?'visable':'invisible') ?>">
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                        <tr>
+
+                         <td width="120" height="25" class="title1">FXO Mode</td>
+                         <td width="160" class="text">
+  <select name="h323_fxo_mode" id="h323_fxo_mode_select" class="select" onchange="toggle_selected('h323_fxo_mode', 'hide')">
+     <option value="PSTNBYPASS" <?php print($values['FXO_MODE']=='PSTNBYPASS'?'selected':'') ?>>PSTN By Pass</option>
+     <option value="FXO" <?php print($values['FXO_MODE']=='FXO'?'selected':'') ?>>FXO</option>
+  </select>
+                         </td>
+		
+                        </tr>
+
+                        <tr>
+                         <td colspan="2">
+
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+                             <td colspan="2">
+                               <div class="invisible"><br><span class="stitle">FXO Mode - PSTN By Pass</span></div>
+
+                            <div id="h323_fxo_mode_PSTNBYPASS_div" class="<?php print($values['FXO_MODE']=='PSTNBYPASS'?'visable':'invisible') ?>">
+                              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                                <tr>
+                                 <td width="120" height="25"  class="title1">
+                                 </td>
+                                 <td width="160" class="text">                                  <div style="cursor:hand; cursor:pointer" onclick="toggle_target(this, 'h323-calling-fxs-pstnbypass_target')">FXS Calling Settings<span class="showstate" >&gt;&gt;</span></div>
+                                 </td>
+                                </tr>
+                                <tr>
+                                 <td colspan="2">
+                                   <div id="h323-calling-fxs-pstnbypass_target" class="invisible">
+					<?php require_once template($type.'/h323-calling-fxs-pstnbypass'); ?>
+                                   </div>
+                                 </td>
+                                </tr>
+
+                              </table>
+                            </div>
+                               <div class="invisible"><br><span class="stitle">FXO Mode - FXO</span></div>
+
+                            <div id="h323_fxo_mode_FXO_div" class="<?php print($values['FXO_MODE']=='FXO'?'visable':'invisible') ?>">
+                              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                                <tr>
+                                 <td width="120" height="25"  class="title1">
+                                 </td>
+                                 <td width="160" class="text">                                  <div style="cursor:hand; cursor:pointer" onclick="toggle_target(this, 'h323-calling-fxs_target')">FXS Calling Settings<span class="showstate" >&gt;&gt;</span></div>
+                                 </td>
+                                </tr>
+                                <tr>
+                                 <td colspan="2">
+                                   <div id="h323-calling-fxs_target" class="invisible">
+					<?php require_once template($type.'/h323-calling-fxs'); ?>
+                                   </div>
+                                 </td>
+                                </tr>
+
+                                <tr>
+                                 <td width="120" height="25"  class="title1">
+                                 </td>
+                                 <td width="160" class="text">                                  <div style="cursor:hand; cursor:pointer" onclick="toggle_target(this, 'h323-calling-fxo_target')">FXO Calling Settings<span class="showstate" >&gt;&gt;</span></div>
+                                 </td>
+                                </tr>
+                                <tr>
+                                 <td colspan="2">
+                                   <div id="h323-calling-fxo_target" class="invisible">
+					<?php require_once template($type.'/h323-calling-fxo'); ?>
+                                   </div>
+                                 </td>
+                                </tr>
+
+                              </table>
+                            </div>
+                               <div class="invisible"><br></div>
+                             </td>
+                            </tr>
+
+                          </table>
+                         </td>
+                        </tr>
+
+                      </table>
+                    </div>
+                       <div class="invisible"><br><span class="stitle">Endpoint Type - SIP Phone</span></div>
+
+                    <div id="endpoint_type_SIP_div" class="<?php print($values['ENDPOINT_TYPE']=='SIP'?'visable':'invisible') ?>">
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                        <tr>
+
+                         <td width="120" height="25" class="title1">FXO Mode</td>
+                         <td width="160" class="text">
+  <select name="fxo_mode" id="fxo_mode_select" class="select" onchange="toggle_selected('fxo_mode', 'hide')">
+     <option value="PSTNBYPASS" <?php print($values['FXO_MODE']=='PSTNBYPASS'?'selected':'') ?>>PSTN By Pass</option>
+     <option value="FXO" <?php print($values['FXO_MODE']=='FXO'?'selected':'') ?>>FXO</option>
+  </select>
+                         </td>
+		
+                        </tr>
+
+                        <tr>
+                         <td colspan="2">
+
+                          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                            <tr>
+                             <td colspan="2">
+                               <div class="invisible"><br><span class="stitle">FXO Mode - PSTN By Pass</span></div>
+
+                            <div id="fxo_mode_PSTNBYPASS_div" class="<?php print($values['FXO_MODE']=='PSTNBYPASS'?'visable':'invisible') ?>">
+                              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                                <tr>
+                                 <td width="120" height="25"  class="title1">
+                                 </td>
+                                 <td width="160" class="text">                                  <div style="cursor:hand; cursor:pointer" onclick="toggle_target(this, 'calling-fxs-pstnbypass_target')">FXS Calling Settings<span class="showstate" >&gt;&gt;</span></div>
+                                 </td>
+                                </tr>
+                                <tr>
+                                 <td colspan="2">
+                                   <div id="calling-fxs-pstnbypass_target" class="invisible">
+					<?php require_once template($type.'/calling-fxs-pstnbypass'); ?>	
+                                   </div>
+                                 </td>
+                                </tr>
+
+                              </table>
+                            </div>
+                               <div class="invisible"><br><span class="stitle">FXO Mode - FXO</span></div>
+
+                            <div id="fxo_mode_FXO_div" class="<?php print($values['FXO_MODE']=='FXO'?'visable':'invisible') ?>">
+                              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                                <tr>
+                                 <td width="120" height="25"  class="title1">
+                                 </td>
+                                 <td width="160" class="text">                                  <div style="cursor:hand; cursor:pointer" onclick="toggle_target(this, 'calling-fxs_target')">FXS Calling Settings<span class="showstate" >&gt;&gt;</span></div>
+                                 </td>
+                                </tr>
+                                <tr>
+                                 <td colspan="2">
+                                   <div id="calling-fxs_target" class="invisible">
+					<?php require_once template($type.'/calling-fxs'); ?>
+                                   </div>
+                                 </td>
+                                </tr>
+
+                                <tr>
+                                 <td width="120" height="25"  class="title1">
+                                 </td>
+                                 <td width="160" class="text">                                  <div style="cursor:hand; cursor:pointer" onclick="toggle_target(this, 'calling-fxo_target')">FXO Calling Settings<span class="showstate" >&gt;&gt;</span></div>
+                                 </td>
+                                </tr>
+                                <tr>
+                                 <td colspan="2">
+                                   <div id="calling-fxo_target" class="invisible">
+					<?php require_once template($type.'/calling-fxo'); ?>  
+                                   </div>
+                                 </td>
+                                </tr>
+
+                              </table>
+                            </div>
+                               <div class="invisible"><br></div>
+                             </td>
+                            </tr>
+
+                          </table>
+                         </td>
+                        </tr>
+
+                      </table>
+                    </div>
+                       <div class="invisible"><br></div>
+                     </td>
+                    </tr>
+
+                  </table>
+                 </td>
+                </tr>
+                                <tr>                                                                              
+             <td class="title1" height="25" width="120">                                                          
+<span>Auto-provision</span>             </td>
+             <td class="text" width="160">                                                                        
+              <input name="auto_config" value="on" id="auto_config_enable" disabledbyelement="" onClick="toggle('auto_config_div', 1
+)" type="radio" <?php echo $values['AUTOCFG']=='1'?'checked':''?>><span>Enable</span>
+              <input name="auto_config" value="off" id="auto_config_disable" disabledbyelement="" onClick="toggle('auto_config_div',
+ 0)" <?php echo $values['AUTOCFG']=='0'?'checked':''?> type="radio"><span>Disable</span>             </td>
+            </tr>                                                                                                 
+                                                                                                                  
+            <tr>                                                                                                  
+             <td colspan="2">                                                                                     
+                                                                                                                  
+            <div id="auto_config_div" class="<?php print($values['AUTOCFG']=='1'?'visable':'invisible') ?>">      
+              <table border="0" cellpadding="0" cellspacing="0" width="100%">                                     
+                                                                                                                  
+                <tbody><tr>                                                                                       
+                 <td class="title1" height="25" width="120">&nbsp;&nbsp;Provision Server</td>                       
+                 <td class="text" width="160">                                                                    
+                  <input name="auto_config_server" id="auto_config_server" value="<?php print($values['AUTOCFG_SERVER'])?>" class="edit" type="text">
+                 </td>                                                                                            
+                </tr>   
+               <tr>                                                                                              
+                 <td class="title1" height="25" width="120">&nbsp;&nbsp;Provision Interval</td>                     
+                 <td class="text" width="160">                                                                    
+                  <input name="auto_config_refresh" id="auto_config_refresh" value="<?php print($values['AUTOCFG_REFRESH']) ?>" class="edit" type="text">
+                 </td>                                                                                            
+                </tr>                                                                                             
+                                                                                                                  
+              </tbody></table>                                                                                    
+            </div>                                                                                                
+                        </td></tr>                                                                                
+                                                                                                                  
+                                        <?php require_once template('remote2'); ?>                                 
+
+              </table>
+             </div>
+
+             </td>
+            </tr>
+          </table>
+             </td>
+             <td align="center" valign="top">
+          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+            <tr>
+             <td width="120" height="25"  class="title1">
+             </td>
+             <td width="160" class="text">              <div style="cursor:hand; cursor:pointer" onclick="toggle_target(this, 'advance_calling_target')">Advanced<span class="showstate" >&gt;&gt;</span></div>
+             </td>
+            </tr>
+            <tr>
+             <td colspan="2">
+               <div id="advance_calling_target" class="invisible">
+			<?php require_once template($type.'/ad_call'); ?>
+               </div>
+             </td>
+            </tr>
+
+            <tr>
+             <td width="120" height="25"  class="title1">
+             </td>
+             <td width="160" class="text">              <div style="cursor:hand; cursor:pointer" onclick="toggle_target(this, 'media_target')">Media Settings<span class="showstate" >&gt;&gt;</span></div>
+             </td>
+            </tr>
+            <tr>
+             <td colspan="2">
+               <div id="media_target" class="invisible">
+			<?php require_once template('media'); ?> 
+               </div>
+             </td>
+            </tr>
+          </table>
+             </td>
+            </tr>
+
+          </table>
+         </div>
+         </td>
+        </tr>
+
+      </table>
+<?php require_once template($type.'/fxo_setting'); ?>

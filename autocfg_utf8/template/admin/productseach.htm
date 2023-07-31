@@ -1,0 +1,121 @@
+<!--
+<?php
+print <<<EOT
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="style.css" rel="stylesheet" type="text/css">
+<title></title>
+<script language="javascript">
+function unselectall()
+	{
+	    if(document.myform.chkAll.checked){
+		document.myform.chkAll.checked = document.myform.chkAll.checked&0;
+	    } 	
+	}
+
+function CheckAll(form)
+	{
+		for (var i=0;i<form.elements.length;i++)
+	    {
+		    var e = form.elements[i];
+		    if (e.Name != "chkAll"&&e.disabled==false)
+				e.checked = form.chkAll.checked;
+	    }
+	}
+
+</script>
+</head>
+<body topmargin="0">
+<table wIdth="100%" border="0" align="center" cellpadding="2" cellspacing="1" class="border">
+  <tr class="topbg"> 
+    <td height="22" colspan="2" align="center"><strong>终端搜索</strong></td>
+  </tr>
+  <tr class="tdbg"> 
+    <td wIdth="70" height="30"><strong>管理导航:</strong></td>
+    <td height="30"><a href="{$URL}?job=product&action=addupload&classid={$classid}">终端导入</a> | <a href="{$URL}?job=product&action=add&classid={$classid}" target=main>添加终端</a>&nbsp;|&nbsp;<a href="{$URL}?job=productmanage&classid={$classid}" target=main>终端管理</a>&nbsp;|&nbsp;<a href="{$URL}?job=productseachbefore&action=before&classid={$classid}" target=main>终端搜索</a>&nbsp;|&nbsp;<a href="{$URL}?job=productseachbefore&action=modifymore&classid={$classid}" target=main>终端批量修改</a></td>
+  </tr>
+</table>
+<br>
+<table width="100%" height="25"  border="0" cellpadding="0" cellspacing="0">
+  <tr class="topbg">
+    <td width="8%">&nbsp;</td>
+    <td width="92%" height="25"><strong>当前位置：{$classname}系列-->终端搜索-->搜索结果</strong></td>
+  </tr>
+</table>
+<form action="{$URL}?job=product&classid={$classid}&action=delmore" method=post name=myform onsubmit="return confirm('确认删除?')">
+<table wIdth="100%"  border="0" cellspacing="2" cellpadding="2">
+	<tr class=title>
+		<td wIdth="35" align=center height="25"><b>选择</b></td>
+		
+<!--
+EOT;
+foreach($project as $rsproject) {
+print <<<EOT
+-->
+		<td align="center"><b>{$rsproject[1]}</b></td>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+		<td wIdth="55" align="center"><strong>录入时间</strong></td>
+		<td wIdth="45" align=center><b>操作</b></td>
+	</tr>
+<!--
+EOT;
+$j=0;
+foreach($rsdb as $rs) {
+print <<<EOT
+-->
+	<tr class="tdbg">
+		<td align=center wIdth="35"><input name="id{$j}" type='checkbox' onclick="unselectall()" Id="id{$j}" value={$rs['id']}></td>
+		
+<!--
+EOT;
+foreach($project as $rsproject) {
+print <<<EOT
+-->
+		<td align="center">{$rs["{$rsproject[3]}"]}</td>
+<!--
+EOT;
+}
+print <<<EOT
+-->
+		<td align="center" wIdth="55">{$rs[updatetime]}</td>
+		<td align=center wIdth="45"><a href="{$URL}?job=product&action=modify&id={$rs['id']}">修改</a> | 
+						<a href="{$URL}?job=product&id={$rs['id']}&classid={$classid}&action=del" onclick="return confirm('确认删除?')">删除</a></td>
+		  </tr>
+
+<!--
+EOT;
+$j++;
+}
+print <<<EOT
+-->
+</table>
+<table wIdth="100%"  border="0" cellspacing="2" cellpadding="2">
+
+
+					<tr>
+						<td height="30" ><input name="chkAll" type="checkbox" Id="chkAll" onclick=CheckAll(this.form) value="checkbox"> 
+					  选择当前页面<input name="submit" type='submit' value='删除所选'></td>
+					</tr>
+					<tr>
+						<td  align=center>{$fenye}</td>
+					</tr>
+</table>
+<input type="hIdden" name="boxs" value="{$j}">
+</form>
+
+					  </td> 
+					</tr>
+</table>
+				
+</body>
+</html>
+<!--
+EOT;
+?>
+-->

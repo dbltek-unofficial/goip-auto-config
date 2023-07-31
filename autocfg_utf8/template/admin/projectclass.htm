@@ -1,0 +1,287 @@
+<!--
+<?php
+print <<<EOT
+-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Column management</title>
+<meta name="Author" content="Gaby_chen">
+<link href="Style.css" rel="stylesheet" type="text/css">
+</head>
+<style>
+#ul_select {
+	display:none; width:70px; z-index:100; position:absolute; border:2px solid #9999FF; background:#FFFFFF; margin:0; text-align:center; padding:0; list-style:none; color:#333333
+}
+
+ul li{
+	cursor:pointer; background:#FFFFFF; margin:0; text-align:center; font-size:13px; height:25px; padding:0; width:70px; border-bottom:1px solid #9999FF;
+} 
+.ul_select_sub{
+	display:none; position:absolute; border:2px solid #9999FF; width:70px; text-align:center; padding:0; margin:0; list-style:none;
+}
+
+.ul_select_sub li{
+	text-align:center; widows:70px; height:20px;
+}
+ul_select li ul li{
+	padding:5px;
+}
+</style>
+<body leftmargin="2" topmargin="0" marginwIdth="0" marginheight="0">
+<table wIdth="100%" border="0" align="center" cellpadding="2" cellspacing="1" class="border">
+  <tr class="topbg"> 
+    <td height="22" colspan="2" align="center"><strong>型号管理</strong></td>
+  </tr>
+  <tr class="tdbg"> 
+    <td wIdth="70" height="30"><strong>管理导航:</strong></td>
+    <td height="30"><a href="{$URL}?job=projectclass">型号管理</a> | <a href="{$URL}?job=projectclass&action=add">添加型号</a>&nbsp;|&nbsp;</td>
+  </tr>
+</table>
+<!--
+EOT;
+if($statu=="main"){
+print <<<EOT
+-->
+<br> 
+<table wIdth="100%" border="0" align="center" cellpadding="0" cellspacing="1" class="border">
+  <tr class="title"> 
+    <td wIdth="80" height="22" align="center"><strong>型号序号</strong></td>
+    <td wIdth="639" align="center"><strong>型号名称</strong></td>
+    <td wIdth="246" height="22" align="center"><strong>操作</strong></td>
+  </tr>
+<!--
+EOT;
+foreach($rsdb as $rs) {
+print <<<EOT
+-->
+  <tr class="tdbg" onmouseout="this.style.backgroundColor=''" onmouseover="this.style.backgroundColor='#BFDFFF'"> 
+    <td>{$rs['orderid']}</td>
+    <td>{$rs['classname']}</td>
+    <td align="center">| <a href="{$URL}?job=projectclass&action=modify&classid={$rs['classid']}">修改</a>
+       
+      | <a href="{$URL}?job=projectclass&action=del&classid={$rs['classid']}" onClick="return ConfirmDel1();">删除</a></td>
+  </tr>
+  <!--
+EOT;
+}
+print <<<EOT
+-->
+</table> 
+<script language="JavaScript" type="text/JavaScript">
+function ConfirmDel1()
+{
+   if(confirm("删除型号将会删除该型号下的全部模板和产品，确定还要删除吗?"))
+     return true;
+   else
+     return false;
+	 
+}
+</script>
+<br><br>
+<!--
+EOT;
+}
+if($statu=="order") {
+print <<<EOT
+-->
+<br>
+<form method="post" action="job.php?action=order">
+<table wIdth="100%" border="0" align="center" cellpadding="0" cellspacing="1" class="border">
+  <tr class="title"> 
+    <td wIdth="80" height="22" align="center"><strong>orderid</strong></td>
+    <td wIdth="639" align="center"><strong>column title</strong></td>
+    <td wIdth="246" height="22" align="center"><strong>sort order</strong></td>
+  </tr>
+<!--
+EOT;
+foreach($rsdb as $rs) {
+print <<<EOT
+-->
+  <tr class="tdbg" onmouseout="this.style.backgroundColor=''" onmouseover="this.style.backgroundColor='#BFDFFF'"> 
+    <td>{$rs['orderid']}</td>
+    <td>{$rs['classname']}</td>
+    <td align="center"><input type="text" name="{$rs['classid']}" value="{$rs['orderid']}"></td>
+  </tr>
+  <!--
+EOT;
+}
+print <<<EOT
+-->
+ <tr class="tdbg"> 
+      <td height="40" colspan="3" align="center">
+        <input name="Add" type="submit" value=" sort order "  style="cursor:hand;"> &nbsp; 
+        <input name="Cancel" type="Reset" Id="Cancel" value=" cancel " onClick="window.location.href='{$URL}?job=News_Class'" style="cursor:hand;"> 
+      </td>
+    </tr>
+</table>
+ </form>
+<!--
+EOT;
+}
+if($statu=="add") {
+print <<<EOT
+-->
+<form name="myform" method="post" action="{$URL}?job=projectclass&action=saveadd" onsubmit="return check()">
+  <table wIdth="100%" border="0" align="center" cellpadding="2" cellspacing="1" class="border">
+    <tr class="title"> 
+      <td height="22" colspan="2" align="center"><strong>添加型号</strong></td>
+    </tr>
+    <tr class="tdbg"> 
+      <td wIdth="110"><strong>型号名称:</strong></td>
+      <td width="867"><input name="classname" type="text" size="37" maxlength="20"></td>
+    </tr>
+    <tr class="tdbg"> 
+      <td><strong>型号排序:</strong></td>
+      <td><input name="orderid" type="text" Id="orderid" value="{$orderid}" size="37" maxlength="20">
+        [只能为数字]</td>
+    </tr>
+	 <tr class="tdbg"> 
+      <td><strong>配置项定制文件:</strong></td>
+      <td><input name="miaoshu" type="text" Id="miaoshu" value="{$miaoshu}" size="37">
+	   <iframe Id='UploadFiles' src="uploadmiaoshu.php" frameborder=0 scrolling=no wIdth=550 height=22></iframe>
+	   </td>
+    </tr>
+    <tr class="tdbg"> 
+      <td height="40" colspan="2" align="center">
+        <input name="Add" type="submit" value="添加"  style="cursor:hand;"> 
+        &nbsp; 
+        <input name="Cancel" type="Reset" Id="Cancel" value="取消" onClick="window.location.href='{$URL}?job=News_Class'" style="cursor:hand;"> 
+      </td>
+    </tr>
+  </table>
+  
+  
+  
+  
+</form>
+<script language="JavaScript" type="text/JavaScript">
+function check()
+{
+  if (document.myform.classname.value=="")
+  {
+    alert("型号名不能为空!");
+	document.myform.classname.focus();
+	return false;
+  }
+   if (document.myform.miaoshu.value=="")
+  {
+    alert("配置项定制文件不能为空!");
+	document.myform.miaoshu.focus();
+	return false;
+  }
+}
+</script>
+<!--
+EOT;
+}
+if($statu=="modify") {
+print <<<EOT
+-->
+<form name="myform" method="post" action="{$URL}?job=projectclass&action=savemodify" onsubmit="return check()">
+  <table wIdth="100%" border="0" align="center" cellpadding="2" cellspacing="1" class="border">
+    <tr class="title"> 
+      <td height="22" colspan="2" align="center"><strong>修改型号</strong></td>
+    </tr>
+    <tr class="tdbg"> 
+      <td wIdth="111"><strong>型号名称:</strong></td>
+      <td width="866"><input name="classname" type="text" value="{$classname}" size="37" maxlength="20"> 
+        <input name="classid" type="hIdden" Id="classid" value="{$classid}"></td>
+    </tr>
+    <tr class="tdbg">
+      <td wIdth="111"><strong>型号排序:</strong></td>
+      <td><input name="orderid" type="text" Id="orderid" value="{$orderid}" size="37" maxlength="20">
+        [只能为数字]</td>
+    </tr>
+	 <tr class="tdbg"> 
+      <td><strong>配置项定制文件:</strong></td>
+      <td><input name="miaoshu" type="text" Id="miaoshu" value="{$miaoshu}" size="37" style="width:218px">
+	   <iframe Id='UploadFiles' src=uploadmiaoshu.php frameborder=0 scrolling=no wIdth=550 height=22></iframe>
+	   </td>
+    </tr>
+    <tr class="tdbg"> 
+      <td height="40" colspan="2" align="center"><input name="Action" type="hIdden" Id="Action" value="SaveModify"> 
+        <input name="Submit" type="submit" value="修改"style="cursor:hand;"> 
+        &nbsp; <input name="Cancel" type="Reset" Id="Cancel" value="取消" onClick="window.location.href='{$URL}?job=News_Class'" style="cursor:hand;"> 
+      </td>
+    </tr>
+  </table>
+</form>
+<script language="JavaScript" type="text/JavaScript">
+function check()
+{
+ if (document.myform.classname.value=="")
+  {
+    alert("型号名不能为空!");
+	document.myform.classname.focus();
+	return false;
+  }
+   if (document.myform.miaoshu.value=="")
+  {
+    alert("配置项定制文件不能为空!");
+	document.myform.miaoshu.focus();
+	return false;
+  }
+}
+</script> 
+<!--
+EOT;
+}
+print <<<EOT
+-->
+<ul id="ul_select">
+				<li id="li1" class="first_li">goip ...
+						<ul id="ul_select_li1" class="ul_select_sub">
+							<li>goip</li>
+							<li>4goip</li>
+							<li>8goip</li>
+							<li>16goip</li>
+							<li style="border-bottom:none">32goip</li>
+						</ul>	
+				</li>
+				<li id="li2" class="first_li">fxs ...
+						<ul id="ul_select_li2" class="ul_select_sub">
+							<li>1fxs</li>
+							<li>2fxs</li>
+							<li>4fxs</li>
+							<li>8fxs</li>
+							<li>fxsg</li>
+							<li>1fxsp</li>
+							<li>2fxsp</li>
+							<li style="border-bottom:none">fx4s4o</li>				
+						</ul>	
+				</li>
+				<li id="li3" class="first_li">fxo ...
+						<ul id="ul_select_li3" class="ul_select_sub">
+							<li>2fxo</li>
+							<li style="border-bottom:none">4fxo</li>			
+						</ul>	
+				</li>
+				<li id="li4" class="first_li">simbank ...
+						<ul id="ul_select_li4" class="ul_select_sub">
+							<li style="border-bottom:none">simbank</li>
+						</ul>
+				</li>
+				<li id="li5" class="first_li">htm ...
+						<ul id="ul_select_li5" class="ul_select_sub">
+							<li>htm112</li>
+							<li>htm222</li>
+							<li style="border-bottom:none">htm442</li>
+						</ul>
+				</li>
+				<li id="li6" class="first_li" style="border-bottom:none">other ...
+						<ul id="ul_select_li6" class="ul_select_sub">
+							<li>vp102</li>
+							<li>vp202</li>
+							<li>8201</li>
+							<li style="border-bottom:none">ep838</li>
+						</ul>
+				</li>
+			</ul>
+</body> 
+</html> 
+<!--
+EOT;
+?>
+-->

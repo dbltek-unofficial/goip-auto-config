@@ -1,0 +1,1190 @@
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+        <tr>
+         <td colspan="2">
+
+         <div id="sip_group_settings" class="visable">
+          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+            <tr>
+             <td colspan="2">
+
+             <div id="sip_group_conf" class="visable">
+              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                <tr>
+                  <td class="text"><input type=radio name="sip_group_conf_tab" value="line1_group_conf" onclick="toggle2('sip_group_conf_tab', <?php print($values['TELPORT']) ?>, 0)" checked>线路1</td>
+<?php if($values['TELPORT'] >= 2): ?>
+                  <td class="text"><input type=radio name="sip_group_conf_tab" value="line2_group_conf" onclick="toggle2('sip_group_conf_tab', <?php print($values['TELPORT']) ?>, 1)">线路2</td>
+<?php endif; ?>
+<?php if($values['TELPORT'] >= 3): ?>
+                  <td class="text"><input type=radio name="sip_group_conf_tab" value="line3_group_conf" onclick="toggle2('sip_group_conf_tab', <?php print($values['TELPORT']) ?>, 2)">线路3</td>
+<?php endif; ?>
+<?php if($values['TELPORT'] >= 4): ?>
+                  <td class="text"><input type=radio name="sip_group_conf_tab" value="line4_group_conf" onclick="toggle2('sip_group_conf_tab', <?php print($values['TELPORT']) ?>, 3)">线路4</td>
+<?php endif; ?>
+<?php if($values['TELPORT'] >= 5): ?>
+                  <td class="text"><input type=radio name="sip_group_conf_tab" value="line5_group_conf" onclick="toggle2('sip_group_conf_tab', <?php print($values['TELPORT']) ?>, 4)">线路5</td>
+<?php endif; ?>
+<?php if($values['TELPORT'] >= 6): ?>
+                  <td class="text"><input type=radio name="sip_group_conf_tab" value="line6_group_conf" onclick="toggle2('sip_group_conf_tab', <?php print($values['TELPORT']) ?>, 5)">线路6</td>
+<?php endif; ?>
+<?php if($values['TELPORT'] >= 7): ?>
+                  <td class="text"><input type=radio name="sip_group_conf_tab" value="line7_group_conf" onclick="toggle2('sip_group_conf_tab', <?php print($values['TELPORT']) ?>, 6)">线路7</td>
+<?php endif; ?>
+<?php if($values['TELPORT'] >= 8): ?>
+                  <td class="text"><input type=radio name="sip_group_conf_tab" value="line8_group_conf" onclick="toggle2('sip_group_conf_tab', <?php print($values['TELPORT']) ?>, 7)">线路8</td>
+<?php endif; ?>
+                </tr>
+                <tr>
+<?php if($values['TELPORT'] >= 9): ?>
+                  <td class="text"><input type=radio name="sip_group_conf_tab" value="line9_group_conf" onclick="toggle2('sip_group_conf_tab', <?php print($values['TELPORT']) ?>, 8)">线路9</td>
+<?php endif; ?>
+<?php if($values['TELPORT'] >= 10): ?>
+                  <td class="text"><input type=radio name="sip_group_conf_tab" value="line10_group_conf" onclick="toggle2('sip_group_conf_tab', <?php print($values['TELPORT']) ?>, 9)">线路10</td>
+<?php endif; ?>
+<?php if($values['TELPORT'] >= 11): ?>
+                  <td class="text"><input type=radio name="sip_group_conf_tab" value="line11_group_conf" onclick="toggle2('sip_group_conf_tab', <?php print($values['TELPORT']) ?>, 10)">线路11</td>
+<?php endif; ?>
+<?php if($values['TELPORT'] >= 12): ?>
+                  <td class="text"><input type=radio name="sip_group_conf_tab" value="line12_group_conf" onclick="toggle2('sip_group_conf_tab', <?php print($values['TELPORT']) ?>, 11)">线路12</td>
+<?php endif; ?>
+<?php if($values['TELPORT'] >= 13): ?>
+                  <td class="text"><input type=radio name="sip_group_conf_tab" value="line13_group_conf" onclick="toggle2('sip_group_conf_tab', <?php print($values['TELPORT']) ?>, 12)">线路13</td>
+<?php endif; ?>
+<?php if($values['TELPORT'] >= 14): ?>
+                  <td class="text"><input type=radio name="sip_group_conf_tab" value="line14_group_conf" onclick="toggle2('sip_group_conf_tab', <?php print($values['TELPORT']) ?>, 13)">线路14</td>
+<?php endif; ?>
+<?php if($values['TELPORT'] >= 15): ?>
+                  <td class="text"><input type=radio name="sip_group_conf_tab" value="line15_group_conf" onclick="toggle2('sip_group_conf_tab', <?php print($values['TELPORT']) ?>, 14)">线路15</td>
+<?php endif; ?>
+<?php if($values['TELPORT'] >= 16): ?>
+                  <td class="text"><input type=radio name="sip_group_conf_tab" value="line16_group_conf" onclick="toggle2('sip_group_conf_tab', <?php print($values['TELPORT']) ?>, 15)">线路16</td>
+<?php endif; ?>
+                </tr>
+                <tr>
+<?php if($values['TELPORT'] >= 17): ?>
+                  <td class="text"><input type=radio name="sip_group_conf_tab" value="line17_group_conf" onclick="toggle2('sip_group_conf_tab', <?php print($values['TELPORT']) ?>, 16)">线路17</td>
+<?php endif; ?>
+<?php if($values['TELPORT'] >= 18): ?>
+                  <td class="text"><input type=radio name="sip_group_conf_tab" value="line18_group_conf" onclick="toggle2('sip_group_conf_tab', <?php print($values['TELPORT']) ?>, 17)">线路18</td>
+<?php endif; ?>
+<?php if($values['TELPORT'] >= 19): ?>
+                  <td class="text"><input type=radio name="sip_group_conf_tab" value="line19_group_conf" onclick="toggle2('sip_group_conf_tab', <?php print($values['TELPORT']) ?>, 18)">线路19</td>
+<?php endif; ?>
+<?php if($values['TELPORT'] >= 20): ?>
+                  <td class="text"><input type=radio name="sip_group_conf_tab" value="line20_group_conf" onclick="toggle2('sip_group_conf_tab', <?php print($values['TELPORT']) ?>, 19)">线路20</td>
+<?php endif; ?>
+<?php if($values['TELPORT'] >= 21): ?>
+                  <td class="text"><input type=radio name="sip_group_conf_tab" value="line21_group_conf" onclick="toggle2('sip_group_conf_tab', <?php print($values['TELPORT']) ?>, 20)">线路21</td>
+<?php endif; ?>
+<?php if($values['TELPORT'] >= 22): ?>
+                  <td class="text"><input type=radio name="sip_group_conf_tab" value="line22_group_conf" onclick="toggle2('sip_group_conf_tab', <?php print($values['TELPORT']) ?>, 21)">线路22</td>
+<?php endif; ?>
+<?php if($values['TELPORT'] >= 23): ?>
+                  <td class="text"><input type=radio name="sip_group_conf_tab" value="line23_group_conf" onclick="toggle2('sip_group_conf_tab', <?php print($values['TELPORT']) ?>, 22)">线路23</td>
+<?php endif; ?>
+<?php if($values['TELPORT'] >= 24): ?>
+                  <td class="text"><input type=radio name="sip_group_conf_tab" value="line24_group_conf" onclick="toggle2('sip_group_conf_tab', <?php print($values['TELPORT']) ?>, 23)">线路24</td>
+<?php endif; ?>
+                </tr>
+                <tr>
+<?php if($values['TELPORT'] >= 25): ?>
+                  <td class="text"><input type=radio name="sip_group_conf_tab" value="line25_group_conf" onclick="toggle2('sip_group_conf_tab', <?php print($values['TELPORT']) ?>, 24)">线路25</td>
+<?php endif; ?>
+<?php if($values['TELPORT'] >= 26): ?>
+                  <td class="text"><input type=radio name="sip_group_conf_tab" value="line26_group_conf" onclick="toggle2('sip_group_conf_tab', <?php print($values['TELPORT']) ?>, 25)">线路26</td>
+<?php endif; ?>
+<?php if($values['TELPORT'] >= 27): ?>
+                  <td class="text"><input type=radio name="sip_group_conf_tab" value="line27_group_conf" onclick="toggle2('sip_group_conf_tab', <?php print($values['TELPORT']) ?>, 26)">线路27</td>
+<?php endif; ?>
+<?php if($values['TELPORT'] >= 28): ?>
+                  <td class="text"><input type=radio name="sip_group_conf_tab" value="line28_group_conf" onclick="toggle2('sip_group_conf_tab', <?php print($values['TELPORT']) ?>, 27)">线路28</td>
+<?php endif; ?>
+<?php if($values['TELPORT'] >= 29): ?>
+                  <td class="text"><input type=radio name="sip_group_conf_tab" value="line29_group_conf" onclick="toggle2('sip_group_conf_tab', <?php print($values['TELPORT']) ?>, 28)">线路29</td>
+<?php endif; ?>
+<?php if($values['TELPORT'] >= 30): ?>
+                  <td class="text"><input type=radio name="sip_group_conf_tab" value="line30_group_conf" onclick="toggle2('sip_group_conf_tab', <?php print($values['TELPORT']) ?>, 29)">线路30</td>
+<?php endif; ?>
+<?php if($values['TELPORT'] >= 31): ?>
+                  <td class="text"><input type=radio name="sip_group_conf_tab" value="line31_group_conf" onclick="toggle2('sip_group_conf_tab', <?php print($values['TELPORT']) ?>, 30)">线路31</td>
+<?php endif; ?>
+<?php if($values['TELPORT'] >= 32): ?>
+                  <td class="text"><input type=radio name="sip_group_conf_tab" value="line32_group_conf" onclick="toggle2('sip_group_conf_tab', <?php print($values['TELPORT']) ?>, 31)">线路32</td>
+<?php endif; ?>
+                </tr>
+              </table>
+              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                <tr>
+                 <td>
+                  <div id="sip_group_conf_tab_0_div" class="visable">
+
+                 <div id="line1_group_conf" class="visable">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                    <tr>
+
+                     <td width="120" height="25" class="title1">归属</td>
+                     <td width="160" class="text">
+  <select name="line1_setting" id="line1_setting_select" class="select" onchange="toggle_selected('line1_setting', 'hide')">
+     <option value="0" <?php print($values['SIP_L1_G']=='0'?'selected':'') ?>>群1</option>
+     <option value="1" <?php print($values['SIP_L1_G']=='1'?'selected':'') ?>>群2</option>
+     <option value="2" <?php print($values['SIP_L1_G']=='2'?'selected':'') ?>>群3</option>
+     <option value="3" <?php print($values['SIP_L1_G']=='3'?'selected':'') ?>>群4</option>
+  </select>
+                     </td>
+
+                    </tr>
+
+                    <tr>
+                     <td colspan="2">
+
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                      </table>
+                     </td>
+                    </tr>
+
+                  </table>
+                 </div>
+                  </div>
+<?php if($values['TELPORT'] >= 2): ?>
+                  <div id="sip_group_conf_tab_1_div" class="invisible">
+
+                 <div id="line2_group_conf" class="visable">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                    <tr>
+
+                     <td width="120" height="25" class="title1">归属</td>
+                     <td width="160" class="text">
+  <select name="line2_setting" id="line2_setting_select" class="select" onchange="toggle_selected('line2_setting', 'hide')">
+     <option value="0" <?php print($values['SIP_L2_G']=='0'?'selected':'') ?>>群1</option>
+     <option value="1" <?php print($values['SIP_L2_G']=='1'?'selected':'') ?>>群2</option>
+     <option value="2" <?php print($values['SIP_L2_G']=='2'?'selected':'') ?>>群3</option>
+     <option value="3" <?php print($values['SIP_L2_G']=='3'?'selected':'') ?>>群4</option>
+  </select>
+                     </td>
+
+                    </tr>
+
+                    <tr>
+                     <td colspan="2">
+
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                      </table>
+                     </td>
+                    </tr>
+
+                  </table>
+                 </div>
+                  </div>
+<?php endif; ?>
+<?php if($values['TELPORT'] >= 3): ?>
+                  <div id="sip_group_conf_tab_2_div" class="invisible">
+
+                 <div id="line3_group_conf" class="visable">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                    <tr>
+
+                     <td width="120" height="25" class="title1">归属</td>
+                     <td width="160" class="text">
+  <select name="line3_setting" id="line3_setting_select" class="select" onchange="toggle_selected('line3_setting', 'hide')">
+     <option value="0" <?php print($values['SIP_L3_G']=='0'?'selected':'') ?>>群1</option>
+     <option value="1" <?php print($values['SIP_L3_G']=='1'?'selected':'') ?>>群2</option>
+     <option value="2" <?php print($values['SIP_L3_G']=='2'?'selected':'') ?>>群3</option>
+     <option value="3" <?php print($values['SIP_L3_G']=='3'?'selected':'') ?>>群4</option>
+  </select>
+                     </td>
+
+                    </tr>
+
+                    <tr>
+                     <td colspan="2">
+
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                      </table>
+                     </td>
+                    </tr>
+
+                  </table>
+                 </div>
+                  </div>
+<?php endif; ?>
+<?php if($values['TELPORT'] >= 4): ?>
+                  <div id="sip_group_conf_tab_3_div" class="invisible">
+
+                 <div id="line4_group_conf" class="visable">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                    <tr>
+
+                     <td width="120" height="25" class="title1">归属</td>
+                     <td width="160" class="text">
+  <select name="line4_setting" id="line4_setting_select" class="select" onchange="toggle_selected('line4_setting', 'hide')">
+     <option value="0" <?php print($values['SIP_L4_G']=='0'?'selected':'') ?>>群1</option>
+     <option value="1" <?php print($values['SIP_L4_G']=='1'?'selected':'') ?>>群2</option>
+     <option value="2" <?php print($values['SIP_L4_G']=='2'?'selected':'') ?>>群3</option>
+     <option value="3" <?php print($values['SIP_L4_G']=='3'?'selected':'') ?>>群4</option>
+  </select>
+                     </td>
+
+                    </tr>
+
+                    <tr>
+                     <td colspan="2">
+
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                      </table>
+                     </td>
+                    </tr>
+
+                  </table>
+                 </div>
+                  </div>
+<?php endif; ?>
+<?php if($values['TELPORT'] >= 5): ?>
+                  <div id="sip_group_conf_tab_4_div" class="invisible">
+
+                 <div id="line5_group_conf" class="visable">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                    <tr>
+
+                     <td width="120" height="25" class="title1">归属</td>
+                     <td width="160" class="text">
+  <select name="line5_setting" id="line5_setting_select" class="select" onchange="toggle_selected('line5_setting', 'hide')">
+     <option value="0" <?php print($values['SIP_L5_G']=='0'?'selected':'') ?>>群1</option>
+     <option value="1" <?php print($values['SIP_L5_G']=='1'?'selected':'') ?>>群2</option>
+     <option value="2" <?php print($values['SIP_L5_G']=='2'?'selected':'') ?>>群3</option>
+     <option value="3" <?php print($values['SIP_L5_G']=='3'?'selected':'') ?>>群4</option>
+  </select>
+                     </td>
+
+                    </tr>
+
+                    <tr>
+                     <td colspan="2">
+
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                      </table>
+                     </td>
+                    </tr>
+
+                  </table>
+                 </div>
+                  </div>
+<?php endif; ?>
+<?php if($values['TELPORT'] >= 6): ?>
+                  <div id="sip_group_conf_tab_5_div" class="invisible">
+
+                 <div id="line6_group_conf" class="visable">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                    <tr>
+
+                     <td width="120" height="25" class="title1">归属</td>
+                     <td width="160" class="text">
+  <select name="line6_setting" id="line6_setting_select" class="select" onchange="toggle_selected('line6_setting', 'hide')">
+     <option value="0" <?php print($values['SIP_L6_G']=='0'?'selected':'') ?>>群1</option>
+     <option value="1" <?php print($values['SIP_L6_G']=='1'?'selected':'') ?>>群2</option>
+     <option value="2" <?php print($values['SIP_L6_G']=='2'?'selected':'') ?>>群3</option>
+     <option value="3" <?php print($values['SIP_L6_G']=='3'?'selected':'') ?>>群4</option>
+  </select>
+                     </td>
+
+                    </tr>
+
+                    <tr>
+                     <td colspan="2">
+
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                      </table>
+                     </td>
+                    </tr>
+
+                  </table>
+                 </div>
+                  </div>
+<?php endif; ?>
+<?php if($values['TELPORT'] >= 7): ?>
+                  <div id="sip_group_conf_tab_6_div" class="invisible">
+
+                 <div id="line7_group_conf" class="visable">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                    <tr>
+
+                     <td width="120" height="25" class="title1">归属</td>
+                     <td width="160" class="text">
+  <select name="line7_setting" id="line7_setting_select" class="select" onchange="toggle_selected('line7_setting', 'hide')">
+     <option value="0" <?php print($values['SIP_L7_G']=='0'?'selected':'') ?>>群1</option>
+     <option value="1" <?php print($values['SIP_L7_G']=='1'?'selected':'') ?>>群2</option>
+     <option value="2" <?php print($values['SIP_L7_G']=='2'?'selected':'') ?>>群3</option>
+     <option value="3" <?php print($values['SIP_L7_G']=='3'?'selected':'') ?>>群4</option>
+  </select>
+                     </td>
+
+                    </tr>
+
+                    <tr>
+                     <td colspan="2">
+
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                      </table>
+                     </td>
+                    </tr>
+
+                  </table>
+                 </div>
+                  </div>
+<?php endif; ?>
+<?php if($values['TELPORT'] >= 8): ?>
+                  <div id="sip_group_conf_tab_7_div" class="invisible">
+
+                 <div id="line8_group_conf" class="visable">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                    <tr>
+
+                     <td width="120" height="25" class="title1">归属</td>
+                     <td width="160" class="text">
+  <select name="line8_setting" id="line8_setting_select" class="select" onchange="toggle_selected('line8_setting', 'hide')">
+     <option value="0" <?php print($values['SIP_L8_G']=='0'?'selected':'') ?>>群1</option>
+     <option value="1" <?php print($values['SIP_L8_G']=='1'?'selected':'') ?>>群2</option>
+     <option value="2" <?php print($values['SIP_L8_G']=='2'?'selected':'') ?>>群3</option>
+     <option value="3" <?php print($values['SIP_L8_G']=='3'?'selected':'') ?>>群4</option>
+  </select>
+                     </td>
+
+                    </tr>
+
+                    <tr>
+                     <td colspan="2">
+
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                      </table>
+                     </td>
+                    </tr>
+
+                  </table>
+                 </div>
+                  </div>
+<?php endif; ?>
+<?php if($values['TELPORT'] >= 9): ?>
+                  <div id="sip_group_conf_tab_8_div" class="invisible">
+
+                 <div id="line9_group_conf" class="visable">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                    <tr>
+
+                     <td width="120" height="25" class="title1">归属</td>
+                     <td width="160" class="text">
+  <select name="line9_setting" id="line9_setting_select" class="select" onchange="toggle_selected('line9_setting', 'hide')">
+     <option value="0" <?php print($values['SIP_L9_G']=='0'?'selected':'') ?>>群1</option>
+     <option value="1" <?php print($values['SIP_L9_G']=='1'?'selected':'') ?>>群2</option>
+     <option value="2" <?php print($values['SIP_L9_G']=='2'?'selected':'') ?>>群3</option>
+     <option value="3" <?php print($values['SIP_L9_G']=='3'?'selected':'') ?>>群4</option>
+  </select>
+                     </td>
+
+                    </tr>
+
+                    <tr>
+                     <td colspan="2">
+
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                      </table>
+                     </td>
+                    </tr>
+
+                  </table>
+                 </div>
+                  </div>
+<?php endif; ?>
+<?php if($values['TELPORT'] >= 10): ?>
+                  <div id="sip_group_conf_tab_9_div" class="invisible">
+
+                 <div id="line10_group_conf" class="visable">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                    <tr>
+
+                     <td width="120" height="25" class="title1">归属</td>
+                     <td width="160" class="text">
+  <select name="line10_setting" id="line10_setting_select" class="select" onchange="toggle_selected('line10_setting', 'hide')">
+     <option value="0" <?php print($values['SIP_L10_G']=='0'?'selected':'') ?>>群1</option>
+     <option value="1" <?php print($values['SIP_L10_G']=='1'?'selected':'') ?>>群2</option>
+     <option value="2" <?php print($values['SIP_L10_G']=='2'?'selected':'') ?>>群3</option>
+     <option value="3" <?php print($values['SIP_L10_G']=='3'?'selected':'') ?>>群4</option>
+  </select>
+                     </td>
+
+                    </tr>
+
+                    <tr>
+                     <td colspan="2">
+
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                      </table>
+                     </td>
+                    </tr>
+
+                  </table>
+                 </div>
+                  </div>
+<?php endif; ?>
+<?php if($values['TELPORT'] >= 11): ?>
+                  <div id="sip_group_conf_tab_10_div" class="invisible">
+
+                 <div id="line11_group_conf" class="visable">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                    <tr>
+
+                     <td width="120" height="25" class="title1">归属</td>
+                     <td width="160" class="text">
+  <select name="line11_setting" id="line11_setting_select" class="select" onchange="toggle_selected('line11_setting', 'hide')">
+     <option value="0" <?php print($values['SIP_L11_G']=='0'?'selected':'') ?>>群1</option>
+     <option value="1" <?php print($values['SIP_L11_G']=='1'?'selected':'') ?>>群2</option>
+     <option value="2" <?php print($values['SIP_L11_G']=='2'?'selected':'') ?>>群3</option>
+     <option value="3" <?php print($values['SIP_L11_G']=='3'?'selected':'') ?>>群4</option>
+  </select>
+                     </td>
+
+                    </tr>
+
+                    <tr>
+                     <td colspan="2">
+
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                      </table>
+                     </td>
+                    </tr>
+
+                  </table>
+                 </div>
+                  </div>
+<?php endif; ?>
+<?php if($values['TELPORT'] >= 12): ?>
+                  <div id="sip_group_conf_tab_11_div" class="invisible">
+
+                 <div id="line12_group_conf" class="visable">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                    <tr>
+
+                     <td width="120" height="25" class="title1">归属</td>
+                     <td width="160" class="text">
+  <select name="line12_setting" id="line12_setting_select" class="select" onchange="toggle_selected('line12_setting', 'hide')">
+     <option value="0" <?php print($values['SIP_L12_G']=='0'?'selected':'') ?>>群1</option>
+     <option value="1" <?php print($values['SIP_L12_G']=='1'?'selected':'') ?>>群2</option>
+     <option value="2" <?php print($values['SIP_L12_G']=='2'?'selected':'') ?>>群3</option>
+     <option value="3" <?php print($values['SIP_L12_G']=='3'?'selected':'') ?>>群4</option>
+  </select>
+                     </td>
+
+                    </tr>
+
+                    <tr>
+                     <td colspan="2">
+
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                      </table>
+                     </td>
+                    </tr>
+
+                  </table>
+                 </div>
+                  </div>
+<?php endif; ?>
+<?php if($values['TELPORT'] >= 13): ?>
+                  <div id="sip_group_conf_tab_12_div" class="invisible">
+
+                 <div id="line13_group_conf" class="visable">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                    <tr>
+
+                     <td width="120" height="25" class="title1">归属</td>
+                     <td width="160" class="text">
+  <select name="line13_setting" id="line13_setting_select" class="select" onchange="toggle_selected('line13_setting', 'hide')">
+     <option value="0" <?php print($values['SIP_L13_G']=='0'?'selected':'') ?>>群1</option>
+     <option value="1" <?php print($values['SIP_L13_G']=='1'?'selected':'') ?>>群2</option>
+     <option value="2" <?php print($values['SIP_L13_G']=='2'?'selected':'') ?>>群3</option>
+     <option value="3" <?php print($values['SIP_L13_G']=='3'?'selected':'') ?>>群4</option>
+  </select>
+                     </td>
+
+                    </tr>
+
+                    <tr>
+                     <td colspan="2">
+
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                      </table>
+                     </td>
+                    </tr>
+
+                  </table>
+                 </div>
+                  </div>
+<?php endif; ?>
+<?php if($values['TELPORT'] >= 14): ?>
+                  <div id="sip_group_conf_tab_13_div" class="invisible">
+
+                 <div id="line14_group_conf" class="visable">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                    <tr>
+
+                     <td width="120" height="25" class="title1">归属</td>
+                     <td width="160" class="text">
+  <select name="line14_setting" id="line14_setting_select" class="select" onchange="toggle_selected('line14_setting', 'hide')">
+     <option value="0" <?php print($values['SIP_L14_G']=='0'?'selected':'') ?>>群1</option>
+     <option value="1" <?php print($values['SIP_L14_G']=='1'?'selected':'') ?>>群2</option>
+     <option value="2" <?php print($values['SIP_L14_G']=='2'?'selected':'') ?>>群3</option>
+     <option value="3" <?php print($values['SIP_L14_G']=='3'?'selected':'') ?>>群4</option>
+  </select>
+                     </td>
+
+                    </tr>
+
+                    <tr>
+                     <td colspan="2">
+
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                      </table>
+                     </td>
+                    </tr>
+
+                  </table>
+                 </div>
+                  </div>
+<?php endif; ?>
+<?php if($values['TELPORT'] >= 15): ?>
+                  <div id="sip_group_conf_tab_14_div" class="invisible">
+
+                 <div id="line15_group_conf" class="visable">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                    <tr>
+
+                     <td width="120" height="25" class="title1">归属</td>
+                     <td width="160" class="text">
+  <select name="line15_setting" id="line15_setting_select" class="select" onchange="toggle_selected('line15_setting', 'hide')">
+     <option value="0" <?php print($values['SIP_L15_G']=='0'?'selected':'') ?>>群1</option>
+     <option value="1" <?php print($values['SIP_L15_G']=='1'?'selected':'') ?>>群2</option>
+     <option value="2" <?php print($values['SIP_L15_G']=='2'?'selected':'') ?>>群3</option>
+     <option value="3" <?php print($values['SIP_L15_G']=='3'?'selected':'') ?>>群4</option>
+  </select>
+                     </td>
+
+                    </tr>
+
+                    <tr>
+                     <td colspan="2">
+
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                      </table>
+                     </td>
+                    </tr>
+
+                  </table>
+                 </div>
+                  </div>
+<?php endif; ?>
+<?php if($values['TELPORT'] >= 16): ?>
+                  <div id="sip_group_conf_tab_15_div" class="invisible">
+
+                 <div id="line16_group_conf" class="visable">
+
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                    <tr>
+
+                     <td width="120" height="25" class="title1">归属</td>
+                     <td width="160" class="text">
+  <select name="line16_setting" id="line16_setting_select" class="select" onchange="toggle_selected('line16_setting', 'hide')">
+     <option value="0" <?php print($values['SIP_L16_G']=='0'?'selected':'') ?>>群1</option>
+     <option value="1" <?php print($values['SIP_L16_G']=='1'?'selected':'') ?>>群2</option>
+     <option value="2" <?php print($values['SIP_L16_G']=='2'?'selected':'') ?>>群3</option>
+     <option value="3" <?php print($values['SIP_L16_G']=='3'?'selected':'') ?>>群4</option>
+  </select>
+                     </td>
+
+                    </tr>
+
+                    <tr>
+                     <td colspan="2">
+
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                      </table>
+                     </td>
+                    </tr>
+
+                  </table>
+                 </div>
+                  </div>
+<?php endif; ?>
+<?php if($values['TELPORT'] >= 17): ?>
+                  <div id="sip_group_conf_tab_16_div" class="invisible">
+
+                 <div id="line17_group_conf" class="visable">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                    <tr>
+
+                     <td width="120" height="25" class="title1">归属</td>
+                     <td width="160" class="text">
+  <select name="line17_setting" id="line17_setting_select" class="select" onchange="toggle_selected('line17_setting', 'hide')">
+     <option value="0" <?php print($values['SIP_L17_G']=='0'?'selected':'') ?>>群1</option>
+     <option value="1" <?php print($values['SIP_L17_G']=='1'?'selected':'') ?>>群2</option>
+     <option value="2" <?php print($values['SIP_L17_G']=='2'?'selected':'') ?>>群3</option>
+     <option value="3" <?php print($values['SIP_L17_G']=='3'?'selected':'') ?>>群4</option>
+  </select>
+                     </td>
+
+                    </tr>
+
+                    <tr>
+                     <td colspan="2">
+
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                      </table>
+                     </td>
+                    </tr>
+
+                  </table>
+                 </div>
+                  </div>
+<?php endif; ?>
+<?php if($values['TELPORT'] >= 18): ?>
+                  <div id="sip_group_conf_tab_17_div" class="invisible">
+
+                 <div id="line18_group_conf" class="visable">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                    <tr>
+
+                     <td width="120" height="25" class="title1">归属</td>
+                     <td width="160" class="text">
+  <select name="line18_setting" id="line18_setting_select" class="select" onchange="toggle_selected('line18_setting', 'hide')">
+     <option value="0" <?php print($values['SIP_L18_G']=='0'?'selected':'') ?>>群1</option>
+     <option value="1" <?php print($values['SIP_L18_G']=='1'?'selected':'') ?>>群2</option>
+     <option value="2" <?php print($values['SIP_L18_G']=='2'?'selected':'') ?>>群3</option>
+     <option value="3" <?php print($values['SIP_L18_G']=='3'?'selected':'') ?>>群4</option>
+  </select>
+                     </td>
+
+
+                    </tr>
+
+                    <tr>
+                     <td colspan="2">
+
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                      </table>
+                     </td>
+                    </tr>
+
+                  </table>
+                 </div>
+                  </div>
+<?php endif; ?>
+<?php if($values['TELPORT'] >= 19): ?>
+                  <div id="sip_group_conf_tab_18_div" class="invisible">
+
+                 <div id="line19_group_conf" class="visable">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                    <tr>
+
+                     <td width="120" height="25" class="title1">归属</td>
+                     <td width="160" class="text">
+  <select name="line19_setting" id="line19_setting_select" class="select" onchange="toggle_selected('line19_setting', 'hide')">
+     <option value="0" <?php print($values['SIP_L19_G']=='0'?'selected':'') ?>>群1</option>
+     <option value="1" <?php print($values['SIP_L19_G']=='1'?'selected':'') ?>>群2</option>
+     <option value="2" <?php print($values['SIP_L19_G']=='2'?'selected':'') ?>>群3</option>
+     <option value="3" <?php print($values['SIP_L19_G']=='3'?'selected':'') ?>>群4</option>
+  </select>
+                     </td>
+
+                    </tr>
+
+                    <tr>
+                     <td colspan="2">
+
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                      </table>
+                     </td>
+                    </tr>
+
+                  </table>
+                 </div>
+                  </div>
+<?php endif; ?>
+<?php if($values['TELPORT'] >= 20): ?>
+                  <div id="sip_group_conf_tab_19_div" class="invisible">
+
+                 <div id="line20_group_conf" class="visable">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                    <tr>
+
+                     <td width="120" height="25" class="title1">归属</td>
+                     <td width="160" class="text">
+  <select name="line20_setting" id="line20_setting_select" class="select" onchange="toggle_selected('line20_setting', 'hide')">
+     <option value="0" <?php print($values['SIP_L20_G']=='0'?'selected':'') ?>>群1</option>
+     <option value="1" <?php print($values['SIP_L20_G']=='1'?'selected':'') ?>>群2</option>
+     <option value="2" <?php print($values['SIP_L20_G']=='2'?'selected':'') ?>>群3</option>
+     <option value="3" <?php print($values['SIP_L20_G']=='3'?'selected':'') ?>>群4</option>
+  </select>
+                     </td>
+
+                    </tr>
+
+                    <tr>
+                     <td colspan="2">
+
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                      </table>
+                     </td>
+                    </tr>
+
+                  </table>
+                 </div>
+                  </div>
+<?php endif; ?>
+<?php if($values['TELPORT'] >= 21): ?>
+                  <div id="sip_group_conf_tab_20_div" class="invisible">
+
+                 <div id="line21_group_conf" class="visable">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                    <tr>
+
+                     <td width="120" height="25" class="title1">归属</td>
+                     <td width="160" class="text">
+  <select name="line21_setting" id="line21_setting_select" class="select" onchange="toggle_selected('line21_setting', 'hide')">
+     <option value="0" <?php print($values['SIP_L21_G']=='0'?'selected':'') ?>>群1</option>
+     <option value="1" <?php print($values['SIP_L21_G']=='1'?'selected':'') ?>>群2</option>
+     <option value="2" <?php print($values['SIP_L21_G']=='2'?'selected':'') ?>>群3</option>
+     <option value="3" <?php print($values['SIP_L21_G']=='3'?'selected':'') ?>>群4</option>
+  </select>
+                     </td>
+
+                    </tr>
+
+                    <tr>
+                     <td colspan="2">
+
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                      </table>
+                     </td>
+                    </tr>
+
+                  </table>
+                 </div>
+                  </div>
+<?php endif; ?>
+<?php if($values['TELPORT'] >= 22): ?>
+                  <div id="sip_group_conf_tab_21_div" class="invisible">
+
+                 <div id="line22_group_conf" class="visable">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                    <tr>
+
+                     <td width="120" height="25" class="title1">归属</td>
+                     <td width="160" class="text">
+  <select name="line22_setting" id="line22_setting_select" class="select" onchange="toggle_selected('line22_setting', 'hide')">
+     <option value="0" <?php print($values['SIP_L22_G']=='0'?'selected':'') ?>>群1</option>
+     <option value="1" <?php print($values['SIP_L22_G']=='1'?'selected':'') ?>>群2</option>
+     <option value="2" <?php print($values['SIP_L22_G']=='2'?'selected':'') ?>>群3</option>
+     <option value="3" <?php print($values['SIP_L22_G']=='3'?'selected':'') ?>>群4</option>
+  </select>
+                     </td>
+
+                    </tr>
+
+                    <tr>
+                     <td colspan="2">
+
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                      </table>
+                     </td>
+                    </tr>
+
+                  </table>
+                 </div>
+                  </div>
+<?php endif; ?>
+<?php if($values['TELPORT'] >= 23): ?>
+                  <div id="sip_group_conf_tab_22_div" class="invisible">
+
+                 <div id="line23_group_conf" class="visable">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                    <tr>
+
+                     <td width="120" height="25" class="title1">归属</td>
+                     <td width="160" class="text">
+  <select name="line23_setting" id="line23_setting_select" class="select" onchange="toggle_selected('line23_setting', 'hide')">
+     <option value="0" <?php print($values['SIP_L23_G']=='0'?'selected':'') ?>>群1</option>
+     <option value="1" <?php print($values['SIP_L23_G']=='1'?'selected':'') ?>>群2</option>
+     <option value="2" <?php print($values['SIP_L23_G']=='2'?'selected':'') ?>>群3</option>
+     <option value="3" <?php print($values['SIP_L23_G']=='3'?'selected':'') ?>>群4</option>
+  </select>
+                     </td>
+
+                    </tr>
+
+                    <tr>
+                     <td colspan="2">
+
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                      </table>
+                     </td>
+                    </tr>
+
+                  </table>
+                 </div>
+                  </div>
+<?php endif; ?>
+<?php if($values['TELPORT'] >= 24): ?>
+                  <div id="sip_group_conf_tab_23_div" class="invisible">
+
+                 <div id="line24_group_conf" class="visable">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                    <tr>
+
+                     <td width="120" height="25" class="title1">归属</td>
+                     <td width="160" class="text">
+  <select name="line24_setting" id="line24_setting_select" class="select" onchange="toggle_selected('line24_setting', 'hide')">
+     <option value="0" <?php print($values['SIP_L24_G']=='0'?'selected':'') ?>>群1</option>
+     <option value="1" <?php print($values['SIP_L24_G']=='1'?'selected':'') ?>>群2</option>
+     <option value="2" <?php print($values['SIP_L24_G']=='2'?'selected':'') ?>>群3</option>
+     <option value="3" <?php print($values['SIP_L24_G']=='3'?'selected':'') ?>>群4</option>
+  </select>
+                     </td>
+
+                    </tr>
+
+                    <tr>
+                     <td colspan="2">
+
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                      </table>
+                     </td>
+                    </tr>
+
+                  </table>
+                 </div>
+                  </div>
+<?php endif; ?>
+<?php if($values['TELPORT'] >= 25): ?>
+                  <div id="sip_group_conf_tab_24_div" class="invisible">
+
+                 <div id="line25_group_conf" class="visable">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                    <tr>
+
+                     <td width="120" height="25" class="title1">归属</td>
+                     <td width="160" class="text">
+  <select name="line25_setting" id="line25_setting_select" class="select" onchange="toggle_selected('line25_setting', 'hide')">
+     <option value="0" <?php print($values['SIP_L25_G']=='0'?'selected':'') ?>>群1</option>
+     <option value="1" <?php print($values['SIP_L25_G']=='1'?'selected':'') ?>>群2</option>
+     <option value="2" <?php print($values['SIP_L25_G']=='2'?'selected':'') ?>>群3</option>
+     <option value="3" <?php print($values['SIP_L25_G']=='3'?'selected':'') ?>>群4</option>
+  </select>
+                     </td>
+
+                    </tr>
+
+                    <tr>
+                     <td colspan="2">
+
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                      </table>
+                     </td>
+                    </tr>
+
+                  </table>
+                 </div>
+                  </div>
+<?php endif; ?>
+<?php if($values['TELPORT'] >= 26): ?>
+                  <div id="sip_group_conf_tab_25_div" class="invisible">
+
+                 <div id="line26_group_conf" class="visable">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                    <tr>
+
+                     <td width="120" height="25" class="title1">归属</td>
+                     <td width="160" class="text">
+  <select name="line26_setting" id="line26_setting_select" class="select" onchange="toggle_selected('line26_setting', 'hide')">
+     <option value="0" <?php print($values['SIP_L26_G']=='0'?'selected':'') ?>>群1</option>
+     <option value="1" <?php print($values['SIP_L26_G']=='1'?'selected':'') ?>>群2</option>
+     <option value="2" <?php print($values['SIP_L26_G']=='2'?'selected':'') ?>>群3</option>
+     <option value="3" <?php print($values['SIP_L26_G']=='3'?'selected':'') ?>>群4</option>
+  </select>
+                     </td>
+
+                    </tr>
+
+                    <tr>
+                     <td colspan="2">
+
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                      </table>
+                     </td>
+                    </tr>
+
+                  </table>
+                 </div>
+                  </div>
+<?php endif; ?>
+<?php if($values['TELPORT'] >= 27): ?>
+                  <div id="sip_group_conf_tab_26_div" class="invisible">
+
+                 <div id="line27_group_conf" class="visable">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                    <tr>
+
+                     <td width="120" height="25" class="title1">归属</td>
+                     <td width="160" class="text">
+  <select name="line27_setting" id="line27_setting_select" class="select" onchange="toggle_selected('line27_setting', 'hide')">
+     <option value="0" <?php print($values['SIP_L27_G']=='0'?'selected':'') ?>>群1</option>
+     <option value="1" <?php print($values['SIP_L27_G']=='1'?'selected':'') ?>>群2</option>
+     <option value="2" <?php print($values['SIP_L27_G']=='2'?'selected':'') ?>>群3</option>
+     <option value="3" <?php print($values['SIP_L27_G']=='3'?'selected':'') ?>>群4</option>
+  </select>
+                     </td>
+
+                    </tr>
+
+                    <tr>
+                     <td colspan="2">
+
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                      </table>
+                     </td>
+                    </tr>
+
+                  </table>
+                 </div>
+                  </div>
+<?php endif; ?>
+<?php if($values['TELPORT'] >= 28): ?>
+                  <div id="sip_group_conf_tab_27_div" class="invisible">
+
+                 <div id="line28_group_conf" class="visable">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                    <tr>
+
+                     <td width="120" height="25" class="title1">归属</td>
+                     <td width="160" class="text">
+  <select name="line28_setting" id="line28_setting_select" class="select" onchange="toggle_selected('line28_setting', 'hide')">
+     <option value="0" <?php print($values['SIP_L28_G']=='0'?'selected':'') ?>>群1</option>
+     <option value="1" <?php print($values['SIP_L28_G']=='1'?'selected':'') ?>>群2</option>
+     <option value="2" <?php print($values['SIP_L28_G']=='2'?'selected':'') ?>>群3</option>
+     <option value="3" <?php print($values['SIP_L28_G']=='3'?'selected':'') ?>>群4</option>
+  </select>
+                     </td>
+
+                    </tr>
+
+                    <tr>
+                     <td colspan="2">
+
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                      </table>
+                     </td>
+                    </tr>
+
+                  </table>
+                 </div>
+                  </div>
+<?php endif; ?>
+<?php if($values['TELPORT'] >= 29): ?>
+                  <div id="sip_group_conf_tab_28_div" class="invisible">
+
+                 <div id="line29_group_conf" class="visable">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                    <tr>
+
+                     <td width="120" height="25" class="title1">归属</td>
+                     <td width="160" class="text">
+  <select name="line29_setting" id="line29_setting_select" class="select" onchange="toggle_selected('line29_setting', 'hide')">
+     <option value="0" <?php print($values['SIP_L29_G']=='0'?'selected':'') ?>>群1</option>
+     <option value="1" <?php print($values['SIP_L29_G']=='1'?'selected':'') ?>>群2</option>
+     <option value="2" <?php print($values['SIP_L29_G']=='2'?'selected':'') ?>>群3</option>
+     <option value="3" <?php print($values['SIP_L29_G']=='3'?'selected':'') ?>>群4</option>
+  </select>
+                     </td>
+
+                    </tr>
+
+                    <tr>
+                     <td colspan="2">
+
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                      </table>
+                     </td>
+                    </tr>
+
+                  </table>
+                 </div>
+                  </div>
+<?php endif; ?>
+<?php if($values['TELPORT'] >= 30): ?>
+                  <div id="sip_group_conf_tab_29_div" class="invisible">
+
+                 <div id="line30_group_conf" class="visable">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                    <tr>
+
+                     <td width="120" height="25" class="title1">归属</td>
+                     <td width="160" class="text">
+  <select name="line30_setting" id="line30_setting_select" class="select" onchange="toggle_selected('line30_setting', 'hide')">
+     <option value="0" <?php print($values['SIP_L30_G']=='0'?'selected':'') ?>>群1</option>
+     <option value="1" <?php print($values['SIP_L30_G']=='1'?'selected':'') ?>>群2</option>
+     <option value="2" <?php print($values['SIP_L30_G']=='2'?'selected':'') ?>>群3</option>
+     <option value="3" <?php print($values['SIP_L30_G']=='3'?'selected':'') ?>>群4</option>
+  </select>
+                     </td>
+
+                    </tr>
+
+                    <tr>
+                     <td colspan="2">
+
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                      </table>
+                     </td>
+                    </tr>
+
+                  </table>
+                 </div>
+                  </div>
+<?php endif; ?>
+<?php if($values['TELPORT'] >= 31): ?>
+                  <div id="sip_group_conf_tab_30_div" class="invisible">
+
+                 <div id="line31_group_conf" class="visable">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                    <tr>
+
+                     <td width="120" height="25" class="title1">归属</td>
+                     <td width="160" class="text">
+  <select name="line31_setting" id="line31_setting_select" class="select" onchange="toggle_selected('line31_setting', 'hide')">
+     <option value="0" <?php print($values['SIP_L31_G']=='0'?'selected':'') ?>>群1</option>
+     <option value="1" <?php print($values['SIP_L31_G']=='1'?'selected':'') ?>>群2</option>
+     <option value="2" <?php print($values['SIP_L31_G']=='2'?'selected':'') ?>>群3</option>
+     <option value="3" <?php print($values['SIP_L31_G']=='3'?'selected':'') ?>>群4</option>
+  </select>
+                     </td>
+
+                    </tr>
+
+                    <tr>
+                     <td colspan="2">
+
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                      </table>
+                     </td>
+                    </tr>
+
+                  </table>
+                 </div>
+                  </div>
+<?php endif; ?>
+<?php if($values['TELPORT'] >= 32): ?>
+                  <div id="sip_group_conf_tab_31_div" class="invisible">
+
+                 <div id="line32_group_conf" class="visable">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                    <tr>
+
+                     <td width="120" height="25" class="title1">归属</td>
+                     <td width="160" class="text">
+  <select name="line32_setting" id="line32_setting_select" class="select" onchange="toggle_selected('line32_setting', 'hide')">
+     <option value="0" <?php print($values['SIP_L32_G']=='0'?'selected':'') ?>>群1</option>
+     <option value="1" <?php print($values['SIP_L32_G']=='1'?'selected':'') ?>>群2</option>
+     <option value="2" <?php print($values['SIP_L32_G']=='2'?'selected':'') ?>>群3</option>
+     <option value="3" <?php print($values['SIP_L32_G']=='3'?'selected':'') ?>>群4</option>
+  </select>
+                     </td>
+
+                    </tr>
+
+                    <tr>
+                     <td colspan="2">
+
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                      </table>
+                     </td>
+                    </tr>
+
+                  </table>
+                 </div>
+                  </div>
+<?php endif; ?>
+
+                 </td>
+                </tr>
+
+              </table>
+             </div>
+             </td>
+            </tr>
+
+          </table>
+         </div>
+         </td>
+        </tr>
+
+      </table>

@@ -1,0 +1,122 @@
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+        <tr>
+         <td colspan="2" class="title1" height="25" >GSM呼叫转移</td>
+        </tr>
+
+        <tr>
+         <td colspan="2">
+
+         <div id="l16_gsm_cf_list" class="visable">
+          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+            <tr>
+             <td width="120" height="25" class="title1">
+<span>GSM无条件呼叫转移</span>             </td>
+             <td width="160" class="text">
+              <input type="radio" name="line16_gsm_cf_uncnd_enable" value="on" id="line16_gsm_cf_uncnd_enable_enable" disabledbyelement="" onclick="toggle('line16_gsm_cf_uncnd_enable_div', 1)" <?php print($values['L16_GSM_CF_UNCND_ENABLE']=='1'?'checked':'') ?>><span>启用</span>
+              <input type="radio" name="line16_gsm_cf_uncnd_enable" value="off" id="line16_gsm_cf_uncnd_enable_disable" disabledbyelement="" onclick="toggle('line16_gsm_cf_uncnd_enable_div', 0)" <?php print($values['L16_GSM_CF_UNCND_ENABLE']!='1'?'checked':'') ?>><span>禁用</span>             </td>
+            </tr>
+
+            <tr>
+             <td colspan="2">
+
+            <div id="line16_gsm_cf_uncnd_enable_div" class="<?php print($values['L16_GSM_CF_UNCND_ENABLE']=='1'?'visable':'invisible') ?>">
+              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                <tr>
+                 <td width="120" height="25" class="title1">GSM无条件呼叫转移号码</td>
+                 <td width="160" class="text">
+                  <input type="text" name="line16_gsm_cf_uncnd_num" id="line16_gsm_cf_uncnd_num" value="<?php print($values['L16_GSM_CF_UNCND_NUM']) ?>" class="edit">
+                 </td>
+                </tr>
+
+              </table>
+            </div>
+             </td>
+            </tr>
+
+            <tr>
+             <td width="120" height="25" class="title1">
+<span>GSM遇忙呼叫转移</span>             </td>
+             <td width="160" class="text">
+              <input type="radio" name="line16_gsm_cf_busy_enable" value="on" id="line16_gsm_cf_busy_enable_enable" disabledbyelement="" onclick="toggle('line16_gsm_cf_busy_enable_div', 1)" <?php print($values['L16_GSM_CF_BUSY_ENABLE']=='1'?'checked':'') ?>><span>启用</span>
+              <input type="radio" name="line16_gsm_cf_busy_enable" value="off" id="line16_gsm_cf_busy_enable_disable" disabledbyelement="" onclick="toggle('line16_gsm_cf_busy_enable_div', 0)" <?php print($values['L16_GSM_CF_BUSY_ENABLE']!='1'?'checked':'') ?>><span>禁用</span>             </td>
+            </tr>
+
+            <tr>
+             <td colspan="2">
+
+            <div id="line16_gsm_cf_busy_enable_div" class="<?php print($values['L16_GSM_CF_BUSY_ENABLE']=='1'?'visable':'invisible') ?>">
+              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                <tr>
+                 <td width="120" height="25" class="title1">GSM遇忙呼叫转移号码</td>
+                 <td width="160" class="text">
+                  <input type="text" name="line16_gsm_cf_busy_num" id="line16_gsm_cf_busy_num" value="<?php print($values['L16_GSM_CF_BUSY_NUM']) ?>" class="edit">
+                 </td>
+                </tr>
+
+              </table>
+            </div>
+             </td>
+            </tr>
+
+            <tr>
+             <td width="120" height="25" class="title1">
+<span>GSM无应答呼叫转移</span>             </td>
+             <td width="160" class="text">
+              <input type="radio" name="line16_gsm_cf_noreply_enable" value="on" id="line16_gsm_cf_noreply_enable_enable" disabledbyelement="" onclick="toggle('line16_gsm_cf_noreply_enable_div', 1)" <?php print($values['L16_GSM_CF_NOREPLY_ENABLE']=='1'?'checked':'') ?>><span>启用</span>
+              <input type="radio" name="line16_gsm_cf_noreply_enable" value="off" id="line16_gsm_cf_noreply_enable_disable" disabledbyelement="" onclick="toggle('line16_gsm_cf_noreply_enable_div', 0)" <?php print($values['L16_GSM_CF_NOREPLY_ENABLE']!='1'?'checked':'') ?>><span>禁用</span>             </td>
+            </tr>
+
+            <tr>
+             <td colspan="2">
+
+            <div id="line16_gsm_cf_noreply_enable_div" class="<?php print($values['L16_GSM_CF_NOREPLY_ENABLE']=='1'?'visable':'invisible') ?>">
+              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                <tr>
+                 <td width="120" height="25" class="title1">GSM无应答呼叫转移号码</td>
+                 <td width="160" class="text">
+                  <input type="text" name="line16_gsm_cf_noreply_num" id="line16_gsm_cf_noreply_num" value="<?php print($values['L16_GSM_CF_NOREPLY_NUM']) ?>" class="edit">
+                 </td>
+                </tr>
+
+              </table>
+            </div>
+             </td>
+            </tr>
+
+            <tr>
+             <td width="120" height="25" class="title1">
+<span>GSM无应答呼叫转移</span>             </td>
+             <td width="160" class="text">
+              <input type="radio" name="line16_gsm_cf_notreachable_enable" value="on" id="line16_gsm_cf_notreachable_enable_enable" disabledbyelement="" onclick="toggle('line16_gsm_cf_notreachable_enable_div', 1)" <?php print($values['L16_GSM_CF_NOTREACHABLE_ENABLE']=='1'?'checked':'') ?>><span>启用</span>
+              <input type="radio" name="line16_gsm_cf_notreachable_enable" value="off" id="line16_gsm_cf_notreachable_enable_disable" disabledbyelement="" onclick="toggle('line16_gsm_cf_notreachable_enable_div', 0)" <?php print($values['L16_GSM_CF_NOTREACHABLE_ENABLE']!='1'?'checked':'') ?>><span>禁用</span>             </td>
+            </tr>
+
+            <tr>
+             <td colspan="2">
+
+            <div id="line16_gsm_cf_notreachable_enable_div" class="<?php print($values['L16_GSM_CF_NOTREACHABLE_ENABLE']=='1'?'visable':'invisible') ?>">
+              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                <tr>
+                 <td width="120" height="25" class="title1">GSM无应答呼叫转移号码</td>
+                 <td width="160" class="text">
+                  <input type="text" name="line16_gsm_cf_notreachable_num" id="line16_gsm_cf_notreachable_num" value="<?php print($values['L16_GSM_CF_NOTREACHABLE_NUM']) ?>" class="edit">
+                 </td>
+                </tr>
+
+              </table>
+            </div>
+             </td>
+            </tr>
+
+          </table>
+         </div>
+         </td>
+        </tr>
+
+      </table>
